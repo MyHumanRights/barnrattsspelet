@@ -1,0 +1,26 @@
+@import '../../../global.scss';
+
+.retry {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  padding: 0 0.5rem 0.5rem;
+
+  p {
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+}
+
+.ctaWrapper {
+  padding-top: 0.5rem;
+  display: flex;
+
+  > button:first-child {
+    margin-right: 1rem;
+  }
+}

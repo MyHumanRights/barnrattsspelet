@@ -1,0 +1,109 @@
+@import '../../../global.scss';
+
+.wrapper {
+  height: 100%;
+  position: fixed;
+  bottom: -90px;
+  z-index: 1;
+  pointer-events: none;
+
+  ul {
+    display: grid;
+    align-items: end;
+    align-content: end;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    li {
+      grid-column: 1;
+      grid-row: 1;
+      pointer-events: auto;
+      width: fit-content;
+      position: relative;
+      height: min-content;
+      padding: 50px 0 80px 0;
+
+      .buttonWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &.spaceBetween {
+          justify-content: space-between;
+        }
+
+        .tokenBtnWrapper {
+          transform: rotate(-1deg);
+          margin-left: 7%;
+          margin-bottom: 0.05em;
+        }
+        .playBtnWrapper {
+          transform: rotate(2deg);
+          margin-right: 5%;
+        }
+
+        button {
+          margin: 8px 4px;
+          cursor: pointer;
+          pointer-events: auto;
+          border-radius: 6px;
+          border: 2px solid currentColor;
+          @include box-shadow(medium);
+        }
+
+        button.primary {
+          background-color: white;
+          color: $primaryColor;
+          padding: 0.52em;
+          &:hover,
+          &:active {
+            background-color: scale-color($primaryColor, $lightness: 95%);
+          }
+          img {
+            width: 1.45em;
+            height: 1.45em;
+          }
+        }
+
+        button.secondary {
+          background-color: $primaryColor;
+          color: white;
+          font-weight: bold;
+          padding: 0.52em 1.15em;
+          &:hover,
+          &:active {
+            background-color: scale-color($primaryColor, $lightness: 15%);
+          }
+        }
+      }
+
+      &.disabledCard {
+        filter: saturate(5%);
+      }
+    }
+  }
+}
+
+.deckBuilder ul {
+  top: 40px;
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    overflow: visible;
+    pointer-events: none;
+    bottom: -50px;
+
+    ul {
+      position: relative;
+      left: calc(10vw - 100px);
+      width: calc(80vw + 200px);
+    }
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "parts": {
+    "face": [
+      {
+        "id": "avatar-face01",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face02",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face03",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face04",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face05",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face06",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face07",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face08",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face09",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face10",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face11",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face12",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face13",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face14",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face15",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face16",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face17",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-face18",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": true
+      },
+      {
+        "id": "avatar-face19",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      }
+    ],
+    "body": [
+      {
+        "id": "avatar-body01",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body02",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body03",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body04",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body05",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body06",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body07",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body08",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body09",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body10",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body11",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body12",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body13",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body14",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body15",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body16",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body17",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-body18",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": true
+      },
+      {
+        "id": "avatar-body19",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      }
+    ],
+    "hair": [
+      {
+        "id": "avatar-hair01",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair02",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair03",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair04",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair05",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair06",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair07",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair08",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair09",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair10",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair11",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair12",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair13",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair14",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair15",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair16",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair17",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-hair18",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": true
+      },
+      {
+        "id": "avatar-hair19",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      }
+    ],
+    "accessory": [
+      {
+        "id": null,
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory01",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory02",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory03",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory04",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory05",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory06",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory07",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory08",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory09",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory10",
+        "isDefault": true,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory11",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory12",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory13",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory14",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory15",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory16",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory17",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory18",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": false
+      },
+      {
+        "id": "avatar-accessory19",
+        "isDefault": false,
+        "isNewPart": false,
+        "isSuperHero": true
+      }
+    ]
+  },
+  "colors": {
+    "hair": ["#000000", "#F6F7C5", "#EA6523", "#4B1F68", "#0090CF", "#CF7AAC", "#12ACA3", "#693839", "#f29400", "#99a7b4"],
+    "face": ["#ee7b00", "#f5d3e4", "#4a394f", "#8c4b3b", "#c09753", "#1f8945", "#f5b310", "#efab96", "#d8ac6b", "#998243"],
+    "body": ["#E60080", "#e42b48", "#F39200", "#0090CF", "#12ACA3", "#008533", "#e95e29", "#f9f6ef", "#221235", "#9b438f"]
+  }
+}

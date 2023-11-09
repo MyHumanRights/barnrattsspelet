@@ -1,0 +1,139 @@
+@import '../../global';
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid currentColor;
+  font-size: 1rem;
+  font-weight: 600;
+  @include box-shadow(medium);
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 6px;
+  }
+
+  span {
+    display: flex;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.huge {
+  background-color: $southernFrance;
+  color: #fff;
+  text-transform: uppercase;
+  @include fontBangers;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: scale-color($southernFrance, $lightness: 5%);
+    text-decoration: none;
+  }
+}
+
+.primary {
+  background-color: $primaryColor;
+  color: white;
+
+  &:hover,
+  &:active {
+    background-color: scale-color($primaryColor, $lightness: 15%);
+    text-decoration: none;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    cursor: auto;
+    background-color: $disabledGray;
+  }
+}
+
+.secondary {
+  background-color: #fff;
+  color: $primaryColor;
+
+  &:hover,
+  &:active {
+    background-color: scale-color($primaryColor, $lightness: 90%);
+    text-decoration: none;
+  }
+}
+
+.simple {
+  background-color: transparent;
+  border: none;
+  color: $primaryColor;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  box-shadow: none;
+  font-size: 1rem;
+
+  &:hover {
+    text-decoration-thickness: 3px;
+  }
+}
+
+.large:not(.text):not(.simple) {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.medium:not(.text):not(.simple) {
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+}
+
+.small:not(.text):not(.simple) {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+
+  svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  @media (min-width: 600px) {
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+.fullWidth {
+  display: block;
+  display: flex;
+}
+
+.text {
+  border-radius: unset;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+  color: $primaryColor;
+  font-size: 1em;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

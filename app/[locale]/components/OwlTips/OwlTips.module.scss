@@ -1,0 +1,43 @@
+.owlWrapper {
+  z-index: 1;
+  margin: 0 16px;
+
+  @media screen and (min-width: 600px) {
+    position: absolute;
+    left: 120px;
+    top: 0;
+  }
+}
+
+.enableOwlWrapper {
+  position: absolute;
+  z-index: 2;
+  top: 35vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    display: block;
+    left: 1vw;
+  }
+}
+
+.introOwlWrapper {
+  position: absolute;
+  bottom: calc(var(--avatarSize) + 10rem);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    left: calc(var(--avatarSize) / 2);
+    justify-content: flex-start;
+  }
+}
+
+.quizOwlWrapper {
+  z-index: 2;
+  padding-left: 1rem;
+  position: relative;
+}

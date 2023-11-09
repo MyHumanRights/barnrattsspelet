@@ -1,0 +1,101 @@
+@import '../../../global.scss';
+
+.sidebar {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+
+  @media (min-width: 768px) {
+    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+      background-color: rgba(255, 255, 255, 0.7); //Fallback for firefox and IE
+    }
+    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+      backdrop-filter: blur(15px);
+    }
+    max-width: 400px;
+    min-width: 25vw;
+    width: 310px;
+  }
+
+  &.left {
+    left: 0;
+
+    @media (min-width: 768px) {
+      @include box-shadow(medium);
+      border-right: 4px solid #fff;
+    }
+  }
+
+  &.right {
+    right: 0;
+
+    @media (min-width: 768px) {
+      box-shadow: -1px 3px 2.5px rgba(0, 0, 0, 0.274);
+      border-left: 4px solid #fff;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      // Make room for settings button
+      margin-right: 70px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 0.4em;
+  }
+}
+
+$heightWidth: 60px;
+
+.openToggler {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  height: $heightWidth;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $heightWidth;
+
+  span {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    svg:hover,
+    svg:active {
+      color: rgb(74, 74, 74);
+    }
+  }
+
+  @media (max-width: 500px) {
+    top: 15em;
+  }
+}
+
+.openToggler.left {
+  right: -$heightWidth;
+  border-radius: 0 $heightWidth $heightWidth 0;
+  @include box-shadow(medium);
+}
+
+.openToggler.right {
+  left: -$heightWidth;
+  border-radius: $heightWidth 0 0 $heightWidth;
+  box-shadow: -1px 3px 2.5px rgba(0, 0, 0, 0.274);
+}
+
+.scrollWrapper {
+  overflow-y: auto;
+  height: 100%;
+  padding: $topGutter 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+}

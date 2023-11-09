@@ -1,0 +1,15 @@
+.deleteBtnWrapper {
+  padding-block: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.deletedText {
+  display: flex;
+
+  svg {
+    margin-left: 0.5rem;
+    width: 24px;
+    height: 24px;
+  }
+}

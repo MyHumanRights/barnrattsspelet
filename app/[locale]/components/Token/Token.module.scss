@@ -1,0 +1,57 @@
+@import '../../../global.scss';
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 60px;
+  height: 36px;
+  margin: 16px 16px 16px 24px;
+  @include drop-shadow(medium);
+
+  .banner {
+    z-index: 1;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .tokenWrapper {
+    width: 50%;
+    text-align: center;
+    @include fontBangers;
+  }
+
+  .image {
+    position: absolute;
+    left: -10px;
+    z-index: 2;
+  }
+}
+
+.wrapper.medium {
+  font-size: 1.6em;
+  height: 65px;
+  width: 100px;
+  border-radius: 5px;
+  padding-right: 6px;
+  margin-top: 8px;
+  @include drop-shadow(medium);
+
+  .banner {
+    border-radius: 5px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 4px;
+  }
+
+  .image {
+    left: -25px;
+  }
+}

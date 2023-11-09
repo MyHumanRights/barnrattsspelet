@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="300" viewBox="0 0 200 300">
+  <defs>
+    <clipPath id="38-clip-path">
+      <rect id="38-Rectangle_4" data-name="38-Rectangle 4" width="300" height="300" transform="translate(0.001)" fill="none"/>
+    </clipPath>
+    <clipPath id="38-clip-Kort_-_artikel_38">
+      <rect width="200" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="38-Kort_-_artikel_38" data-name="38-Kort - artikel 38" clip-path="url(#38-clip-Kort_-_artikel_38)">
+    <rect width="200" height="300" fill="#e2d1d6"/>
+    <g id="38-Group_6" data-name="38-Group 6" transform="translate(-73.001 -58.333)">
+      <rect id="38-Rectangle_3" data-name="38-Rectangle 3" width="300" height="300" transform="translate(23.001 58.333)" fill="#e2d1d6"/>
+      <path id="38-Path_10" data-name="38-Path 10" d="M144.944,58.333l-6.646,300h44.63l-.79-300Z" transform="translate(-22.482 0)" fill="#9c7e39"/>
+      <path id="38-Path_11" data-name="38-Path 11" d="M154.96,58.333l-6.369,300h44.775l-1.191-300Z" transform="translate(-24.489 0)" fill="#ea601f"/>
+      <path id="38-Path_12" data-name="38-Path 12" d="M174.754,58.333l-5.468,300h52.16L212.8,64.187l-10.269-5.854Z" transform="translate(-28.525 0)" fill="#e33f00"/>
+      <g id="38-Group_5" data-name="38-Group 5" transform="translate(23 58.333)">
+        <g id="38-Group_4" data-name="38-Group 4" clip-path="url(#38-clip-path)">
+          <path id="38-Path_13" data-name="38-Path 13" d="M206.443,39.63s-.508,82.917.218,132.111S207,394.6,207,394.6l45.788,1.224L238.391,30.407Z" transform="translate(-58.736 -52.888)" fill="#573679"/>
+          <path id="38-Path_14" data-name="38-Path 14" d="M233.724,23.77S232.575,111.1,233.3,160.3s4.623,212.9,4.623,212.9l40.164-2.173L265.409,29.664Z" transform="translate(-63.96 -51.593)" fill="#9c7e39"/>
+          <path id="38-Path_15" data-name="38-Path 15" d="M240.758,22.635s.432,113.876,1.16,166.146,4.669,188.084,4.669,188.084l20.954,1,.081-339.77Z" transform="translate(-65.461 -51.372)" fill="#7e94cb"/>
+          <path id="38-Path_16" data-name="38-Path 16" d="M268.442,53.376s1.3,60.984,2.989,137.85,1.509,196.983,1.509,196.983l13.656-.544s-.681-121.033-2.246-192.91c-1.278-58.579-.7-140.34-.7-140.34Z" transform="translate(-70.859 -57.366)" fill="#ffcf00"/>
+          <path id="38-Path_17" data-name="38-Path 17" d="M196.978,161.477c-48.784,0-73.124,33.667-75.154,68.561-2.2,37.8,21.536,75.593,73.4,75.593,48.35,0,73.836-29.886,75.154-72.077,1.089-34.889-23.726-72.076-73.4-72.076" transform="translate(-45.072 -110.445)" fill="#0060af"/>
+          <path id="38-Path_18" data-name="38-Path 18" d="M194.068,151.321c-53.642,0-80.407,37.019-82.637,75.387-2.416,41.56,23.68,83.12,80.7,83.12,53.163,0,81.187-32.862,82.636-79.254,1.2-38.363-26.087-79.254-80.7-79.254m-62.3,75.3c1.5-25.784,17.746-50.74,49.97-55.76l-1.2,54.394L140.07,262.245a62.4,62.4,0,0,1-8.3-35.621m22.89,51.491,37-31.11,38.57,31.9c-9.737,6.527-22.337,10.22-37.767,10.22-15.682,0-28.249-4.182-37.8-11.012M254.6,229.532c-.417,13.369-3.78,25.233-10.006,34.795L204.7,226.708l-1.563-56.228c34.909,4.237,52.289,32.451,51.458,59.051" transform="translate(-43.042 -108.465)" fill="#2e8228"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

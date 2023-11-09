@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="300" viewBox="0 0 200 300">
+  <defs>
+    <clipPath id="16b-clip-path">
+      <rect id="16b-Rectangle_1" data-name="16b-Rectangle 1" width="200" height="200" fill="none"/>
+    </clipPath>
+    <clipPath id="16b-clip-Kortform">
+      <rect width="200" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="16b-Kortform" clip-path="url(#16b-clip-Kortform)">
+    <rect width="200" height="300" fill="#fff"/>
+    <rect id="16b-bg" width="202" height="300" fill="#ecdfd5"/>
+    <g id="16b-liten_cirkel_rosa" data-name="16b-liten cirkel rosa" transform="translate(0 12.898)">
+      <g id="16b-Group_1" data-name="16b-Group 1" clip-path="url(#16b-clip-path)">
+        <path id="16b-Path_1" data-name="16b-Path 1" d="M237.419,83.6c7.97-1.423,19.175,2.277,19.781,13.873s-7.981,17.026-13.928,17.378c-8.378.492-16.6-3.7-18.362-13.244A15.46,15.46,0,0,1,237.419,83.6" transform="translate(-48.536 -17.998)" fill="#d8a1c8"/>
+        <path id="16b-Path_2" data-name="16b-Path 2" d="M239.273,88.061c6.18-1.328,14.806,1.759,15.274,10.713s-6.164,13.148-10.753,13.42c-6.472.38-12.818-2.854-14.18-10.227a12.093,12.093,0,0,1,9.66-13.906" transform="translate(-49.565 -18.962)" fill="#5e0d35"/>
+        <path id="16b-Path_3" data-name="16b-Path 3" d="M241.985,94.287a6.783,6.783,0,0,1,8.628,6.323c.267,5.275-3.471,7.741-6.063,7.9-3.653.22-7.237-1.689-8.011-6.035a7.183,7.183,0,0,1,5.446-8.185" transform="translate(-51.08 -20.324)" fill="#fe3e10"/>
+        <path id="16b-Path_4" data-name="16b-Path 4" d="M241.985,94.287a6.783,6.783,0,0,1,8.628,6.323c.267,5.275-3.471,7.741-6.063,7.9-3.653.22-7.237-1.689-8.011-6.035a7.183,7.183,0,0,1,5.446-8.185Z" transform="translate(-51.08 -20.324)" fill="none" stroke="#937b32" stroke-miterlimit="10" stroke-width="0.534"/>
+      </g>
+    </g>
+    <g id="16b-triangel_röd" data-name="16b-triangel röd" transform="translate(0 12.898)">
+      <g id="16b-Group_2" data-name="16b-Group 2" clip-path="url(#16b-clip-path)">
+        <path id="16b-Path_5" data-name="16b-Path 5" d="M-140.676,241.343,74.16,146.911,137.53,256.27Z" transform="translate(30.393 -31.74)" fill="#fb262e"/>
+        <path id="16b-Path_6" data-name="16b-Path 6" d="M96.083,177.376c14.36-2.18,34.287,4.976,34.831,25.8s-15.107,30.166-25.789,30.519c-15.051.494-29.6-7.4-32.315-24.608a27.738,27.738,0,0,1,23.273-31.715" transform="translate(-15.657 -38.241)" fill="#f22891"/>
+        <path id="16b-Path_7" data-name="16b-Path 7" d="M99.247,185.428c11.144-2.093,26.476,3.844,26.894,19.928s-11.666,23.294-19.912,23.568c-11.623.381-22.856-5.717-24.955-19-1.825-11.544,6.119-22.263,17.973-24.492" transform="translate(-17.503 -39.974)" fill="#5e0d35"/>
+        <path id="16b-Path_8" data-name="16b-Path 8" d="M103.223,194.852c7.123-1.639,16.6,2.516,16.869,13.046s-7.319,15.249-12.491,15.427c-7.292.25-14.335-3.74-15.651-12.44a14.32,14.32,0,0,1,11.272-16.033" transform="translate(-19.831 -42.023)" fill="#cc64af"/>
+        <path id="16b-Path_9" data-name="16b-Path 9" d="M103.223,194.852c7.123-1.639,16.6,2.516,16.869,13.046s-7.319,15.249-12.491,15.427c-7.292.25-14.335-3.74-15.651-12.44a14.32,14.32,0,0,1,11.272-16.033Z" transform="translate(-19.831 -42.023)" fill="none" stroke="#937b32" stroke-miterlimit="10" stroke-width="0.593"/>
+      </g>
+    </g>
+    <g id="16b-triangel_gul" data-name="16b-triangel gul" transform="translate(0 12.898)">
+      <g id="16b-Group_3" data-name="16b-Group 3" clip-path="url(#16b-clip-path)">
+        <path id="16b-Path_10" data-name="16b-Path 10" d="M-53.028,77.18,41.045,90.419,76.933,132.51,24.6,175.719-76.57,218.638Z" transform="translate(16.543 -16.675)" fill="#fad701"/>
+      </g>
+    </g>
+    <g id="16b-cirkel_blå" data-name="16b-cirkel blå" transform="translate(0 12.898)">
+      <g id="16b-Group_4" data-name="16b-Group 4" clip-path="url(#16b-clip-path)">
+        <path id="16b-Path_11" data-name="16b-Path 11" d="M22.844,18.591c25.006-4.466,60.175,7.143,62.07,43.533s-25.049,53.432-43.707,54.531C14.916,118.2-10.878,105.06-16.41,75.1A48.514,48.514,0,0,1,22.844,18.591" transform="translate(3.72 -3.82)" fill="#3475b4"/>
+        <path id="16b-Path_12" data-name="16b-Path 12" d="M28.661,32.6c19.393-4.165,46.47,5.518,47.931,33.619s-19.341,41.262-33.749,42.112c-20.3,1.194-40.22-8.959-44.495-32.094-3.713-20.1,9.692-39.2,30.313-43.637" transform="translate(0.49 -6.844)" fill="#d8a1c8"/>
+        <path id="16b-Path_13" data-name="16b-Path 13" d="M35.949,49C48.333,45.816,65.1,52.65,66.035,71.047s-12.1,27-21.141,27.542c-12.731.766-25.228-5.893-27.929-21.04C14.625,64.381,23.128,52.308,35.949,49" transform="translate(-3.582 -10.424)" fill="#fb262e"/>
+        <path id="16b-Path_14" data-name="16b-Path 14" d="M35.949,49C48.333,45.816,65.1,52.65,66.035,71.047s-12.1,27-21.141,27.542c-12.731.766-25.228-5.893-27.929-21.04C14.625,64.381,23.128,52.308,35.949,49Z" transform="translate(-3.582 -10.424)" fill="none" stroke="#937b32" stroke-miterlimit="10" stroke-width="0.593"/>
+      </g>
+    </g>
+    <g id="16b-cirkel_gul" data-name="16b-cirkel gul" transform="translate(96.798 19.762)">
+      <path id="16b-Path_15" data-name="16b-Path 15" d="M154.632,9.461c19.45-3.471,46.8,5.556,48.274,33.857s-19.48,41.551-33.991,42.41c-20.449,1.2-40.507-9.02-44.814-32.322a37.733,37.733,0,0,1,30.53-43.946" transform="translate(-123.475 -8.756)" fill="#fad701"/>
+      <path id="16b-Path_16" data-name="16b-Path 16" d="M159.156,20.363c15.082-3.242,36.136,4.293,37.276,26.144S181.389,78.6,170.187,79.258c-15.792.927-31.282-6.967-34.607-24.959-2.887-15.634,7.535-30.49,23.576-33.936" transform="translate(-125.986 -11.108)" fill="#259b41"/>
+      <path id="16b-Path_17" data-name="16b-Path 17" d="M165.353,34.7c9.63-2.48,22.667,2.834,23.4,17.144s-9.414,20.993-16.439,21.417c-9.906.594-19.625-4.58-21.722-16.364-1.823-10.236,4.79-19.629,14.763-22.2" transform="translate(-129.268 -14.234)" fill="#5e0d35"/>
+      <path id="16b-Path_18" data-name="16b-Path 18" d="M165.353,34.7c9.63-2.48,22.667,2.834,23.4,17.144s-9.414,20.993-16.439,21.417c-9.906.594-19.625-4.58-21.722-16.364-1.823-10.236,4.79-19.629,14.763-22.2Z" transform="translate(-129.268 -14.234)" fill="none" stroke="#937b32" stroke-miterlimit="10" stroke-width="0.593"/>
+    </g>
+    <path id="16b-stjärna" d="M87.218,65.507l20.825-53.389,39.211,50.509,55.162-19.938L170.229,96.06,201.4,126.615l-57.027,6.238L139.278,166.3,109.371,136.4,44.241,163.04l29.636-51.832L30.505,70.824Z" transform="translate(-6.591 10.28)" fill="#fad701"/>
+  </g>
+</svg>

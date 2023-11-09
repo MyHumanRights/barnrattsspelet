@@ -1,0 +1,92 @@
+@import '../../../global.scss';
+
+.healthbar {
+  display: grid;
+  grid-template-columns: 35px 0 auto;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+
+  label {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  progress {
+    height: 32px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: min(410px, 80%);
+    border: 2px solid $rose;
+    border-radius: 4px;
+    overflow: hidden;
+    @include box-shadow(medium);
+
+    //for IE 11
+    color: $rose;
+  }
+
+  //selects progress value, not bar
+  progress::-moz-progress-bar {
+    box-shadow: -1px 3px 2.5px rgba(0, 0, 0, 0.274);
+    background-color: $rose;
+    border-radius: 3px;
+  }
+
+  progress::-webkit-progress-bar {
+    box-shadow: -1px 3px 2.5px rgba(0, 0, 0, 0.274);
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  progress::-webkit-progress-value {
+    background-color: $rose;
+  }
+
+  .progressAnimation::-webkit-progress-value {
+    transition: width 1s;
+  }
+  .star {
+    position: relative;
+    grid-column: 1/3;
+    grid-row: 1;
+    background-color: #fff;
+    z-index: 1;
+    width: 45px;
+    height: 45px;
+    border-radius: 500%;
+
+    @include box-shadow(medium);
+    border-right: 1px solid $supernova;
+
+    div {
+      height: 100%;
+      width: 100%;
+      svg {
+        height: 80%;
+        width: 80%;
+        margin: 3px;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        path {
+          fill: $supernova;
+        }
+        &.starShadow {
+          top: 3.2px;
+          left: 3.3px;
+          transform: rotate(-1deg) scale(0.93);
+          path {
+            fill: $rose;
+          }
+        }
+      }
+    }
+  }
+}

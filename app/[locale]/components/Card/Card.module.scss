@@ -1,0 +1,519 @@
+@import '../../../global.scss';
+
+.disabledCard {
+  filter: saturate(5%);
+}
+
+.disabledCardBorder {
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
+//If you change in wrapper, do the same in .disabled cards
+//cause it change between them when disabled!
+.wrapper {
+  display: flex;
+  justify-content: center;
+  pointer-events: auto; // Do not change. In card hand, we have disabled pointer events. We need to enable pointer events on cards again
+
+  &.fullHeight {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.cardContainer {
+  color: #fff;
+  height: 300px;
+  line-height: 1.36;
+  max-height: 75vh;
+  max-width: 50vh;
+  position: relative;
+  width: 200px;
+  z-index: 1;
+
+  .card {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    perspective: 800px;
+    transform-style: preserve-3d;
+
+    &.tabFocus {
+      outline: $tabFocusOutline;
+    }
+  }
+
+  .heading {
+    color: currentColor;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 1rem;
+  }
+
+  .front {
+    padding: 0.4em;
+
+    .flipButton {
+      margin: -0.4em 0 0 0;
+    }
+
+    .frontInner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: $cardRadius;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.1em;
+
+      width: 100%;
+      height: 100%;
+
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+
+      &:focus-within .front {
+        border: 1px solid #fff;
+      }
+    }
+  }
+
+  .front,
+  .back {
+    @include box-shadow(small);
+    backface-visibility: hidden;
+    background-color: #fff;
+    border-radius: $cardRadius;
+    box-sizing: border-box;
+    height: 100%;
+    position: absolute;
+    scrollbar-color: #dfdfcc transparent;
+    width: 100%;
+    will-change: transform;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #dfdfcc;
+      border-radius: $cardRadius;
+    }
+  }
+
+  .back {
+    color: #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .headerBack {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.2em 0.7em 0 0.7em;
+      margin-bottom: 0.8em;
+
+      p {
+        text-transform: uppercase;
+        margin: 0 0 0 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .mainBack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    overflow: auto;
+    padding: 1.5em 2em 1.7em 2em;
+
+    .text {
+      margin: 0.5em;
+    }
+  }
+
+  .helpButton a {
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 0.3em;
+
+    &:focus-visible {
+      outline: $tabFocusOutline;
+      border-radius: 3px;
+    }
+  }
+
+  .headingBack,
+  .infoText {
+    margin-top: 0;
+    font-size: 0.9rem;
+  }
+
+  .footerBack {
+    padding: 0em 1em 0.6em 1em;
+
+    .divider {
+      border: 1px solid;
+    }
+  }
+
+  &.xsmall {
+    width: 75px;
+    height: 112.5px;
+    font-size: 0.6rem;
+
+    .card {
+      border-radius: $cardRadiusXSmall;
+    }
+
+    .front,
+    .back {
+      border-radius: $cardRadiusXSmall;
+      .frontInner {
+        border-radius: $cardRadiusXSmall;
+      }
+    }
+    .front {
+      padding: 0.3em;
+
+      .heading,
+      .infoText {
+        margin: 0.3em;
+      }
+
+      .infoButton {
+        width: 2.5em;
+        height: 2.5em;
+        padding: 0.05em;
+      }
+
+      .flipButton {
+        margin: -0.3em 0 0 0;
+      }
+    }
+
+    .back {
+      .mainBack,
+      .headerBack {
+        padding: 0.1em 0.5em 1em 0.5em;
+
+        .text {
+          margin: 0;
+        }
+
+        .footerBack {
+          font-size: 0.9rem;
+        }
+      }
+
+      .headerBack {
+        padding: 0;
+
+        button {
+          margin-right: 0.2em;
+          height: 1.8em;
+          width: 1.8em;
+          padding: 1px;
+        }
+      }
+    }
+  }
+
+  &.small {
+    width: 150px;
+    height: 225px;
+
+    .card {
+      border-radius: $cardRadiusSmall;
+    }
+
+    .front,
+    .back {
+      border-radius: $cardRadiusSmall;
+
+      .frontInner {
+        border-radius: $cardRadiusSmall;
+
+        .heading {
+          margin: 0.5em;
+        }
+
+        .infoButton {
+          width: 2.5em;
+          height: 2.5em;
+        }
+      }
+      .mainBack,
+      .headerBack {
+        padding: 0.2em 1em 0.5em 1em;
+        .text {
+          margin: 0;
+        }
+      }
+      .headerBack {
+        padding: 0.1em 0.7em 0 0.7em;
+
+        p {
+          margin-left: 0.7em;
+        }
+        button {
+          height: 2em;
+          width: 2em;
+          padding: 2px;
+        }
+      }
+    }
+  }
+
+  &.medium {
+    width: 200px;
+    height: 300px;
+
+    .card {
+      border-radius: $cardRadius;
+    }
+
+    .back {
+      .mainBack,
+      .headerBack {
+        padding: 0.2em 1em 0.5em 1em;
+        .text {
+          margin: 0.2em;
+        }
+      }
+      .headerBack {
+        padding: 0.1em 0.5em 0 0.5em;
+      }
+    }
+  }
+
+  &.large {
+    width: 400px;
+    height: 600px;
+    font-size: 0.9rem;
+
+    .helpButton a {
+      font-size: 1.1rem;
+    }
+
+    .card {
+      border-radius: $cardRadiusLarge;
+    }
+
+    .heading {
+      font-size: 1.65rem;
+    }
+
+    .front,
+    .back {
+      border-radius: $cardRadiusLarge;
+    }
+
+    .front {
+      padding: 0.5em;
+
+      .flipButton {
+        margin: -0.8em 0 0 0;
+      }
+
+      .frontInner {
+        padding: 0.5em;
+        border-radius: $cardRadiusLarge;
+      }
+
+      .heading,
+      .infoText {
+        margin: 0.6em;
+      }
+      .infoButton {
+        width: 2.2em;
+        height: 2.2em;
+        padding: 0.15em;
+      }
+    }
+
+    .headingBack,
+    .infoText {
+      font-size: 1.1rem;
+    }
+
+    .back {
+      .mainBack,
+      .headerBack {
+        padding: 1em 1.9em 1.1em 1.9em;
+        .text {
+          margin: 0.2em;
+        }
+        .footerBack {
+          font-size: 0.9rem;
+        }
+      }
+      .headerBack {
+        padding: 0.2em 1em 0.15em 0.2em;
+        p {
+          margin-left: 2.3em;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  &.appCard {
+    aspect-ratio: 2 / 3;
+    font-size: 1rem;
+    height: unset;
+    max-height: unset;
+    max-width: 400px;
+    width: 90vw;
+
+    .card {
+      border-radius: $cardRadiusLarge;
+    }
+
+    .front,
+    .back {
+      border-radius: $cardRadiusLarge;
+    }
+
+    .front {
+      padding: 0.5em;
+
+      .flipButton {
+        margin: -0.7em -0.7em 0 0;
+      }
+
+      .frontInner {
+        padding: 0.5em;
+        border-radius: $cardRadiusLarge;
+      }
+
+      .heading,
+      .infoText {
+        margin: 0.6em;
+      }
+
+      .infoButton {
+        width: 2.2em;
+        height: 2.2em;
+        padding: 0.15em;
+      }
+    }
+
+    .back {
+      .mainBack,
+      .headerBack {
+        padding: 1em 1.9em 1.1em 1.9em;
+        .text {
+          margin: 0.2em;
+        }
+        .footerBack {
+          font-size: 0.9rem;
+        }
+      }
+      .headerBack {
+        padding: 0.2em 0.2em 0.15em 0.2em;
+
+        p {
+          margin-left: 2.3em;
+        }
+      }
+    }
+
+    .flipButton {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .heading {
+      font-size: 1.5rem;
+    }
+
+    .headingBack,
+    .infoText {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.large .flipButton {
+  width: 3rem;
+  height: 3rem;
+}
+
+.flipButton {
+  border: 2px dotted transparent;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.3em;
+  margin: 0;
+  border-radius: 50%;
+  color: black;
+  position: relative;
+  svg {
+    opacity: 0.9;
+  }
+
+  &:focus-visible {
+    border-color: #fff;
+    outline: none;
+  }
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.front .flipButton {
+  background-color: transparent;
+  align-self: flex-end;
+}
+
+.newCard {
+  box-shadow: $newCardGlow;
+}
+
+.highlight {
+  border: 2px solid $cavendish;
+}
+
+.highContrast {
+  .xsmall .frontInner {
+    border-radius: $cardRadiusXSmall $cardRadiusXSmall 0 0;
+  }
+  .small .frontInner {
+    border-radius: $cardRadiusSmall $cardRadiusSmall 0 0;
+  }
+  .medium .frontInner {
+    border-radius: $cardRadius $cardRadius 0 0;
+  }
+  .large .frontInner {
+    border-radius: $cardRadiusLarge $cardRadiusLarge 0 0;
+  }
+  .front {
+    .frontInner {
+      padding: 0 !important;
+
+      .infoButton {
+        width: 2.9em;
+        height: 2.9em;
+        padding: 0.4em;
+      }
+      .heading {
+        color: #000;
+        font-weight: 700;
+        margin: 0 !important;
+        padding: 0.5em;
+        background-color: #fff;
+      }
+    }
+  }
+}

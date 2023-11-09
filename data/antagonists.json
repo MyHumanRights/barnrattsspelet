@@ -1,0 +1,656 @@
+{
+  "dad": {
+    "health": 100,
+    "name": "dad",
+    "components": {
+      "start": "DadStart",
+      "end": "DadEnd",
+      "background": "Kitchen"
+    },
+    "scenarioImage": "scenario-dad.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "development",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["6a"]
+      },
+      {
+        "cards": ["1"]
+      },
+      {
+        "cards": ["42"]
+      }
+    ]
+  },
+  "mum": {
+    "health": 100,
+    "name": "mum",
+    "components": {
+      "start": "MumBefore",
+      "end": "MumAfter",
+      "background": "Kitchen2"
+    },
+    "scenarioImage": "scenario-mum.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "expression",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["16a"]
+      },
+      {
+        "cards": ["2b"]
+      }
+    ]
+  },
+  "sibling": {
+    "health": 100,
+    "name": "sibling",
+    "components": {
+      "start": "SiblingStart",
+      "end": "SiblingEnd",
+      "background": "LivingRoom"
+    },
+    "scenarioImage": "scenario-sibling.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["19b"]
+      },
+      {
+        "cards": ["13b"]
+      }
+    ]
+  },
+  "relative": {
+    "health": 100,
+    "name": "relative",
+    "components": {
+      "start": "RelativeStart",
+      "end": "RelativeEnd",
+      "background": "TeenageRoom"
+    },
+    "scenarioImage": "scenario-relative.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "protection",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["34"]
+      },
+      {
+        "cards": ["3a"]
+      }
+    ]
+  },
+  "drunkparent": {
+    "health": 100,
+    "name": "drunkparent",
+    "components": {
+      "start": "DrunkParentStart",
+      "end": "DrunkParentEnd",
+      "background": "LivingRoom2"
+    },
+    "scenarioImage": "scenario-drunkparent.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "protection",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["19a"]
+      },
+      {
+        "cards": ["3b"]
+      }
+    ]
+  },
+  "troll": {
+    "health": 100,
+    "name": "troll",
+    "components": {
+      "start": null,
+      "end": null,
+      "background": "ComputerScreen"
+    },
+    "scenarioImage": "scenario-troll.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["16b"]
+      }
+    ]
+  },
+  "bigsister": {
+    "health": 100,
+    "name": "bigsister",
+    "components": {
+      "start": "BigSisterStart",
+      "end": "BigSisterEnd",
+      "background": "LivingRoom3"
+    },
+    "scenarioImage": "scenario-bigsister.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "development",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["24a"]
+      },
+      {
+        "cards": ["28a"]
+      }
+    ]
+  },
+  "parentsdivorcing": {
+    "health": 100,
+    "name": "parentsdivorcing",
+    "components": {
+      "start": "ParentsDivorcingStart",
+      "end": "ParentsDivorcingEnd",
+      "background": "Kitchen3"
+    },
+    "scenarioImage": "scenario-parents-divorcing.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "participation",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["3a"]
+      },
+      {
+        "cards": ["12b"]
+      },
+      {
+        "cards": ["9a"]
+      }
+    ]
+  },
+  "classmate1": {
+    "health": 100,
+    "name": "classmate1",
+    "components": {
+      "start": "Classmate1Start",
+      "end": "Classmate1End",
+      "background": "Schoolyard"
+    },
+    "scenarioImage": "scenario-classmate1.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "safety",
+    "environment": "school",
+    "statements": [
+      {
+        "cards": ["3b"]
+      },
+      {
+        "cards": ["28b"]
+      }
+    ]
+  },
+  "teacher": {
+    "health": 100,
+    "name": "teacher",
+    "components": {
+      "start": "TeacherStart",
+      "end": "TeacherEnd",
+      "background": "ClassRoom"
+    },
+    "scenarioImage": "scenario-teacher.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "development",
+    "environment": "school",
+    "statements": [
+      {
+        "cards": ["29c"]
+      },
+      {
+        "cards": ["3a"]
+      }
+    ]
+  },
+  "teacherEnvironment": {
+    "health": 100,
+    "name": "teacherEnvironment",
+    "components": {
+      "start": "TeacherEnvironmentStart",
+      "end": "TeacherEnvironmentEnd",
+      "background": "Nature"
+    },
+    "scenarioImage": "scenario-teacherenvironment.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "development",
+    "environment": "school",
+    "statements": [
+      {
+        "cards": ["29a"]
+      },
+      {
+        "cards": ["29b"]
+      }
+    ]
+  },
+  "classmate2": {
+    "health": 100,
+    "name": "classmate2",
+    "components": {
+      "start": "Classmate2Start",
+      "end": "Classmate2End",
+      "background": "SchoolCorridor"
+    },
+    "scenarioImage": "scenario-classmate2.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "school",
+    "statements": [
+      {
+        "cards": ["2b"]
+      },
+      {
+        "cards": ["28b"]
+      }
+    ]
+  },
+  "gang": {
+    "health": 100,
+    "name": "gang",
+    "components": {
+      "start": "GangStart",
+      "end": "GangEnd",
+      "background": "Schoolyard"
+    },
+    "scenarioImage": "scenario-gang.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "school",
+    "statements": [
+      {
+        "cards": ["14a"]
+      },
+      {
+        "cards": ["3b"]
+      }
+    ]
+  },
+  "adult": {
+    "health": 100,
+    "name": "adult",
+    "components": {
+      "start": "AdultStart",
+      "end": "AdultEnd",
+      "background": "Soccerfield"
+    },
+    "scenarioImage": "scenario-adult.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "activities",
+    "statements": [
+      {
+        "cards": ["2c"]
+      }
+    ]
+  },
+  "coach": {
+    "health": 100,
+    "name": "coach",
+    "components": {
+      "start": "CoachBefore",
+      "end": "CoachAfter",
+      "background": "Soccerfield"
+    },
+    "scenarioImage": "scenario-coach.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "development",
+    "environment": "activities",
+    "statements": [
+      {
+        "cards": ["6a"]
+      },
+      {
+        "cards": ["16b"]
+      }
+    ]
+  },
+  "gymteacher": {
+    "health": 100,
+    "name": "gymteacher",
+    "components": {
+      "start": "GymTeacherStart",
+      "end": "GymTeacherEnd",
+      "background": "ChangingRoom"
+    },
+    "scenarioImage": "scenario-gymteacher.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "participation",
+    "environment": "activities",
+    "statements": [
+      {
+        "cards": ["12b"]
+      },
+      {
+        "cards": ["13a"]
+      }
+    ]
+  },
+  "friend": {
+    "health": 100,
+    "name": "friend",
+    "components": {
+      "start": null,
+      "end": null,
+      "background": "MobileScreen"
+    },
+    "scenarioImage": "scenario-friend.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "protection",
+    "environment": "afterSchool",
+    "statements": [
+      {
+        "cards": ["19b"]
+      },
+      {
+        "cards": ["36"]
+      }
+    ]
+  },
+  "grownup": {
+    "health": 100,
+    "name": "grownup",
+    "components": {
+      "start": "GrownupStart",
+      "end": "GrownupEnd",
+      "background": "Store"
+    },
+    "scenarioImage": "scenario-grownup.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "afterSchool",
+    "statements": [
+      {
+        "cards": ["2d"]
+      },
+      {
+        "cards": ["42"]
+      }
+    ]
+  },
+  "league": {
+    "health": 100,
+    "name": "league",
+    "components": {
+      "start": "LeagueStart",
+      "end": "LeagueEnd",
+      "background": "SkatePark"
+    },
+    "scenarioImage": "scenario-league.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "afterSchool",
+    "statements": [
+      {
+        "cards": ["16b"]
+      },
+      {
+        "cards": ["31a"]
+      }
+    ]
+  },
+  "groomer": {
+    "health": 100,
+    "name": "groomer",
+    "components": {
+      "start": null,
+      "end": null,
+      "background": "MobileScreen"
+    },
+    "scenarioImage": "scenario-friend.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "protection",
+    "environment": "afterSchool",
+    "statements": [
+      {
+        "cards": ["34"]
+      },
+      {
+        "cards": ["36"]
+      }
+    ]
+  },
+  "politician": {
+    "health": 100,
+    "name": "politician",
+    "components": {
+      "start": "PoliticianStart",
+      "end": "PoliticianEnd",
+      "background": "Office"
+    },
+    "scenarioImage": "scenario-politician.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["2c"]
+      },
+      {
+        "cards": ["12b"]
+      }
+    ]
+  },
+  "cashier": {
+    "health": 100,
+    "name": "cashier",
+    "components": {
+      "start": "CashierStart",
+      "end": "CashierEnd",
+      "background": "Store"
+    },
+    "scenarioImage": "scenario-cashier.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "protection",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["33a"]
+      },
+      {
+        "cards": ["4a"]
+      }
+    ]
+  },
+  "borderpolice": {
+    "health": 100,
+    "name": "borderpolice",
+    "components": {
+      "start": "BorderPoliceStart",
+      "end": "BorderPoliceEnd",
+      "background": "PoliceStation"
+    },
+    "scenarioImage": "scenario-borderpolice.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "safety",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["22a"]
+      }
+    ]
+  },
+  "mumtodisabledchild": {
+    "health": 100,
+    "name": "mumtodisabledchild",
+    "components": {
+      "start": "MumToDisabledChildStart",
+      "end": "MumToDisabledChildEnd",
+      "background": "Street"
+    },
+    "scenarioImage": "scenario-mumtodisabledchild.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["23a"]
+      },
+      {
+        "cards": ["3a"]
+      }
+    ]
+  },
+  "foreigndad": {
+    "health": 100,
+    "name": "foreigndad",
+    "components": {
+      "start": "ForeignDadStart",
+      "end": "ForeignDadEnd",
+      "background": "Street"
+    },
+    "scenarioImage": "scenario-foreigndad.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "safety",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["11a"]
+      }
+    ]
+  },
+  "salesPerson": {
+    "health": 100,
+    "name": "salesPerson",
+    "components": {
+      "start": "SalesPersonStart",
+      "end": "SalesPersonEnd",
+      "background": "ShoeStore"
+    },
+    "scenarioImage": "scenario-salesperson.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["2e"]
+      },
+      {
+        "cards": ["23a"]
+      }
+    ]
+  },
+  "racistTeacher": {
+    "health": 100,
+    "name": "racistTeacher",
+    "components": {
+      "start": "RacistTeacherStart",
+      "end": "RacistTeacherEnd",
+      "background": "Hockey"
+    },
+    "scenarioImage": "scenario-racistteacher.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "equality",
+    "environment": "activities",
+    "statements": [
+      {
+        "cards": ["2a"]
+      },
+      {
+        "cards": ["16c"]
+      },
+      {
+        "cards": ["4a"]
+      }
+    ]
+  },
+  "homophobicAdult": {
+    "health": 100,
+    "name": "homophobicAdult",
+    "components": {
+      "start": "HomophobicAdultStart",
+      "end": "HomophobicAdultEnd",
+      "background": "StreetView"
+    },
+    "scenarioImage": "scenario-homophobicadult.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "expression",
+    "environment": "world",
+    "statements": [
+      {
+        "cards": ["2b"]
+      }
+    ]
+  },
+  "adoptiveDad": {
+    "health": 100,
+    "name": "adoptiveDad",
+    "components": {
+      "start": "AdoptiveDadStart",
+      "end": "AdoptiveDadEnd",
+      "background": "Kitchen4"
+    },
+    "scenarioImage": "scenario-adoptivedad.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "safety",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["7a"]
+      }
+    ]
+  },
+  "noOpinionsDad": {
+    "health": 100,
+    "name": "noOpinionsDad",
+    "components": {
+      "start": "NoOpinionsDadStart",
+      "end": "NoOpinionsDadEnd",
+      "background": "LivingRoom4"
+    },
+    "scenarioImage": "scenario-noopinionsdad.svg",
+    "chatBubblePosition": "center",
+    "antagonistPosition": "right",
+    "theme": "expression",
+    "environment": "home",
+    "statements": [
+      {
+        "cards": ["17"]
+      },
+      {
+        "cards": ["13c"]
+      },
+      {
+        "cards": ["14b"]
+      }
+    ]
+  }
+}

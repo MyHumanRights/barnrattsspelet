@@ -1,0 +1,106 @@
+@import '../../../global.scss';
+
+.bubble {
+  position: relative;
+  background-color: #fff;
+  /* display: inline-block; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  @include drop-shadow(medium);
+}
+
+.withCta {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.arrow {
+  content: '';
+  height: 16px;
+  width: 16px;
+  background: #fff;
+  position: absolute;
+}
+
+.miniCard {
+  height: 2.5em;
+  margin-left: 0.5em;
+  border-radius: 3px;
+  border: 2px solid white;
+}
+
+.player {
+  background-color: $cornflowerBlue;
+  color: #fff;
+  @include drop-shadow(medium);
+
+  &:after {
+    background-color: $cornflowerBlue;
+  }
+}
+
+.arrowRight:after {
+  @extend .arrow;
+
+  border-radius: 0 0 4px 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(50%) translateY(-150%) rotate(-45deg);
+}
+
+.arrowLeft:after {
+  @extend .arrow;
+
+  border-radius: 4px 0 0 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(-50%) translateY(-150%) rotate(-45deg);
+}
+
+.arrowBottomLeft:after {
+  @extend .arrow;
+
+  border-radius: 0 0 0 4px;
+  left: 0;
+  bottom: 0;
+  transform: translateX(150%) translateY(50%) rotate(-45deg);
+}
+
+.wrongAnswer {
+  background-color: $polaroidGrey;
+  color: #000;
+  right: 0 !important;
+  border: 2px solid red;
+
+  &:after {
+    display: none;
+  }
+}
+
+@media screen and (min-height: 500px) {
+  .bubble {
+    padding: 12px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .bubble {
+    font-size: 1.2em;
+  }
+}
+
+.arrowRight {
+  right: -0.5rem;
+}
+
+.arrowLeft {
+  left: -0.5rem;
+}

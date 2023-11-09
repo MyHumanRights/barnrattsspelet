@@ -1,0 +1,143 @@
+@import '../global.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.start {
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.mapBkgd {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.avatars {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  bottom: -1rem;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.guidance {
+  display: flex;
+  justify-content: flex-start;
+  padding: 4%;
+}
+
+.menu {
+  margin: 9rem auto 0;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  max-width: 90%;
+
+  @media (min-width: 900px) {
+    width: calc(600px + 5vw);
+  }
+
+  @media (min-width: 1000px) {
+    margin: 2rem auto 0;
+  }
+}
+
+.secondaryMenu {
+  width: 380px;
+  max-width: 90%;
+  margin: 1rem 0 0 5%;
+  position: relative;
+  z-index: 1;
+
+  .text {
+    margin-top: 0;
+  }
+
+  @media (min-width: 900px) {
+    width: calc(350px + 5vw);
+  }
+}
+
+.linkWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0.2rem 0;
+}
+
+.heading {
+  color: #000;
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.headerList {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+  position: absolute;
+  top: $topGutter;
+
+  a {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.secondaryLink {
+  margin-top: 2rem;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    display: flex;
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: 100px;
+  }
+}
+
+.chatBubbleContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin: 0 0.5rem 0 0;
+  }
+}
+
+.owlWrapper {
+  position: absolute;
+  z-index: 5;
+  top: 6.5rem;
+  left: 0.5rem;
+
+  @media (min-width: 600px) {
+    top: 0.9rem;
+    left: 9rem;
+  }
+}

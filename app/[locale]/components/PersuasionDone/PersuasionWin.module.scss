@@ -1,0 +1,97 @@
+@import '../../../global.scss';
+
+.wrapper {
+  top: 50%;
+  left: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: min(35rem, 95vw);
+  cursor: pointer;
+}
+
+.winWrapper {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  z-index: 4;
+  @include drop-shadow(medium);
+
+  button {
+    @include fontBangers;
+
+    &:hover {
+      text-decoration: none;
+      color: scale-color($primaryColor, $lightness: 15%);
+    }
+  }
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 15rem;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 15rem;
+  transform: translate(-50%, -35%);
+  display: flex;
+  justify-content: center;
+
+  img {
+    position: relative;
+    top: 8%;
+    width: 45px;
+    height: 47px;
+
+    @media (min-width: 768px) {
+      width: 72px;
+      height: 74px;
+    }
+  }
+}
+
+.owl {
+  position: absolute;
+  top: 0;
+  left: 0.2rem;
+  z-index: 1;
+  width: 72px;
+  height: 74px;
+  transform: translateY(-80%);
+
+  @media (min-width: 768px) {
+    width: 117px;
+    height: 120px;
+    left: 25%;
+    transform: translate(-100%, -80%);
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.tokenWrapper {
+  margin: 1.5rem 0;
+}
+
+.heading {
+  @include fontBangers;
+  font-size: 1.8rem;
+}
+
+.image {
+  margin-bottom: -16px;
+  width: 60px;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}

@@ -1,0 +1,597 @@
+{
+  "january": "Januari",
+  "february": "Februari",
+  "march": "Mars",
+  "april": "April",
+  "may": "Maj",
+  "june": "Juni",
+  "july": "Juli",
+  "august": "Augusti",
+  "september": "September",
+  "october": "Oktober",
+  "november": "November",
+  "december": "December",
+  "play": "Spela",
+  "confirm": "Ok",
+  "back": "Bakåt",
+  "next": "Framåt",
+  "close": "Stäng",
+  "open": "Öppna",
+  "continue": "Fortsätt",
+  "openCard": "Öppna rättighetskortet",
+  "openlootbox": "Öppna lådan!",
+  "closeCard": "Stäng rättighetskortet",
+  "done": "Klar",
+  "cancel": "Avbryt",
+  "readmore": "Läs mer",
+  "loading": "Laddar",
+  "readmoreonhelp": "Läs mer på Hjälp-sidan",
+  "playvoiceover": "Spela textuppläsning",
+  "numberOfNewCards": "Du har fått {{number}} nya rättighetskort",
+  "filter": "Filtrera",
+  "filterCards": "Filtrering av rättighetskort",
+  "buttonFilter": "Filtrering av objekt",
+  "article": "Artikel",
+  "convention": "Barnkonventionen",
+  "meta": {
+    "title": {
+      "avatarbuilder": "Skapa din avatar - Barnrättsspelet",
+      "collectionviewer": "Se alla rättigheter - Barnrättsspelet",
+      "deckbuilder": "Mina rättigheter - Barnrättsspelet",
+      "cookiepolicy": "Integritetspolicy - Barnrättsspelet",
+      "guidance": "Handledning - Barnrättsspelet",
+      "help": "Behöver du prata med någon? - Barnrättsspelet",
+      "home": "Kartan - Barnrättsspelet",
+      "lootbox": "Loot Box - Barnrättsspelet",
+      "manual": "Manual - Barnrättsspelet",
+      "persuade": "Övertalning - Barnrättsspelet",
+      "scenarios": "Spela en specifik utmaning - Barnrättsspelet",
+      "start": "Barnrättsspelet"
+    },
+    "description": {
+      "avatarbuilder": "Skapa en avatar genom att välja olika hårstilar, kläder, ansikten och färger",
+      "collectionviewer": "Se alla rättighetskort som finns tillgängliga och läs mer om dem",
+      "cookiepolicy": "Läs mer om hur vi hanterar kakor på denna webbplats",
+      "deckbuilder": "Se alla hittade rättighetskort och bygg en korthand",
+      "guidance": "Ladda ned handledningen för att få tips på hur barns kunskaper om sina rättigheter kan utvecklas och stärkas med hjälp av Barnrättsspelet",
+      "help": "Här finns information om var du kan vända dig om du behöver prata med någon",
+      "home": "Testa vad du kan om dina rättigheter och träna på att använda dem",
+      "lootbox": "Öppna lådan för att få rättighetskort",
+      "manual": "Läs manualen som förklarar hur du spelar Barnrättssplelet",
+      "scenarios": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om",
+      "start": "Testa vad du kan om dina rättigheter och träna på att använda dem."
+    }
+  },
+  "mobilewarning": {
+    "text": "Hej! Mobilversionen av Barnrättsspelet är inte helt färdig, men du är välkommen att testa den."
+  },
+  "theme": {
+    "development": "Rätt till utveckling",
+    "equality": "Rätt till lika värde",
+    "safety": "Rätt till trygghet",
+    "participation": "Rätt till delaktighet",
+    "expression": "Rätt att tycka och tala",
+    "protection": "Rätt till skydd"
+  },
+  "category": {
+    "family": "Jag & min familj",
+    "school": "Skola",
+    "afterschool": "Fritiden",
+    "world": "Världen",
+    "other": "Övrigt"
+  },
+  "carddata": {
+    "playcard": "Spela",
+    "boost": "Gör quiz",
+    "remove": "Ta bort",
+    "addtohand": "Lägg till på hand",
+    "showmoreinfo": "Vänd på rättighetskortet för att se baksidan och läsa mer",
+    "flipback": "Vänd tillbaka rättighetskortet för att se framsidan",
+    "moreinfo": "Behöver du prata med någon?"
+  },
+  "mainmenu": {
+    "startpage": "Startsidan",
+    "home": "Hem",
+    "deckbuilder": "Mina rättighetskort",
+    "avatar": "Avatar",
+    "collectionviewer": "Alla rättigheter",
+    "persuade": "Övertalning",
+    "lootbox": "Lootbox",
+    "help": "Information & hjälp"
+  },
+  "Start": {
+    "heading": "Welcome!",
+    "primaryMenu": "Primär",
+    "secondaryMenu": "Sekundär",
+    "guidance": "Läs handledningen",
+    "manual": "Så spelar du",
+    "cookiepolicy": "Integritetspolicy",
+    "descriptionOne": "Testa vad du kan om dina rättigheter.",
+    "descriptionTwo": "Och träna på att använda dem.",
+    "descriptionThree": "Du kan även titta på dina rättigheter.",
+    "play": "Spela",
+    "seeCards": "Se alla rättigheter",
+    "specificScenario": "Testa en utmaning",
+    "footertext": "Utvecklat av My Human Rights i samarbete med Vinnovera med stöd av Allmänna arvsfonden",
+    "logoalttext": "My human rights",
+    "arvsfondenlogoalttext": "Med stöd från Allmänna Arvsfonden",
+    "headertext": "Jag vill läsa handledning för",
+    "game": "Spelet",
+    "teacher": "Pedagoger",
+    "needtotalk": "Behöver du prata med någon?",
+    "menu": "Meny"
+  },
+  "cookiepolicy": {
+    "heading": "Integritetspolicy",
+    "preamble": "Om användardata och vad vi lagrar.",
+    "paragraph1": "I Barnrättsspelet sparar vi spelframsteg i spelarens webbläsare (local storage). Det betyder att när en spelare gör framsteg i spelet lagras informationen på deras individuella enhet, specifikt i webbläsarens lokala lagring.",
+    "paragraph2": "Eftersom informationen lagras på spelarens enhet i stället för på en fjärrserver är den mindre sårbar för förluster av data eller säkerhetsbrister.",
+    "paragraph3": "Det är viktigt att notera att vi inte samlar in någon personlig data alls som en del av den här processen. Vi ber inte spelare om deras namn, e-postadress eller någon annan personlig information",
+    "paragraph4": "och vi delar inte någon information med några tredje parter.",
+    "paragraph5": "Sammanfattningsvis ger vårt system för att spara spelframsteg en bekväm och säker metod för spelare att spara och komma åt sina spelframsteg utan att samla in någon personlig data.",
+    "paragraph6": "Sparande av data påbörjas när man besöker webbsidan. Den data som sparas då är Barnrättsspelets grundinställningar bland annat:",
+    "li1": "Animationer",
+    "li2": "Musik",
+    "li3": "Ljudeffekter",
+    "li4": "Läshjälp",
+    "li5": "Kontrastläge",
+    "on": "På",
+    "off": "Av",
+    "subheading1": "Hur man raderar data:",
+    "paragraph7": "För att radera din data, klicka här:",
+    "paragraph8": "Stäng sedan detta fönster.",
+    "deletelocalstorage": "Radera lokal lagring",
+    "deleted": "Lokal lagring är raderad"
+  },
+  "home": {
+    "play": "Spela",
+    "mainheading": "Startsidan för spelet",
+    "cardsof": "rättighetskort av",
+    "mycollectionheading": "Mina rättighetskort",
+    "mycollectiontext": "Välj rättighetskort för att starta en utmaning",
+    "mycollectionbutton": "Mina rättigheter",
+    "myavatarheading": "Min avatar",
+    "avatarbody": "Skapa en egen avatar till spelet",
+    "createavatar": "Min avatar",
+    "newpart": "Du har en ny del till din avatar",
+    "tokensheading": "Byt 5 mynt",
+    "tokensbody": "mot fler rättighetskort",
+    "buylootbox": "Köp rättighetskort",
+    "moreinfoheading": "Behöver du prata med någon?",
+    "moreinfotext": "Här får du veta var du kan vända dig för att få stöd och hjälp om du är orolig för något."
+  },
+  "help": {
+    "heading": "Behöver du prata med någon?",
+    "preamble": "Du är värdefull! Ingen får mobba dig, slå dig, hota dig eller ta på din kropp om du inte vill det. Det gäller överallt. Hemma, i skolan och på fritiden.",
+    "subheading1": "Vänd dig till en vuxen du litar på",
+    "paragraph1": "Om du är utsatt för något, VAD SOM HELST, så prata med en vuxen som du litar på. Det kan vara mamma, pappa, bonusförälder, en släkting, din lärare, tränare, skolkuratorn eller någon vuxen du litar på. Vuxna ska alltid lyssna på dig. De ska fråga dig vad du tycker och tänker när de bestämmer saker om ditt liv. Om du mår dåligt  ska vuxna se till att du får hjälp att må bättre.",
+    "subheading2": "Om det händer dig något nu - Larma 112",
+    "paragraph2": "Om du eller någon nära dig blir slagen, utsatt för någon som kränker dig sexuellt eller blir hotad ring 112 och berätta.",
+    "subheading3": "Här kan du få hjälp och stöd:",
+    "paragraph3": "Om du inte har någon vuxen att prata med kan du få hjälp och stöd från de här organisationerna. Där finns det vuxna som lyssnar och ger goda råd. Och de berättar inte för någon att du ringt.",
+    "link1": "BRIS",
+    "paragraph4": {
+      "part1": "Till Bris, Barnens rätt i samhället, kan du ringa på ",
+      "part2": ", mejla eller chatta. Du kan också läsa, kolla in filmer och lyssna på poddar om viktiga ämnen."
+    } ,
+    "link2": "Röda korsets jourhavande kompis",
+    "paragraph5": "Känner du dig ensam? Här kan du chatta om precis vad som helst med unga vuxna. De finns för dig när du behöver det.",
+    "link3": "Trygga Barnens chatt",
+    "paragraph6": "Här kan du prata med en vuxen om du är orolig över att en person i din närhet dricker för mycket alkohol, tar droger, slår sina nära, mår dåligt eller om det är något annat som oroar dig.",
+    "link4": "Maskrosbarns chatt",
+    "paragraph7": "Här kan du som har en förälder som mår psykiskt dåligt, dricker för mycket alkohol, tar droger eller slår dig chatta med vuxna som förstår precis hur du har det.",
+    "link5": "Barnrättsbyrån",
+    "paragraph8": "Barnrättsbyrån är jurister(vuxna som är duktiga på lagar) som kämpar för att barn och unga ska tas på allvar och få rätt hjälp av samhället. De ger stöd, råd och praktisk hjälp i frågor som rör alla barns rättigheter. Telefon ",
+    "subheading4": "Råd och stöd om jag är mobbad i skolan",
+    "paragraph9": "Du har RÄTT att inte bli utsatt för någon som mobbar dig, slår dig eller kränker dig på något vis.",
+    "paragraph10": "Om du inte har någon vuxen i skolan eller hemma att prata med kan du vända dig till:",
+    "link6": "Friends",
+    "paragraph11": {
+      "part1": "Friends ger råd och stöd vid mobbing och utsatthet. Du kan ringa måndag-fredag kl 9-12 på telefon ",
+      "part2": " eller maila måndag-fredag kl. 9-16 till "
+    },
+    "subheading5": "Råd och stöd om jag upplever hedersförtryck",
+    "paragraph12": "Du har RÄTT att inte bli utsatt för hedersförtryck av din familj eller släkt, bli utsatt för våld, bli tvingad att gifta dig eller bortförd mot din vilja.",
+    "paragraph13": "Om du inte har någon vuxen du litar på kan du vända dig till:",
+    "link7": "Chatten Kärleken är fri - Rädda Barnen",
+    "paragraph14": "Här kan du prata om och få råd om hedersrelaterat förtryck, våld, kärlek, tvångsäktenskap och könsstympning och vart du ska vända dig för vidare hjälp.",
+    "paragraph15": "Om det är akut, om du eller någon nära dig blir utsatt, hotad eller slagen ring 112 och slå berätta.",
+    "subheading6": "Råd och stöd om jag utsätts för sexuella kränkningar eller utnyttjas sexuellt",
+    "paragraph16": "Du har RÄTT att inte bli utsatt för någon som tar på din kropp fast du inte vill, använder våld eller till exempel ber dig skicka nakenbilder via nätet.",
+    "paragraph17": "Om du inte har någon vuxen du litar på att prata med kan du vända dig till:",
+    "link8": "Ditt Ecpat",
+    "paragraph18": "På Ditt Ecpat kan du som barn och ungdom få hjälp, stöd och kunskap om bilder, sexuella kränkningar, hot och övergrepp på nätet eller i verkligheten. Här kan du också få hjälp att ta ner nakenbilder som har spridits på nätet. Till Ditt Ecpat kan du både ringa och chatta och prata med vuxna som ger dig råd och stöd.",
+    "link9": "Polisen",
+    "paragraph19": "Om någon, kompis eller vuxen, ber dig skicka bilder på dig när du är lättklädd eller naken och sedan delar på sociala media så är det ett brott enligt lagen. Prata med en vuxen som du litar på och be om hjälp om det händer dig. Det är ingenting du behöver skämmas över och det är viktigt att du berättar. Tillsammans kan ni läsa om, titta på filmer och få råd från Polisen om hur ni kan anmäla brottet.",
+    "paragraph20": "Om du akut utsatt för någon som kränker dig eller utnyttjar dig sexuellt  slå larm till  112.",
+    "subheading7": "Råd och stöd om jag är flykting",
+    "paragraph21": "Du har RÄTT att söka asyl i ett annat land än ditt hemland om du och din familj är utsatt för krig, våld och förföljelse. Asyl betyder fristad och att du har rätt att söka skydd i ett annat land än ditt hemland. Du ska inte heller bli utsatt för våld, sexuella kränkningar eller bli mobbad för att du är flykting.",
+    "paragraph22": "Här kan du få hjälp om du eller någon du känner behöver hjälp med att söka asyl:",
+    "link10": "Barnens Asylrättscentrum",
+    "paragraph23": {
+      "part1": "Hit kan du vända dig om du eller något barn du känner behöver juridisk hjälp för att söka asyl. Ring ",
+      "part2": " eller maila till "
+    },
+    "link11": "Asylbyrån",
+    "paragraph24": "På Asylbyrån kan vuxna och barn få juridisk hjälp för att söka asyl och för familjeåterförening. Du kan ringa till ",
+    "subheading8": "Råd och stöd om jag är diskriminerad",
+    "paragraph25": "Att bli orättvist behandlad av en vuxen för att du är tjej eller hen, är ett barn, är född i ett annat land, tror på din egen Gud eller har en funktionsnedsättning kallas diskriminering och är förbjudet i Sverige enligt lag. Lagen heter Diskrimineringslagen och betyder att alla människor ska behandlas lika. Det gäller hemma, i skolan, på fritiden och ute i samhället. Lagen om Barnkonventionen, Skollagen och Diskrimineringslagen ska skydda dig.",
+    "paragraph26": "På Sveriges anti-diskriminerings-byråer (svårt ord) kan du få gratis hjälp, råd och stöd om du är diskriminerad. Deras uppgift är att se till att ingen människa blir behandlad olika på grund av vem hen är:",
+    "paragraph27": "Rättighetscentrum Norrbotten",
+    "paragraph28": "Rättighetscentrum Västerbotten",
+    "paragraph29": "Rättighetscentrum Dalarna",
+    "paragraph30": "Diskrimineringsbyrån Gävleborg",
+    "paragraph31": "Brottsförebyggande Centrum i Värmland",
+    "paragraph32": "Antidiskrimineringsbyrån Uppsala",
+    "paragraph33": "Antidiskrimineringsbyrån Stockholm Norr",
+    "paragraph34": "Antidiskrimineringsbyrån Stockholm Syd",
+    "paragraph35": "Diskrimineringsbyrån Humanitas, Sörmland och Västmanland",
+    "paragraph36": "Örebro Rättighetscenter mot diskriminering",
+    "paragraph37": "Byrån mot diskriminering i Östergötland",
+    "paragraph38": "Antidiskrimineringsbyrån i Trollhättan",
+    "paragraph39": "Göteborgs rättighetscenter",
+    "paragraph40": "Antidiskrimineringsbyrån Sydost, Kalmar",
+    "paragraph41": "Antidiskrimineringsbyrån Helsingborg",
+    "paragraph42": "Malmö mot Diskriminering",
+    "phone": "Telefon: ",
+    "email": "E-mail: "
+  },
+  "collectionviewer": {
+    "heading": "Se alla rättigheter",
+    "preamble": "Lorem ipsum"
+  },
+  "guidance": {
+    "title": "Hej!",
+    "paragraph1": "Barnkonventionen blev lag i Sverige 2020. Barnen fick då ett starkare rättsligt skydd och barnets bästa fick ett större utrymme. För att efterleva lagen är du en viktig person. Du som möter barn som lärare, ledare, tränare, har både möjlighet och skyldighet att hjälpa barn att förstå sina rättigheter.",
+    "paragraph2": "Tyvärr är det inte ovanligt att barns rättigheter och integritet kränks. Det händer hemma, i skolan, på fritiden och på andra håll i samhället. När barnen själva har kunskap om sina rättigheter kan de prata om vad som är dåligt i deras liv och få hjälp att rätta till det.",
+    "paragraph3": "Ladda ned handledningen så får du tips på hur du kan utveckla och stärka barns kunskaper om sina rättigheter med hjälp av Barnrättsspelet.",
+    "downloadguidance": "Ladda ned handledningen",
+    "or": "eller"
+  },
+  "manual": {
+    "title": "Så här funkar Barnrättsspelet",
+    "preamble": "Spelet går ut på att vinna ett antal utmaningar. När du klarat alla utmaningar i spelet får du en superhjälte-outfit. Det finns många sätt att starta en utmaning och till hjälp finns ”ugglan” som ger dig anvisningar under spelets gång.",
+    "avatar": "Avataren:",
+    "avatartext": "När spelet börjar så får du skapa din egen avatar genom att välja mellan olika hårstilar, kläder, ansikten och färger. Varje gång du vinner en utmaning så får du en ny rolig grej till avataren.",
+    "map": "Kartan:",
+    "maptext": "På spelkartan kan du se vilka platser som är upplåsta och välja vilken plats du vill spela på. Ju fler utmaningar du vunnit på en plats desto mer färg dyker upp på kartan.  På de platser som är gråa har du många utmaningar kvar att vinna.",
+    "challenges": "Utmaningar:",
+    "challengestext1": "När en utmaning startar kommer en ”motståndare” med påståenden som strider mot Barnkonventionen. Du ska ”skydda dig” genom att spela rätt rättighetskort. För varje påstående eller situation i utmaningen ska du välja det rättighetskort som passar.",
+    "challengestext2": "Det finns totalt 30 utmaningar att vinna. De flesta utmaningarna är låsta i början och du behöver samla passande rättighetskort för att låsa upp dem.",
+    "challengestext3": "Du får sen fler rättighetskort när du klarat en utmaning och kan fortsätta låsa upp fler utmaningar.",
+    "tip": "Tips!",
+    "challengestext4": "På rättighetskorten finns både fram- och baksida, som hjälper dig att välja rätt kort.",
+    "tokens": "Guldmynt:",
+    "tokenstext": "När du klarat en utmaning så får du 3 guldmynt.  Guldmynt kan användas på två sätt: Låsa upp ett kort som blivit låst för att man spelat fel eller för att köpa en låda med fler rättighetskort för att låsa upp fler platser.",
+    "tokensimagealt": "Bilden visar hur ett guldmynt i spelet ser ut",
+    "quiz": "Quiz:",
+    "quiztext1": "Du kan också vinna guldmynt genom att svara rätt på en fråga. Alla rättighetskort är försedda med två knappar. En knapp för att",
+    "quiztextplay": "spela",
+    "quiztext2":"kortet (om det inte är låst) och en knapp med ett",
+    "quiztexttoken": "guldmynt",
+    "quiztext3": "på som går till en quizfråga. Om du svarar rätt på frågan vinner du ett guldmynt.",
+    "cards": "Rättighetskort:",
+    "cardstext": "Om du har svårt att välja vilka kort du vill spela med så kan Ugglan hjälpa till. Ugglan ger alltid rätt kort för att spela en ny utmaning.",
+    "settings": "Inställningar:",
+    "settingstext1": "I kugghjulet längst upp till höger på sidan kan du välja vilka inställningar du vill ha under spelets gång och här finns också en knapp för att börja spela på nytt. I inställningar kan du  stänga av eller sätta på:",
+    "settingsli1": "Musik",
+    "settingsli2": "Ljudeffekter",
+    "settingsli3": "Animationer",
+    "settingsli4": "Läshjälp (uppläsning)",
+    "settingsli5": "Kontrastläge",
+    "settingstext2": "I dagsläget finns endast Barnrättsspelet på svenska och språket är förinställt.",
+    "settingsimagealt": "Bilden visar hur dialogrutan för inställningar ser ut"
+  },
+  "map": {
+    "mainheading": "Karta",
+    "playheading": "Välj en plats för att spela",
+    "playheadingnocards": "Välj en korthand för att spela",
+    "text": "Kort beskrivning om vilka teman du kan tänkas möte på denna plats",
+    "nomoreantagonists": "Du har redan vunnit mot alla här, men du kan spela om utmaningar för att vinna fler rättighetskort",
+    "cardhand": "Min korthand",
+    "changecards": "Ändra rättighetskort",
+    "choosecards": "Välj rättighetskort",
+    "home": {
+      "header": "Hemma",
+      "body": "Fast du är ett barn har du rättigheter hemma. Här får du utmana både vuxna och syskon i dina rättigheter."
+    },
+    "school": {
+      "header": "Skola",
+      "body": "Kolla om dina kompisar, lärare och andra vuxna i skolan vet vilka rättigheter du har. Om de inte vet får du visa dem!"
+    },
+    "afterSchool": {
+      "header": "Fritid",
+      "body": "Dina rättigheter gäller överallt och hela tiden. Lycka till med utmaningarna!"
+    },
+    "activities": {
+      "header": "Aktiviteter",
+      "body": "Har du känt dig orättvist behandlad? Eller har det hänt något annat som varit jobbigt när du varit på någon aktivitet? Här får du visa vuxna och kompisar vilka rättigheter du har."
+    },
+    "world": {
+      "header": "Världen",
+      "body": "Alla barn i hela världen har samma rättigheter. Du och dina kompisar, alla barn i landet du bor i och i hela världen. "
+    },
+    "library": "Bibliotek",
+    "play": "Spela {{place}}",
+    "newscenario": "Ny utmaning!"
+  },
+  "deckbuilder": {
+    "heading": "Välj 7 rättighetskort för att starta en utmaning",
+    "preamble": "Du ska ha 7 rättighetskort i handen för att spela. Men du kan ta bort ett rättighetskort om du vill byta.",
+    "wrongAmountOfCards": "Du måste välja 7 rättighetskort",
+    "emptyhand": "Töm korthand",
+    "cardsselected": "av {{maxcards}} rättighetskort valda",
+    "cardsselectedmobile": "av {{maxcards}} valda",
+    "categories": {
+      "all": "Alla",
+      "mamma": "Mamma",
+      "pappa": "Pappa"
+    }
+  },
+  "avatarbuilder": {
+    "heading": "Skapa din avatar",
+    "preamble": "Välj hur du vill att den ska se ut",
+    "save": "Spara",
+    "random": "Slumpa ny avatar",
+    "randomAria": "Välj ett slumpmässigt utseende på din avatar",
+    "skip": "Hoppa över",
+    "nexthair": "Nästa frisyr",
+    "previoushair": "Föregående frisyr",
+    "nextaccessory": "Nästa accessoar",
+    "previousaccessory": "Föregående accessoar",
+    "nextface": "Nästa ansikte",
+    "previousface": "Föregående ansikte",
+    "nextbody": "Nästa klädesplagg",
+    "previousbody": "Föregående klädesplagg",
+    "selecthaircolor": "Välj hårfärg",
+    "selectfacecolor": "Välj hudfärg",
+    "selectbodycolor": "Välj färg på klädesplagg",
+    "parts": {
+      "hair": "Frisyr",
+      "accessory": "Accessoar",
+      "face": "Ansikte",
+      "body": "Kläder"
+    },
+    "colorcategories": {
+      "hairColor": "Hårfärg",
+      "faceColor": "Hudfärg",
+      "bodyColor": "Klädfärg"
+    }
+  },
+  "persuasion": {
+    "startgame": "Starta spelet",
+    "genericwrongcardanswers": {
+      "answer_1": {
+        "text": "Hoppsan, fel rättighet, gör ett nytt försök"
+      },
+      "answer_2": {
+        "text": "Prova igen med ett annat rättighetskort"
+      },
+      "answer_3": {
+        "text": "Nu blev det lite fel men prova igen så blir det säkert rätt"
+      },
+      "answer_4": {
+        "text": "Bra tänkt, men försök igen med en annan rättighet"
+      },
+      "answer_5": {
+        "text": "Det där är också en viktig rättighet, men nu blev det fel så prova igen"
+      },
+      "answer_6": {
+        "text": "Gör ett nytt försök så blir det nog rätt"
+      }
+    }
+  },
+  "lootbox": {
+    "choose": "Välj"
+  },
+  "scenarios": {
+    "header": "Spela en specifik utmaning",
+    "description": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om.",
+    "allThemes": "Alla",
+    "environment": "Plats: ",
+    "theme": "Tema: "
+  },
+  "cardhand": {
+    "boost": "Svara på en bonusfråga för att vinna ett mynt",
+    "enable": "Lås upp",
+    "previousCard": "Föregående kort",
+    "nextCard": "Nästa kort"
+  },
+  "healthbar": {
+    "persuation": "Övertalning"
+  },
+  "progressbar": {
+    "progress": "Spelprogress"
+  },
+  "boost": {
+    "winMessage": "Du svarade rätt!",
+    "lossMessage": "Du svarade fel...",
+    "answer": "Svara",
+    "owlAlt": "En uggla",
+    "hurray": "Hurra!",
+    "ouch": "Aj då!"
+  },
+  "token": {
+    "noOfTokens": "Antal mynt:"
+  },
+  "owl": {
+    "owlalt": "En uggla som sitter bredvid en pratbubbla",
+    "startplaytip": {
+      "body": "Visste du att om du klickar på ”Så spelar du” kan du lära dig mer om spelet."
+    },
+    "homewelcome": {
+      "text_1": {
+        "heading": "Hej!",
+        "body": "Att känna till sina rättigheter är en superkraft. I det här spelet möter du vuxna och kompisar som vet väldigt lite om barns rättigheter"
+      },
+      "text_2": {
+        "body": "När du lyckas lära dem mer om dina rättigheter får du fler rättighetskort"
+      },
+      "text_3": {
+        "body": "På varje plats finns flera utmaningar du kan vinna"
+      },
+      "text_4": {
+        "body": "Börja med att välja 7 rättighetskort till din korthand och börja spela. Lycka till!"
+      }
+    },
+    "maxcards": {
+      "heading": "Din korthand är full",
+      "body": "Du kan maximalt ha 7 rättighetskort i korthanden."
+    },
+    "play": {
+      "heading": "Sådär, nu har du en korthand med 7 rättighetskort.",
+      "body": "Välj en plats att spela."
+    },
+    "token": {
+      "heading": "Hurra du klarade det!",
+      "body": "Du fick ett mynt. Använd det för att låsa upp rättighetskort."
+    },
+    "intro": {
+      "heading": "Då är vi igång",
+      "body": "Välj en av pratbubblorna för att sätta igång utmaningen"
+    },
+    "enablecard": {
+      "heading": "Nu blev det lite fel och rättighetskortet är låst.",
+      "body": "Du kan låsa upp kortet genom att svara rätt på en quiz-fråga. Tryck på guldmyntet ovanför ett rättighetskort och testa!"
+    },
+    "quiztip": {
+      "heading": "Visste du?",
+      "body": "Varje kort har ett quiz. Om du klickar på myntet ovanför kortet och svarar rätt på en fråga, vinner du ett mynt."
+    },
+    "flipcardtip": {
+      "heading": "Prova att vända på korten",
+      "body": "På baksidan av korten står det mer text som kanske gör det lättare för dig att hitta rätt kort."
+    },
+    "secondchallenge": {
+      "heading": "Dags för en ny utmaning!",
+      "body": "Välj 7 nya rättighetskort."
+    },
+    "noplayablescenarios": {
+      "heading": "Oj, det fanns ingen utmaning här",
+      "body": "Testa att välja några andra rättighetskort för att låsa upp en utmaning att spela"
+    },
+    "nounplayedscenarios": {
+      "heading": "Du har klarat alla utmaningar med den här korthanden",
+      "body": "Testa att välja andra rättighetskort för att få en ny utmaning. Eller spela om en utmaning för få fler mynt och nya rättighetskort."
+    },
+    "suggesthand": {
+      "heading": "Svårt att välja rättighetskort?",
+      "body": "Jag hjälper dig.",
+      "bodymobile": "Jag kan hjälpa!",
+      "cta": "Få en korthand"
+    },
+    "alldefeatedhand": {
+      "heading": "Du har redan klarat alla utmaningar!",
+      "body": "Självklart går det att välja 7 rättighetskort och spela ändå."
+    },
+    "alldefeatedcollection": {
+      "heading": "Du har klarat alla utmaningar som går att spela med dina rättighetskort.",
+      "body": "Skaffa nya rättighetskort genom att köpa med dina mynt, eller spela om utmaningar!"
+    },
+    "lootbox": {
+      "cta": "Lägg till i min korthand",
+      "won1": {
+        "heading": "Bra jobbat!",
+        "body": "Välj 1 rättighetskort att lägga i din samling."
+      },
+      "won2": {
+        "heading": "Bra jobbat!",
+        "body": "Välj 2 rättighetskort att lägga i din samling."
+      },
+      "bought1": {
+        "heading": "Du köpte en låda!",
+        "body": "Välj 1 rättighetskort att lägga i din samling."
+      },
+      "bought2": {
+        "heading": "Du köpte en låda!",
+        "body": "Välj 2 rättighetskort att lägga i din samling."
+      },
+      "item": {
+        "body": "Du har också fått en ny grej till din avatar."
+      },
+      "itemonly": {
+        "heading": "Bra jobbat!",
+        "body": "Du har redan vunnit alla rättighetskort som går att samla på. Här får du en ny grej till din avatar."
+      },
+      "start": {
+        "heading": "Först ska du bygga upp din korthand med rättigheter.",
+        "body": "Samla på de rättighetskort du vill spela med."
+      }
+    },
+    "persuasiondone": {
+      "win": "Du har lyckats övertyga {{name}}",
+      "retry": "Försök igen",
+      "tohome": "Tillbaka till hem",
+      "getlootbox": "Hämta belöning",
+      "toscenarios": "Gå tillbaka",
+      "winpersuasion": {
+          "heading": "Scenario avklarat!",
+          "body": "Det där var inte lätt! Bra jobbat!"
+      },
+      "winall": {
+        "heading": "Grattis! Du har klarat alla utmaningar. Snyggt jobbat!",
+        "body": "Nu kan du skriva ut ditt diplom som visar att du har superkraften!"
+      },
+      "winscenariomode": {
+        "heading": "Hurra, du klarade det!",
+        "body": "Det där va inte lätt. Bra jobbat!"
+      },
+      "losstext": {
+        "header": "Hoppsan!",
+        "body": "Nu blev det lite fel. Vill du prova igen?"
+      }
+    },
+    "resetgame": {
+      "header": "Är du säker?",
+      "body": "Om du börjar om försvinner dina sparade framsteg och din avatar.",
+      "cta": "Börja om",
+      "cancel": "Avbryt"
+    }
+  },
+  "notallowed": {
+    "title": "Här får du inte vara!",
+    "description1": "Du får en loot box om du vinner ett scenario.",
+    "description2": "Du kan också köpa en loot box om du har 5 eller fler tokens."
+  },
+  "settings": {
+    "reset": "Börja om spelet",
+    "thememusicon": "Musik är på",
+    "thememusicoff": "Musik är av",
+    "soundeffectson": "Ljudeffekter är på",
+    "soundeffectsoff": "Ljudeffekter är av",
+    "animationson": "Animationer är på",
+    "animationsoff": "Animationer är av",
+    "voiceoveron": "Läshjälp är på",
+    "voiceoveroff": "Läshjälp är av",
+    "highcontrast": "Kontrastläge är på",
+    "regularcontrast": "Kontrastläge är av",
+    "language": "Språk",
+    "swedish": "Svenska",
+    "english": "English",
+    "arabic": "عربي",
+    "open": "Öppna menyn för inställningar"
+  },
+  "statistics": {
+    "firstTimeStart": "Besökare på Start",
+    "firstTimeHome": "Besökare på Home",
+    "firstTimeCollectionViewer": "Besökare på Kortsamlingen",
+    "firstTimeCollectionViewerApp": "Besökare på Appen Kortsamlingen",
+    "firstTimePersuation": "Spelare som startat en utmaning",
+    "firstTimeWin": "Spelare med 1 Vinst",
+    "firstTimeWinThree": "Spelare med 3 Vinster",
+    "firstTimeWinTen": "Spelare med 10 Vinster",
+    "firstTimeGameComplete": "Spelare som klarat hela spelet",
+    "01": "Januari",
+    "02": "Februari",
+    "03": "Mars",
+    "04": "April",
+    "05": "Maj",
+    "06": "Juni",
+    "07": "Juli",
+    "08": "Augusti",
+    "09": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "December"
+  }
+}

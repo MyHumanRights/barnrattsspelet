@@ -1,0 +1,50 @@
+@import '../../../global.scss';
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0;
+  grid-row: 2;
+
+  p {
+    padding: 0 0.5rem;
+  }
+
+  @media (min-width: 450px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.link {
+  @include box-shadow(medium);
+
+  align-items: center;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 2px solid currentColor;
+  color: $primaryColor;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    background-color: scale-color($primaryColor, $lightness: 90%);
+    text-decoration: none;
+  }
+
+  svg {
+    width: 21px;
+    height: 21px;
+    margin-left: 6px;
+  }
+
+  span {
+    display: flex;
+  }
+}

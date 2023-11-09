@@ -1,0 +1,16 @@
+@import '../../../global.scss';
+
+.modal {
+  @include backdrop;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.content {
+  width: min(90%, 25rem);
+  border-radius: 4px;
+  @include box-shadow(medium);
+  position: relative;
+}

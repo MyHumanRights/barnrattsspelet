@@ -1,0 +1,185 @@
+@import '../../../global.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid currentColor;
+  font-size: 1rem;
+  font-weight: 600;
+  @include box-shadow(medium);
+  width: max-content;
+
+  &:disabled {
+    cursor: auto;
+    background-color: $disabledGray;
+
+    &:hover,
+    &:active {
+      background-color: scale-color($disabledGray, $lightness: -10%);
+    }
+  }
+
+  svg,
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    display: flex;
+    margin-left: 6px;
+    align-items: center;
+  }
+}
+
+.huge {
+  background-color: $southernFrance;
+  color: #fff;
+  text-transform: uppercase;
+  @include fontBangers;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: scale-color($southernFrance, $lightness: 5%);
+  }
+}
+
+.primary {
+  background-color: $primaryColor;
+  color: #fff;
+
+  &:hover,
+  &:active {
+    background-color: scale-color($primaryColor, $lightness: 15%);
+  }
+
+  &:disabled {
+    background-color: $disabledGray;
+  }
+}
+
+.secondary {
+  background-color: #fff;
+  color: $primaryColor;
+
+  &:hover,
+  &:active {
+    background-color: scale-color($primaryColor, $lightness: 90%);
+  }
+
+  &:disabled {
+    color: $nero;
+    background-color: #fff;
+    opacity: 0.4;
+
+    &:hover,
+    &:active {
+      background-color: #fff;
+    }
+  }
+}
+
+.flat {
+  background: #fff;
+  font-weight: 700;
+  border-color: #fff;
+}
+
+.text {
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+  color: $primaryColor;
+  font-size: 1rem;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.xlarge {
+  padding: 0.3rem 1rem;
+  font-size: 1.5rem;
+}
+
+.large {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.medium {
+  padding: 0.3rem 0.7rem;
+  font-size: 1.2rem;
+}
+
+.small {
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+
+  svg {
+    width: 21px;
+    height: 21px;
+  }
+  //changed fonts so that they became bigger for mobile.
+  @media (min-width: 600px) {
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+.simple {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  box-shadow: none;
+  color: $primaryColor;
+
+  &:hover {
+    text-decoration-thickness: 3px;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.ripple {
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+  }
+  //initially hidden, when button is clicked the scale covers the button
+  &:active:after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+  }
+}

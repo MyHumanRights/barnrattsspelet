@@ -1,0 +1,29 @@
+@import '../../../global.scss';
+
+$cardHeightWidth: 340px;
+
+.wrapper {
+  margin: 0.5rem 2rem;
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+
+    .scenarioWrapper {
+      width: 100%;
+
+      li {
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        border-radius: 5px;
+        @include box-shadow(medium);
+      }
+    }
+  }
+}

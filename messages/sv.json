@@ -1,0 +1,1675 @@
+{
+  "january": "Januari",
+  "february": "Februari",
+  "march": "Mars",
+  "april": "April",
+  "may": "Maj",
+  "june": "Juni",
+  "july": "Juli",
+  "august": "Augusti",
+  "september": "September",
+  "october": "Oktober",
+  "november": "November",
+  "december": "December",
+  "play": "Spela",
+  "confirm": "Ok",
+  "back": "Bakåt",
+  "next": "Framåt",
+  "close": "Stäng",
+  "open": "Öppna",
+  "continue": "Fortsätt",
+  "openCard": "Öppna rättighetskortet",
+  "openlootbox": "Öppna lådan!",
+  "closeCard": "Stäng rättighetskortet",
+  "done": "Klar",
+  "cancel": "Avbryt",
+  "readmore": "Läs mer",
+  "loading": "Laddar",
+  "readmoreonhelp": "Läs mer på Hjälp-sidan",
+  "playvoiceover": "Spela textuppläsning",
+  "numberOfNewCards": "Du har fått {{number}} nya rättighetskort",
+  "filter": "Filtrera",
+  "filterCards": "Filtrering av rättighetskort",
+  "buttonFilter": "Filtrering av objekt",
+  "article": "Artikel",
+  "convention": "Barnkonventionen",
+  "meta": {
+    "title": {
+      "avatarbuilder": "Skapa din avatar - Barnrättsspelet",
+      "collectionviewer": "Se alla rättigheter - Barnrättsspelet",
+      "deckbuilder": "Mina rättigheter - Barnrättsspelet",
+      "cookiepolicy": "Integritetspolicy - Barnrättsspelet",
+      "guidance": "Handledning - Barnrättsspelet",
+      "help": "Behöver du prata med någon? - Barnrättsspelet",
+      "home": "Kartan - Barnrättsspelet",
+      "lootbox": "Loot Box - Barnrättsspelet",
+      "manual": "Manual - Barnrättsspelet",
+      "persuade": "Övertalning - Barnrättsspelet",
+      "scenarios": "Spela en specifik utmaning - Barnrättsspelet",
+      "start": "Barnrättsspelet"
+    },
+    "description": {
+      "avatarbuilder": "Skapa en avatar genom att välja olika hårstilar, kläder, ansikten och färger",
+      "collectionviewer": "Se alla rättighetskort som finns tillgängliga och läs mer om dem",
+      "cookiepolicy": "Läs mer om hur vi hanterar kakor på denna webbplats",
+      "deckbuilder": "Se alla hittade rättighetskort och bygg en korthand",
+      "guidance": "Ladda ned handledningen för att få tips på hur barns kunskaper om sina rättigheter kan utvecklas och stärkas med hjälp av Barnrättsspelet",
+      "help": "Här finns information om var du kan vända dig om du behöver prata med någon",
+      "home": "Testa vad du kan om dina rättigheter och träna på att använda dem",
+      "lootbox": "Öppna lådan för att få rättighetskort",
+      "manual": "Läs manualen som förklarar hur du spelar Barnrättssplelet",
+      "scenarios": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om",
+      "start": "Testa vad du kan om dina rättigheter och träna på att använda dem."
+    }
+  },
+  "mobilewarning": {
+    "text": "Hej! Mobilversionen av Barnrättsspelet är inte helt färdig, men du är välkommen att testa den."
+  },
+  "theme": {
+    "development": "Rätt till utveckling",
+    "equality": "Rätt till lika värde",
+    "safety": "Rätt till trygghet",
+    "participation": "Rätt till delaktighet",
+    "expression": "Rätt att tycka och tala",
+    "protection": "Rätt till skydd"
+  },
+  "category": {
+    "family": "Jag & min familj",
+    "school": "Skola",
+    "afterschool": "Fritiden",
+    "world": "Världen",
+    "other": "Övrigt"
+  },
+  "carddata": {
+    "playcard": "Spela",
+    "boost": "Gör quiz",
+    "remove": "Ta bort",
+    "addtohand": "Lägg till på hand",
+    "showmoreinfo": "Vänd på rättighetskortet för att se baksidan och läsa mer",
+    "flipback": "Vänd tillbaka rättighetskortet för att se framsidan",
+    "moreinfo": "Behöver du prata med någon?"
+  },
+  "mainmenu": {
+    "startpage": "Startsidan",
+    "home": "Hem",
+    "deckbuilder": "Mina rättighetskort",
+    "avatar": "Avatar",
+    "collectionviewer": "Alla rättigheter",
+    "persuade": "Övertalning",
+    "lootbox": "Lootbox",
+    "help": "Information & hjälp"
+  },
+  "Start": {
+    "heading": "Välkommen till spelet om barns rättigheter",
+    "primaryMenu": "Primär",
+    "secondaryMenu": "Sekundär",
+    "guidance": "Läs handledningen",
+    "manual": "Så spelar du",
+    "cookiepolicy": "Integritetspolicy",
+    "descriptionOne": "Testa vad du kan om dina rättigheter.",
+    "descriptionTwo": "Och träna på att använda dem.",
+    "descriptionThree": "Du kan även titta på dina rättigheter.",
+    "play": "Spela",
+    "seeCards": "Se alla rättigheter",
+    "specificScenario": "Testa en utmaning",
+    "footertext": "Utvecklat av My Human Rights i samarbete med Vinnovera med stöd av Allmänna arvsfonden",
+    "logoalttext": "My human rights",
+    "arvsfondenlogoalttext": "Med stöd från Allmänna Arvsfonden",
+    "headertext": "Jag vill läsa handledning för",
+    "game": "Spelet",
+    "teacher": "Pedagoger",
+    "needtotalk": "Behöver du prata med någon?",
+    "menu": "Meny",
+    "playtip": {
+      "body": "Visste du att om du klickar på ”Så spelar du” kan du lära dig mer om spelet."
+    }
+  },
+  "Cookiepolicy": {
+    "startpage": "Startsidan",
+    "heading": "Integritetspolicy",
+    "preamble": "Om användardata och vad vi lagrar.",
+    "paragraph1": "I Barnrättsspelet sparar vi spelframsteg i spelarens webbläsare (local storage). Det betyder att när en spelare gör framsteg i spelet lagras informationen på deras individuella enhet, specifikt i webbläsarens lokala lagring.",
+    "paragraph2": "Eftersom informationen lagras på spelarens enhet i stället för på en fjärrserver är den mindre sårbar för förluster av data eller säkerhetsbrister.",
+    "paragraph3": "Det är viktigt att notera att vi inte samlar in någon personlig data alls som en del av den här processen. Vi ber inte spelare om deras namn, e-postadress eller någon annan personlig information",
+    "paragraph4": "och vi delar inte någon information med några tredje parter.",
+    "paragraph5": "Sammanfattningsvis ger vårt system för att spara spelframsteg en bekväm och säker metod för spelare att spara och komma åt sina spelframsteg utan att samla in någon personlig data.",
+    "paragraph6": "Sparande av data påbörjas när man besöker webbsidan. Den data som sparas då är Barnrättsspelets grundinställningar bland annat:",
+    "li1": "Animationer",
+    "li2": "Musik",
+    "li3": "Ljudeffekter",
+    "li4": "Läshjälp",
+    "li5": "Kontrastläge",
+    "on": "På",
+    "off": "Av",
+    "subheading1": "Hur man raderar data:",
+    "paragraph7": "För att radera din data, klicka här:",
+    "paragraph8": "Stäng sedan detta fönster.",
+    "deletelocalstorage": "Radera lokal lagring",
+    "deleted": "Lokal lagring är raderad"
+  },
+  "home": {
+    "play": "Spela",
+    "mainheading": "Startsidan för spelet",
+    "cardsof": "rättighetskort av",
+    "mycollectionheading": "Mina rättighetskort",
+    "mycollectiontext": "Välj rättighetskort för att starta en utmaning",
+    "mycollectionbutton": "Mina rättigheter",
+    "myavatarheading": "Min avatar",
+    "avatarbody": "Skapa en egen avatar till spelet",
+    "createavatar": "Min avatar",
+    "newpart": "Du har en ny del till din avatar",
+    "tokensheading": "Byt 5 mynt",
+    "tokensbody": "mot fler rättighetskort",
+    "buylootbox": "Köp rättighetskort",
+    "moreinfoheading": "Behöver du prata med någon?",
+    "moreinfotext": "Här får du veta var du kan vända dig för att få stöd och hjälp om du är orolig för något."
+  },
+  "help": {
+    "heading": "Behöver du prata med någon?",
+    "preamble": "Du är värdefull! Ingen får mobba dig, slå dig, hota dig eller ta på din kropp om du inte vill det. Det gäller överallt. Hemma, i skolan och på fritiden.",
+    "subheading1": "Vänd dig till en vuxen du litar på",
+    "paragraph1": "Om du är utsatt för något, VAD SOM HELST, så prata med en vuxen som du litar på. Det kan vara mamma, pappa, bonusförälder, en släkting, din lärare, tränare, skolkuratorn eller någon vuxen du litar på. Vuxna ska alltid lyssna på dig. De ska fråga dig vad du tycker och tänker när de bestämmer saker om ditt liv. Om du mår dåligt  ska vuxna se till att du får hjälp att må bättre.",
+    "subheading2": "Om det händer dig något nu - Larma 112",
+    "paragraph2": "Om du eller någon nära dig blir slagen, utsatt för någon som kränker dig sexuellt eller blir hotad ring 112 och berätta.",
+    "subheading3": "Här kan du få hjälp och stöd:",
+    "paragraph3": "Om du inte har någon vuxen att prata med kan du få hjälp och stöd från de här organisationerna. Där finns det vuxna som lyssnar och ger goda råd. Och de berättar inte för någon att du ringt.",
+    "link1": "BRIS",
+    "paragraph4": {
+      "part1": "Till Bris, Barnens rätt i samhället, kan du ringa på ",
+      "part2": ", mejla eller chatta. Du kan också läsa, kolla in filmer och lyssna på poddar om viktiga ämnen."
+    } ,
+    "link2": "Röda korsets jourhavande kompis",
+    "paragraph5": "Känner du dig ensam? Här kan du chatta om precis vad som helst med unga vuxna. De finns för dig när du behöver det.",
+    "link3": "Trygga Barnens chatt",
+    "paragraph6": "Här kan du prata med en vuxen om du är orolig över att en person i din närhet dricker för mycket alkohol, tar droger, slår sina nära, mår dåligt eller om det är något annat som oroar dig.",
+    "link4": "Maskrosbarns chatt",
+    "paragraph7": "Här kan du som har en förälder som mår psykiskt dåligt, dricker för mycket alkohol, tar droger eller slår dig chatta med vuxna som förstår precis hur du har det.",
+    "link5": "Barnrättsbyrån",
+    "paragraph8": "Barnrättsbyrån är jurister(vuxna som är duktiga på lagar) som kämpar för att barn och unga ska tas på allvar och få rätt hjälp av samhället. De ger stöd, råd och praktisk hjälp i frågor som rör alla barns rättigheter. Telefon ",
+    "subheading4": "Råd och stöd om jag är mobbad i skolan",
+    "paragraph9": "Du har RÄTT att inte bli utsatt för någon som mobbar dig, slår dig eller kränker dig på något vis.",
+    "paragraph10": "Om du inte har någon vuxen i skolan eller hemma att prata med kan du vända dig till:",
+    "link6": "Friends",
+    "paragraph11": {
+      "part1": "Friends ger råd och stöd vid mobbing och utsatthet. Du kan ringa måndag-fredag kl 9-12 på telefon ",
+      "part2": " eller maila måndag-fredag kl. 9-16 till "
+    },
+    "subheading5": "Råd och stöd om jag upplever hedersförtryck",
+    "paragraph12": "Du har RÄTT att inte bli utsatt för hedersförtryck av din familj eller släkt, bli utsatt för våld, bli tvingad att gifta dig eller bortförd mot din vilja.",
+    "paragraph13": "Om du inte har någon vuxen du litar på kan du vända dig till:",
+    "link7": "Chatten Kärleken är fri - Rädda Barnen",
+    "paragraph14": "Här kan du prata om och få råd om hedersrelaterat förtryck, våld, kärlek, tvångsäktenskap och könsstympning och vart du ska vända dig för vidare hjälp.",
+    "paragraph15": "Om det är akut, om du eller någon nära dig blir utsatt, hotad eller slagen ring 112 och slå berätta.",
+    "subheading6": "Råd och stöd om jag utsätts för sexuella kränkningar eller utnyttjas sexuellt",
+    "paragraph16": "Du har RÄTT att inte bli utsatt för någon som tar på din kropp fast du inte vill, använder våld eller till exempel ber dig skicka nakenbilder via nätet.",
+    "paragraph17": "Om du inte har någon vuxen du litar på att prata med kan du vända dig till:",
+    "link8": "Ditt Ecpat",
+    "paragraph18": "På Ditt Ecpat kan du som barn och ungdom få hjälp, stöd och kunskap om bilder, sexuella kränkningar, hot och övergrepp på nätet eller i verkligheten. Här kan du också få hjälp att ta ner nakenbilder som har spridits på nätet. Till Ditt Ecpat kan du både ringa och chatta och prata med vuxna som ger dig råd och stöd.",
+    "link9": "Polisen",
+    "paragraph19": "Om någon, kompis eller vuxen, ber dig skicka bilder på dig när du är lättklädd eller naken och sedan delar på sociala media så är det ett brott enligt lagen. Prata med en vuxen som du litar på och be om hjälp om det händer dig. Det är ingenting du behöver skämmas över och det är viktigt att du berättar. Tillsammans kan ni läsa om, titta på filmer och få råd från Polisen om hur ni kan anmäla brottet.",
+    "paragraph20": "Om du akut utsatt för någon som kränker dig eller utnyttjar dig sexuellt  slå larm till  112.",
+    "subheading7": "Råd och stöd om jag är flykting",
+    "paragraph21": "Du har RÄTT att söka asyl i ett annat land än ditt hemland om du och din familj är utsatt för krig, våld och förföljelse. Asyl betyder fristad och att du har rätt att söka skydd i ett annat land än ditt hemland. Du ska inte heller bli utsatt för våld, sexuella kränkningar eller bli mobbad för att du är flykting.",
+    "paragraph22": "Här kan du få hjälp om du eller någon du känner behöver hjälp med att söka asyl:",
+    "link10": "Barnens Asylrättscentrum",
+    "paragraph23": {
+      "part1": "Hit kan du vända dig om du eller något barn du känner behöver juridisk hjälp för att söka asyl. Ring ",
+      "part2": " eller maila till "
+    },
+    "link11": "Asylbyrån",
+    "paragraph24": "På Asylbyrån kan vuxna och barn få juridisk hjälp för att söka asyl och för familjeåterförening. Du kan ringa till ",
+    "subheading8": "Råd och stöd om jag är diskriminerad",
+    "paragraph25": "Att bli orättvist behandlad av en vuxen för att du är tjej eller hen, är ett barn, är född i ett annat land, tror på din egen Gud eller har en funktionsnedsättning kallas diskriminering och är förbjudet i Sverige enligt lag. Lagen heter Diskrimineringslagen och betyder att alla människor ska behandlas lika. Det gäller hemma, i skolan, på fritiden och ute i samhället. Lagen om Barnkonventionen, Skollagen och Diskrimineringslagen ska skydda dig.",
+    "paragraph26": "På Sveriges anti-diskriminerings-byråer (svårt ord) kan du få gratis hjälp, råd och stöd om du är diskriminerad. Deras uppgift är att se till att ingen människa blir behandlad olika på grund av vem hen är:",
+    "paragraph27": "Rättighetscentrum Norrbotten",
+    "paragraph28": "Rättighetscentrum Västerbotten",
+    "paragraph29": "Rättighetscentrum Dalarna",
+    "paragraph30": "Diskrimineringsbyrån Gävleborg",
+    "paragraph31": "Brottsförebyggande Centrum i Värmland",
+    "paragraph32": "Antidiskrimineringsbyrån Uppsala",
+    "paragraph33": "Antidiskrimineringsbyrån Stockholm Norr",
+    "paragraph34": "Antidiskrimineringsbyrån Stockholm Syd",
+    "paragraph35": "Diskrimineringsbyrån Humanitas, Sörmland och Västmanland",
+    "paragraph36": "Örebro Rättighetscenter mot diskriminering",
+    "paragraph37": "Byrån mot diskriminering i Östergötland",
+    "paragraph38": "Antidiskrimineringsbyrån i Trollhättan",
+    "paragraph39": "Göteborgs rättighetscenter",
+    "paragraph40": "Antidiskrimineringsbyrån Sydost, Kalmar",
+    "paragraph41": "Antidiskrimineringsbyrån Helsingborg",
+    "paragraph42": "Malmö mot Diskriminering",
+    "phone": "Telefon: ",
+    "email": "E-mail: "
+  },
+  "Collectionviewer": {
+    "heading": "Se alla rättigheter",
+    "preamble": "Lorem ipsum",
+    "startpage": "Startsidan"
+  },
+  "Guidance": {
+    "title": "Hej!",
+    "paragraph1": "Barnkonventionen blev lag i Sverige 2020. Barnen fick då ett starkare rättsligt skydd och barnets bästa fick ett större utrymme. För att efterleva lagen är du en viktig person. Du som möter barn som lärare, ledare, tränare, har både möjlighet och skyldighet att hjälpa barn att förstå sina rättigheter.",
+    "paragraph2": "Tyvärr är det inte ovanligt att barns rättigheter och integritet kränks. Det händer hemma, i skolan, på fritiden och på andra håll i samhället. När barnen själva har kunskap om sina rättigheter kan de prata om vad som är dåligt i deras liv och få hjälp att rätta till det.",
+    "paragraph3": "Ladda ned handledningen så får du tips på hur du kan utveckla och stärka barns kunskaper om sina rättigheter med hjälp av Barnrättsspelet.",
+    "downloadguidance": "Ladda ned handledningen",
+    "or": "eller",
+    "specificScenario": "Testa en utmaning",
+    "startpage": "Startsidan"
+  },
+  "Manual": {
+    "startpage": "Startsidan",
+    "title": "Så här funkar Barnrättsspelet",
+    "preamble": "Spelet går ut på att vinna ett antal utmaningar. När du klarat alla utmaningar i spelet får du en superhjälte-outfit. Det finns många sätt att starta en utmaning och till hjälp finns ”ugglan” som ger dig anvisningar under spelets gång.",
+    "avatar": "Avataren:",
+    "avatartext": "När spelet börjar så får du skapa din egen avatar genom att välja mellan olika hårstilar, kläder, ansikten och färger. Varje gång du vinner en utmaning så får du en ny rolig grej till avataren.",
+    "map": "Kartan:",
+    "maptext": "På spelkartan kan du se vilka platser som är upplåsta och välja vilken plats du vill spela på. Ju fler utmaningar du vunnit på en plats desto mer färg dyker upp på kartan.  På de platser som är gråa har du många utmaningar kvar att vinna.",
+    "challenges": "Utmaningar:",
+    "challengestext1": "När en utmaning startar kommer en ”motståndare” med påståenden som strider mot Barnkonventionen. Du ska ”skydda dig” genom att spela rätt rättighetskort. För varje påstående eller situation i utmaningen ska du välja det rättighetskort som passar.",
+    "challengestext2": "Det finns totalt 30 utmaningar att vinna. De flesta utmaningarna är låsta i början och du behöver samla passande rättighetskort för att låsa upp dem.",
+    "challengestext3": "Du får sen fler rättighetskort när du klarat en utmaning och kan fortsätta låsa upp fler utmaningar.",
+    "tip": "Tips!",
+    "challengestext4": "På rättighetskorten finns både fram- och baksida, som hjälper dig att välja rätt kort.",
+    "tokens": "Guldmynt:",
+    "tokenstext": "När du klarat en utmaning så får du 3 guldmynt.  Guldmynt kan användas på två sätt: Låsa upp ett kort som blivit låst för att man spelat fel eller för att köpa en låda med fler rättighetskort för att låsa upp fler platser.",
+    "tokensimagealt": "Bilden visar hur ett guldmynt i spelet ser ut",
+    "quiz": "Quiz:",
+    "quiztext1": "Du kan också vinna guldmynt genom att svara rätt på en fråga. Alla rättighetskort är försedda med två knappar. En knapp för att",
+    "quiztextplay": "spela",
+    "quiztext2":"kortet (om det inte är låst) och en knapp med ett",
+    "quiztexttoken": "guldmynt",
+    "quiztext3": "på som går till en quizfråga. Om du svarar rätt på frågan vinner du ett guldmynt.",
+    "cards": "Rättighetskort:",
+    "cardstext": "Om du har svårt att välja vilka kort du vill spela med så kan Ugglan hjälpa till. Ugglan ger alltid rätt kort för att spela en ny utmaning.",
+    "settings": "Inställningar:",
+    "settingstext1": "I kugghjulet längst upp till höger på sidan kan du välja vilka inställningar du vill ha under spelets gång och här finns också en knapp för att börja spela på nytt. I inställningar kan du  stänga av eller sätta på:",
+    "settingsli1": "Musik",
+    "settingsli2": "Ljudeffekter",
+    "settingsli3": "Animationer",
+    "settingsli4": "Läshjälp (uppläsning)",
+    "settingsli5": "Kontrastläge",
+    "settingstext2": "I dagsläget finns endast Barnrättsspelet på svenska och språket är förinställt.",
+    "settingsimagealt": "Bilden visar hur dialogrutan för inställningar ser ut"
+  },
+  "map": {
+    "mainheading": "Karta",
+    "playheading": "Välj en plats för att spela",
+    "playheadingnocards": "Välj en korthand för att spela",
+    "text": "Kort beskrivning om vilka teman du kan tänkas möte på denna plats",
+    "nomoreantagonists": "Du har redan vunnit mot alla här, men du kan spela om utmaningar för att vinna fler rättighetskort",
+    "cardhand": "Min korthand",
+    "changecards": "Ändra rättighetskort",
+    "choosecards": "Välj rättighetskort",
+    "home": {
+      "header": "Hemma",
+      "body": "Fast du är ett barn har du rättigheter hemma. Här får du utmana både vuxna och syskon i dina rättigheter."
+    },
+    "school": {
+      "header": "Skola",
+      "body": "Kolla om dina kompisar, lärare och andra vuxna i skolan vet vilka rättigheter du har. Om de inte vet får du visa dem!"
+    },
+    "afterSchool": {
+      "header": "Fritid",
+      "body": "Dina rättigheter gäller överallt och hela tiden. Lycka till med utmaningarna!"
+    },
+    "activities": {
+      "header": "Aktiviteter",
+      "body": "Har du känt dig orättvist behandlad? Eller har det hänt något annat som varit jobbigt när du varit på någon aktivitet? Här får du visa vuxna och kompisar vilka rättigheter du har."
+    },
+    "world": {
+      "header": "Världen",
+      "body": "Alla barn i hela världen har samma rättigheter. Du och dina kompisar, alla barn i landet du bor i och i hela världen. "
+    },
+    "library": "Bibliotek",
+    "play": "Spela {{place}}",
+    "newscenario": "Ny utmaning!"
+  },
+  "deckbuilder": {
+    "heading": "Välj 7 rättighetskort för att starta en utmaning",
+    "preamble": "Du ska ha 7 rättighetskort i handen för att spela. Men du kan ta bort ett rättighetskort om du vill byta.",
+    "wrongAmountOfCards": "Du måste välja 7 rättighetskort",
+    "emptyhand": "Töm korthand",
+    "cardsselected": "av {{maxcards}} rättighetskort valda",
+    "cardsselectedmobile": "av {{maxcards}} valda",
+    "categories": {
+      "all": "Alla",
+      "mamma": "Mamma",
+      "pappa": "Pappa"
+    }
+  },
+  "avatarbuilder": {
+    "heading": "Skapa din avatar",
+    "preamble": "Välj hur du vill att den ska se ut",
+    "save": "Spara",
+    "random": "Slumpa ny avatar",
+    "randomAria": "Välj ett slumpmässigt utseende på din avatar",
+    "skip": "Hoppa över",
+    "nexthair": "Nästa frisyr",
+    "previoushair": "Föregående frisyr",
+    "nextaccessory": "Nästa accessoar",
+    "previousaccessory": "Föregående accessoar",
+    "nextface": "Nästa ansikte",
+    "previousface": "Föregående ansikte",
+    "nextbody": "Nästa klädesplagg",
+    "previousbody": "Föregående klädesplagg",
+    "selecthaircolor": "Välj hårfärg",
+    "selectfacecolor": "Välj hudfärg",
+    "selectbodycolor": "Välj färg på klädesplagg",
+    "parts": {
+      "hair": "Frisyr",
+      "accessory": "Accessoar",
+      "face": "Ansikte",
+      "body": "Kläder"
+    },
+    "colorcategories": {
+      "hairColor": "Hårfärg",
+      "faceColor": "Hudfärg",
+      "bodyColor": "Klädfärg"
+    }
+  },
+  "persuasion": {
+    "startgame": "Starta spelet",
+    "genericwrongcardanswers": {
+      "answer_1": {
+        "text": "Hoppsan, fel rättighet, gör ett nytt försök"
+      },
+      "answer_2": {
+        "text": "Prova igen med ett annat rättighetskort"
+      },
+      "answer_3": {
+        "text": "Nu blev det lite fel men prova igen så blir det säkert rätt"
+      },
+      "answer_4": {
+        "text": "Bra tänkt, men försök igen med en annan rättighet"
+      },
+      "answer_5": {
+        "text": "Det där är också en viktig rättighet, men nu blev det fel så prova igen"
+      },
+      "answer_6": {
+        "text": "Gör ett nytt försök så blir det nog rätt"
+      }
+    }
+  },
+  "lootbox": {
+    "choose": "Välj"
+  },
+  "scenarios": {
+    "header": "Spela en specifik utmaning",
+    "description": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om.",
+    "allThemes": "Alla",
+    "environment": "Plats: ",
+    "theme": "Tema: "
+  },
+  "cardhand": {
+    "boost": "Svara på en bonusfråga för att vinna ett mynt",
+    "enable": "Lås upp",
+    "previousCard": "Föregående kort",
+    "nextCard": "Nästa kort"
+  },
+  "healthbar": {
+    "persuation": "Övertalning"
+  },
+  "progressbar": {
+    "progress": "Spelprogress"
+  },
+  "boost": {
+    "winMessage": "Du svarade rätt!",
+    "lossMessage": "Du svarade fel...",
+    "answer": "Svara",
+    "owlAlt": "En uggla",
+    "hurray": "Hurra!",
+    "ouch": "Aj då!"
+  },
+  "token": {
+    "noOfTokens": "Antal mynt:"
+  },
+  "Owl": {
+    "confirm": "Ok",
+    "owlalt": "En uggla som sitter bredvid en pratbubbla",
+    "homewelcome": {
+      "text_1": {
+        "heading": "Hej!",
+        "body": "Att känna till sina rättigheter är en superkraft. I det här spelet möter du vuxna och kompisar som vet väldigt lite om barns rättigheter"
+      },
+      "text_2": {
+        "body": "När du lyckas lära dem mer om dina rättigheter får du fler rättighetskort"
+      },
+      "text_3": {
+        "body": "På varje plats finns flera utmaningar du kan vinna"
+      },
+      "text_4": {
+        "body": "Börja med att välja 7 rättighetskort till din korthand och börja spela. Lycka till!"
+      }
+    },
+    "maxcards": {
+      "heading": "Din korthand är full",
+      "body": "Du kan maximalt ha 7 rättighetskort i korthanden."
+    },
+    "play": {
+      "heading": "Sådär, nu har du en korthand med 7 rättighetskort.",
+      "body": "Välj en plats att spela."
+    },
+    "token": {
+      "heading": "Hurra du klarade det!",
+      "body": "Du fick ett mynt. Använd det för att låsa upp rättighetskort."
+    },
+    "intro": {
+      "heading": "Då är vi igång",
+      "body": "Välj en av pratbubblorna för att sätta igång utmaningen"
+    },
+    "enablecard": {
+      "heading": "Nu blev det lite fel och rättighetskortet är låst.",
+      "body": "Du kan låsa upp kortet genom att svara rätt på en quiz-fråga. Tryck på guldmyntet ovanför ett rättighetskort och testa!"
+    },
+    "quiztip": {
+      "heading": "Visste du?",
+      "body": "Varje kort har ett quiz. Om du klickar på myntet ovanför kortet och svarar rätt på en fråga, vinner du ett mynt."
+    },
+    "flipcardtip": {
+      "heading": "Prova att vända på korten",
+      "body": "På baksidan av korten står det mer text som kanske gör det lättare för dig att hitta rätt kort."
+    },
+    "secondchallenge": {
+      "heading": "Dags för en ny utmaning!",
+      "body": "Välj 7 nya rättighetskort."
+    },
+    "noplayablescenarios": {
+      "heading": "Oj, det fanns ingen utmaning här",
+      "body": "Testa att välja några andra rättighetskort för att låsa upp en utmaning att spela"
+    },
+    "nounplayedscenarios": {
+      "heading": "Du har klarat alla utmaningar med den här korthanden",
+      "body": "Testa att välja andra rättighetskort för att få en ny utmaning. Eller spela om en utmaning för få fler mynt och nya rättighetskort."
+    },
+    "suggesthand": {
+      "heading": "Svårt att välja rättighetskort?",
+      "body": "Jag hjälper dig.",
+      "bodymobile": "Jag kan hjälpa!",
+      "cta": "Få en korthand"
+    },
+    "alldefeatedhand": {
+      "heading": "Du har redan klarat alla utmaningar!",
+      "body": "Självklart går det att välja 7 rättighetskort och spela ändå."
+    },
+    "alldefeatedcollection": {
+      "heading": "Du har klarat alla utmaningar som går att spela med dina rättighetskort.",
+      "body": "Skaffa nya rättighetskort genom att köpa med dina mynt, eller spela om utmaningar!"
+    },
+    "lootbox": {
+      "cta": "Lägg till i min korthand",
+      "won1": {
+        "heading": "Bra jobbat!",
+        "body": "Välj 1 rättighetskort att lägga i din samling."
+      },
+      "won2": {
+        "heading": "Bra jobbat!",
+        "body": "Välj 2 rättighetskort att lägga i din samling."
+      },
+      "bought1": {
+        "heading": "Du köpte en låda!",
+        "body": "Välj 1 rättighetskort att lägga i din samling."
+      },
+      "bought2": {
+        "heading": "Du köpte en låda!",
+        "body": "Välj 2 rättighetskort att lägga i din samling."
+      },
+      "item": {
+        "body": "Du har också fått en ny grej till din avatar."
+      },
+      "itemonly": {
+        "heading": "Bra jobbat!",
+        "body": "Du har redan vunnit alla rättighetskort som går att samla på. Här får du en ny grej till din avatar."
+      },
+      "start": {
+        "heading": "Först ska du bygga upp din korthand med rättigheter.",
+        "body": "Samla på de rättighetskort du vill spela med."
+      }
+    },
+    "persuasiondone": {
+      "win": "Du har lyckats övertyga {{name}}",
+      "retry": "Försök igen",
+      "tohome": "Tillbaka till hem",
+      "getlootbox": "Hämta belöning",
+      "toscenarios": "Gå tillbaka",
+      "winpersuasion": {
+          "heading": "Scenario avklarat!",
+          "body": "Det där var inte lätt! Bra jobbat!"
+      },
+      "winall": {
+        "heading": "Grattis! Du har klarat alla utmaningar. Snyggt jobbat!",
+        "body": "Nu kan du skriva ut ditt diplom som visar att du har superkraften!"
+      },
+      "winscenariomode": {
+        "heading": "Hurra, du klarade det!",
+        "body": "Det där va inte lätt. Bra jobbat!"
+      },
+      "losstext": {
+        "header": "Hoppsan!",
+        "body": "Nu blev det lite fel. Vill du prova igen?"
+      }
+    },
+    "resetgame": {
+      "header": "Är du säker?",
+      "body": "Om du börjar om försvinner dina sparade framsteg och din avatar.",
+      "cta": "Börja om",
+      "cancel": "Avbryt"
+    }
+  },
+  "notallowed": {
+    "title": "Här får du inte vara!",
+    "description1": "Du får en loot box om du vinner ett scenario.",
+    "description2": "Du kan också köpa en loot box om du har 5 eller fler tokens."
+  },
+  "Settings": {
+    "reset": "Börja om spelet",
+    "thememusicon": "Musik är på",
+    "thememusicoff": "Musik är av",
+    "soundeffectson": "Ljudeffekter är på",
+    "soundeffectsoff": "Ljudeffekter är av",
+    "animationson": "Animationer är på",
+    "animationsoff": "Animationer är av",
+    "voiceoveron": "Läshjälp är på",
+    "voiceoveroff": "Läshjälp är av",
+    "highcontrast": "Kontrastläge är på",
+    "regularcontrast": "Kontrastläge är av",
+    "language": "Språk",
+    "swedish": "Svenska",
+    "english": "English",
+    "arabic": "عربي",
+    "open": "Öppna menyn för inställningar",
+    "manual": "Så spelar du",
+    "cancel": "Avbryt",
+    "close": "Stäng"
+  },
+  "statistics": {
+    "firstTimeStart": "Besökare på Start",
+    "firstTimeHome": "Besökare på Home",
+    "firstTimeCollectionViewer": "Besökare på Kortsamlingen",
+    "firstTimeCollectionViewerApp": "Besökare på Appen Kortsamlingen",
+    "firstTimePersuation": "Spelare som startat en utmaning",
+    "firstTimeWin": "Spelare med 1 Vinst",
+    "firstTimeWinThree": "Spelare med 3 Vinster",
+    "firstTimeWinTen": "Spelare med 10 Vinster",
+    "firstTimeGameComplete": "Spelare som klarat hela spelet",
+    "01": "Januari",
+    "02": "Februari",
+    "03": "Mars",
+    "04": "April",
+    "05": "Maj",
+    "06": "Juni",
+    "07": "Juli",
+    "08": "Augusti",
+    "09": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "December"
+  },
+  "cards": {
+    "1": {
+      "answerline": "Jag är ett barn tills jag fyller 18 år",
+      "front": "Jag är ett barn tills jag fyller 18 år",
+      "back": {
+        "heading": "Jag är ett barn tills jag fyller 18 år",
+        "body": "Barnkonventionen finns för att skydda mig som är under 18 år. Även när jag är tonåring ser lagen mig som ett barn. Som har rättigheter."
+      },
+      "quiz": {
+        "question": "När blir du en vuxen person som får ta hand om dig själv?",
+        "infocorrect": "Bra, det stämmer.",
+        "infoincorrect": "Om du är ett barn eller inte har att göra med din ålder. Du är ett barn tills du fyller 18 år.",
+        "answers": {
+          "a": "När jag är tonåring",
+          "b": "När jag har gift mig och fått barn",
+          "c": "När jag har fyllt 18 år"
+        }
+      }
+    },
+    "2a": {
+      "answerline": "Alla barn i hela världen har samma rättigheter",
+      "front": "Alla barn i hela världen har samma rättigheter",
+      "back": {
+        "heading": "Det spelar ingen roll hur jag ser ut, vilken färg min hud har, vilken religion jag tillhör, var jag kommer ifrån, om jag är fattig eller rik eller om jag har en funktionsnedsättning",
+        "body": "Jag är lika mycket värd som andra och har samma rättigheter som andra människor."
+      },
+      "quiz": {
+        "question": "Barn är människor och människor har mänskliga rättigheter. Eftersom barn inte alltid kan skydda sig själva har de ett extra skydd i lagen om Barnkonventionen. Rätt eller fel?",
+        "infocorrect": "Rätt! Du är nästan barnrättsexpert!",
+        "infoincorrect": "Sorry, du svarade fel.",
+        "answers": {
+          "a": "Helt rätt",
+          "b": "Helt fel"
+        }
+      }
+    },
+    "2b": {
+      "answerline": "Jag får vara precis som jag är. Jag har alltid rätt att vara mig själv",
+      "front": "Jag får vara precis som jag är",
+      "back": {
+        "heading": "Jag har alltid rätt att vara mig själv",
+        "body": "Vissa är tysta, tycker om djur och älskar sommaren. Andra tycker om att prata, spela fotboll och äta glass. Det spelar ingen roll hur jag är, vem jag är eller vad jag gillar – jag har alltid rätt att vara just som jag är."
+      },
+      "quiz": {
+        "question": "Är det din rättighet att vara den du är? Och andras rättighet att vara som de är?",
+        "infocorrect": "Jaaa!",
+        "infoincorrect": "Det är din rättighet att vara den du är. Skön känsla va?",
+        "answers": {
+          "a": "Ja, det är det",
+          "b": "Det beror på",
+          "c": "Nej"
+        }
+      }
+    },
+    "2c": {
+      "answerline": "Flickor och pojkar är lika mycket värda.",
+      "front": "Flickor och pojkar är lika mycket värda",
+      "back": {
+        "heading": "Jag behöver inte vara på något speciellt sätt för att jag är tjej eller kille. Vi är alla lika värda och lika viktiga.",
+        "body": "Först och främst är vi alla människor. Och vi föds som killar och tjejer. Men så enkelt är det inte. Att välja vem jag är kär i, hur jag klär mig, om jag sminkar mig eller inte, vilken frisyr jag har, hur jag identifierar mig har ingen annan något att göra med."
+      },
+      "quiz": {
+        "question": "Vad kallas det om jag behandlas som mindre värdefull beroende på om jag exempelvis är tjej eller kille?",
+        "infocorrect": "Hurra, det var rätt. Diskriminering är ett ganska svårt ord. Och du visste vad det betyder.",
+        "infoincorrect": "Synd! Det är tyvärr fel. Men det gör ingenting för nu har du lärt dig ett nytt ord.",
+        "answers": {
+          "a": "Diskrepans",
+          "b": "Diskretion",
+          "c": "Diskriminering"
+        }
+      }
+    },
+    "2d": {
+      "answerline": "Jag är värdefull",
+      "front": "Jag är värdefull",
+      "back": {
+        "heading": "Jag är värd lika mycket som andra",
+        "body": "Jag är ett barn och jag är värdefull. Jag är lika mycket värda som en vuxen. Vuxna är inte mer värda eller viktigare än vad du är"
+      },
+      "quiz": {
+        "question": "Finns det någon i hela världen som är mer värdefull än du?",
+        "infocorrect": "Du har så rätt. Visst är det härligt att veta?",
+        "infoincorrect": "Vem skulle det vara?",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "2e": {
+      "answerline": "Jag behandlas väl",
+      "front": "Jag behandlas väl",
+      "back": {
+        "heading": "Ingen får göra mig illa eller vara elak mot mig för något som jag eller min familj är eller har sagt eller gjort",
+        "body": "Jag har rätt att vara den jag är, säga och göra det jag behöver. Jag ska heller aldrig behöva bli lidande för något som min familj är, har sagt eller gjort"
+      },
+      "quiz": {
+        "question": "Har någon rätt att mobba dig när du sagt något dumt?",
+        "infocorrect": "Så rätt du har. Bravo!",
+        "infoincorrect": "Svaret är nej, absolut inte. Bättre lycka nästa gång!",
+        "answers": {
+          "a": "Ja, ingen kan hindra dem.",
+          "b": "Nej, absolut inte."
+        }
+      }
+    },
+    "3a": {
+      "answerline": "Vuxna ska göra det som är bäst för mig. Vuxna som bestämmer över mig ska respektera mig. De ska göra det som är bäst för mig",
+      "front": "Vuxna ska göra det som är bäst för mig",
+      "back": {
+        "heading": "Vuxna som bestämmer över mig ska respektera mig. De ska göra det som är bäst för mig.",
+        "body": "Föräldrar, lärare, politiker måste lyssna på hur jag har det och på vad jag vill."
+      },
+      "quiz": {
+        "question": "Har barn rätt att tycka saker om samhället och livet?",
+        "infocorrect": "Du svarade helt rätt.",
+        "infoincorrect": "Jo, du har rätt att tycka saker om samhället och livet. Bra va?",
+        "answers": {
+          "a": "Nej",
+          "b": "Ja"
+        }
+      }
+    },
+    "3b": {
+      "answerline": "Jag har rätt att få hjälp. Om någon är elak mot mig eller gör mig illa har jag alltid rätt att få hjälp och skydd",
+      "front": "Om någon är elak mot mig eller gör mig illa har jag alltid rätt att få hjälp och skydd",
+      "back": {
+        "heading": "Jag har rätt att få hjälp",
+        "body": "Barnkonventionen är en lag i Sverige. Och jag har alltid rätt att få hjälp och skydd så att jag kan må bra igen."
+      },
+      "quiz": {
+        "question": "Vad är en lag?",
+        "infocorrect": "Fantastiskt! Vad du kan!",
+        "infoincorrect": "Bra gissat! Men det är tyvärr fel.",
+        "answers": {
+          "a": "En lag är en regel som riksdagen bestämt. Om någon bryter mot en lag får de ett straff.",
+          "b": "En lag är en regel som det är bra att följa. Om man vill."
+        }
+      }
+    },
+    "4a": {
+      "answerline": "Jag har rättigheter",
+      "front": "Jag har rättigheter",
+      "back": {
+        "heading": "Mitt land måste göra allt det kan för att mina rättigheter ska bli verklighet. Vuxna som bestämmer över barn måste arbeta för att alla får ett bra liv",
+        "body": "Jag har rätt till ett bra liv. Vuxna ska både känna till mina rättigheter och göra det som är bäst för mig."
+      },
+      "quiz": {
+        "question": "Vem har ansvar för att du har det bra?",
+        "infocorrect": "Ja, så är det enligt Barnkonventionen. Men tänk på att de vuxna också behöver veta hur du har det, så att de kan hjälpa dig.",
+        "infoincorrect": "Nej, du är inte ensam. Prata gärna med en vuxen du litar på och be om hjälp.",
+        "answers": {
+          "a": "Det är bara jag som har ansvar",
+          "b": "De vuxna har ansvar för att mina rättigheter blir verklighet"
+        }
+      }
+    },
+    "6a": {
+      "answerline": "Jag har rätt att utvecklas som den person jag är. När jag växer upp behöver jag stöd av vuxna för att utvecklas",
+      "front": "Jag har rätt att utvecklas som den person jag är",
+      "back": {
+        "heading": "När jag växer upp behöver jag stöd av vuxna för att utvecklas. Jag har ett hem där jag får trygghet och mat. Jag går i skolan och jag får sjukvård om jag behöver",
+        "body": "Kanske behöver jag hjälp med något för att kunna lära, må bra, utvecklas och leva mitt liv? Till exempel om jag är sjuk, känner mig annorlunda, inte mår bra eller har andra problem. Då ska vuxna hjälpa mig."
+      },
+      "quiz": {
+        "question": "Vem ska ha ansvar för barn som inte mår bra?",
+        "infocorrect": "Bra. Det verkar som du kan lite om dina rättigheter redan.",
+        "infoincorrect": "Det är faktiskt vuxna som har ansvar till du fyller 18. Så nu vet du det.",
+        "answers": {
+          "a": "Barnen själva",
+          "b": "Vuxna",
+          "c": "Andra barn"
+        }
+      }
+    },
+    "6b": {
+      "answerline": "Jag har rätt att leva",
+      "front": "Jag har rätt att leva",
+      "back": {
+        "heading": "Mitt land ska se till att jag och andra barn kan leva och utvecklas",
+        "body": "Jag har rätt att leva i ett land där känner mig trygg och inte riskerar att bli sjuk eller dö av svält eller krig."
+      },
+      "quiz": {
+        "question": "Barn ska skyddas i krig. Vilket av dessa påståenden tror du är rätt?",
+        "infocorrect": "Hurra för att du har rätt. Men bu för att det är så!",
+        "infoincorrect": "Tänk vad bra det vore om du hade rätt. Men du har tyvärr fel.",
+        "answers": {
+          "a": "Det är sällan krig i världen",
+          "b": "Det är nästan alltid krig på något ställe i världen"
+        }
+      }
+    },
+    "7a": {
+      "answerline": "Jag har rätt att veta vilka mina föräldrar är",
+      "front": "Jag har rätt att veta vilka mina föräldrar är",
+      "back": {
+        "heading": "Om jag inte växer upp med mina föräldrar har jag ändå rätt att få veta vilka de är. De ska ta hand om mig om de kan",
+        "body": "Jag har rätt att känna till mina föräldrar även om de inte kan ta hand om mig."
+      },
+      "quiz": {
+        "question": "Har du rätt att veta vilka dina föräldrar är?",
+        "infocorrect": "Ja, även om du inte lever med dina föräldrar har du rätt att känna till dem.",
+        "infoincorrect": "Jo, du har rätt att veta vilka dina föräldrar är.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "7c": {
+      "answerline": "Jag har ett namn. Jag har rätt att ha ett namn som är mitt eget",
+      "front": "Jag har ett namn",
+      "back": {
+        "heading": "Jag har rätt att ha ett namn som är mitt eget",
+        "body": "Alla har rätt att få ett namn när de föds."
+      },
+      "quiz": {
+        "question": "Hur många namn ska du minst ha?",
+        "infocorrect": "Ja, hurra, rätt!",
+        "infoincorrect": "Nej, tvärr, det räcker inte, du behöver också ett efternamn.",
+        "answers": {
+          "a": "Ett förnamn och ett efternamn",
+          "b": "Det räcker med förnamn"
+        }
+      }
+    },
+    "8": {
+      "answerline": "Det finns bara en av mig",
+      "front": "Det finns bara en av mig",
+      "back": {
+        "heading": "Jag är helt unik och därmed oersättlig. Ingen får ta min identitet ifrån mig",
+        "body": "Jag har rätt att vara jag och allt den jag är. Och tillhöra mitt land. Och min släkt och familj."
+      },
+      "quiz": {
+        "question": "Vad betyder egentligen identitet?",
+        "infocorrect": "Ja, hurra. Bra svarat.",
+        "infoincorrect": "Ja på sätt och vis, där står ditt namn och sånt, men identitet handlar också om dina tankar, åsikter och din personlighet.",
+        "answers": {
+          "a": "Känslan av att vara en egen person, med en alldeles egen personlighet.",
+          "b": "Det är allt som står i mitt pass"
+        }
+      }
+    },
+    "9a": {
+      "answerline": "Jag får vara med mina föräldrar",
+      "front": "Jag får vara med mina föräldrar",
+      "back": {
+        "heading": "Om jag är trygg hos mina föräldrar får ingen hindra mig från att vara med dem. Om mina föräldrar inte bor tillsammans har jag rätt att träffa dem båda, om jag vill. Även om de bor i ett annat land än jag",
+        "body": "Dina föräldrar behöver inte tycka om varandra eller träffas. Men du har rätt att tycka om dem och träffa båda dina föräldrar."
+      },
+      "quiz": {
+        "question": "Kan någon av dina föräldrar förbjuda dig att träffa den andre föräldern?",
+        "infocorrect": "Nej, du har rätt att vara med båda dina föräldrar",
+        "infoincorrect": "Fel svar faktiskt, du har rätt att vara med båda dina föräldrar",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "11a": {
+      "answerline": "Jag har rätt att leva i mitt eget land",
+      "front": "Jag har rätt att leva i mitt eget land",
+      "back": {
+        "heading": "Ingen får föra bort mig till ett annat land mot min vilja",
+        "body": "Att mina föräldrar och hela familjen flyttar är en sak. Men det är inte tillåtet att släktingar tar med sig mig eller tvingar mig kvar i ett annat land. Eller att min ena förälder för bort mig till ett annat land mot min andra förälderns och min vilja."
+      },
+      "quiz": {
+        "question": "Vad kallas det i lagen att någon för bort något mot sin vilja?",
+        "infocorrect": "Ja, till och med en förälder kan dömas för kidnappning.",
+        "infoincorrect": "Inte helt rätt, men nästan. Lagen brukar kalla det för kidnappning.",
+        "answers": {
+          "a": "Bortrövande",
+          "b": "Kidnappning"
+        }
+      }
+    },
+    "12a": {
+      "answerline": "Jag har rätt att säga hur jag vill ha det",
+      "front": "Jag har rätt att säga hur jag vill ha det",
+      "back": {
+        "heading": "När vuxna ska ta beslut som rör mig och mitt liv har jag rätt att säga hur jag tycker att beslutet borde vara",
+        "body": "Vuxna bestämmer mycket i ditt liv. Men ibland behöver de fråga dig hur du vill ha det. Särskilt när det förändrar ditt liv på något sätt. Kanske blir det inte som du vill ändå. Men då vet de i alla fall vad du känner och tycker."
+      },
+      "quiz": {
+        "question": "Får vuxna bestämma allt i ditt liv?",
+        "infocorrect": "Ja, såklart ska de fråga dig!",
+        "infoincorrect": "Nja, om det gäller ditt liv ska de faktiskt fråga dig.",
+        "answers": {
+          "a": "Ja det får de.",
+          "b": "Ja ganska mycket, men om det gäller mitt liv ska de fråga mig också."
+        }
+      }
+    },
+    "12b": {
+      "answerline": "Vad jag tycker spelar roll. Vuxna måste lyssna på min åsikt och respektera den när det gäller saker som rör mig och mitt liv",
+      "front": "Vad jag tycker spelar roll",
+      "back": {
+        "heading": "Vuxna måste lyssna på min åsikt och respektera den när det gäller saker som rör mig och mitt liv",
+        "body": "Jag har rätt att ha åsikter om saker i mitt liv. Vuxna kan inte bestämma precis allt. När någonting har med ditt liv att göra ska vuxna fråga vad jag tycker."
+      },
+      "quiz": {
+        "question": "Är det ok att vuxna försöker styra ditt liv utan att fråga vad du tycker?",
+        "infocorrect": "Rätt svar. Bra att veta, eller hur?",
+        "infoincorrect": "Jo, om det gäller ditt liv och hur du har det ska vuxna fråga dig vad du tycker. Bra att veta eller hur?",
+        "answers": {
+          "a": "Nej, om det handlar om mitt liv ska de fråga mig.",
+          "b": "Ja, vuxna behöver aldrig fråga vad barn tycker."
+        }
+      }
+    },
+    "13a": {
+      "answerline": "Mina åsikter är värdefulla. Jag har rätt att säga vad jag tycker och tänker",
+      "front": "Mina åsikter är värdefulla",
+      "back": {
+        "heading": "Jag har rätt att säga vad jag tycker och tänker",
+        "body": "Även jag som är ett barn har rätt att säga vad jag tycker. Mina åsikter är lika värdefulla som alla andras. Även vuxnas."
+      },
+      "quiz": {
+        "question": "Om du och en vuxen tycker olika om något, vem har mest rätt?",
+        "infocorrect": "Perfekt svar.",
+        "infoincorrect": "Tråkiga nyheter - du svarade fel. Den goda nyheten är att dina åsikter är lika värdefulla som en vuxens.",
+        "answers": {
+          "a": "Den vuxna",
+          "b": "Jag",
+          "c": "Det är ok att vi tycker olika."
+        }
+      }
+    },
+    "13b": {
+      "answerline": "Jag säger vad jag tycker är rätt eller fel. Jag får säga vad jag tycker så länge jag inte skadar andra",
+      "front": "Jag säger vad jag tycker är rätt och fel",
+      "back": {
+        "heading": "Jag får säga vad jag tycker så länge jag inte skadar andra",
+        "body": "Jag har rätt att säga till och bli lyssnad på om jag tycker något är fel. Eller om jag tycker något skulle vara på ett annat sätt."
+      },
+      "quiz": {
+        "question": "Om man säger vad som känns rätt eller fel till någon, är det att bråka?",
+        "infocorrect": "Det kan kännas obehagligt att säga ifrån ibland, men det är inte att bråka. Om man säger det på ett trevligt sätt.",
+        "infoincorrect": "Kan kännas så ibland, men att säga ifrån om sånt som är viktigt för dig är inte att bråka. Kanske mer som att vara bestämd?",
+        "answers": {
+          "a": "Nej, jag har rätt att säga vad som inte funkar eller vad som funkar för mig för att jag ska må bra hemma, i skolan och med kompisar.",
+          "b": "Ja, det är samma sak som att bråka."
+        }
+      }
+    },
+    "13c": {
+      "answerline": "Jag väljer själv",
+      "front": "Jag väljer själv",
+      "back": {
+        "heading": "Jag har rätt att läsa, skriva och lyssna på vad jag vill.",
+        "body": "Jag har rätt att uttrycka mig och att ta del av andras tankar och åsikter utan att en människa eller mitt land begränsar mig."
+      },
+      "quiz": {
+        "question": "Kan vuxna förbjuda dig att uttrycka dina tankar och åsikter?",
+        "infocorrect": "Grattis, du svarade helt rätt. För du har rätt att själv välja vad du vill uttrycka.",
+        "infoincorrect": "Inte helt rätt tyvärr, du har rätt att själv välja vad du vill uttrycka.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "14a": {
+      "answerline": "Jag har min egen tro. Jag har rätt att ha vilken religion eller tro på vilken gud jag vill, eller att välja att inte ha en religion eller tro på någon gud. Det bestämmer jag själv",
+      "front": "Jag har min egen tro",
+      "back": {
+        "heading": "Jag har rätt att ha vilken religion eller tro på vilken gud jag vill, eller att välja att inte ha en religion eller tro på någon gud. Det bestämmer jag själv.",
+        "body": "Jag väljer själv om jag tror på något större - en gud till exempel. Ingen får reta eller mobba mig för det. Det kallas för religionsfrihet. Jag är fri att tro på vad jag vill."
+      },
+      "quiz": {
+        "question": "Vem bestämmer vad du ska tro på?",
+        "infocorrect": "Just det!",
+        "infoincorrect": "Jo, du bestämmer ju.",
+        "answers": {
+          "a": "Ingen",
+          "b": "Jag"
+        }
+      }
+    },
+    "14b": {
+      "answerline": "Mina tankar är mina",
+      "front": "Mina tankar är mina",
+      "back": {
+        "heading": "Min familj kan ge mig vägledning, men får aldrig bestämma vad jag ska tänka och tycka.",
+        "body": "Min familj vägleder och hjälper mig, men tvingar mig aldrig att tycka och tänka på ett sätt som jag inte vill."
+      },
+      "quiz": {
+        "question": "Måste du ha samma åsikter som dina föräldrar?",
+        "infocorrect": "Absolut, du är en egen person.",
+        "infoincorrect": "Nja, du behöver faktiskt inte tycka som dina föräldrar. Du har troligen egna åsikter om saker och ting.",
+        "answers": {
+          "a": "Ja, vi är en familj och tycker alltid lika.",
+          "b": "Nej, jag är en egen person med egna åsikter."
+        }
+      }
+    },
+    "15": {
+      "answerline": "Jag väljer om jag vill vara med",
+      "front": "Jag väljer om jag vill vara med",
+      "back": {
+        "heading": "Jag har rätt att vara med i föreningar och gå på möten, om de är fredliga.",
+        "body": "Ingen kan hindra mig att gå med i föreningar eller organisationer så länge de inte skadar mig eller någon annan."
+      },
+      "quiz": {
+        "question": "Kan någon tvinga dig att vara med i ett politiskt parti eller nån annan organisation som du inte gillar?",
+        "infocorrect": "Helt rätt. Såklart inte!",
+        "infoincorrect": "Fel svar, tyvärr. Ingen kan tvinga dig.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "16a": {
+      "answerline": "Det finns sådant som bara är mitt. Ingen får läsa mina brev, mail eller dagböcker utan lov. Jag har rätt till ett privatliv och att få vara ifred",
+      "front": "Ingen får läsa mina brev, mail eller dagböcker utan lov. Jag har rätt till ett privatliv och att få vara ifred.",
+      "back": {
+        "heading": "Det finns sådant som bara är mitt",
+        "body": "Jag har rätt att få vara ifred om jag behöver. Stänga dörren om mig. Säga vad jag tänker på. Men jag bestämmer alltid själv vad jag vill visa. Och för vem."
+      },
+      "quiz": {
+        "question": "Får någon annan läsa dina sms, din dagbok eller gå in i dina appar utan att fråga dig?",
+        "infocorrect": "Såklart, du bestämmer själv vad du visar så även dina föräldrar ska fråga dig om lov.",
+        "infoincorrect": "Nej, det är du som bestämmer, så de måste fråga dig först.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "16b": {
+      "answerline": "Jag har rätt till min värdighet. Ingen får håna mig för den jag är eller för det jag tycker. Ingen får heller säga sådant som inte är sant om mig",
+      "front": "Jag har rätt till min värdighet",
+      "back": {
+        "heading": "Ingen får håna mig för den jag är eller för det jag tycker. Ingen får heller säga sådant som inte är sant om mig",
+        "body": "Jag är alltid värdefull. Och det är inte ok om någon gör eller säger saker som gör att jag känner mig kränkt eller värdelös."
+      },
+      "quiz": {
+        "question": "Vad betyder det att vara värdefull?",
+        "infocorrect": "Yes! Den satte du!",
+        "infoincorrect": "Bra självkänsla du har! Härligt! Men du svarade fel den här gången.",
+        "answers": {
+          "a": "Att jag alltid är lika mycket värd som andra",
+          "b": "Att jag är värd mer än andra"
+        }
+      }
+    },
+    "16c": {
+      "answerline": "Jag är mig själv. Jag vägrar att förminska mig själv. Andra människor har inte heller rätt att förminska mig",
+      "front": "Jag är mig själv",
+      "back": {
+        "heading": "Jag vägrar att förminska mig själv. Andra människor har inte heller rätt att förminska mig.",
+        "body": "Ingen får göra så att jag känner mig oviktig eller fel på något sätt. Jag har lika stor rätt som andra att må bra och vara stolt över mig själv."
+      },
+      "quiz": {
+        "question": "Vad betyder det att förminska någon?",
+        "infocorrect": "Bravo!",
+        "infoincorrect": "Du svarade fel på den här frågan. Men du är viktig ändå.",
+        "answers": {
+          "a": "Att få någon att känna sig liten och obetydlig",
+          "b": "Att få någon att känna sig viktig"
+        }
+      }
+    },
+    "17": {
+      "answerline": "Jag har rätt till kunskap",
+      "front": "Jag har rätt till kunskap",
+      "back": {
+        "heading": "Jag har rätt att läsa tidningar, lyssna på radio, se på tv och läsa på internet för att få ta del av information som är viktigt för mig.",
+        "body": "Jag tar del av kunskap och information som utvecklar mig som människa."
+      },
+      "quiz": {
+        "question": "Kan dina föräldrar förbjuda dig att läsa en speciell bok eller följa någon i sociala medier?",
+        "infocorrect": "Rätt svar!",
+        "infoincorrect": "Inte egentligen, men ibland kanske de gör det för att de vill skydda dig.",
+        "answers": {
+          "a": "Nej, jag får leta kunskap och information som jag vill och behöver",
+          "b": "Ja"
+        }
+      }
+    },
+    "18": {
+      "answerline": "Båda mina föräldrar ska ta ansvar för mig",
+      "front": "Båda mina föräldrar ska ta ansvar för mig",
+      "back": {
+        "heading": "Mina föräldrar ska tänka på vad som är bäst för mig. Om de behöver ska de få hjälp att vara bra föräldrar.",
+        "body": "Kanske bor du bara med en förälder? Eller så bor du med två? Dina föräldrar ska alltid ta hand om dig. Båda två. Om de inte kan det ska de se till att de får hjälp att vara bättre föräldrar."
+      },
+      "quiz": {
+        "question": "Är det bara den förälder du bor med som har ansvar för dig?",
+        "infocorrect": "Just det, båda har ansvar för dig.",
+        "infoincorrect": "Jo, båda föräldrarna har ansvar för dig. Så tyvärr fel svar.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej, båda mina föräldrar ska ha ansvar."
+        }
+      }
+    },
+    "19a": {
+      "answerline": "Jag har rätt att växa upp i trygghet. Jag behandlas väl hemma. Ingen får på något sätt göra mig illa, slå mig eller utnyttja mig sexuellt",
+      "front": "Jag har rätt att växa upp i trygghet",
+      "back": {
+        "heading": "Jag behandlas väl hemma. Ingen får på något sätt göra mig illa, slå mig eller utnyttja mig sexuellt. Om det händer har jag rätt att få hjälp och skydd från samhället.",
+        "body": "Om mitt liv ser ut så här ibland är det inte mitt fel. Det är de vuxnas fel. Då kan jag prata med en vuxen jag litar på om hur jag har det."
+      },
+      "quiz": {
+        "question": "Är det nån gång ok att slå dig eller att ta på dig på ett sätt som inte känns rätt?",
+        "infocorrect": " Just det!",
+        "infoincorrect": "Nej, det är absolut inte ok",
+        "answers": {
+          "a": "Aldrig",
+          "b": "Ja"
+        }
+      }
+    },
+    "19b": {
+      "answerline": "Jag kräver respekt. Hemma får ingen förnedra eller bryta ner mig mentalt eller fysiskt",
+      "front": "Jag kräver respekt",
+      "back": {
+        "heading": "Hemma får ingen förnedra eller bryta ner mig mentalt eller fysiskt",
+        "body": "Jag har rätt att säga ifrån om jag blir ledsen för något som någon säger om mig. Eller om någon ser på mig på ett sätt som får mig att må dåligt. Jag har rätt att bli respekterad för den jag är. Av alla."
+      },
+      "quiz": {
+        "question": "Vad betyder ordet respekt?",
+        "infocorrect": "Hurra, rätt svar.",
+        "infoincorrect": "Nej, då är de bara rädda. Det är inte samma sak som att känna respekt.",
+        "answers": {
+          "a": "Att någon tycker att mina egenskaper är värdefulla",
+          "b": "Att människor är rädda för mig"
+        }
+      }
+    },
+    "20": {
+      "answerline": "Jag har rätt att växa upp i ett gott hem",
+      "front": "Jag har rätt att växa upp i ett gott hem",
+      "back": {
+        "heading": "Om jag inte kan bo hemma har jag rätt att bo och växa upp i ett annat hem eller någonstans där jag kan känna mig trygg.",
+        "body": "De vuxna som tar hand om mig ska alltid se till att jag mår bra och känner mig trygg i det som är mitt hem."
+      },
+      "quiz": {
+        "question": "Är det barns rättigheter att ha ett hem?",
+        "infocorrect": "Javisst är det så, det ingår som en rättighet i Barnkonventionen.",
+        "infoincorrect": "Jo, det ingår som en rättighet i Barnkonventionen.",
+        "answers": {
+          "a": "Nej",
+          "b": "Ja"
+        }
+      }
+    },
+    "22a": {
+      "answerline": "Om jag är på flykt har jag rätt till skydd och stöd",
+      "front": "Om jag är på flykt har jag rätt till skydd och stöd",
+      "back": {
+        "heading": "Alla barn som är flyktingar har rätt till skydd och hjälp. Den som har kommit bort från sin familj ska få hjälp att hitta dem och få hjälp att återförenas.",
+        "body": "Jag har rätt att få skydd i ett annat land om det är krig eller om jag är förföljd i det land jag kommer ifrån."
+      },
+      "quiz": {
+        "question": "Vad betyder att söka asyl?",
+        "infocorrect": "Helt rätt!",
+        "infoincorrect": "Lite rätt och lite fel. Man kan söka asyl för att få leva i Sverige, precis som du svarar, men även i andra länder.",
+        "answers": {
+          "a": "Att jag vill bli svensk",
+          "b": " Att jag kan söka skydd i ett land om jag inte är trygg och säker i mitt hemland"
+        }
+      }
+    },
+    "23a": {
+      "answerline": "Jag har rätt till ett bra liv",
+      "front": "Jag har rätt till ett bra liv",
+      "back": {
+        "heading": "Om jag har en funktionsvariation ska jag få den hjälp och träning som behövs för att leva ett självständigt och värdigt liv",
+        "body": ""
+      },
+      "quiz": {
+        "question": "Vad är färdtjänst?",
+        "infocorrect": "Helt rätt. Det visste du!",
+        "infoincorrect": "Det var tyvärr fel. Och nu lärde du dig ett nytt ord!",
+        "answers": {
+          "a": "Ett bussbolag",
+          "b": "Skjuts man kan få, med taxi eller minibuss om man har stora svårigheter att förflytta sig själv. Om man t ex inte kan gå utan måste använda rullstol."
+        }
+      }
+    },
+    "24a": {
+      "answerline": "Jag behöver inte följa traditioner som skadar mig",
+      "front": "Jag behöver inte följa traditioner som skadar mig",
+      "back": {
+        "heading": "Om min familj eller släkt har traditioner som kan skada mig och min hälsa kan ingen tvinga mig att följa dem.",
+        "body": "Om din familj säger att du måste göra något som du inte vill och som kan skada din hälsa har du rätt att säga nej. Även om de säger att så har vi i alltid gjort i vårt land, eller vår släkt eller i vår familj."
+      },
+      "quiz": {
+        "question": "Kan någon tvinga dig att göra saker du inte vill och som kan skada dig på något sätt?",
+        "infocorrect": "Hurra, rätt svar.",
+        "infoincorrect": "TBD",
+        "answers": {
+          "a": "Nej ingen kan tvinga mig. Jag har rätt att säga nej",
+          "b": "Ja, om någon i familj tycker att jag ska göra det måste jag lyda"
+        }
+      }
+    },
+    "24b": {
+      "answerline": "Jag har rätt att få vård",
+      "front": "Jag har rätt att få vård",
+      "back": {
+        "heading": "Jag har rätt att få veta hur jag håller mig frisk. Om jag skadas eller blir sjuk ska jag få den sjukvård eller behandling jag behöver. Det land jag bor i ska ta hand om mig på bästa möjliga sätt.",
+        "body": "Jag har rätt till bästa möjliga hälsa och mitt land ska hjälpa mig att bli frisk om jag blir skadad eller sjuk."
+      },
+      "quiz": {
+        "question": "Har du rätt att få vård om du blir sjuk eller skadar dig?",
+        "infocorrect": "Hurra för att du svarade rätt. Och för att du har rätt till bra sjukvård.",
+        "infoincorrect": "Bu för fel svar, men hurra för att du har rätt till bra sjukvård.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "26": {
+      "answerline": "Det finns ett skyddsnät för mig och min familj",
+      "front": "Det finns ett skyddsnät för mig och min familj",
+      "back": {
+        "heading": "Om det behövs ska jag få hjälp av det land jag bor i med mat, kläder och ett tryggt hem.",
+        "body": "Jag känner mig trygg, har mat kläder och någonstans att bo. Om inte mina föräldrar eller de jag bor med kan hjälpa mig med det ska mitt land hjälpa till."
+      },
+      "quiz": {
+        "question": "Varför har man kläder?",
+        "infocorrect": "Jajamensan, först och främst har vi kläder för att skydda vår kropp på olika sätt.",
+        "infoincorrect": "Ja på sätt och vis. Men inte helt rätt, för först och främst har vi kläder för att skydda vår kropp på olika sätt.",
+        "answers": {
+          "a": "Egentligen är det för att man inte ska frysa och bli sjuk, eller frysa ihjäl när det är kallt.",
+          "b": "För att vara snygg."
+        }
+      }
+    },
+    "27b": {
+      "answerline": "Jag växer och mår bra. Det är viktigt att jag får mat, rent vatten, kläder och boende så jag kan utvecklas och växa, både när det gäller kroppen och själen",
+      "front": "Jag växer och mår bra",
+      "back": {
+        "heading": "Det är viktigt att jag får mat, rent vatten, kläder och boende så jag kan utvecklas och växa, både när det gäller kroppen och själen.",
+        "body": "Att må bra kan vara så mycket. Att känna sig glad. Att det finns vatten när man är törstig. Att ha kläder och inte frysa. Att någon tycker om mig. Jag har rätt att må bra, växa och utvecklas."
+      },
+      "quiz": {
+        "question": "Vad tror du är det största hotet mot barn hälsa i världen?",
+        "infocorrect": "Ja, brist på mat och brist på nyttig mat.",
+        "infoincorrect": "Det är naturligtvis också jätteviktigt, men det största hotet är brist på mat och näring.",
+        "answers": {
+          "a": "Vattenbrist",
+          "b": "Brist på mat och näring",
+          "c": "Brist på kärlek"
+        }
+      }
+    },
+    "28a": {
+      "answerline": "Jag har rätt att gå i skolan. Det ska finnas gratis skola för alla barn",
+      "front": "Jag har rätt att gå i skolan",
+      "back": {
+        "heading": "Det ska finnas gratis skola för alla barn",
+        "body": "Jag har rätt att gå i skolan. Mina föräldrar eller andra vuxna som tar hand om mig ska se till att jag kan delta i undervisningen."
+      },
+      "quiz": {
+        "question": "Måste kommunen där du bor se till att det finns en plats i skolan för dig?",
+        "infocorrect": "Ja, det måste kommunen.",
+        "infoincorrect": "Jo, det måste kommunen.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "28b": {
+      "answerline": "Jag är trygg i min skola. Ingen har rätt att trakassera mig, förnedra mig, hota eller mobba mig",
+      "front": "Jag är trygg i min skola",
+      "back": {
+        "heading": "Ingen har rätt att trakassera mig, förnedra mig, hota eller mobba mig.",
+        "body": "Alla barn har rätt att känna sig trygga i skolan. Om någon slår mig, säger elaka saker eller annat som får mig att må dåligt är det viktigt att jag berättar det för någon som kan hjälpa mig att känna mig trygg igen."
+      },
+      "quiz": {
+        "question": "Är det mobbing att råka göra någon illa?",
+        "infocorrect": "Ja, så är det.",
+        "infoincorrect": "Att råka göra någon illa är inte samma sak som mobbing.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej, mobbing är att skada någon flera gånger för att vara taskig"
+        }
+      }
+    },
+    "29a": {
+      "answerline": "Jag tar hand om miljön",
+      "front": "Jag tar hand om miljön",
+      "back": {
+        "heading": "I min skola lär jag mig att leva på ett sätt som är bra för miljön, eftersom miljön är viktig för oss alla.",
+        "body": "Jag får lära mig att ta hand om miljö och förstår hur jag kan leva utan att förstöra vår planet."
+      },
+      "quiz": {
+        "question": "Vilken av dessa är en miljöfråga?",
+        "infocorrect": "Rätt svar, ni har säkert pratat om den här frågan på lektionerna i skolan.",
+        "infoincorrect": "Tyvärr fel, slänga skräp i skogen är rätt svar. Vill du lära dig mer om miljöfrågor så prata gärna om det med dina lärare",
+        "answers": {
+          "a": "Slänga skräp i naturen",
+          "b": "Skrika och leka i skogen"
+        }
+      }
+    },
+    "29b": {
+      "answerline": "Jag respekterar andra",
+      "front": "Jag respekterar andra",
+      "back": {
+        "heading": "Jag har rätt att bli respekterad. Jag ska också respektera andra. I min skola får jag lära mig hur man lever i fred tillsammans med andra.",
+        "body": "Det finns vuxna i mitt liv som hjälper och vägleder mig så att jag växer upp och blir en ansvarsfull människa."
+      },
+      "quiz": {
+        "question": "Vad betyder egentligen ordet respekt?",
+        "infocorrect": "Precis så. Fundera gärna på sist du inte visade respekt för någon eller när du kände att någon annan inte visade respekt för dig?",
+        "infoincorrect": "Nja, nu svarade du inte helt rätt. Respekt handlar mer om att andra är värdefulla precis som de är och du visar det. Fundera gärna på sist du inte visade respekt för någon eller när du kände att någon annan inte visade respekt för dig?",
+        "answers": {
+          "a": "Att jag tycker att andra är värdefulla precis som de är och visar det.",
+          "b": "Att jag är tuff så att andra blir rädda för mig."
+        }
+      }
+    },
+    "29c": {
+      "answerline": "Jag lär mig nya saker. Skolan ska ge mig möjlighet och uppmuntra mig att lära mig nya saker och att utveckla min personlighet",
+      "front": "Jag lär mig nya saker",
+      "back": {
+        "heading": "Skolan ska ge mig möjlighet och uppmuntra mig att lära mig nya saker och att utveckla min personlighet.",
+        "body": "Jag har rätt att få hjälp i skolan. För att klara målen i skolan. Och om någonting är lätt för mig har jag också rätt att lära mig mer och utvecklas så mycket som möjligt."
+      },
+      "quiz": {
+        "question": "Om du har adhd, dyslexi, asperger eller någon annan diagnos. Har du rätt till extra hjälp då?",
+        "infocorrect": "Självklart!",
+        "infoincorrect": "Jo, det har du rätt till.",
+        "answers": {
+          "a": "Nej",
+          "b": "Ja"
+        }
+      }
+    },
+    "30a": {
+      "answerline": "Jag har rätt att fira högtider med min familj",
+      "front": "Jag har rätt att fira högtider med min familj",
+      "back": {
+        "heading": "I min familj firar vi de högtider vi själva vill, även om de är annorlunda än de flesta andras i vårt land.",
+        "body": "Jag har möjlighet att vara med när min familj ska fira högtider som är viktiga i vår religion och kultur."
+      },
+      "quiz": {
+        "question": "Har du rätt att få ledigt från skolan om du vill fira en högtid som är viktig för din familj?",
+        "infocorrect": "Ja det har du. Om dina traditioner inte finns med som en ledig dag har du rätt till det.",
+        "infoincorrect": "Jo, det har du faktiskt om dina traditioner inte finns med som en ledig dag har du rätt till det.",
+        "answers": {
+          "a": "Ja, det har jag.",
+          "b": "Nej, det går inte."
+        }
+      }
+    },
+    "30b": {
+      "answerline": "Jag talar mitt eget språk",
+      "front": "Jag talar mitt eget språk",
+      "back": {
+        "heading": "Jag har rätt att tala mitt eget språk även om det är ett annat språk än vad de flesta andra pratar i mitt land. Jag får också lyssna på musik och läsa böcker på mitt språk.",
+        "body": "Jag har ett eget språk. Det är mitt språk och jag får använda det."
+      },
+      "quiz": {
+        "question": "Kan man tvinga någon som talar ett annat språk än svenska att aldrig använda sitt eget språk?",
+        "infocorrect": "Fantastiskt! Du svarade rätt.",
+        "infoincorrect": "Tyvärr fel svar.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "31a": {
+      "answerline": "Jag gör sånt jag tycker om",
+      "front": "Jag gör sånt jag tycker om",
+      "back": {
+        "heading": "På min fritid får jag hålla på med sådant som jag tycker är kul",
+        "body": "Jag har rätt att vara barn och göra sådant som jag tycker om på din fritid. Ingen kan tvinga mig att jobba och vuxna som bestämmer ska se till att det finns möjlighet för mig att leka och utvecklas på min fritid."
+      },
+      "quiz": {
+        "question": "Vem är ansvarig för att du inte har något meningsfullt att göra på din fritid?",
+        "infocorrect": "Ja, det beror på. Hur ser det ut i din kommun när det gäller fritidsaktiviteter?",
+        "infoincorrect": "Nja, det beror på. Fundera på hur din fritid skulle kunna kännas roligare. Och vem eller vilka du skulle behöva kontakta för att få hjälp och stöd.",
+        "answers": {
+          "a": "Politikerna",
+          "b": "Det beror på. Det kan vara föräldrar som inte bryr sig eller kommunen som inte bryr sig. Ibland kan det vara jag själv som inte orkar hitta på något."
+        }
+      }
+    },
+    "31b": {
+      "answerline": "Jag är kreativ",
+      "front": "Jag är kreativ",
+      "back": {
+        "heading": "Jag får måla, rita, skriva, spela, dansa, sjunga eller vara kreativ på vilket sätt jag vill. Det land jag bor i ska arbeta för att det finns sådana möjligheter.",
+        "body": "Jag gör det jag behöver och mår bra av på min fritid."
+      },
+      "quiz": {
+        "question": "Kan någon tvinga dig att sluta göra det du älskar att göra?",
+        "infocorrect": "Självklart. Men det handlar också om att visa respekt för andra. Om du exempelvis spelar väldigt hög musik kan ju någon be dig sänka lite.",
+        "infoincorrect": "Nja, visst kan någon be dig att inte störa, men ingen kan tvinga dig att sluta med något du älskar. Då gäller istället att hitta lösningar så att du kan fortsätta sjunga, dansa, rita och vara kreativ.",
+        "answers": {
+          "a": "Nej, jag har rätt att uttrycka mig och min kreativitet.",
+          "b": "Ja, om det är olämpligt och stör någon."
+        }
+      }
+    },
+    "31c": {
+      "answerline": "Jag leker och vilar",
+      "front": "Jag leker och vilar",
+      "back": {
+        "heading": "Jag har rätt att leka, vila och ha fritid.",
+        "body": "Jag gör det jag behöver och mår bra av på min fritid."
+      },
+      "quiz": {
+        "question": "Kan vuxna tvinga dig att jobba på din fritid?",
+        "infocorrect": "Helt rätt.",
+        "infoincorrect": "Otur, när du är ett barn har du rätt att leka och vila. Vilken tur att du svarade fel!",
+        "answers": {
+          "a": "Jag hjälper till om jag vill, men om jag behöver kan jag säga nej.",
+          "b": "Ja."
+        }
+      }
+    },
+    "32": {
+      "answerline": "Ingen får utnyttja mig",
+      "front": "Ingen får utnyttja mig",
+      "back": {
+        "heading": "Om jag arbetar har jag rätt att bli väl behandlad. Mitt arbete får inte vara farligt på något sätt och aldrig hindra mig från att gå i skolan.",
+        "body": "Jag arbetar bara om jag väljer det och mår bra av det."
+      },
+      "quiz": {
+        "question": "Kan vuxna säga att du måste jobba istället för att gå i skolan?",
+        "infocorrect": "Helt rätt svar.",
+        "infoincorrect": "Nu svarade du tyvärr fel.",
+        "answers": {
+          "a": "Nej",
+          "b": "Ja"
+        }
+      }
+    },
+    "33a": {
+      "answerline": "Jag skyddas mot droger",
+      "front": "Jag skyddas mot droger",
+      "back": {
+        "heading": "Det land jag bor i ska skydda mig mot narkotika och andra droger. Ingen får utnyttja mig för att tillverka eller sälja droger.",
+        "body": "Ingen får tvinga mig att sälja droger eller att köpa droger. Vuxna som bestämmer ska se till att jag inte behöver ha droger i min närhet."
+      },
+      "quiz": {
+        "question": "Vilka ska skydda dig från droger?",
+        "infocorrect": "Rätt, fråga vuxna vad som görs i ditt område.",
+        "infoincorrect": "Fel svar tyvärr, fråga gärna en vuxna vad politikerna gör i ditt område.",
+        "answers": {
+          "a": "Regeringen, kommunen och andra vuxna",
+          "b": "Föräldrar och kompisar"
+        }
+      }
+    },
+    "34": {
+      "answerline": "Min kropp är bara min. Ingen har rätt att titta på eller röra vid min kropp om jag inte vill. Jag bestämmer själv vem jag vill vara nära. Mitt land ska se till att jag är skyddad mot övergrepp",
+      "front": "Min kropp är bara min",
+      "back": {
+        "heading": "Ingen har rätt att titta på eller röra vid min kropp om jag inte vill. Jag bestämmer själv vem jag vill vara nära. Mitt land ska se till att jag är skyddad mot övergrepp.",
+        "body": "Om någon tar på mig eller tittar på mig på ett sätt som inte känns rätt är det ALDRIG mitt fel. Och jag behöver inte skämmas eller känna mig dum. Om jag är med om något sånt är det viktigt att jag berättar för någon vuxen jag litar på."
+      },
+      "quiz": {
+        "question": "Vad får någon annan göra med dig utan att fråga?",
+        "infocorrect": "Så är det. Bara du bestämmer över din kropp.",
+        "infoincorrect": "Nu blev det lite tokigt. För det är bara du som bestämmer över din kropp. Och andra människor ska fråga om det är ok, innan de kramar dig eller tar på din kropp.",
+        "answers": {
+          "a": "Krama mig",
+          "b": "Ta på min kropp",
+          "c": "Ingen får krama mig eller ta min kropp om jag inte vill"
+        }
+      }
+    },
+    "38": {
+      "answerline": "Jag behöver inte delta i krig",
+      "front": "Jag behöver inte delta i krig",
+      "back": {
+        "heading": "Om jag är under 15 år ska mitt land göra allt som går för att skydda mig från att delta i krig.",
+        "body": "Jag är inte med och startar krig. Jag behöver inte delta i krig.  Och vuxna ska skydda mig från krig."
+      },
+      "quiz": {
+        "question": "Måste barn försvara sitt land?",
+        "infocorrect": "Rätt svar. Barn ska inte tvingas delta i krig.",
+        "infoincorrect": "Fel svar. Barn ska inte tvingas delta i krig.",
+        "answers": {
+          "a": "Ja, det måste alla.",
+          "b": "Nej, barn under 15 år ska skyddas från att delta i krig."
+        }
+      }
+    },
+    "39": {
+      "answerline": "Jag får hjälp att må bra",
+      "front": "Jag får hjälp att må bra",
+      "back": {
+        "heading": "Om jag har blivit utsatt för våld, blivit utnyttjad, misshandlad, varit med om krig eller liknande har jag rätt till hjälp för att må bra igen.",
+        "body": "Om någon kränkt mina rättigheter och skadat mig har jag rätt till hjälp att må bra igen."
+      },
+      "quiz": {
+        "question": "Kan du be vuxna exempelvis föräldrar, lärare, kurator, polisen om hjälp om du har varit med om något riktigt hemskt och mår dåligt?",
+        "infocorrect": "Rätt, vuxna ska hjälpa dig att må bra igen.",
+        "infoincorrect": "Fel, vuxna ska hjälpa dig att må bra igen.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "41": {
+      "answerline": "Ju bättre jag behandlas desto bättre utvecklas jag och ju tryggare blir jag som vuxen",
+      "front": "Ju bättre jag behandlas desto bättre utvecklas jag och ju tryggare blir jag som vuxen",
+      "back": {
+        "heading": "Alla artiklarna berättar om minimikraven för barns rättigheter. Varje land får gärna göra mer än vad som står i konventionen för oss barn, så att vi får en trygg uppväxt och utvecklas så bra som möjligt. Det är viktigt för mig som människa, mitt land och för världen.",
+        "body": "Jag behandlas väl när jag växer upp. Det gör mig trygg. Jag lär mig också mina rättigheter så att jag vet vad jag ska säga och göra om någon kränker dem."
+      },
+      "quiz": {
+        "question": "Vad kan du göra om någon kränker dina rättigheter?",
+        "infocorrect": "Hurra, rätt svar. Fundera på vilka vuxna det finns i ditt liv som du litar på och som du skulle kunna prata med.",
+        "infoincorrect": "Fel tyvärr. Fundera på vilka vuxna det finns i ditt liv som du litar på och som du skulle kunna prata med.",
+        "answers": {
+          "a": "Prata med en vuxen som jag litar på",
+          "b": "Det finns ingenting jag kan göra"
+        }
+      }
+    },
+    "42": {
+      "answerline": "Alla ska känna till mina rättigheter. Mitt land ska se till att alla – både barn och vuxna – känner till barns rättigheter",
+      "front": "Alla ska känna till mina rättigheter",
+      "back": {
+        "heading": "Mitt land ska se till att alla – både barn och vuxna – känner till barns rättigheter",
+        "body": "Barnkonventionen innehåller något som kallas artiklar som beskriver mina rättigheter. Så att jag vet mina rättigheter när jag är med kompisar och vuxna. Hemma och i skolan. Och efter skolan förstås."
+      },
+      "quiz": {
+        "question": "Dina rättigheter är lag i Sverige?",
+        "infocorrect": "Javisst är det helt rätt!",
+        "infoincorrect": "Jo, Barnkonventionen ger barn under 18 år ett extra skydd i lagen.",
+        "answers": {
+          "a": "Ja, så är det",
+          "b": "Nej, så är det inte"
+        }
+      }
+    },
+    "5": {
+      "front": "Mina föräldrar eller andra vuxna som har ansvar för mig ska se till att jag har det bra.",
+      "back": {
+        "heading": "Mina föräldrar har ansvar för mig. Mina föräldrar eller andra vuxna som har ansvar för mig ska se till att jag har det bra. De ska stötta mig under hela min uppväxt",
+        "body": "Det spelar ingen roll hur gammal jag är. De vuxna som har ansvar för mig ska alltid hjälpa mig. Om de inte kan det ska de fråga någon annan vuxen om råd."
+      }
+    },
+    "7b": {
+      "front": "Jag har rätt att vara medborgare i ett land",
+      "back": {
+        "heading": "Från det att jag föds har jag rätt till ett medborgarskap och att vara en person i lagens mening.",
+        "body": "När jag föds i ett land blir jag medborgare i det landet, fast jag är liten."
+      }
+    },
+    "10": {
+      "front": "Jag får leva med båda mina föräldrar",
+      "back": {
+        "heading": "Om jag och mina föräldrar skiljs åt mot vår vilja ska vi få hjälp att träffas igen.",
+        "body": "Tänk om jag kommer bort från mina föräldrar. När jag är på flykt från ett krig. Då har jag rätt att få hjälp att hitta dem igen. Så att vi kan fortsätta leva som en familj."
+      }
+    },
+    "21": {
+      "front": "Jag har rätt till en bra uppväxt",
+      "back": {
+        "heading": "Om jag inte har en trygg uppväxt i den familj eller det land jag är född i kan jag bli adopterad av en familj någon annanstans. De som beslutar i en så viktig fråga ska alltid tänka på mitt bästa i första hand",
+        "body": "Jag växer upp bland människor som respekterar min bakgrund, min religion, mitt språk och min kultur."
+      }
+    },
+    "25": {
+      "front": "Jag har rätt att berätta hur jag har det",
+      "back": {
+        "heading": "Om jag bor någon annanstans än hemma ska det boendet vara bra för mig och någon ska kontrollera det med jämna mellanrum. Staten har ansvar för mitt bästa.",
+        "body": "Mitt land ska se till mitt bästa och se till att jag har det bra om jag inte kan leva med mina föräldrar."
+      }
+    },
+    "27a": {
+      "front": "Jag har rätt till bra mat",
+      "back": {
+        "heading": "Den mat jag äter ska vara bra för mig och min hälsa. Om min familj inte kan ge mig mat ska mitt land hjälpa mig så jag får äta mig mätt",
+        "body": "Mina föräldrar eller de vuxna som tar hand om mig ska se till att jag får bra och näringsriktig mat. Så att jag kan växa och utvecklas."
+      }
+    },
+    "27c": {
+      "front": "Jag har rätt att bo någonstans",
+      "back": {
+        "heading": "Jag har rätt att bo i ett hem där jag är trygg. Jag och min familj ska få hjälp av det land jag bor i om vi inte själva kan ordna det.",
+        "body": "Det är viktigt att jag har ett hem där jag känner mig trygg."
+      }
+    },
+    "30c": {
+      "answerline": "Jag behandlas med värdighet",
+      "front": "Jag behandlas med värdighet",
+      "back": {
+        "heading": "Det spelar ingen roll om jag tillhör en nationell minoritet i mitt land. Jag har rättigheter och ska behandlas med värdighet.",
+        "body": "Jag har rätt att bli respekterad för den jag är och bli behandlad väl."
+      },
+      "quiz": {
+        "question": "Har de som är fler rätt att se ned på mig om jag är annorlunda?",
+        "infocorrect": "Ja, såklart Världen skulle vara helt annorlunda om alla fick vara sig själva. Visst skulle det vara skönt?",
+        "infoincorrect": "Vad synd att du tänker så. Om alla följer Barnkonventionen skulle ingen behöva må dåligt för att någon behandlade dem illa. Det är väl bra, eller hur?",
+        "answers": {
+          "a": "Ja, det brukar ju vara så och det är svårt att göra något åt.",
+          "b": "Nej, alla människor, även barn är lika mycket värda och lika värdefulla."
+        }
+      }
+    },
+    "35": {
+      "front": "Jag äger mig själv",
+      "back": {
+        "heading": "Jag kan varken köpas eller säljas.",
+        "body": "Jag är trygg i mitt land och där jag bor. Ingen har rätt att föra bort mig eller sälja mig."
+      }
+    },
+    "36": {
+      "answerline": "Jag har rätt till skydd",
+      "front": "Jag har rätt till skydd",
+      "back": {
+        "heading": "Om någon skadar mig eller utnyttjar mig ska mitt land skydda och hjälpa mig.",
+        "body": "Ingen får skada mig eller använda mig på något sätt jag inte vill. Mitt land ska alltid skydda mig."
+      },
+      "quiz": {
+        "question": "Måste polisen lyssna på dig om du har råkat illa ut, t.ex. blivit slagen, hotad eller illa behandlad på något annat sätt?",
+        "infocorrect": "Helt rätt!",
+        "infoincorrect": "Jo, polisen ska lyssna på dig och hjälpa dig och se till att du får skydd.",
+        "answers": {
+          "a": "Ja",
+          "b": "Nej"
+        }
+      }
+    },
+    "37a": {
+      "front": "Mina mänskliga rättigheter gäller alltid",
+      "back": {
+        "heading": "Ingen får fängsla mig eller ta min frihet ifrån mig utan stöd i mitt lands lagar.",
+        "body": "Även om jag har begått ett brott har jag rätt att bli behandlad med värdighet och respekt."
+      }
+    },
+    "37b": {
+      "front": "Jag har rätt till god behandling även om jag döms för brott.",
+      "back": {
+        "heading": "Jag får inte dömas till fängelse, utom som en sista utväg och då på så kort tid som möjligt. I fängelse har jag rätt att ha kontakt med min familj och jag ska inte placeras med vuxna",
+        "body": "Jag ska inte behöva sitta i fängelse tillsammans med vuxna som begått brott,  även om jag också begått ett brott."
+      }
+    },
+    "37c": {
+      "front": "Ingen får hota eller skada mig",
+      "back": {
+        "heading": "Jag får inte utsättas för fysisk eller psykisk tortyr eller annan grym eller förnedrande behandling eller bestraffning. Jag får inte dömas till dödsstraff eller livstids fängelse",
+        "body": "Ingen får döda mig eller skada mig även om jag begått ett brott"
+      }
+    },
+    "40a": {
+      "front": "Jag får bara dömas enligt lagen",
+      "back": {
+        "heading": "Jag är oskyldig till dess att en domstol dömer mig i en rättvis rättegång. Jag har rätt till tolk om jag behöver",
+        "body": "Även om jag har begått ett brott ska jag behandlas som ett barn och med värdighet och respekt. Och jag ska få en rättvis rättegång"
+      }
+    },
+    "40b": {
+      "front": "Jag har rätt till en försvarare",
+      "back": {
+        "heading": "Om jag misstänks för brott har jag rätt att få någon som försvarar mig i domstolen. Den domstol som dömer mig ska vara rättvis och förstå att jag är ett barn",
+        "body": "Jag har alltid rätt att ha en vuxen som kan lagarna vid min sida som försvarar mig när jag begått ett brott"
+      }
+    }
+  }
+}

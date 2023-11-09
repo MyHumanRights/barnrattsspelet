@@ -1,0 +1,324 @@
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { AnimatePresence, motion } from 'framer-motion'
+import useSound from 'use-sound'
+import { setGameState } from '../../api/engine'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import token from '../../assets/svgs/token.png'
+import unlockCardSound from '../../assets/sounds/fx/13-card-unlocked.mp3'
+import Card from '../Card/Card'
+import ChevronRight from '../Icons/ChevronRight'
+import styles from './MobileCardHand.module.scss'
+import Button from '../Button/Button'
+
+const BOOST_COST = -1
+
+const MobileCardHand = ({
+  openBoost,
+  setCurrentState,
+  cards,
+  onCardSelected,
+  cardSelectText,
+  boostedCards = [],
+  tokens = 0,
+  boostable = false,
+  centeredCard = null,
+  removeTokens = () => {},
+  correctCard,
+  interactive = true,
+  isPersuade = false,
+}) => {
+  const { t } = useTranslation('common', { keyPrefix: 'cardhand' })
+  const interactionButtons = useRef(null)
+  const [cardIndex, setCardIndex] = useState()
+  const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
+  const [animateSelectBtn, triggerSelectBtn] = useAnimation({ rotation: 1.3 })
+  const [currentCard, setCurrentCard] = useState(0)
+  const [animate, setAnimate] = useState(false)
+  const [currentCardNumber, setCurrentCardNumber] = useState(1)
+  const totalCards = cards.length
+
+  const {
+    options: { soundEffectsOn, effectsVolume, shouldReduceMotion },
+  } = useContext(OptionsContext)
+  const [playUnlockCardSound] = useSound(unlockCardSound, {
+    volume: effectsVolume,
+  })
+
+  const nextCard = () => {
+    !shouldReduceMotion && handleAnimate()
+    setCurrentCard((prevCard) => (prevCard + 1) % cards.length)
+    setCardIndex(null)
+    if (currentCardNumber < totalCards) {
+      setCurrentCardNumber(currentCardNumber + 1)
+    } else {
+      setCurrentCardNumber(1) // Reset to the first card
+    }
+  }
+
+  const prevCard = () => {
+    handleAnimate()
+    setCurrentCard((prevCard) => (prevCard - 1 + cards.length) % cards.length)
+    setCardIndex(null)
+    if (currentCardNumber > 1) {
+      setCurrentCardNumber(currentCardNumber - 1)
+    } else {
+      setCurrentCardNumber(totalCards) // Go to the last card
+    }
+  }
+
+  function handleClickOnCard(index) {
+    if (cardIndex === index) {
+      setCardIndex(null)
+      return
+    }
+    interactive && setCardIndex(index)
+  }
+
+  function handleCardSelect(card) {
+    setCardIndex(null)
+    onCardSelected(card)
+  }
+
+  function enableCard(card) {
+    removeTokens(BOOST_COST)
+    cards.forEach((c) => {
+      if (c.id === card.id) {
+        c.isDisabled = false
+      }
+    })
+    soundEffectsOn && playUnlockCardSound()
+    const currentState = setGameState({ cardHand: cards })
+    setCurrentState(currentState)
+  }
+
+  if (cards.length > 0) {
+    cards.forEach((card, index) => {
+      if (cards.length - 1 === index) card.ref = true
+      else card.ref = false
+    })
+  }
+
+  const buttonVariants = {
+    initial: { y: '100px', x: 0 },
+    animate: {
+      y: currentCard === cardIndex ? '-70px' : '-5px',
+      x: currentCard === cardIndex ? '20px' : 0,
+    },
+  }
+
+  useEffect(() => {
+    if (interactionButtons.current) {
+      interactionButtons.current.focus()
+    }
+  }, [cardIndex])
+
+  useEffect(() => {
+    if (currentCard > cards.length - 1) {
+      setCurrentCard(0)
+    }
+  }, [cards, currentCard])
+
+  useEffect(() => {
+    if (currentCardNumber > totalCards) {
+      setCurrentCardNumber(1)
+    }
+  }, [totalCards, currentCardNumber])
+
+  const handleAnimate = () => {
+    setAnimate(true)
+
+    // Reset animation after a delay (0.3s in this case, should match your animation duration)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 300)
+  }
+
+  const renderButtons = () => {
+    const card = currentCard > cards.length - 1 ? cards[0] : cards[currentCard]
+
+    return !card?.isDisabled ? (
+      <AnimatePresence>
+        {!boostedCards.includes(card.id) && boostable && (
+          <div
+            key={`${card.id}-buttonBoost`}
+            className={styles.tokenBtnWrapper}
+          >
+            <motion.button
+              variants={buttonVariants}
+              initial='initial'
+              animate='animate'
+              transition={
+                shouldReduceMotion ? { duration: 0.01 } : { delay: 0.1 }
+              }
+              className={styles.primary}
+              ref={interactionButtons}
+              onClick={() => openBoost(card)}
+              onMouseEnter={triggerStar}
+              aria-label={t('boost')}
+            >
+              <motion.span animate={animateStar} style={{ display: 'block' }}>
+                <img src={token} alt='Token' />
+              </motion.span>
+            </motion.button>
+          </div>
+        )}
+        {isPersuade
+          ? card.id !== correctCard && (
+              <div className={styles.playBtnWrapper}>
+                <motion.div
+                  key={`${card.id}-buttonPlay`}
+                  animate={animateSelectBtn}
+                  onMouseEnter={triggerSelectBtn}
+                >
+                  <motion.button
+                    variants={buttonVariants}
+                    initial='initial'
+                    animate='animate'
+                    transition={
+                      shouldReduceMotion ? { duration: 0.01 } : { delay: 0.2 }
+                    }
+                    className={`${
+                      boostable ? styles.secondary : styles.primary
+                    }`}
+                    onClick={() => handleCardSelect(card)}
+                  >
+                    {cardSelectText}
+                  </motion.button>
+                </motion.div>
+              </div>
+            )
+          : currentCard === cardIndex &&
+            card.id !== correctCard && (
+              <div className={styles.playBtnWrapper}>
+                <motion.div
+                  key={`${card.id}-buttonPlay`}
+                  animate={animateSelectBtn}
+                  onMouseEnter={triggerSelectBtn}
+                >
+                  <motion.button
+                    variants={buttonVariants}
+                    initial='initial'
+                    animate='animate'
+                    transition={
+                      shouldReduceMotion ? { duration: 0.01 } : { delay: 0.2 }
+                    }
+                    className={`${
+                      boostable ? styles.secondary : styles.primary
+                    }`}
+                    onClick={() => handleCardSelect(card)}
+                  >
+                    {cardSelectText}
+                  </motion.button>
+                </motion.div>
+              </div>
+            )}
+      </AnimatePresence>
+    ) : tokens > 0 ? (
+      <motion.button
+        onClick={() => enableCard(card)}
+        variants={buttonVariants}
+        initial='initial'
+        animate='animate'
+        transition={shouldReduceMotion ? { duration: 0.01 } : { delay: 0.1 }}
+        className={styles.primary}
+        ref={interactionButtons}
+      >
+        {t('enable')}
+      </motion.button>
+    ) : null
+  }
+
+  const renderCard = () => {
+    const card = currentCard > cards.length - 1 ? cards[0] : cards[currentCard]
+    const initYPos = isPersuade ? 0 : 5
+    const initXPos = isPersuade ? 0 : -20
+    const animatedYPos = isPersuade ? -60 : 5
+    const animatedXPos = isPersuade ? -20 : -20
+
+    return (
+      <>
+        <motion.div
+          initial={{ y: 0, x: 0 }}
+          animate={{
+            y: currentCard === cardIndex ? animatedYPos : initYPos,
+            x: currentCard === cardIndex ? animatedXPos : initXPos,
+          }}
+          exit={{ y: initYPos, x: initXPos }}
+          transition={{ type: 'spring', duration: 0.3 }}
+          className={`${
+            isPersuade ? styles.cardNumberPersuade : styles.cardNumber
+          }`}
+        >
+          {currentCardNumber}/{totalCards}
+        </motion.div>
+        <div
+          className={animate ? styles.shuffle : styles.cardsInBack}
+          style={{
+            width: isPersuade ? '200px' : '150px',
+            height: isPersuade ? '300px' : '225px',
+          }}
+        />
+        <div
+          className={animate ? styles.cardAnimation : ''}
+          style={{ zIndex: 1 }}
+        >
+          <motion.div
+            initial={{ scale: 1, y: 0 }}
+            animate={{
+              scale: currentCard === cardIndex ? 1.2 : 1,
+              y: currentCard === cardIndex ? -40 : 0,
+            }}
+            exit={{ scale: 1, y: 0 }}
+            transition={{ type: 'spring', duration: 0.3 }}
+          >
+            <Card
+              disabledCard={card.isDisabled}
+              id={currentCard}
+              cardIndex={currentCard}
+              which={card}
+              onClick={() => handleClickOnCard(currentCard)}
+              size={isPersuade ? 'medium' : 'small'}
+              highlight={centeredCard === card.id}
+            />
+          </motion.div>
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <section className={styles.wrapper}>
+      <div>
+        <div
+          className={styles.buttonWrapper}
+          aria-controls={`card-${currentCard}`}
+        >
+          {renderButtons()}
+        </div>
+        <div className={styles.cardWrapper}>
+          <Button
+            type='button'
+            variant={ButtonVariant.PRIMARY}
+            onClick={prevCard}
+            aria-label={t('previousCard')}
+          >
+            <ChevronRight style={{ transform: 'rotate(180deg)' }} />
+          </Button>
+          {renderCard()}
+          <Button
+            type='button'
+            variant={ButtonVariant.PRIMARY}
+            onClick={nextCard}
+            aria-label={t('nextCard')}
+          >
+            <ChevronRight />
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default MobileCardHand

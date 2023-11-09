@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="300" viewBox="0 0 200 300">
+  <defs>
+    <clipPath id="22a-clip-path">
+      <rect id="22a-Rectangle_1" data-name="22a-Rectangle 1" width="300" height="300" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+    <clipPath id="22a-clip-Kort_-_artikel_22">
+      <rect width="200" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="22a-Kort_-_artikel_22" data-name="22a-Kort - artikel 22" clip-path="url(#22a-clip-Kort_-_artikel_22)">
+    <rect width="200" height="300" fill="#270e2d"/>
+    <g id="22a-Group_4" data-name="22a-Group 4" transform="translate(-49.515 0.485)">
+      <rect id="22a-bg" width="300" height="300" transform="translate(-0.485 -0.485)" fill="#caa0b0"/>
+      <g id="22a-små_rutor" data-name="22a-små rutor" transform="translate(-0.485 -0.485)">
+        <g id="22a-Group_1" data-name="22a-Group 1" clip-path="url(#22a-clip-path)">
+          <path id="22a-Path_1" data-name="22a-Path 1" d="M-4.56,86.581l97.5,15.935-.877-31.45L-3.727,51.315l-.879,35.249-.035,0,.035,0,0,.016a.251.251,0,0,1,.043-.008" transform="translate(-0.26 9.465)" fill="#47a675"/>
+          <path id="22a-Path_2" data-name="22a-Path 2" d="M78.614,102.367,162.751,87.5l-.1-35.283L77.7,70.892Z" transform="translate(14.05 9.621)" fill="#5b1f8b"/>
+          <path id="22a-Path_3" data-name="22a-Path 3" d="M162.219,23.565,78.652,41.538l83.782,15.745Z" transform="translate(14.215 4.642)" fill="#fc4b35"/>
+          <path id="22a-Path_4" data-name="22a-Path 4" d="M162.255,26.424,77.953,7.517l.872,36.811Z" transform="translate(14.094 1.853)" fill="#decc11"/>
+          <path id="22a-Path_5" data-name="22a-Path 5" d="M93.247,44.318,92.409,7.57-4.853,25.618l-.056-.012v.022l-.03,0,.03.007,1.282,33.523Z" transform="translate(-0.312 1.862)" fill="#270e2d"/>
+          <path id="22a-Path_6" data-name="22a-Path 6" d="M78.868,38.863l83.778,15.676L77.708,73.287Z" transform="translate(14.051 7.301)" fill="#4e2321"/>
+          <path id="22a-Path_7" data-name="22a-Path 7" d="M93.035,38.848-3.814,53.507l95.689,19.8Z" transform="translate(-0.116 7.298)" fill="#fe230e"/>
+        </g>
+      </g>
+      <g id="22a-stora_rutor" data-name="22a-stora rutor" transform="translate(-0.485 -0.485)">
+        <g id="22a-Group_2" data-name="22a-Group 2" clip-path="url(#22a-clip-path)">
+          <path id="22a-Path_8" data-name="22a-Path 8" d="M178.55,229.962-60.008,145.916l-1.731,143.9Z" transform="translate(-10.182 25.904)" fill="#fc4b35"/>
+          <path id="22a-Path_9" data-name="22a-Path 9" d="M364.449,36.948,147.275,108.393l210.241,67.155Z" transform="translate(26.141 6.968)" fill="#213735"/>
+          <path id="22a-Path_10" data-name="22a-Path 10" d="M364.493,48.563,147.407-29.732,147.246,120Z" transform="translate(26.136 -4.62)" fill="#c3d414"/>
+          <path id="22a-Path_11" data-name="22a-Path 11" d="M183.437,97.816l-243.742,56.51,238.554,84.011Z" transform="translate(-9.933 17.546)" fill="#76bea6"/>
+          <path id="22a-Path_12" data-name="22a-Path 12" d="M148.014,97.8l210.295,67.072L142.93,238.34Z" transform="translate(25.386 17.543)" fill="#47a675"/>
+          <path id="22a-Path_13" data-name="22a-Path 13" d="M392.872,287.812,178.527,217.519-61.908,277.192l241,69.157Z" transform="translate(-10.212 38.348)" fill="#270e2d"/>
+          <path id="22a-Path_14" data-name="22a-Path 14" d="M358.292,154.936,142.943,228.383l214.329,70.3Z" transform="translate(25.388 27.472)" fill="#a2c575"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

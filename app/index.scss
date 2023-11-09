@@ -1,0 +1,139 @@
+@import './global.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 1rem;
+  // Prevents bottom overflow bug in avatar-builder on color-btn click
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: basic-font, 'Roboto', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Create a root stacking context */
+#root {
+  isolation: isolate;
+  height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input[type='submit'] {
+  font-family: basic-font, 'Roboto', sans-serif;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2,
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p,
+label,
+strong,
+a {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0.5rem 0;
+}
+
+.right-to-left {
+  h1:not(.noRightLeft),
+  h2:not(.noRightLeft),
+  h3:not(.noRightLeft),
+  p:not(.noRightLeft),
+  a:not(.noRightLeft) {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+.view-padding {
+  padding: 32px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.scroll-lock {
+  overflow: hidden;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.absolute {
+  position: absolute;
+}
+
+/* Utility class for visually hiding elements, while keeping it accessiblie to screen readers */
+
+/* Read more: https://kittygiraudel.com/snippets/sr-only-class/ */
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+*:focus-visible {
+  outline: $tabFocusOutline;
+  outline-offset: 0.2rem;
+}
+
+.font-bangers {
+  @include fontBangers;
+}

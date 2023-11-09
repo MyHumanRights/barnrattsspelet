@@ -1,0 +1,13 @@
+@import '../../../global.scss';
+
+.header {
+  padding-top: $topGutter;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 3%;
+
+  h1 {
+    margin: 1rem 0 0 0;
+  }
+}

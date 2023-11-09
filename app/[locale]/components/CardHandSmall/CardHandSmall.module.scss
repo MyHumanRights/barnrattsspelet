@@ -1,0 +1,38 @@
+@import '../../../global.scss';
+
+.wrapper {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 0 16px;
+
+  li {
+    padding: 2px;
+
+    &.empty {
+      margin: 2px;
+      width: 75px;
+      height: 112.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border-radius: $cardRadiusXSmall;
+      border: 1px solid rgba(207, 207, 207, 0.2);
+      @include box-shadow(small);
+      color: hsl(0deg 0% 50% / 0.333);
+      cursor: pointer;
+
+      svg {
+        height: 50px;
+      }
+
+      &:focus,
+      &:active,
+      &:hover {
+        color: rgb(110, 110, 110);
+      }
+    }
+  }
+}

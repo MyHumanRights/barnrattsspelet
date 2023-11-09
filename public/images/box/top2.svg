@@ -1,0 +1,13 @@
+<svg id="uuid-9a4cae88-f1a5-47ba-bbb9-febb4cf3e552" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
+	<defs>
+		<style>
+			.uuid-1330c808-c265-4bb5-a5d5-e2bfcc1e621c,.uuid-b84b9346-7d85-445f-ae35-56d275a72c42{fill:none}.uuid-b84b9346-7d85-445f-ae35-56d275a72c42{stroke:#603813;stroke-miterlimit:10;stroke-width:5px}
+		</style>
+	</defs>
+	<g id="uuid-2dfc175b-a58f-4dae-ab23-97f45977f4de">
+		<path d="M2.5 147.5V2.5h295v145H2.5Z" style="fill:#d8ac6d;stroke:#603813;stroke-miterlimit:10;stroke-width:5px" />
+		<path d="M249 31H52v90h197V31Z" style="stroke:#603813;stroke-miterlimit:10;stroke-width:5px;fill:#bc8230" />
+		<path class="uuid-b84b9346-7d85-445f-ae35-56d275a72c42" d="M0 30.53h300M0 120.92h300" />
+		<path class="uuid-1330c808-c265-4bb5-a5d5-e2bfcc1e621c" d="M0 121h300v29H0zM0 0h300v28H0zM0 28h300v93H0z" />
+	</g>
+</svg>

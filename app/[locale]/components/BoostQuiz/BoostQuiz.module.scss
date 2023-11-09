@@ -1,0 +1,85 @@
+@import '../../../global.scss';
+
+.wrapper {
+  height: min(70vh, 700px);
+  overflow: hidden;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .quiz {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow-y: auto;
+
+      h1 {
+        font-size: 1rem;
+        font-weight: 900;
+        margin-top: 35px;
+        margin-inline: 30px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin: 0 30px;
+        font-weight: 900;
+      }
+    }
+
+    .answers {
+      .option {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid currentColor;
+        font-size: 1rem;
+        font-weight: 600;
+        @include box-shadow(medium);
+
+        display: flex;
+        align-items: center;
+
+        padding: 16px;
+        margin: 16px 30px;
+        background-color: #fff;
+        color: $primaryColor;
+
+        &:hover:not(.disabled),
+        &:active:not(.disabled) {
+          background-color: scale-color($primaryColor, $lightness: 90%);
+        }
+      }
+
+      .marked {
+        background-color: $primaryColor;
+        color: white;
+
+        &:hover:not(.disabled),
+        &:active:not(.disabled) {
+          background-color: scale-color($primaryColor, $lightness: 15%);
+        }
+      }
+
+      p.disabled {
+        cursor: default;
+      }
+    }
+
+    .result {
+      margin: 20px 0;
+
+      p {
+        font-weight: 400;
+      }
+    }
+
+    button {
+      margin: 30px;
+    }
+  }
+}

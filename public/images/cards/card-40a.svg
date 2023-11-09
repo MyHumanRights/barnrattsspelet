@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="300" viewBox="0 0 200 300">
+  <defs>
+    <clipPath id="40a-clip-path">
+      <rect id="40a-Rectangle_9" data-name="40a-Rectangle 9" width="376" height="376" transform="translate(0)" fill="none"/>
+    </clipPath>
+    <clipPath id="40a-clip-Kort_-_artikel_40a">
+      <rect width="200" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="40a-Kort_-_artikel_40a" data-name="40a-Kort - artikel 40a" clip-path="40a-url(#clip-Kort_-_artikel_40a)">
+    <rect width="200" height="300" fill="#24162d"/>
+    <g id="40a-Group_3" data-name="40a-Group 3" transform="translate(-98.514 -93.362)">
+      <rect id="40a-Rectangle_1" data-name="40a-Rectangle 1" width="376" height="376" transform="translate(14.514 6.362)" fill="#24162d"/>
+      <rect id="40a-Rectangle_2" data-name="40a-Rectangle 2" width="98.374" height="98.375" transform="translate(109.915 238.819)" fill="#de1a35"/>
+      <rect id="40a-Rectangle_3" data-name="40a-Rectangle 3" width="60.554" height="60.555" transform="translate(59.371 142.523)" fill="#009a8e"/>
+      <rect id="40a-Rectangle_4" data-name="40a-Rectangle 4" width="39.729" height="120.445" transform="translate(213.965 134.627)" fill="#22812a"/>
+      <rect id="40a-Rectangle_5" data-name="40a-Rectangle 5" width="75.645" height="75.647" transform="translate(215.122 261.162)" fill="#e23730"/>
+      <rect id="40a-Rectangle_6" data-name="40a-Rectangle 6" width="75.645" height="75.647" transform="translate(44.281 62.731)" fill="#22812a"/>
+      <rect id="40a-Rectangle_7" data-name="40a-Rectangle 7" width="126.751" height="25.854" transform="translate(81.538 207.804)" fill="#ffc700"/>
+      <g id="40a-Group_2" data-name="40a-Group 2" transform="translate(14.514 6.362)">
+        <g id="40a-Group_1" data-name="40a-Group 1" transform="translate(0 0)" clip-path="40a-url(#clip-path)">
+          <path id="40a-Path_1" data-name="40a-Path 1" d="M362.832,300.069a35.314,35.314,0,1,1-35.315-35.314,35.314,35.314,0,0,1,35.315,35.314" transform="translate(-12.195 -4.388)" fill="#0069b8"/>
+          <path id="40a-Path_2" data-name="40a-Path 2" d="M178.69,175.286a28.037,28.037,0,1,1-28.037-28.037,28.037,28.037,0,0,1,28.037,28.037" transform="translate(-13.48 -5.278)" fill="#ffc700"/>
+          <path id="40a-Path_3" data-name="40a-Path 3" d="M105.875,308.576a24.7,24.7,0,1,1-24.7-24.7,24.7,24.7,0,0,1,24.7,24.7" transform="translate(-13.982 -4.243)" fill="#22812a"/>
+          <rect id="40a-Rectangle_8" data-name="40a-Rectangle 8" width="91.819" height="33.862" transform="translate(243.917 170.476) rotate(-0.124)" fill="#e23730"/>
+          <path id="40a-Path_4" data-name="40a-Path 4" d="M298.541,211.9A41.741,41.741,0,0,0,256.8,253.5h83.481a41.743,41.743,0,0,0-41.742-41.6" transform="translate(-12.464 -4.788)" fill="#0069b8"/>
+          <path id="40a-Path_5" data-name="40a-Path 5" d="M253.046,120.01a53.77,53.77,0,0,0,53.588,53.767V66.239a53.772,53.772,0,0,0-53.588,53.771" transform="translate(-12.492 -5.892)" fill="#ffc700"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

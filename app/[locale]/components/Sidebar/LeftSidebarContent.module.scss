@@ -1,0 +1,161 @@
+@import '../../../global.scss';
+
+.secondaryMenu {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 1.5rem 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  margin: 3rem 0 1rem 0;
+
+  @media (min-width: 768px) {
+    margin-top: 1rem;
+  }
+}
+
+.menu > * a {
+  justify-content: center;
+  width: 100%;
+  font-size: 1rem;
+  @include fontBangers;
+}
+
+.linkWrapper {
+  padding: 0.5rem 0px;
+  margin: 0 0 0.5rem 0;
+  cursor: pointer;
+
+  @media (max-width: 600px) and (min-height: 850px) {
+    margin: 3rem 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-within {
+    a {
+      text-decoration: none;
+      color: scale-color($primaryColor, $lightness: 15%);
+    }
+  }
+
+  &:focus-within:not(:hover) {
+    outline: $tabFocusOutline;
+    outline-offset: 0.2rem;
+  }
+
+  a:focus-visible {
+    outline: none; // We have a clear border around the element on focus-within. No need for an outline.
+  }
+
+  section {
+    margin-bottom: 0.6rem;
+    width: 50%;
+
+    h2 {
+      margin: 0 0 0.1em 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0.3rem;
+  }
+}
+
+.cardCollectionWrapper {
+  position: relative;
+  width: 70%;
+
+  @media (min-width: 768px) {
+    width: 90%;
+  }
+}
+
+.cardCollectionIcon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    @include drop-shadow(medium);
+  }
+}
+
+.avatarWrapper {
+  @include drop-shadow(medium);
+  height: min-content;
+  min-width: 100px;
+  position: relative;
+  width: 30%;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+
+  a {
+    padding: 0;
+  }
+}
+
+.deckBuilderLink a {
+  transform: rotate(-1deg);
+}
+
+.newCards {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 56px;
+  height: 54px;
+  transform: translate(50%, -10%);
+}
+
+.newPart {
+  position: absolute;
+  top: 0;
+  right: 20%;
+  width: 56px;
+  height: 54px;
+  z-index: 1;
+  transform: translate(50%, -50%);
+}
+
+.linkContent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.1rem;
+}
+
+.avatarLink a {
+  transform: rotate(2deg);
+}
+
+.tokensContent {
+  margin: 0;
+
+  @media (min-width: 768px) {
+    margin: 0 0.5rem;
+  }
+}
+
+.tokensLink a {
+  transform: rotate(-2deg);
+}
+
+.playButtonWrapper button {
+  width: 100%;
+  justify-content: center;
+}

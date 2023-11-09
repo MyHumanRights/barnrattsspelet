@@ -1,0 +1,68 @@
+@import '../../../global.scss';
+
+.sectionRight {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    height: auto;
+  }
+
+  .textWrapper {
+    margin-top: 0.8rem;
+    cursor: pointer;
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .newScenario {
+        color: $southernFrance;
+        line-height: 100%;
+        font-weight: bold;
+        font-size: 0.9em;
+        padding-right: 15%;
+      }
+    }
+  }
+
+  h2 {
+    @include fontBangers;
+    font-size: 1.2rem;
+  }
+
+  p {
+    @media (min-width: 600px) {
+      margin: 0 0 0.3rem 0;
+    }
+  }
+}
+
+.linkWrapperRight {
+  * {
+    cursor: pointer;
+  }
+}
+
+.linkWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0 0 0;
+  padding-block: 1rem;
+
+  button {
+    font-size: 0.8rem;
+  }
+}
+
+span.arrow {
+  margin-left: 0;
+  margin-right: 0.3rem;
+
+  > svg {
+    transform: rotate(180deg);
+  }
+}

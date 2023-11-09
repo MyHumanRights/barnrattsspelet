@@ -1,0 +1,122 @@
+@import '../../../global.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  margin: 0.7em 3%;
+
+  .filterButtonWrapper,
+  .filterButtonWrapperMobile {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .filterButtonWrapper {
+    @media screen and (min-width: 700px) {
+      display: none;
+    }
+  }
+
+  .filtersWrapper {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @media screen and (max-width: 700px) {
+        margin: 0.6rem 0;
+      }
+
+      li {
+        margin: 0 0.5rem 0.5rem 0;
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid currentColor;
+    font-weight: 600;
+    @include box-shadow(medium);
+
+    width: max-content;
+    background-color: #fff;
+    color: $primaryColor;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    @media (max-width: 600px) {
+      font-size: 0.8rem;
+    }
+
+    &:hover,
+    &:active {
+      background-color: scale-color($primaryColor, $lightness: 90%);
+    }
+
+    svg {
+      align-self: center;
+      height: 0.75rem;
+      margin-left: 6px;
+
+      @media (max-width: 700px) {
+        height: 1.2rem;
+      }
+    }
+
+    span {
+      display: flex;
+    }
+
+    &.activeLabel {
+      background-color: $primaryColor;
+      color: white;
+
+      &:hover,
+      &:active {
+        background-color: scale-color($primaryColor, $lightness: 15%);
+      }
+    }
+  }
+}
+
+.filtersWrapperInApp {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    z-index: 5;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 700px) {
+    margin: 0.6rem 0;
+  }
+
+  li {
+    margin: 0 0.5rem 0.5rem 0;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+  button {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+}

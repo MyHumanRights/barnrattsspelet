@@ -1,0 +1,145 @@
+[
+  {
+    "id": "5",
+    "article": "5",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "safety",
+    "color": "#0083CB",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-5.svg"
+  },
+  {
+    "id": "7b",
+    "article": "7",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "safety",
+    "color": "#D2C3C4",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-7b.svg"
+  },
+  {
+    "id": "10",
+    "article": "10",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "safety",
+    "color": "#C8B9BB",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-10.svg"
+  },
+  {
+    "id": "21",
+    "article": "21",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "safety",
+    "color": "#A3CBBC",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-21.svg"
+  },
+  {
+    "id": "25",
+    "article": "25",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "protection",
+    "color": "#E5CFD2",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-25.svg"
+  },
+  {
+    "id": "27a",
+    "article": "27",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "development",
+    "color": "#A9924D",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-27a.svg"
+  },
+  {
+    "id": "27c",
+    "article": "27",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "development",
+    "color": "#96b096",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-27c.svg"
+  },
+  {
+    "id": "35",
+    "article": "35",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#b19147",
+    "textColor": "#000",
+    "linkPath": "/help/#sexual-abuse-advise",
+    "image": "/images/cards/card-35.svg"
+  },
+  {
+    "id": "37a",
+    "article": "37",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#dacbc5",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-37a.svg"
+  },
+  {
+    "id": "37b",
+    "article": "37",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#94bfb9",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-37b.svg"
+  },
+  {
+    "id": "37c",
+    "article": "37",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#8e5096",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-37c.svg"
+  },
+  {
+    "id": "40a",
+    "article": "40",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#24162d",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-40a.svg"
+  },
+  {
+    "id": "40b",
+    "article": "40",
+    "isDisabled": false,
+    "category": "other",
+    "theme": "equality",
+    "color": "#adadc1",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-40b.svg"
+  }
+]

@@ -1,0 +1,19 @@
+@import '../../../global.scss';
+
+.wrapper {
+  cursor: default;
+  circle,
+  .background {
+    fill: $primaryColor;
+  }
+
+  .frame {
+    fill: #fff;
+  }
+
+  text {
+    isolation: isolate;
+    font-size: 24px;
+    fill: #fff;
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../global.scss';
+
+.bubble {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  @include drop-shadow(medium);
+
+  svg {
+    max-width: fit-content;
+  }
+}
+
+.arrowDown:after {
+  content: '';
+  border-color: #fff transparent;
+  border-width: 20px 10px 0;
+  position: absolute;
+  right: 25%;
+  bottom: -19px;
+  border-style: solid;
+}
