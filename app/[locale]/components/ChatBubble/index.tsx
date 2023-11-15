@@ -41,8 +41,6 @@ export const ChatBubble: React.FC<Props> = ({
     return null
   }
 
-  console.log({ statement })
-
   return (
     <motion.div
       className={`

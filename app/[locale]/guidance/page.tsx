@@ -26,17 +26,6 @@ export async function generateMetadata({
 const Guidance = ({ params: { locale } }: { params: { locale: string } }) => {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Guidance')
-  // const location = useLocation()
-  // const from = location.state?.from
-
-  // useEffect(() => {
-  //   ;(async function () {
-  //     if (from === '/scenarios') {
-  //       await setPlayFromScenario(false)
-  //       await setCardHand([])
-  //     }
-  //   })()
-  // }, [from])
 
   return (
     <div className={styles.guidance}>

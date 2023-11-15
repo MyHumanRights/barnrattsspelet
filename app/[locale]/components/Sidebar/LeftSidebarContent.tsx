@@ -12,7 +12,6 @@ import { CardCollectionIcon } from '../CardCollectionIcon'
 import { Token } from '../Token'
 import { Button } from '../Button'
 import { ArrowRight } from '../Icons/ArrowRight'
-import { Loader } from '../Loader'
 import NewCards from '../Icons/NewCards'
 import NewPart from '../Icons/NewPart'
 import styles from './LeftSidebarContent.module.scss'
@@ -198,7 +197,7 @@ export const LeftSidebarContent: React.FC<Props> = ({
           <div className={`${styles.tokensContent} ${styles.linkContent}`}>
             <Token
               ownedTokens={currentTokens}
-              size={isMobile ? 'small' : 'medium'}
+              size={isMobile ? 'medium' : 'large'}
             />
           </div>
           <Button

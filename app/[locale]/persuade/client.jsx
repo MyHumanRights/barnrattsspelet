@@ -440,6 +440,7 @@ export const PersuadeClient = () => {
               <FirstEntry
                 i18nKey={`antagonists.${currentState.antagonist.name}.conversationEntries.b`}
                 startGame={startGame}
+                arrowRight={true}
               />
             </div>
           </>

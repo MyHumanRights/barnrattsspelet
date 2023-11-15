@@ -135,7 +135,11 @@ export const SettingsModal: React.FC<Props> = ({ handleModal }) => {
       <ul className={`${styles.list} ${rtl ? styles.rightToLeft : undefined}`}>
         <li>
           {!isApp && (
-            <Button onClick={handleResetRequest} hasOwnSound>
+            <Button
+              onClick={handleResetRequest}
+              hasOwnSound
+              size={ButtonSize.SMALL}
+            >
               {t('reset')}
             </Button>
           )}

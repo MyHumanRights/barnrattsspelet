@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  font-family: basic-font, 'Roboto', sans-serif;
+  font-family: var(--font-quicksand), 'Roboto', sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,7 +42,7 @@ svg {
 
 button,
 input[type='submit'] {
-  font-family: basic-font, 'Roboto', sans-serif;
+  font-family: var(--font-quicksand), 'Roboto', sans-serif;
 }
 
 input,

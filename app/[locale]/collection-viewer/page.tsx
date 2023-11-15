@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { Client } from './client'
 import styles from './CollectionViewer.module.scss'
 import { getCards, getNonPlayableCards } from '@/utils/getData'
-import { MapBackground } from '../components/MapBackground'
 
 export async function generateMetadata({
   params: { locale },

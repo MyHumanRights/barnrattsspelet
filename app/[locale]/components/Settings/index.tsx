@@ -25,8 +25,7 @@ import {
   getAvatar,
   readSettings,
 } from '@/api/storage'
-import { getDefaultAvatorParts, getRandomAvatar } from '@/api/engine'
-import { getAvatarColors, getAvatarParts } from '@/utils/getData'
+import { getRandomAvatar } from '@/api/engine'
 import { Button } from '../Button'
 import ConfigIcon from '../Icons/ConfigIcon'
 import { SettingsModal } from './SettingsModal'

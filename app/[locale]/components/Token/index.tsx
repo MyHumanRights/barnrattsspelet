@@ -7,7 +7,7 @@ import styles from './Token.module.scss'
 
 interface Props {
   ownedTokens: number
-  size?: 'small' | 'medium'
+  size?: 'small' | 'medium' | 'large'
 }
 
 export const Token: React.FC<Props> = ({ ownedTokens, size = 'small' }) => {
@@ -25,6 +25,11 @@ export const Token: React.FC<Props> = ({ ownedTokens, size = 'small' }) => {
     if (size === 'medium') {
       height = 62
       width = 64
+    }
+
+    if (size === 'large') {
+      height = 80
+      width = 80
     }
     return { width, height }
   }

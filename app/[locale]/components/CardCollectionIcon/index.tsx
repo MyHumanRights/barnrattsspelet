@@ -317,7 +317,7 @@ export const CardCollectionIcon: React.FC<Props> = ({
         style={{
           whiteSpace: 'pre',
         }}
-        fontFamily='Bangers'
+        className='font-bangers'
         fontSize={24}
         letterSpacing='0em'
       >
@@ -459,7 +459,7 @@ export const CardCollectionIcon: React.FC<Props> = ({
         style={{
           whiteSpace: 'pre',
         }}
-        fontFamily='Bangers'
+        className='font-bangers'
         fontSize={24}
         letterSpacing='0em'
       >

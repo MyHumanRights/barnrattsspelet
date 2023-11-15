@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { MAX_CARDS } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useGameStateContext } from '@/contexts/GameStateContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
 import addCardSound from '@/assets/sounds/fx/07-add-card-to-hand.mp3'
@@ -51,7 +52,7 @@ export const CardList: React.FC<Props> = ({
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
   const [cards, setCards] = useState<ICard[]>([])
   const [showMaxCardsOwl, setShowMaxCardsOwl] = useState(false)
-
+  const { setActiveAntagonist } = useGameStateContext()
   const {
     clientWidth,
     isMobile,
@@ -112,7 +113,8 @@ export const CardList: React.FC<Props> = ({
     const cardHand = getScenarioCards(antagonist, cardsJson as any)
     setPlayFromScenario(true)
     setCardHand(cardHand)
-    router.push(`/persuade?antagonist=${antagonist.name}`)
+    setActiveAntagonist(antagonist.name)
+    router.push('/persuade')
   }
 
   function addCardToHand(currentCard: ICard) {

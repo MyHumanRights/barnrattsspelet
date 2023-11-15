@@ -7,6 +7,8 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useTokens } from '@/utils/hooks/useTokens'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard } from '@/utils/types'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { Link } from '../components/Link/Link'
 import { Folder } from '../components/Folder/'
 import { CardList } from '../components/CardList/'
@@ -16,8 +18,6 @@ import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { TabFilter } from '../components/Filter/TabFilter'
 import { Token } from '../components/Token/'
 
-// import useAddToStatistics from '@/utils/hooks/useAddToStatistics'
-// import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import styles from './CollectionViewer.module.scss'
 
 interface Props {
@@ -38,20 +38,16 @@ export const Client: React.FC<Props> = ({
 
   const { isMobile } = useOptionsContext()
 
-  // const addFirstTimeCollectionViewer = useAddToStatistics(
-  //   STAT_COLLECTION_NAMES.FIRST_TIME_COLLECTION_VIEWER,
-  //   STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEWER
-  // )
+  const addFirstTimeCollectionViewer = useAddToStatistics(
+    STAT_COLLECTION_NAMES.FIRST_TIME_COLLECTION_VIEWER,
+    STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEWER
+  )
 
-  async function setCardsFromJSONFiles() {
+  useEffect(() => {
     const playableAndNonPlayableCards = playableCards.concat(nonPlayableCards)
 
     setAllCards(playableAndNonPlayableCards)
-  }
-
-  useEffect(() => {
-    setCardsFromJSONFiles()
-    // addFirstTimeCollectionViewer()
+    addFirstTimeCollectionViewer()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

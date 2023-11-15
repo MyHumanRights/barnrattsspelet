@@ -170,7 +170,8 @@
   }
 
   button {
-    font-family: 'bangers', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-family: var(--font-bangers), 'Helvetica Neue', Arial, Helvetica,
+      sans-serif;
     font-weight: normal;
   }
 

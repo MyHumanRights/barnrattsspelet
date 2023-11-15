@@ -124,6 +124,6 @@ $tabFocusOutline: 2px dashed $primaryColor;
 }
 
 @mixin fontBangers {
-  font-family: bangers, basic-font, sans-serif;
+  font-family: var(--font-bangers), var(--font-quicksand), sans-serif;
   letter-spacing: 2px;
 }

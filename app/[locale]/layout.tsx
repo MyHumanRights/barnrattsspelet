@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
-import { Quicksand } from 'next/font/google'
+import { Quicksand, Bangers } from 'next/font/google'
 import RootProviders from './components/RootProviders'
 import { Settings } from './components/Settings'
 import styles from './layout.module.scss'
@@ -11,7 +11,17 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import '../global.scss'
 import '../index.scss'
 
-const quicksand = Quicksand({ subsets: ['latin'] })
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-quicksand',
+})
+const bangers = Bangers({
+  subsets: ['latin'],
+  variable: '--font-bangers',
+  display: 'swap',
+  weight: '400',
+})
 
 const locales = ['sv']
 
@@ -48,7 +58,7 @@ const RootLayout = async ({
 
   return (
     <html lang={locale}>
-      <body className={quicksand.className}>
+      <body className={`${quicksand.variable} ${bangers.variable}`}>
         <div
           className={styles.App}
           // style={{ height: height }}

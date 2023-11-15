@@ -89,7 +89,8 @@
     align-self: end;
     grid-column: 2 / 4;
     grid-row: 1;
-    font-family: 'bangers', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-family: var(--font-bangers), 'Helvetica Neue', Arial, Helvetica,
+      sans-serif;
     font-weight: normal;
   }
 

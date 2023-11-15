@@ -10,11 +10,6 @@
   margin: 16px 16px 16px 24px;
   @include drop-shadow(medium);
 
-  img {
-    width: auto;
-    height: auto;
-  }
-
   .banner {
     z-index: 1;
     display: inline-flex;
@@ -41,7 +36,29 @@
 
 .wrapper.medium {
   font-size: 1.6em;
-  height: 65px;
+  height: 50px;
+  width: 75px;
+  border-radius: 5px;
+  padding-right: 6px;
+  margin-top: 8px;
+  @include drop-shadow(medium);
+
+  .banner {
+    border-radius: 5px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 4px;
+  }
+
+  .image {
+    left: -25px;
+  }
+}
+
+.wrapper.large {
+  font-size: 1.6em;
+  height: 50px;
   width: 100px;
   border-radius: 5px;
   padding-right: 6px;
