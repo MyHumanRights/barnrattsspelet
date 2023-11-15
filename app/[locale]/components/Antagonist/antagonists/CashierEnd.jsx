@@ -11,7 +11,7 @@ const CashierEnd = (props) => {
       {...props}
     >
       <title id='cashier-end-title'>
-        {t('antagonists:cashier:components:end')}
+        {t('antagonists.cashier.components.end')}
       </title>
       <defs>
         <clipPath id='cashier-end-b'>

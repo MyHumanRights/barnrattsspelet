@@ -14,7 +14,7 @@ const SchoolCorridor = (props) => {
       {...props}
     >
       <title id='school-corridor-title'>
-        {t('antagonists:classmate2:components:background')}
+        {t('antagonists.classmate2.components.background')}
       </title>
       <defs>
         <clipPath id='school-corridor-b'>

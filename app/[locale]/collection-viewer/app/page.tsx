@@ -1,16 +1,16 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
-import { Helmet } from 'react-helmet-async'
-import { CardList } from '../../components'
-import ButtonFilter from '../../components/Filter/ButtonFilter'
-import styles from './CollectionViewer.module.scss'
-import useAddToStatistics from '../../utils/hooks/useAddToStatistics'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '../../utils/constants'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import { ICard } from '@/utils/types'
+import { CardList } from '../../components/CardList'
+import { ButtonFilter } from '../../components/Filter/ButtonFilter'
+import styles from '../CollectionViewer.module.scss'
 
 const MobileCollectionViewer = () => {
-  const t = useTranslations()
-  const [filter, setFilter] = useState(null)
-  const [allCards, setAllCards] = useState([])
+  const [filter, setFilter] = useState<string | null>(null)
+  const [allCards, setAllCards] = useState<ICard[]>([])
 
   const addFirstTimeCollectionViewerApp = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_COLLECTION_VIEW_APP,
@@ -21,8 +21,8 @@ const MobileCollectionViewer = () => {
     const fetchCards = async () => {
       try {
         const [cardsResponse, nonPlayableCardsResponse] = await Promise.all([
-          fetch('../../data/cards.json'),
-          fetch('../../data/nonPlayableCards.json'),
+          fetch('@/data/cards.json'),
+          fetch('@/data/nonPlayableCards.json'),
         ])
 
         if (!cardsResponse.ok || !nonPlayableCardsResponse.ok) {
@@ -50,15 +50,6 @@ const MobileCollectionViewer = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{t('common:meta:title:collectionviewer')}</title>
-        <meta
-          name='description'
-          content={t('common:meta:description:collectionviewer')}
-        />
-        <meta name='robots' content='noindex' />
-      </Helmet>
-
       <main className={styles.mobileWrapper}>
         <div className={styles.wrapper}>
           <div className={styles.filterWrapper}>

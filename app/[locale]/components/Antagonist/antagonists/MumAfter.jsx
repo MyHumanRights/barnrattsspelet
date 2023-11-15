@@ -12,7 +12,7 @@ const MumAfter = (props) => {
       xmlns='http://www.w3.org/2000/svg'
       {...props}
     >
-      <title id='mum-after-title'>{t('antagonists:mum:components:end')}</title>
+      <title id='mum-after-title'>{t('antagonists.mum.components.end')}</title>
       <defs>
         <clipPath id='mum-b'>
           <path

@@ -14,7 +14,7 @@ const Street = (props) => {
       {...props}
     >
       <title id='street-title'>
-        {t('antagonists:foreigndad:components:background')}
+        {t('antagonists.foreigndad.components.background')}
       </title>
       <defs>
         <clipPath id='street-b'>

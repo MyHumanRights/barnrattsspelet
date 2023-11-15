@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useSound from 'use-sound'
 import { useRouter } from 'next/navigation'
-import { useWindowSize } from '@/utils/hooks/useWindowSize'
 import { MAX_CARDS } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -52,9 +51,9 @@ export const CardList: React.FC<Props> = ({
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
   const [cards, setCards] = useState<ICard[]>([])
   const [showMaxCardsOwl, setShowMaxCardsOwl] = useState(false)
-  const { width } = useWindowSize()
 
   const {
+    clientWidth,
     isMobile,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
@@ -102,12 +101,15 @@ export const CardList: React.FC<Props> = ({
   }
 
   function playCardScenario(currentCard: ICard) {
-    const antagonist = getAntagonistFromCard(antagonistsJson, currentCard)
+    const antagonist = getAntagonistFromCard(
+      antagonistsJson as any,
+      currentCard
+    )
     if (!antagonist) {
       setActiveCardId(null)
       return
     }
-    const cardHand = getScenarioCards(antagonist, cardsJson)
+    const cardHand = getScenarioCards(antagonist, cardsJson as any)
     setPlayFromScenario(true)
     setCardHand(cardHand)
     router.push(`/persuade?antagonist=${antagonist.name}`)
@@ -141,17 +143,17 @@ export const CardList: React.FC<Props> = ({
   }
 
   function renderSize(active: boolean) {
-    if (active && width <= WINDOW_SMALL) {
+    if (active && clientWidth <= WINDOW_SMALL) {
       return 'appCard'
-    } else if (active && width > WINDOW_SMALL) {
+    } else if (active && clientWidth > WINDOW_SMALL) {
       return 'large'
-    } else if (width < WINDOW_SMALL) {
+    } else if (clientWidth < WINDOW_SMALL) {
       return 'appCard'
-    } else if (width < WINDOW_800) {
+    } else if (clientWidth < WINDOW_800) {
       return 'small'
-    } else if (width < WINDOW_900) {
+    } else if (clientWidth < WINDOW_900) {
       return 'xsmall'
-    } else if (width < WINDOW_1700) {
+    } else if (clientWidth < WINDOW_1700) {
       return 'small'
     } else {
       return 'medium'
@@ -163,7 +165,7 @@ export const CardList: React.FC<Props> = ({
     ? cards
     : isApp
     ? cards
-    : (cardsJson as ICard[])
+    : (cardsJson as any as ICard[])
 
   // sort cardsinList by id
   cardsInList.sort((a, b) =>
@@ -172,8 +174,8 @@ export const CardList: React.FC<Props> = ({
 
   const filteredCards = filter
     ? cardsInList.filter((card) => {
-        const cardValue = card[filterType as keyof ICard]
-        return typeof cardValue === 'string' && cardValue.includes(filter)
+        const cardValue = card[filterType]
+        return cardValue.includes(filter)
       })
     : cardsInList
 
@@ -201,8 +203,8 @@ export const CardList: React.FC<Props> = ({
             exit={{ scale: 0.5, opacity: 0 }}
           >
             <OwlDialogue
-              heading='common:owl:maxcards:heading'
-              body='common:owl:maxcards:body'
+              heading='Owl.maxcards.heading'
+              body='Owl.maxcards.body'
               setShowOwl={setShowMaxCardsOwl}
             />
           </motion.div>
@@ -211,7 +213,7 @@ export const CardList: React.FC<Props> = ({
       {filteredCards.map((card) => {
         const active = activeCardId === card.id
         const collectedCard = cards.find((c) => c.id === card.id)
-        return (
+        return collectedCard ? (
           <CardItem
             key={card.id}
             card={card}
@@ -226,25 +228,9 @@ export const CardList: React.FC<Props> = ({
             addCardToHand={addCardToHand}
             renderSize={renderSize}
           />
+        ) : (
+          !isMobile && renderEmptyCard(card)
         )
-        // return collectedCard ? (
-        //   <CardItem
-        //     key={card.id}
-        //     card={card}
-        //     active={active}
-        //     isApp={isApp}
-        //     cardSelectable={cardSelectable}
-        //     handleClickOnCard={handleClickOnCard}
-        //     isCollectionViewer={isCollectionViewer}
-        //     onOpenBoost={onOpenBoost}
-        //     setActiveCardId={setActiveCardId}
-        //     playCardScenario={playCardScenario}
-        //     addCardToHand={addCardToHand}
-        //     renderSize={renderSize}
-        //   />
-        // ) : (
-        //   !isMobile && renderEmptyCard(card)
-        // )
       })}
     </ul>
   )

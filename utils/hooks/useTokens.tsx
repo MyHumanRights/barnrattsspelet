@@ -2,13 +2,13 @@ import { useEffect, useState, useCallback } from 'react'
 import useSound from 'use-sound'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { readTokens, resetTokens, setTokens } from '@/api/storage'
-import tokenSound from '../../assets/sounds/fx/12-added-token.mp3'
+import tokenSound from '@/assets/sounds/fx/12-added-token.mp3'
 
 const UNLOCK_COST = -1
 
 type UseTokensReturn = [number, () => void]
 
-export const useTokens = (dependency: any): UseTokensReturn => {
+export const useTokens = (dependency: boolean): UseTokensReturn => {
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
@@ -22,7 +22,8 @@ export const useTokens = (dependency: any): UseTokensReturn => {
       soundEffectsOn && playTokenSound()
     }
     setOwnedTokens(tokens)
-  }, [ownedTokens, playTokenSound, soundEffectsOn])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playTokenSound, soundEffectsOn])
 
   function removeTokens() {
     const updated = ownedTokens + UNLOCK_COST

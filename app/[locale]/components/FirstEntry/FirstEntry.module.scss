@@ -1,0 +1,13 @@
+@import '../../../global.scss';
+
+.dialogBtn {
+  background: none;
+  border: none;
+  outline: none;
+  text-align: left;
+}
+
+.dialogBtn:focus-within > div {
+  outline: $tabFocusOutline;
+  outline-offset: 0.2rem;
+}

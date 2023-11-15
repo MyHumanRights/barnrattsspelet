@@ -65,10 +65,6 @@
           &:active {
             background-color: scale-color($primaryColor, $lightness: 95%);
           }
-          img {
-            width: 1.45em;
-            height: 1.45em;
-          }
         }
 
         button.secondary {

@@ -12,7 +12,7 @@ const DrunkParentEnd = (props) => {
       {...props}
     >
       <title id='drunk-parent-start-title'>
-        {t('antagonists:drunkparent:components:end')}
+        {t('antagonists.drunkparent.components.end')}
       </title>
       <style>
         {

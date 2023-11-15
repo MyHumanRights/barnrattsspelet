@@ -13,7 +13,7 @@ const HomophobicAdultStart = (props) => {
       {...props}
     >
       <title id='homophobic-adult-start-title'>
-        {t('antagonists:homophobicAdult:components:start')}
+        {t('antagonists.homophobicAdult.components.start')}
       </title>
       <defs>
         <clipPath id='homophobic-adult-a'>

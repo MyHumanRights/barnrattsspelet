@@ -1,18 +1,18 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { motion } from 'framer-motion'
 import useSound from 'use-sound'
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import React, { useEffect, useState } from 'react'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import winSound from '@/assets/sounds/fx/10-correct-quiz-answer.mp3'
 import loseSound from '@/assets/sounds/fx/11-incorrect-quiz-answer.mp3'
-import { Button } from '../../components/Button/Button'
-import ChevronRight from '../Icons/ChevronRight'
-import styles from './BoostQuiz.module.scss'
 import { IBoostAnswer, IBoostQuiz } from '@/utils/types'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { Button } from '../Button'
+import { ChevronRight } from '../Icons/ChevronRight'
+import styles from './BoostQuiz.module.scss'
 
 interface Props {
   setResult: (result: string) => void
@@ -47,6 +47,7 @@ export const BoostQuiz: React.FC<Props> = ({
 
   function checkAnswer(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+
     if (selectedAnswer.isCorrect) {
       setResult('win')
       timeout = window.setTimeout(
@@ -209,7 +210,7 @@ export const BoostQuiz: React.FC<Props> = ({
         </div>
         {result ? (
           <Button type='button' onClick={onModalClose} size={ButtonSize.LARGE}>
-            {t('common:confirm')}
+            {t('confirm')}
           </Button>
         ) : (
           <Button
@@ -219,7 +220,7 @@ export const BoostQuiz: React.FC<Props> = ({
             disabled={!selectedAnswer}
             onMouseEnter={trigger}
           >
-            {t('common:boost:answer')}
+            {t('boost.answer')}
             <motion.span animate={animate}>
               <ChevronRight />
             </motion.span>

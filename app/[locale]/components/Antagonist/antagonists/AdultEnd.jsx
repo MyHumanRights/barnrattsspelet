@@ -12,7 +12,7 @@ const AdultEnd = (props) => {
       {...props}
     >
       <title id='adult-end-title'>
-        {t('antagonists:adult:components:end')}
+        {t('antagonists.adult.components.end')}
       </title>
       <defs>
         <clipPath id='b'>

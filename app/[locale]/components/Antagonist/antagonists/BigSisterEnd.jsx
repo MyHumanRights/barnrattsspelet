@@ -13,7 +13,7 @@ const BigSisterEnd = (props) => {
       {...props}
     >
       <title id='bigsister-after-title'>
-        {t('antagonists:bigsister:components:end')}
+        {t('antagonists.bigsister.components.end')}
       </title>
       <defs>
         <clipPath id='bigsister-b'>

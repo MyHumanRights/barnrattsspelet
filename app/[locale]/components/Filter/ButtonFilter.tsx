@@ -1,22 +1,21 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import useSound from 'use-sound'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useWindowSize } from '@/utils/hooks/useWindowSize'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { ICard } from '@/utils/types'
+import { ICard, IGameAntagonist } from '@/utils/types'
 import buttonSound from '@/assets/sounds/fx/14-button.mp3'
-import ArrowRight from '../Icons/ArrowRight'
-import ChevronRight from '../Icons/ChevronRight'
-import { Button } from '../Button/Button'
+import { ArrowRight } from '../Icons/ArrowRight'
+import { ChevronRight } from '../Icons/ChevronRight'
+import { Button } from '../Button'
 import FilterFunnel from '../Icons/FilterFunnel'
 import styles from './ButtonFilter.module.scss'
 
 interface Props {
   filter: string | null
-  setFilter: (filter: string | null) => void
-  JSONsource: ICard[]
+  setFilter: Dispatch<SetStateAction<string | null>>
+  JSONsource: IGameAntagonist[] | ICard[]
   isCollectionView?: boolean
   isApp?: boolean
 }
@@ -29,21 +28,24 @@ export const ButtonFilter: React.FC<Props> = ({
   isApp,
 }) => {
   const {
+    clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
   const [showFilter, setShowFilter] = useState(false)
-  const { width } = useWindowSize()
 
+  if (!clientWidth || clientWidth >= 860) return null
+
+  //TODO: use type guard instead of this:
   const categories: string[] = [
-    ...new Set(JSONsource.flatMap((card: ICard) => card.category)),
+    ...new Set((JSONsource as ICard[]).flatMap((card: ICard) => card.category)),
   ]
   const themes: string[] = [...new Set(JSONsource.map((obj) => obj.theme))]
 
   const filters = isCollectionView ? themes : categories
 
-  const DIV = width >= 700 ? 'div' : motion.div
+  const DIV = clientWidth >= 700 ? 'div' : motion.div
 
   const duration = 0.2
   const variants = {
@@ -78,15 +80,15 @@ export const ButtonFilter: React.FC<Props> = ({
   function renderTab(theme: string | null) {
     const changeAndClose = () => {
       //when in mobile, close menu when choosing:
-      if (width <= 700) {
+      if (clientWidth <= 700) {
         setShowFilter(!showFilter)
       }
       changeFilter(theme)
     }
     const themeName =
       theme === null
-        ? t('common:deckbuilder:categories:all')
-        : t(`common:${isCollectionView ? 'theme' : 'category'}:${theme}`)
+        ? t('deckbuilder.categories.all')
+        : t(`${isCollectionView ? 'theme' : 'category'}.${theme}`)
 
     const icon = filter === theme ? <ArrowRight /> : <ChevronRight />
 
@@ -122,7 +124,7 @@ export const ButtonFilter: React.FC<Props> = ({
 
   return (
     <fieldset className={styles.wrapper}>
-      <legend className='sr-only'>{t('common:buttonFilter')}</legend>
+      <legend className='sr-only'>{t('buttonFilter')}</legend>
       <div className={styles.filterButtonWrapperMobile}>
         <Button
           variant={ButtonVariant.PRIMARY}
@@ -131,7 +133,7 @@ export const ButtonFilter: React.FC<Props> = ({
           aria-expanded={showFilter}
           aria-controls='filter-buttons'
         >
-          {t('common:filter')}
+          {t('filter')}
           <FilterFunnel />
         </Button>
       </div>

@@ -1,0 +1,113 @@
+@import '../../global.scss';
+
+.main {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.tokenWrapper {
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
+
+.playerWrapper {
+  position: absolute;
+  bottom: $avatarMargin;
+  left: $avatarMargin;
+  width: min(600px, 95vw);
+}
+
+.introA,
+.introB {
+  position: absolute;
+  bottom: $avatarMargin;
+  left: $avatarMargin;
+  cursor: pointer;
+}
+
+.introA {
+  bottom: calc($avatarSize) + 24px;
+  left: calc($avatarSize) / 2;
+
+  @media (min-width: 768px) {
+    bottom: calc($avatarSize) + 40px;
+  }
+}
+
+.introB {
+  bottom: calc($avatarSize / 2);
+  left: calc($avatarSize + $avatarMargin + 8px);
+  transform: translateY(50%);
+  margin-right: 0.5em;
+}
+
+.introB {
+  div {
+    left: 0;
+  }
+}
+
+.introButtons {
+  display: flex;
+  flex-direction: column;
+
+  div:first-child {
+    bottom: $avatarSize;
+    position: absolute;
+    left: calc($avatarSize / 2 - $avatarMargin);
+  }
+
+  div:last-child {
+    position: absolute;
+    left: calc($avatarSize + $avatarMargin);
+    bottom: calc($avatarSize) / 2 - $avatarMargin;
+  }
+}
+
+.avatarWrapper {
+  @include box-shadow(medium);
+  width: $avatarSize;
+}
+
+.chatBubbleWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  overflow-y: auto;
+  padding-inline: 3rem;
+  position: absolute;
+  top: 0;
+  width: min(500px, 100%);
+
+  > div:first-child {
+    margin-top: auto;
+  }
+
+  &.center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.cancelWrapper {
+  position: absolute;
+  bottom: 0.7em;
+  right: 0.7em;
+  z-index: 2;
+}
+
+.currentAntagonist {
+  position: absolute;
+  top: 0;
+  right: 250px;
+  z-index: 2;
+  background-color: white;
+  padding: 0.5rem;
+  margin: 0;
+}

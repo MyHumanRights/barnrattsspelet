@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Manual.module.scss'
-import { getTranslator } from 'next-intl/server'
+import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata({
   params: { locale },
@@ -19,9 +19,10 @@ export async function generateMetadata({
   }
 }
 
-const Manual = () => {
+const Manual = ({ params: { locale } }: { params: { locale: string } }) => {
+  unstable_setRequestLocale(locale)
   const t = useTranslations('Manual')
-  // const { toggleThemeSound } = useContext(OptionsContext)
+  // const { toggleThemeSound } = useOptionsContext()
 
   // useEffect(() => {
   //   toggleThemeSound(false)

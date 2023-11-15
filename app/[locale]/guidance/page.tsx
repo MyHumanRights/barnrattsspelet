@@ -1,11 +1,14 @@
+import { unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 import { getTranslator } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
-import { setCardHand, setPlayFromScenario } from '../../../api/storage'
+// import { setCardHand, setPlayFromScenario } from '../../../api/storage'
 import { PageHeader } from '../components/PageHeader'
 import Footer from '../components/Footer'
-import { GuidanceButtons } from '../components/GuidanceButtons'
 import styles from './Guidance.module.scss'
+import { DownloadPdf } from '../components/DownloadPdf'
+import { Link } from '../components/Link/Link'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 export async function generateMetadata({
   params: { locale },
@@ -20,7 +23,8 @@ export async function generateMetadata({
   }
 }
 
-const Guidance = () => {
+const Guidance = ({ params: { locale } }: { params: { locale: string } }) => {
+  unstable_setRequestLocale(locale)
   const t = useTranslations('Guidance')
   // const location = useLocation()
   // const from = location.state?.from
@@ -48,7 +52,17 @@ const Guidance = () => {
           <p>{t('paragraph3')}</p>
         </article>
         <div className={styles.backgroundImage} />
-        <GuidanceButtons />
+        <div className={styles.buttons}>
+          <DownloadPdf />
+          <p>{t('or')}</p>
+          <Link
+            to='/scenarios'
+            variant={ButtonVariant.SECONDARY}
+            size={ButtonSize.SMALL}
+          >
+            {t('specificScenario')}
+          </Link>
+        </div>
       </main>
       <Footer />
     </div>

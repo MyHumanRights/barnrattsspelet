@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useAnimation } from '@/utils/hooks/useAnimation'
+import { ButtonVariant } from '@/utils/constants'
+import Image from 'next/image'
+import { Button } from '../Button'
+import { ChevronRight } from '../Icons/ChevronRight'
+import { ArrowRight } from '../Icons/ArrowRight'
 
-import { Button, ChevronRight } from '../../components'
-import ArrowRight from '../Icons/ArrowRight'
-import useWindowSize from '../../utils/hooks/useWindowSize'
-
-import newPartSvg from '../../assets/svgs/newPart.svg'
 import styles from './AvatarPartSelector.module.scss'
+import { useOptionsContext } from '@/contexts/OptionsContext'
 
 const WINDOW_BREAKPOINT = 600
 
-const AvatarPartSelector = ({
+export const AvatarPartSelector = ({
   category,
   text,
   onClick,
@@ -21,20 +22,20 @@ const AvatarPartSelector = ({
   index,
   newPart,
 }) => {
-  const { width } = useWindowSize()
-
+  const t = useTranslations()
   const [animatePrev, triggerPrev] = useAnimation({ x: -4 })
   const [animateNext, triggerNext] = useAnimation({ x: 4 })
-
-  const t = useTranslations()
+  const { clientWidth } = useOptionsContext()
 
   return (
     <fieldset className={styles.AvatarPartWrapper}>
       {newPart && (
-        <img
-          src={newPartSvg}
-          alt={t('common:home:newpart')}
+        <Image
+          src='/svgs/newPart.svg'
+          alt={t('home.newpart')}
           className={styles.newPart}
+          width='56'
+          height='54'
         />
       )}
       <div>
@@ -48,7 +49,7 @@ const AvatarPartSelector = ({
           hasOwnSound
         >
           <motion.span animate={animatePrev}>
-            {width < WINDOW_BREAKPOINT ? (
+            {clientWidth < WINDOW_BREAKPOINT ? (
               <ChevronRight style={{ transform: 'rotate(180deg)' }} />
             ) : (
               <ArrowRight style={{ transform: 'rotate(180deg)' }} />
@@ -70,12 +71,14 @@ const AvatarPartSelector = ({
           hasOwnSound
         >
           <motion.span animate={animateNext}>
-            {width < WINDOW_BREAKPOINT ? <ChevronRight /> : <ArrowRight />}
+            {clientWidth < WINDOW_BREAKPOINT ? (
+              <ChevronRight />
+            ) : (
+              <ArrowRight />
+            )}
           </motion.span>
         </Button>
       </div>
     </fieldset>
   )
 }
-
-export default AvatarPartSelector

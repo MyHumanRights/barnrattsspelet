@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
-import { getTranslator } from 'next-intl/server'
+import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { DeleteButton } from '../components/DeleteButton'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader/'
@@ -19,7 +19,12 @@ export async function generateMetadata({
   }
 }
 
-const CookiePolicy: React.FC = () => {
+const CookiePolicy = ({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) => {
+  unstable_setRequestLocale(locale)
   const t = useTranslations('Cookiepolicy')
 
   return (

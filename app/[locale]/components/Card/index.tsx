@@ -46,7 +46,6 @@ export const Card: React.FC<Props> = ({
   const [isFocused, setIsFocused] = useState(false)
   const [hasTabFocus, setHasTabFocus] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [bgLoaded, setBgLoaded] = useState(false)
   const [animateFlip, triggerFlip] = useAnimation({ scale: 1.22 })
 
   const {
@@ -73,14 +72,6 @@ export const Card: React.FC<Props> = ({
         mass: 2,
         stiffness: 40,
       }
-
-  useEffect(() => {
-    const img = new Image()
-    img.onload = () => {
-      setBgLoaded(true)
-    }
-    img.src = which.image
-  }, [which.image])
 
   function renderAnimation() {
     if (!animation) return
@@ -151,10 +142,6 @@ export const Card: React.FC<Props> = ({
     }
   }, [isOpen])
 
-  if (!bgLoaded) {
-    return <SkeletonCard size={size} />
-  }
-
   return (
     <motion.article
       layout
@@ -173,7 +160,7 @@ export const Card: React.FC<Props> = ({
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
-      {/* <div
+      <div
         className={`${styles.cardContainer} ${styles[size]} ${
           disabledCard ? styles.disabledCard : ''
         }`}
@@ -322,7 +309,7 @@ export const Card: React.FC<Props> = ({
             </div>
           </motion.div>
         </div>
-      </div> */}
+      </div>
     </motion.article>
   )
 }

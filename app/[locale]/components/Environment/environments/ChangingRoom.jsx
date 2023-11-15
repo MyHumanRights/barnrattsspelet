@@ -14,7 +14,7 @@ const ChangingRoom = (props) => {
       {...props}
     >
       <title id='changingroom-title'>
-        {t('antagonists:gymteacher:components:background')}
+        {t('antagonists.gymteacher.components.background')}
       </title>
       <defs>
         <clipPath id='changingroom-b'>

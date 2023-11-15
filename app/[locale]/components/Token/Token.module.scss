@@ -10,6 +10,11 @@
   margin: 16px 16px 16px 24px;
   @include drop-shadow(medium);
 
+  img {
+    width: auto;
+    height: auto;
+  }
+
   .banner {
     z-index: 1;
     display: inline-flex;

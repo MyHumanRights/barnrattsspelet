@@ -13,7 +13,7 @@ const CoachBefore = (props) => {
       {...props}
     >
       <title id='coach-before-title'>
-        {t('antagonists:coach:components:start')}
+        {t('antagonists.coach.components.start')}
       </title>
       <defs>
         <clipPath id='coach-before-b'>

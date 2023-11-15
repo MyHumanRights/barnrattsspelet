@@ -1,5 +1,13 @@
 // Add variables and mixins here
 
+$avatarSize: 100px;
+$avatarMargin: 8px;
+
+@media screen and (min-width: 600px) {
+  $avatarSize: 180px;
+  $avatarMargin: 16px;
+}
+
 $cardRadiusXSmall: 6px;
 $cardRadiusSmall: 9px;
 $cardRadius: 12px;

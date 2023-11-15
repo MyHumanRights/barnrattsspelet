@@ -23,6 +23,6 @@
       "use-sound": ["./generated-types/"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.d.ts", "api/storage.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.d.ts", "api/storage.js", "app/[locale]/loot-box/page.jsx", "app/[locale]/home/client.tsx", "app/[locale]/persuade/client.jsx"],
   "exclude": ["node_modules"]
 }

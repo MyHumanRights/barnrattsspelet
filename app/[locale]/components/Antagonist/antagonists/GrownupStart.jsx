@@ -13,7 +13,7 @@ const GrownupStart = (props) => {
       {...props}
     >
       <title id='grownup-start-title'>
-        {t('antagonists:grownup:components:start')}
+        {t('antagonists.grownup.components.start')}
       </title>
       <defs>
         <clipPath id='grownup-b'>

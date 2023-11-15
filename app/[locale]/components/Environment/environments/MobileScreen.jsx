@@ -14,7 +14,7 @@ const MobileScreen = (props) => {
       {...props}
     >
       <title id='mobilescreen-title'>
-        {t('antagonists:groomer:components:background')}
+        {t('antagonists.groomer.components.background')}
       </title>
       <defs>
         <clipPath id='mobilescreen-b'>

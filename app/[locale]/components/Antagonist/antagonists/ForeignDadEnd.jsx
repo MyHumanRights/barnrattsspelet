@@ -11,7 +11,7 @@ const ForeignDadEnd = (props) => {
       {...props}
     >
       <title id='foreigndad-end-title'>
-        {t('antagonists:foreigndad:components:end')}
+        {t('antagonists.foreigndad.components.end')}
       </title>
       <defs>
         <clipPath id='foreigndad-b'>

@@ -23,8 +23,8 @@ export const Token: React.FC<Props> = ({ ownedTokens, size = 'small' }) => {
     let width = 43
 
     if (size === 'medium') {
-      height = 75.81
-      width = 80
+      height = 62
+      width = 64
     }
     return { width, height }
   }
@@ -41,7 +41,7 @@ export const Token: React.FC<Props> = ({ ownedTokens, size = 'small' }) => {
         transition={{ type: 'spring' }}
       >
         <div className={styles.banner}>
-          <p className='sr-only'>{t('common:token:noOfTokens')}</p>
+          <p className='sr-only'>{t('token.noOfTokens')}</p>
           <motion.span animate={animate} className={styles.tokenWrapper}>
             {ownedTokens}
           </motion.span>

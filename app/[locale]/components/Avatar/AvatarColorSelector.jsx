@@ -1,7 +1,7 @@
-import AvatarColorSwatch from './AvatarColorSwatch'
+import { AvatarColorSwatch } from './AvatarColorSwatch'
 import styles from './AvatarColorSelector.module.scss'
 
-const AvatarColorSelector = ({
+export const AvatarColorSelector = ({
   title,
   category,
   colors,
@@ -25,5 +25,3 @@ const AvatarColorSelector = ({
     </fieldset>
   )
 }
-
-export default AvatarColorSelector

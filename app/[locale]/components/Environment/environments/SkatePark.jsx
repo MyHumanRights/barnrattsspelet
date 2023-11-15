@@ -14,7 +14,7 @@ const SkatePark = (props) => {
       {...props}
     >
       <title id='skatepark-title'>
-        {t('antagonists:league:components:background')}
+        {t('antagonists.league.components.background')}
       </title>
       <defs>
         <clipPath id='skatepark-b'>

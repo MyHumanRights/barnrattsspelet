@@ -5,7 +5,7 @@ import { useAnimation } from '@/utils/hooks/useAnimation'
 import { ICard } from '@/utils/types'
 import { setTokens } from '@/api/storage'
 import { BoostQuiz } from '../BoostQuiz'
-import Plus from '../Icons/Plus'
+import { Plus } from '../Icons/Plus'
 import styles from './Boost.module.scss'
 
 const WIN_AMOUNT = 1
@@ -28,14 +28,14 @@ export const Boost: React.FC<Props> = ({
   const t = useTranslations()
 
   const answers = card.quiz.answers.map((answer) => {
-    return { ...answer, text: t(`cards:${card.id}:quiz:answers:${answer.id}`) }
+    return { ...answer, text: t(`cards.${card.id}.quiz.answers.${answer.id}`) }
   })
 
   const quiz = {
     ...card.quiz,
-    question: t(`cards:${card.id}:quiz:question`),
-    infoCorrect: t(`cards:${card.id}:quiz:infocorrect`),
-    infoIncorrect: t(`cards:${card.id}:quiz:infoincorrect`),
+    question: t(`cards.${card.id}.quiz.question`),
+    infoCorrect: t(`cards.${card.id}.quiz.infocorrect`),
+    infoIncorrect: t(`cards.${card.id}.quiz.infoincorrect`),
     answers: answers,
   }
 
@@ -57,7 +57,7 @@ export const Boost: React.FC<Props> = ({
       <motion.button
         className={styles.modalClose}
         onClick={onModalClose}
-        aria-label={t('common:close')}
+        aria-label={t('close')}
         autoFocus
         onMouseEnter={trigger}
       >

@@ -12,7 +12,7 @@ const DrunkParentStart = (props) => {
       {...props}
     >
       <title id='drunk-parent-start-title'>
-        {t('antagonists:drunkparent:components:start')}
+        {t('antagonists.drunkparent.components.start')}
       </title>
       <defs>
         <clipPath id='drunk-parent-b'>

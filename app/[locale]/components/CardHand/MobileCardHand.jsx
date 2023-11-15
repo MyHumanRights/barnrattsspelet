@@ -1,20 +1,21 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { AnimatePresence, motion } from 'framer-motion'
 import useSound from 'use-sound'
-import { setGameState } from '../../api/engine'
+import Image from 'next/image'
+import { setGameState } from '@/api/engine'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
-import token from '../../assets/svgs/token.png'
-import unlockCardSound from '../../assets/sounds/fx/13-card-unlocked.mp3'
-import Card from '../Card/Card'
-import ChevronRight from '../Icons/ChevronRight'
+import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
+import { Card } from '../Card'
+import { ChevronRight } from '../Icons/ChevronRight'
+import { Button } from '../Button'
 import styles from './MobileCardHand.module.scss'
-import Button from '../Button/Button'
+import { ButtonVariant } from '@/utils/constants'
 
 const BOOST_COST = -1
 
-const MobileCardHand = ({
+export const MobileCardHand = ({
   openBoost,
   setCurrentState,
   cards,
@@ -29,7 +30,7 @@ const MobileCardHand = ({
   interactive = true,
   isPersuade = false,
 }) => {
-  const { t } = useTranslation('common', { keyPrefix: 'cardhand' })
+  const t = useTranslations('cardhand')
   const interactionButtons = useRef(null)
   const [cardIndex, setCardIndex] = useState()
   const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
@@ -41,7 +42,7 @@ const MobileCardHand = ({
 
   const {
     options: { soundEffectsOn, effectsVolume, shouldReduceMotion },
-  } = useContext(OptionsContext)
+  } = useOptionsContext()
   const [playUnlockCardSound] = useSound(unlockCardSound, {
     volume: effectsVolume,
   })
@@ -159,7 +160,12 @@ const MobileCardHand = ({
               aria-label={t('boost')}
             >
               <motion.span animate={animateStar} style={{ display: 'block' }}>
-                <img src={token} alt='Token' />
+                <Image
+                  src='/images/token.png'
+                  alt='Token'
+                  width={24}
+                  height={24}
+                />
               </motion.span>
             </motion.button>
           </div>
@@ -320,5 +326,3 @@ const MobileCardHand = ({
     </section>
   )
 }
-
-export default MobileCardHand

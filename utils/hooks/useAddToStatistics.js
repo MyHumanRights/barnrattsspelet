@@ -1,12 +1,11 @@
-import { useContext } from 'react'
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore/lite'
-import StatsContext from '../StatsContext'
-import { db } from '../../firebase'
+import { useStatsContext } from '@/contexts/StatsContext'
+import { db } from '@/utils/firebase'
 
 const YEAR = new Date().getFullYear().toString()
 
-const useAddToStatistics = (docName, flagName) => {
-  const { statFlags, setStatFlags } = useContext(StatsContext)
+export const useAddToStatistics = (docName, flagName) => {
+  const { statFlags, setStatFlags } = useStatsContext()
 
   const addToStatistics = async () => {
     if (!statFlags[flagName]) return
@@ -47,5 +46,3 @@ const getCurrentMonth = () => {
   const month = `${now.getMonth() + 1}`.padStart(2, '0')
   return `${year}-${month}`
 }
-
-export default useAddToStatistics

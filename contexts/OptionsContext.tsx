@@ -85,7 +85,7 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
     try {
       const imported = (
         await import(
-          '../assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
+          '/assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
         )
       ).default
       return imported
@@ -98,7 +98,7 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
     try {
       const imported = (
         await import(
-          '../assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
+          '/assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
         )
       ).default
       const audio = new Audio(imported)

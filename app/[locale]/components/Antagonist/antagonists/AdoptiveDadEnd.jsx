@@ -13,7 +13,7 @@ const AdoptiveDadEnd = (props) => {
       {...props}
     >
       <title id='adoptive-dad-end-title'>
-        {t('antagonists:adoptiveDad:components:end')}
+        {t('antagonists.adoptiveDadcomponents.end')}
       </title>
       <path
         d='M1524.06 168.51c-4.53 1.71-29.94 3.86-33.88 14.34-3.94 10.49.88 15.6.37 24.97s5.01 16.37 5.24 22.38c.22 6 9.88 18.11 9.88 18.11l69.75-11.39s-.44-16.42-.41-24.61c.03-8.2 2.61-15.08-1.84-21.93-4.46-6.85-7.1-10.27-12.89-16.47-5.78-6.2-13.6-14.46-22.17-13.28-8.57 1.18-9.52 6.17-14.06 7.88Z'

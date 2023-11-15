@@ -5,12 +5,15 @@ import { Quicksand } from 'next/font/google'
 import RootProviders from './components/RootProviders'
 import { Settings } from './components/Settings'
 import styles from './layout.module.scss'
+import { getAvatarColors, getAvatarParts } from '@/utils/getData'
+import { IAvatarColors, IAvatarParts } from '@/utils/types'
+import 'react-loading-skeleton/dist/skeleton.css'
 import '../global.scss'
 import '../index.scss'
 
 const quicksand = Quicksand({ subsets: ['latin'] })
 
-const locales = ['sv', 'en']
+const locales = ['sv']
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -40,6 +43,9 @@ const RootLayout = async ({
     notFound()
   }
 
+  const avatarParts: IAvatarParts = await getAvatarParts()
+  const avatarColors: IAvatarColors = await getAvatarColors()
+
   return (
     <html lang={locale}>
       <body className={quicksand.className}>
@@ -54,7 +60,10 @@ const RootLayout = async ({
                 timeZone={timeZone}
                 messages={messages}
               >
-                <Settings />
+                <Settings
+                  defaultAvatarParts={avatarParts}
+                  avatarColors={avatarColors}
+                />
                 {children}
               </NextIntlClientProvider>
             </RootProviders>

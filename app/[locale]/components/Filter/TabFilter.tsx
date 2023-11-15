@@ -1,13 +1,15 @@
+import { Dispatch, SetStateAction } from 'react'
 import { useTranslations } from 'next-intl'
 import useSound from 'use-sound'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ICard } from '@/utils/types'
 import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import styles from './TabFilter.module.scss'
+import Skeleton from 'react-loading-skeleton'
 
 interface Props {
   filter: string | null
-  setFilter: (filter: string | null) => void
+  setFilter: Dispatch<SetStateAction<string | null>>
   JSONsource: ICard[]
   isCollectionView?: boolean
   isApp?: boolean
@@ -20,10 +22,10 @@ export const TabFilter: React.FC<Props> = ({
   isCollectionView = false,
 }) => {
   const {
+    clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
-
   const t = useTranslations()
 
   const categories = [...new Set(JSONsource.flatMap((card) => card.category))]
@@ -65,6 +67,20 @@ export const TabFilter: React.FC<Props> = ({
       </label>
     )
   }
+
+  if (!clientWidth || !filters) {
+    return (
+      <fieldset className={styles.filter}>
+        <Skeleton width={132} height={50} style={{ marginTop: '.5rem' }} />
+        <Skeleton width={132} height={50} style={{ marginTop: '.5rem' }} />
+        <Skeleton width={132} height={50} style={{ marginTop: '.5rem' }} />
+        <Skeleton width={132} height={50} style={{ marginTop: '.5rem' }} />
+        <Skeleton width={132} height={50} style={{ marginTop: '.5rem' }} />
+      </fieldset>
+    )
+  }
+
+  if (clientWidth < 860) return null
 
   return (
     <fieldset className={styles.filter}>

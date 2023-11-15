@@ -13,7 +13,7 @@ export const TextWithVoiceover: React.FC<Props> = ({ textKey, color }) => {
   const { hasVoiceover } = useOptionsContext()
   const [hasAudio, setHasAudio] = useState<boolean | null>(null)
 
-  const soundKey = textKey.replace(/:/g, '-').toLowerCase()
+  const soundKey = textKey.replace(/\./g, '-').toLocaleLowerCase()
 
   useEffect(() => {
     ;(async function () {

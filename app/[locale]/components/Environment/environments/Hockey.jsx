@@ -14,7 +14,7 @@ const Hockey = (props) => {
       {...props}
     >
       <title id='hockey-title'>
-        {t('antagonists:racistTeacher:components:background')}
+        {t('antagonists.racistTeacher.components.background')}
       </title>
       <defs>
         <clipPath id='hockey-a'>

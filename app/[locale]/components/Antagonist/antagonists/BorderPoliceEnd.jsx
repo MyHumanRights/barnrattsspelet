@@ -12,7 +12,7 @@ const BorderPoliceEnd = (props) => {
       {...props}
     >
       <title id='borderpolice-end-title'>
-        {t('antagonists:borderpolice:components:end')}
+        {t('antagonists.borderpolice.components.end')}
       </title>
       <defs>
         <clipPath id='borderpolice-end-b'>

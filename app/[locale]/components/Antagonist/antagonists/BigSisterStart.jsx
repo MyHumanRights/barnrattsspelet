@@ -12,7 +12,7 @@ const BigSisterStart = (props) => {
       {...props}
     >
       <title id='bigsister-start-title'>
-        {t('antagonists:bigsister:components:start')}
+        {t('antagonists.bigsister.components.start')}
       </title>
       <defs>
         <clipPath id='big-sister-b'>

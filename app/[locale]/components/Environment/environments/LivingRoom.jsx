@@ -14,7 +14,7 @@ const LivingRoom = (props) => {
       {...props}
     >
       <title id='livingroom-title'>
-        {t('antagonists:sibling:components:background')}
+        {t('antagonists.sibling.components.background')}
       </title>
       <defs>
         <clipPath id='livingroom-b'>

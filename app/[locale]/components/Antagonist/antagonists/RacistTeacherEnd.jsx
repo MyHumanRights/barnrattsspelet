@@ -11,7 +11,7 @@ const RacistTeacherEnd = (props) => {
       {...props}
     >
       <title id='racist-teacher-end-title'>
-        {t('antagonists:racistteacher:components:end')}
+        {t('antagonists.racistteacher.components.end')}
       </title>
       <defs>
         <clipPath id='racist-teacher-a'>

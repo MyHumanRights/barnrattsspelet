@@ -12,7 +12,7 @@ const GangEnd = (props) => {
       fill='none'
       {...props}
     >
-      <title id='gang-end-title'>{t('antagonists:gang:components:end')}</title>
+      <title id='gang-end-title'>{t('antagonists.gang.components.end')}</title>
       <path
         d='M1663.15 606.68s5.46 76.11 6.35 91.47c.89 15.36-12.24 44.72-28.72 44.83-16.47.11-13.66-53.6-15.81-64.26-2.15-10.67-5.77-67.26-5.77-67.26l43.96-4.79Z'
         style={{

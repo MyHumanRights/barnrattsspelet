@@ -2,16 +2,17 @@ import { PropsWithChildren, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { Button } from '../Button/Button'
-// import owlOnTwig from '../../assets/svgs/owl-on-twig.svg'
-// import owl from '../../assets/svgs/owl.svg'
-// import { TextWithVoiceover } from '../'
+import { Button } from '../Button'
+// import owlOnTwig from '@/assets/svgs/owl-on-twig.svg'
+// import owl from '@/assets/svgs/owl.svg'
+import { TextWithVoiceover } from '../TextWithVoiceover'
+import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import styles from './OwlDialogue.module.scss'
-import owlSound from '../../../../assets/sounds/fx/16-owl-popup.mp3'
+import Image from 'next/image'
 
 interface Props {
-  body?: string
-  heading?: string
+  body?: string | null
+  heading?: string | null
   setShowOwl?: (show: boolean) => void
   setHasShownOwlTip?: (show: boolean) => void
   cta?: string
@@ -43,7 +44,7 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
   children,
   buttonHasOwnSound = false,
 }) => {
-  const t = useTranslations('Owl')
+  const t = useTranslations()
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
@@ -71,27 +72,32 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
         vertical && styles.vertical
       }`}
     >
-      {/* <picture className={styles.image}>
+      <picture className={styles.image}>
         <source
           media='(max-width: 499px)'
-          srcSet={owl}
+          srcSet='/svgs/owl.svg'
           width='117'
           height='120'
         />
         <source
           media='(min-width: 500px)'
-          srcSet={owlOnTwig}
+          srcSet='/svgs/owl-on-twig.svg'
           width='147'
           height='150'
         />
-        <img src={owlOnTwig} alt={t('common:owl:owlalt')} />
-      </picture> */}
+        <Image
+          src='/svgs/owl-on-twig.svg'
+          alt={t('Owl.owlalt')}
+          width='147'
+          height='150'
+        />
+      </picture>
       <div className={`${item ? styles.dialogueWithItem : styles.dialogue}`}>
         <div className={styles.bodyWrapper}>
           {!!heading && (
             <p>
               <strong className={styles.heading}>
-                {/* <TextWithVoiceover textKey={heading} /> */}
+                <TextWithVoiceover textKey={heading} />
               </strong>
             </p>
           )}
@@ -99,7 +105,7 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
             <p>
               {/* We only need the voiceover button if there is no heading, 
                 otherwise, the heading will have the voiceover button */}
-              {/* {heading ? t(body) : <TextWithVoiceover textKey={body} />} */}
+              {heading ? t(body) : <TextWithVoiceover textKey={body} />}
             </p>
           )}
           {secondBody && <p>{secondBody}</p>}
@@ -111,7 +117,7 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
               size={ButtonSize.SMALL}
               hasOwnSound={buttonHasOwnSound}
             >
-              {cta ? cta : t('confirm')}
+              {cta ? cta : t('Owl.confirm')}
             </Button>
             {secondButton}
           </div>

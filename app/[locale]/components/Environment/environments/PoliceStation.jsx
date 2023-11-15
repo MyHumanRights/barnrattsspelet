@@ -14,7 +14,7 @@ const PoliceStation = (props) => {
       {...props}
     >
       <title id='policestation-title'>
-        {t('antagonists:borderpolice:components:background')}
+        {t('antagonists.borderpolice.components.background')}
       </title>
       <style>
         {

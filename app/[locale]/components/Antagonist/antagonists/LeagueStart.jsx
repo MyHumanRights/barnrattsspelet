@@ -13,7 +13,7 @@ const LeagueStart = (props) => {
       {...props}
     >
       <title id='league-start-title'>
-        {t('antagonists:league:components:start')}
+        {t('antagonists.league.components.start')}
       </title>
       <defs>
         <clipPath id='league-b'>

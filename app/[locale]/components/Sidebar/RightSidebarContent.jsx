@@ -1,15 +1,15 @@
-import { useContext } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import Link from '../Link/Link'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import CardHandSmall from '../CardHandSmall/CardHandSmall'
 import { useAnimation } from '@/utils/hooks/useAnimation'
-import ArrowRight from '../Icons/ArrowRight'
+import { Link } from '../Link/Link'
+import { CardHandSmall } from '../CardHandSmall'
+import { ArrowRight } from '../Icons/ArrowRight'
+import { Button } from '../Button'
 import styles from './RightSidebarContent.module.scss'
-import Button from '../Button/Button'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
-const RightSidebarContent = ({
+export const RightSidebarContent = ({
   cardHand,
   unlockedPlaces,
   getAnyUnbeaten,
@@ -17,7 +17,7 @@ const RightSidebarContent = ({
   sidebarEnvironment,
   onToggle,
 }) => {
-  const { isMobile } = useContext(OptionsContext)
+  const { isMobile } = useOptionsContext()
   const t = useTranslations()
   const [animateArrow, triggerArrow] = useAnimation({ x: 5 })
   const [animateBackArrow, triggerBackArrow] = useAnimation({ x: -5 })
@@ -25,13 +25,11 @@ const RightSidebarContent = ({
   const linkButton = (
     <Link
       to='/deck-builder'
-      variant='secondary'
-      size='small'
+      variant={ButtonVariant.SECONDARY}
+      size={ButtonSize.SMALL}
       onMouseEnter={triggerArrow}
     >
-      {cardHand.length
-        ? t('common:map:changecards')
-        : t('common:map:choosecards')}
+      {cardHand.length ? t('map.changecards') : t('map.choosecards')}
       <motion.span animate={animateArrow}>
         <ArrowRight />
       </motion.span>
@@ -41,14 +39,12 @@ const RightSidebarContent = ({
   return (
     <section className={styles.sectionRight}>
       <h2>
-        {cardHand.length
-          ? t('common:map:playheading')
-          : t('common:map:playheadingnocards')}
+        {cardHand.length ? t('map.playheading') : t('map.playheadingnocards')}
       </h2>
       <div className={styles.linkWrapperRight}>
         {!isMobile && (
           <>
-            <h3>{t('common:map:cardhand')}</h3>
+            <h3>{t('map.cardhand')}</h3>
             <CardHandSmall cards={cardHand} trigger={triggerArrow} />
             {linkButton}
           </>
@@ -82,5 +78,3 @@ const RightSidebarContent = ({
     </section>
   )
 }
-
-export default RightSidebarContent

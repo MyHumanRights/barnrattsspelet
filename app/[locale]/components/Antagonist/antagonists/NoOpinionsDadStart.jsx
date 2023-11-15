@@ -11,7 +11,7 @@ const NoOpinionsDadStart = (props) => {
       {...props}
     >
       <title id='noopinionsdad-start-title'>
-        {t('antagonists:noOpinionsDad:components:start')}
+        {t('antagonists.noOpinionsDad.components.start')}
       </title>
       <defs>
         <clipPath id='noopinionsdad-a'>

@@ -11,7 +11,7 @@ const GymTeacherStart = (props) => {
       {...props}
     >
       <title id='gymteacher-start-title'>
-        {t('antagonists:gymteacher:components:start')}
+        {t('antagonists.gymteacher.components.start')}
       </title>
       <defs>
         <clipPath id='b'>

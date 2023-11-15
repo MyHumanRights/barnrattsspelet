@@ -17,6 +17,23 @@
   }
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0;
+  grid-row: 2;
+
+  p {
+    padding: 0 0.5rem;
+  }
+
+  @media (min-width: 450px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .wrapper,
 .header {
   margin: 0 3%;

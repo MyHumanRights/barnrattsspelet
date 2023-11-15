@@ -23,10 +23,11 @@ export const Folder: React.FC<PropsWithChildren> = ({ children }) => {
       </div>
       <div className={styles.bottom}>
         <Image
-          src='/svgs/folder/bottom.svg'
+          src='/svgs/folder/botten.svg'
           alt='bottom'
           height={51}
           width={2144}
+          priority
         />
       </div>
       <div className={styles.bottom} />

@@ -13,7 +13,7 @@ const TeacherEnvironmentStart = (props) => {
       {...props}
     >
       <title id='teacher-environment-start-title'>
-        {t('antagonists:teacherEnvironment:components:start')}
+        {t('antagonists.teacherEnvironment.components.start')}
       </title>
       <defs>
         <clipPath id='teacher-environment-a'>

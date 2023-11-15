@@ -1,7 +1,20 @@
+'use client'
+
 import { createContext, useContext, useState } from 'react'
 import { STAT_FLAGS } from '../utils/constants'
 
-const StatsContext = createContext<any | undefined>(undefined)
+interface Props {
+  statFlags: {
+    [key in STAT_FLAGS]: boolean
+  }
+  setStatFlags: React.Dispatch<
+    React.SetStateAction<{
+      [key in STAT_FLAGS]: boolean
+    }>
+  >
+}
+
+const StatsContext = createContext<Props>({} as Props)
 
 export const StatsProvider: React.FC<React.PropsWithChildren> = ({
   children,

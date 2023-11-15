@@ -12,7 +12,7 @@ const Store = (props) => {
       {...props}
     >
       <title id='store-title'>
-        {t('antagonists:grownup:components:background')}
+        {t('antagonists.grownup.components.background')}
       </title>
       <defs>
         <clipPath id='store-b'>

@@ -1,0 +1,109 @@
+@import '../../global.scss';
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1000px;
+  perspective-origin: center center;
+  width: 100vw;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+}
+
+.backdrop {
+  @include backdrop;
+}
+
+.owlWrapper {
+  padding-top: 24px;
+  z-index: 1;
+}
+
+.owlWelcomeWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.ctaWrapper {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+
+  button {
+    @include fontBangers;
+
+    &:hover {
+      text-decoration: none;
+      color: scale-color($primaryColor, $lightness: 15%);
+    }
+  }
+}
+
+.cardList {
+  list-style: none;
+  width: min(90vw, 1200px);
+  margin: 16px auto 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+
+  li {
+    position: absolute;
+  }
+}
+
+.lootItem {
+  position: relative;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0.3rem 0;
+}
+
+.active {
+  margin-top: 3px;
+  box-shadow: $newCardGlow;
+  border-radius: 12px;
+}
+
+.blurBkgd {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    backdrop-filter: blur(10px);
+  }
+}
+
+.opacityBkgd {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.content {
+  position: relative;
+}

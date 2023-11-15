@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import Close from '../Icons/Close'
+import { Close } from '../Icons/Close'
 
 import {
   resetTokens,
@@ -27,7 +27,7 @@ import { getDefaultAvatorParts, getRandomAvatar } from '../../../../api/engine'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import styles from './Settings.module.scss'
-import { Button } from '../Button/Button'
+import { Button } from '../Button'
 import { Link } from '../Link/Link'
 import { OwlDialogue } from '../OwlDialogue'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
@@ -246,9 +246,9 @@ export const SettingsModal: React.FC<Props> = ({ handleModal }) => {
             className={styles.owlWrapper}
           >
             <OwlDialogue
-              heading='resetgame:header'
-              body='resetgame:body'
-              cta={t('resetgame:cta')}
+              heading='Owl.resetgame.header'
+              body='Owl.resetgame.body'
+              cta={t('cta')}
               secondButton={
                 <Button
                   onClick={() => setShowOwlTip(false)}

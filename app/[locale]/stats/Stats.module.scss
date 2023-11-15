@@ -1,0 +1,70 @@
+.wrapper {
+  padding: 20px;
+  max-width: 1200px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  input {
+    margin-right: 20px;
+  }
+}
+
+.overall {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.monthly {
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.container h2 {
+  margin-top: 0;
+}
+
+.container table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: auto;
+  table-layout: auto;
+}
+
+.container th,
+.container td {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.container th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.container tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

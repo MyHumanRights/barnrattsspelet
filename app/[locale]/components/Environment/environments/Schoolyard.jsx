@@ -14,7 +14,7 @@ const Schoolyard = (props) => {
       {...props}
     >
       <title id='schoolyard-title'>
-        {t('antagonists:classmate1:components:background')}
+        {t('antagonists.classmate1.components.background')}
       </title>
       <defs>
         <clipPath id='schoolyard-b'>

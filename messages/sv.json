@@ -27,7 +27,7 @@
   "loading": "Laddar",
   "readmoreonhelp": "Läs mer på Hjälp-sidan",
   "playvoiceover": "Spela textuppläsning",
-  "numberOfNewCards": "Du har fått {{number}} nya rättighetskort",
+  "numberOfNewCards": "Du har fått {number} nya rättighetskort",
   "filter": "Filtrera",
   "filterCards": "Filtrering av rättighetskort",
   "buttonFilter": "Filtrering av objekt",
@@ -320,7 +320,7 @@
       "body": "Alla barn i hela världen har samma rättigheter. Du och dina kompisar, alla barn i landet du bor i och i hela världen. "
     },
     "library": "Bibliotek",
-    "play": "Spela {{place}}",
+    "play": "Spela {place}",
     "newscenario": "Ny utmaning!"
   },
   "deckbuilder": {
@@ -328,8 +328,8 @@
     "preamble": "Du ska ha 7 rättighetskort i handen för att spela. Men du kan ta bort ett rättighetskort om du vill byta.",
     "wrongAmountOfCards": "Du måste välja 7 rättighetskort",
     "emptyhand": "Töm korthand",
-    "cardsselected": "av {{maxcards}} rättighetskort valda",
-    "cardsselectedmobile": "av {{maxcards}} valda",
+    "cardsselected": "av {maxcards} rättighetskort valda",
+    "cardsselectedmobile": "av {maxcards} valda",
     "categories": {
       "all": "Alla",
       "mamma": "Mamma",
@@ -425,6 +425,9 @@
   "Owl": {
     "confirm": "Ok",
     "owlalt": "En uggla som sitter bredvid en pratbubbla",
+    "startplaytip": {
+      "body": "Visste du att om du klickar på ”Så spelar du” kan du lära dig mer om spelet."
+    },
     "homewelcome": {
       "text_1": {
         "heading": "Hej!",
@@ -525,7 +528,7 @@
       }
     },
     "persuasiondone": {
-      "win": "Du har lyckats övertyga {{name}}",
+      "win": "Du har lyckats övertyga {name}",
       "retry": "Försök igen",
       "tohome": "Tillbaka till hem",
       "getlootbox": "Hämta belöning",
@@ -550,7 +553,6 @@
     "resetgame": {
       "header": "Är du säker?",
       "body": "Om du börjar om försvinner dina sparade framsteg och din avatar.",
-      "cta": "Börja om",
       "cancel": "Avbryt"
     }
   },
@@ -560,6 +562,7 @@
     "description2": "Du kan också köpa en loot box om du har 5 eller fler tokens."
   },
   "Settings": {
+    "cta": "Börja om",
     "reset": "Börja om spelet",
     "thememusicon": "Musik är på",
     "thememusicoff": "Musik är av",
@@ -1670,6 +1673,547 @@
         "heading": "Om jag misstänks för brott har jag rätt att få någon som försvarar mig i domstolen. Den domstol som dömer mig ska vara rättvis och förstå att jag är ett barn",
         "body": "Jag har alltid rätt att ha en vuxen som kan lagarna vid min sida som försvarar mig när jag begått ett brott"
       }
+    }
+  },
+  "antagonists": 
+  {
+    "dad": {
+      "title": "En pappa står i ett kök och ser stressad ut",
+      "components": {
+        "start": "En pappa med mörkt hår och skägg, som har gröna byxor och en turkos tröja",
+        "end": "En pappa med mörkt hår och skägg, som har gröna byxor och en turkos tröja",
+        "background": "Ett kök med köksluckor i grönt, orange, gult, blått och en kastrull på spisen"
+      },
+      "statements": [
+        "Jaha, men du får väl anstränga dig mer då?",
+        "Du är stor nu. Det borde du kunna fixa själv.",
+        "Nä, nu får du sluta. Barn har väl inga rättigheter."
+      ],
+      "conversationEntries": {
+        "a": "Pappa, jag mår inte så bra och det känns inte som jag fattar nånting på lektionerna.",
+        "b": "Det funkar inte så bra i skolan. Jag orkar inte gå dit."
+      },
+      "winquote": "OK, förlåt. Jag är nog bara lite stressad just nu. Självklart ska jag hjälpa dig.",
+      "lossquote": "Nej det där duger inte, du får börja om"
+    },
+    "mum": {
+      "title": "En mamma står i ett kök och ser bestämd ut",
+      "components": {
+        "start": "En mamma med mörkt hår, blå kjol och svart skjorta, som ser bestämd ut",
+        "end": "En mamma med mörkt hår, blå kjol och svart skjorta, som ser bestämd ut",
+        "background": "Ett kök med disk på diskbänken och ett köksbord. På köksbordet finns en skål med bananer"
+      },
+      "statements": [
+        "Din mobil låg ju framme. Klart jag kollar då.",
+        "Men vad ska göra då? Du berättar ju aldrig nåt."
+      ],
+      "conversationEntries": {
+        "a": "Va? Har du läst mina sms?",
+        "b": "Hur kan du veta att jag gjort det? Det är en hemlighet."
+      },
+      "winquote": "Ok, du har rätt. Det var  verkligen inte ok att jag tittade i din mobil. Men du betyder så mycket för mig och jag var nyfiken. Kom ihåg att du alltid kan prata med mig...",
+      "lossquote": "Bra försök. Men du får nog prova igen!"
+    },
+    "sibling": {
+      "title": "En storasyster står i ett vardagsrum, framför en beige soffa och ser lite arg ut",
+      "components": {
+        "start": "En storasyster, en tonårsflicka, med blont hår, gröna byxor och rosa T-shirt, som ser lite arg ut",
+        "end": "En storasyster, en tonårsflicka, med blont hår, gröna byxor och rosa T-shirt, som ser lite arg ut",
+        "background": "Ett vardagsrum med beige soffa, en svart golvlampa, på väggen hänger två tavlor, den ena med ett landskap och den andra med tulpaner"
+      },
+      "statements": [
+        "Nä, är du dum eller? Jag kan väl inte släpa på dig och din rullstol jämt.",
+        "Lägg av, måste du alltid tycka så mycket?"
+      ],
+      "conversationEntries": {
+        "a": "Får jag också hänga med och spela?",
+        "b": "Vad kul! Jag vill också vara med."
+      },
+      "winquote": "Ok, jag fattar. Det är klart du får hänga med.",
+      "lossquote": "TBD"
+    },
+    "relative": {
+      "title": "En man i övre medelåldern står i ett flickrum och pekar med ett finger",
+      "components": {
+        "start": "En man i övre medelåldern, med grått hår, glasögon, blå jeans, vit skjorta som pekar med ett finger",
+        "end": "En man i övre medelåldern, med grått hår, glasögon, blå jeans, vit skjorta som pekar med ett finger",
+        "background": "Ett flickrum med en säng med ett orange överkast, ett skrivbord med en dator, på väggen hänger två affischer, den ena med en katt och den andra med hjärtan"
+      },
+      "statements": [
+        "Hej, nämen vad stor du har blivit. Och bröst har du fått också...",
+        "Men herregud, känner du dig illa behandlad av en sån struntsak?"
+      ],
+      "conversationEntries": {
+        "a": "Hej!",
+        "b": "Goddag!"
+      },
+      "winquote": "Jaha, ja om du säger det så. Det var kanske fel av mig. Jag ber om ursäkt.",
+      "lossquote": "TBD"
+    },
+    "drunkparent": {
+      "title": "En mamma i 40-årsåldern, står i ett vardagsrum och ser skuldmedveten ut",
+      "components": {
+        "start": "En mamma, en kvinna i fyrtioårsåldern, med kortklippt ljusblont hår, vinröda byxor och grön tröja ser skuldmedveten ut",
+        "end": "En mamma, en kvinna i fyrtioårsåldern, med kortklippt ljusblont hår, vinröda byxor och grön tröja ser skuldmedveten ut",
+        "background": "Ett vardagsrum med blå soffa och ett sidobord. På bordet står en grön växt."
+      },
+      "statements": [
+        "Det är min sak hur jag dricker, ingenting du ska lägga dig i",
+        "Vadå trygg? Det kände jag mig aldrig när jag var liten."
+      ],
+      "conversationEntries": {
+        "a": "Var du full igen igår kväll?",
+        "b": "Jag får ont i magen när du är så där."
+      },
+      "winquote": "Usch, jag fattar. Så här ska du inte behöva ha det hemma. Jag ska söka hjälp.",
+      "lossquote": "TBD"
+    },
+    "troll": {
+      "title": "En stor datorskärm där det pågår en chatt med ett så kallat internet-troll",
+      "components": {
+        "start": "Ett internettroll som chattar",
+        "end": "Ett internettroll som chattar",
+        "background": "Ett skrivbord, där det står en dator, en läskburk, några papper och en penna"
+      },
+      "statements": [
+        "OMG! Fy fan! Skulle aldrig ta en selfie om jag såg ut som du."
+      ],
+      "conversationEntries": {
+        "a": "Fick nya jeans och skjorta i helgen.",
+        "b": "Här är jag i mina nya kläder. Snyggt va?"
+      },
+      "winquote": "Oj, förlåt. Snygga kläder!",
+      "lossquote": "TBD"
+    },
+    "bigsister": {
+      "title": "En storebror, en tonårskille står i ett vardagsrum och ser upprörd ut",
+      "components": {
+        "start": "En storebror, en kille i tjugoårsåldern, med mörkt hår, blå jeans, gul hoodietröja, som ser upprörd ut",
+        "end": "En storebror, en kille i tjugoårsåldern, med mörkt hår, blå jeans, gul hoodietröja, som ser upprörd ut",
+        "background": "Ett vardagsrum med TV och TV-bänk. På bänken står även en gul lampa och bredvid bänken finns en blå stol"
+      },
+      "statements": [
+        "Du gör som jag säger, familjen har bestämt att du ska gifta dig med din kusin till hösten",
+        "Lägg dig inte i. Det blir som vi bestämt."
+      ],
+      "conversationEntries": {
+        "a": "Jag vill gå klart skolan",
+        "b": "Jag vill också ha en utbildning"
+      },
+      "winquote": "Det är inte så att jag inte fattar. OK, ska försöka prata med släktingarna",
+      "lossquote": "TBD"
+    },
+    "parentsdivorcing": {
+      "title": "En mamma, en kvinna i fyrtioårsåldern står i ett kök med händerna i midjan och som ser mycket sammanbiten ut",
+      "components": {
+        "start": "En mamma, en kvinna i fyrtioårsåldern, med rågblont hår, röda glasögon, gröna byxor, grön tröja står med händerna i midjan och ser mycket sammanbiten ut",
+        "end": "En mamma, en kvinna i fyrtioårsåldern, med rågblont hår, röda glasögon, gröna byxor, grön tröja står med händerna i midjan och ser mycket sammanbiten ut",
+        "background": "Ett kök med köksluckor i grönt och ett köksfönster med gula gardiner"
+      },
+      "statements": [
+        "Det ska jag och pappa försöka komma överens om.",
+        "Det är vi vuxna som bestämmer hur vi vill ha det först och främst.",
+        "Vi får se hur det blir med det. Men du ska veta att jag tänker kämpa för att du ska bo hos mig nu när pappa flyttar så långt bort"
+      ],
+      "conversationEntries": {
+        "a": "Ska ni skiljas? Men vart ska jag bo då?",
+        "b": "Ska ni skiljas? Men hur blir det för mig då?"
+      },
+      "winquote": "Jag har nog inte riktigt hunnit tänka igenom det här. Självklart ska vi tänka på dig i första hand och prata med dig om hur du känner.",
+      "lossquote": "TBD"
+    },
+    "classmate1": {
+      "title": "En tonårig kille sitter i rullstol på skolgården",
+      "components": {
+        "start": "En tonårig kille med mörkt hår, lila tröja, gröna byxor, sitter i en rullstol",
+        "end": "En tonårig kille med mörkt hår, lila tröja, gröna byxor, sitter i en rullstol",
+        "background": "En gul skolbyggnad, ingång till skolan, en klocka, en basketbollkorg."
+      },
+      "statements": [
+        "Men sluta nu. Så farligt är det väl inte",
+        "Det är ingen idé att berätta för nån vuxen. Det är ändå ingen som bryr sig."
+      ],
+      "conversationEntries": {
+        "a": "Det känns som jag blir mobbad. Kan du följa mig till kuratorn?",
+        "b": "Jag mår inte så bra av det som händer på rasterna..."
+      },
+      "winquote": "Ok, du kan ju försöka. Jag följer med dig till kuratorn.",
+      "lossquote": "TBD"
+    },
+    "teacher": {
+      "title": "En lärare, en kvinna, står i ett klassrum och ser sträng ut, hytter med ett finger",
+      "components": {
+        "start": "En lärare, en kvinna i trettioårsåldern, med långt brunt hår, orange klänning, ser sträng ut och hytter med ett finger",
+        "end": "En lärare, en kvinna i trettioårsåldern, med långt brunt hår, orange klänning, ser sträng ut och hytter med ett finger",
+        "background": "Ett klassrum, med whiteboardtavla, en klocka och ett skåp, på skåpets dörrar är barnteckningar uppsatta"
+      },
+      "statements": [
+        "Du menar alltså att du inte kan lära dig något här i klassrummet? Den enda som klagar på ljudnivån är du.",
+        "Jag blir så trött på dig ibland. Här är det jag som är lärare och jag som bestämmer."
+      ],
+      "conversationEntries": {
+        "a": "Fröken! Jag kan inte tänka när alla pratar!",
+        "b": "Fröken! Kan du säga till att alla ska vara lite tystare?"
+      },
+      "winquote": "...men förlåt. Jag skulle verkligen inte ha sagt så. Det är klart att det ska vara arbetsro i klassrummet.",
+      "lossquote": "TBD"
+    },
+    "teacherEnvironment": {
+      "title": "En lärare, en man, står i en park och ser oengagerad ut",
+      "components": {
+        "start": "En lärare, en man i trettioårsåldern, med glasögon, brunt lockigt hår och skägg, grå byxor, ljusgrön T-shirt och mörkgrön jacka, som ser oengagerad ut",
+        "end": "En lärare, en man i trettioårsåldern, med glasögon, brunt lockigt hår och skägg, grå byxor, ljusgrön T-shirt och mörkgrön jacka, som ser oengagerad ut",
+        "background": "En park med grön gräsmatta, träd, en gångväg, en sopkorg där det ligger skräp på gräsmattan"
+      },
+      "statements": [
+        "Vi har inte riktigt tid med det nu, vi är sena.",
+        "Jaja, jag vet att du är klassens lilla jobbiga ordningspolis. Men vi har inte tid."
+      ],
+      "conversationEntries": {
+        "a": "Ska vi verkligen lämna alla burkar och plast kvar här?",
+        "b": "Ska vi bara gå nu? Och lämna allt skräp?"
+      },
+      "winquote": "Oj förlåt, det där var dumt sagt. Och du har helt rätt. Vi ska självklart inte lämna skräp i naturen.",
+      "lossquote": "TBD"
+    },
+    "classmate2": {
+      "title": "En flicka i tolvårsåldern står i en skolkorridor och gör en gest med ena handen och ser lite bister ut",
+      "components": {
+        "start": "En flicka i tolvårsåldern, med mörkt hår i flätor, vita byxor och lila tröja som gör en gest med ena handen och ser lite bister ut",
+        "end": "En flicka i tolvårsåldern, med mörkt hår i flätor, vita byxor och lila tröja som gör en gest med ena handen och ser lite bister ut",
+        "background": "En skolkorridor, med elevskåp och klädhängare på väggen"
+      },
+      "statements": [
+        "Då skulle ingen annan komma. Du är så konstig.",
+        "Men sluta gnälla. Och berätta inte för någon i skolan, för då du..."
+      ],
+      "conversationEntries": {
+        "a": "Va? Var alla utom jag bjudna på din födelsedagsfest?",
+        "b": "Va? Varför blev inte jag bjuden?"
+      },
+      "winquote": "När jag tänker efter är det kanske inte ok det vi håller på med. Jag borde ha bjudit dig också.",
+      "lossquote": "TBD"
+    },
+    "gang": {
+      "title": "En kille i femtonårsåldern står utanför en gul skolbyggnad och ser överlägsen ut",
+      "components": {
+        "start": "En kille i femtonårsåldern, med blå jeans, vit T-shirt, står med båda händerna i byxfickorna och ser överlägsen ut",
+        "end": "En kille i femtonårsåldern, med blå jeans, vit T-shirt, står med båda händerna i byxfickorna och ser överlägsen ut",
+        "background": "En gul skolbyggnad, ingång till skolan, en klocka, en basketbollkorg"
+      },
+      "statements": [
+        "Jävla musse. Vad gör ni här då? Åk hem!!",
+        "Ska du va svensk får du fira jul som vi gör. Klä julgran och äta skinka, dumjävel"
+      ],
+      "conversationEntries": {
+        "a": "Vi firar inte jul hemma hos oss",
+        "b": "Vi äter inte julskinka hemma"
+      },
+      "winquote": "Okey då! Det där sista var kanske taskigt",
+      "lossquote": "TBD"
+    },
+    "adult": {
+      "title": "En man i fyrtioårsåldern står på en fotbollsplan efter avslutad match, pekar med ett finger och ser upprörd ut",
+      "components": {
+        "start": "En man i fyrtioårsåldern, med lila byxor, ljusblå skjorta, blå jacka, pekar med ett finger och ser upprörd ut",
+        "end": "En man i fyrtioårsåldern, med lila byxor, ljusblå skjorta, blå jacka, pekar med ett finger och ser upprörd ut",
+        "background": "En fotbollsplan, ett fotbollmål, där det ligger två fotbollar, en gul och en blå"
+      },
+      "statements": [
+        "Då får ni sluta spela som tjejer"
+      ],
+      "conversationEntries": {
+        "a": "Synd att vi förlorade",
+        "b": "Nästa gång vinner vi!"
+      },
+      "winquote": "Hoppsan, det var inte så bra sagt av mig.",
+      "lossquote": "TBD"
+    },
+    "coach": {
+      "title": "En fotbollstränare, en kvinna, står på en fotbollsplan och ser bestämd ut",
+      "components": {
+        "start": "En fotbollstränare, en kvinna i trettioårsåldern, med blont hår, klädd i lila och rosa träningskläder som ser bestämd ut",
+        "end": "En fotbollstränare, en kvinna i trettioårsåldern, med blont hår, klädd i lila och rosa träningskläder som ser bestämd ut",
+        "background": "En fotbollsplan, ett fotbollmål, där det ligger två fotbollar, en gul och en blå"
+      },
+      "statements": [
+        "Tyvärr, idag är det viktigt att vi toppar laget med de bästa spelarna.",
+        "Du verkar inte fatta! Du platsar ju inte."
+      ],
+      "conversationEntries": {
+        "a": "Varför får inte jag spela?",
+        "b": "Måste jag sitta på bänken idag också?"
+      },
+      "winquote": "Ok, du  har faktiskt helt rätt. På nästa träning ska jag visa dig några bra tips.",
+      "lossquote": "TBD"
+    },
+    "gymteacher": {
+      "title": "En tränare, en man i fyrtioårsåldern, står i ett omklädningsrum i en idrottshall",
+      "components": {
+        "start": "En tränare, en man i fyrtioårsåldern, med kort mörkt hår, klädd i svarta, korta träningsbyxor och en gul T-shirt, visselpipa runt halsen",
+        "end": "En tränare, en man i fyrtioårsåldern, med kort mörkt hår, klädd i svarta, korta träningsbyxor och en gul T-shirt, visselpipa runt halsen",
+        "background": "Ett omklädningsrum i en idrottshall, med skåp och en bänk. På bänken ligger en innebandyklubba och en boll. På golvet en grön bag och ett par gymnastikskor"
+      },
+      "statements": [
+        "Men vi ska bara ha lite peptalk.",
+        "Men sluta gnälla. Jag har väl sett nakna ungar förr."
+      ],
+      "conversationEntries": {
+        "a": "Ursäkta, vi byter om här, gå ut!",
+        "b": "Jag vill vara ifred när jag byter om."
+      },
+      "winquote": "Ok, vad bra att du säger till. Jag ska tänka på det i framtiden.",
+      "lossquote": "TBD"
+    },
+    "friend": {
+      "title": "En chatt i mobiltelefon pågår och en kompis skickar en kränkande, kommentar om den andra kompisens inlägg i chatten",
+      "components": {
+        "start": "En kompis som skickar en kränkande kommentar i mobilchatten",
+        "end": "En kompis som skickar en kränkande kommentar i mobilchatten",
+        "background": "En hand som håller i en mobiltelefon"
+      },
+      "statements": [
+        "Skiter väl jag i!",
+        "Vadå respekt? Tjallar du, får du stryk."
+      ],
+      "conversationEntries": {
+        "a": "Lägg av, håll dina snuskiga bilder för dig själv!",
+        "b": "Sluta, jag vill inte se din snopp i min mobil!"
+      },
+      "winquote": "Ja, ja, jag fattar. Lovar att aldrig göra om det om du inte tjallar. OK?",
+      "lossquote": "TBD"
+    },
+    "grownup": {
+      "title": "En kvinna i femtioårsålder står med korslagda armar framför en kassadisk i en närbutik och ser sur ut",
+      "components": {
+        "start": "En kvinna i femtioårsåldern, med rött hår, glasögon, gula byxor och grå tröja står med armarna i kors och ser sur ut",
+        "end": "En kvinna i femtioårsåldern, med rött hår, glasögon, gula byxor och grå tröja står med armarna i kors och ser sur ut",
+        "background": "En kassadisk i en närbutik, bredvid kassadisken hyllor med frukt och med cupcakes"
+      },
+      "statements": [
+        "Jag har bråttom. Du har väl ändå inget viktigt för dig.",
+        "Nä du, barn ska veta sin plats."
+      ],
+      "conversationEntries": {
+        "a": "Ursäkta, men jag var före.",
+        "b": "Men hallå, det var min tur nu."
+      },
+      "winquote": "Men herregud! Gå före mig då.",
+      "lossquote": "TBD"
+    },
+    "league": {
+      "title": "Ett ungdomsgäng är i en skateboardpark, två av ungdomarna, två tjejer i tonåren ser tuffa och oberörda ut",
+      "components": {
+        "start": "Två tonårsflickor som ser tuffa och oberörda ut",
+        "end": "Två tonårsflickor som ser tuffa och oberörda ut",
+        "background": "En skateboardbana I en skateboardpark, på banan ligger en skateboard, runt om finns fyra grönskande träd"
+      },
+      "statements": [
+        "Vafan? Hörde ni! Fetknoppen kan prata.",
+        "Värdighet? Gillar du verkligen att åka skateboard och kan du det?"
+      ],
+      "conversationEntries": {
+        "a": "Hej!",
+        "b": "Hallå!"
+      },
+      "winquote": "Orka? Gör din grej då, vi sticker härifrån.",
+      "lossquote": "TBD"
+    },
+    "groomer": {
+      "title": "En chatt i mobiltelefon pågår och en groomer pressar mottagaren ska skicka en nakenbild i chatten",
+      "components": {
+        "start": "En groomer som pressar och vill ha nakenbilder",
+        "end": "En groomer som pressar och vill ha nakenbilder",
+        "background": "En hand som håller i en mobiltelefon"
+      },
+      "statements": [
+        "Vad fint! Hur går det med vår hemlighet? Nakenbilderna du lovade att skicka mig?",
+        "Sluta krångla. Du har ju lovat. Och du har väl inte berättat för någon vuxen?"
+      ],
+      "conversationEntries": {
+        "a": "Tänkte lite på det du skrev i chatten igår.",
+        "b": "Det gick jättebra på provet igår, tack för tipsen!"
+      },
+      "winquote": "Förlåt. Jag tar tillbaka, jag vill inte ha några bilder från dig.",
+      "lossquote": "TBD"
+    },
+    "politician": {
+      "title": "En politiker, en man i sextioårsåldern, står i sitt kontorsrum och ser sammanbiten ut",
+      "components": {
+        "start": "En politiker, en man i sextioårsåldern, med grått hår, glasögon, mörka byxor, vit skjorta, blå kavaj som ser sammanbiten ut",
+        "end": "En politiker, en man i sextioårsåldern, med grått hår, glasögon, mörka byxor, vit skjorta, blå kavaj som ser sammanbiten ut",
+        "background": "Ett kontorsrum i ett kommunhus, i rummet ett arkivskåp med pärmar och ett skrivbord med en dator på"
+      },
+      "statements": [
+        "Killarnas träningstider går först.",
+        "Ni tjejer får väl också börja spela hockey då, om tiderna inte passar!"
+      ],
+      "conversationEntries": {
+        "a": "Varför finns det bara sena tider i ishallen för oss som vill åka skridskor?",
+        "b": "Varför finns det så lite tider i ishallen för oss som inte spelar hockey?"
+      },
+      "winquote": "Ja, ja, Jag hör vad du säger. Vi får ta upp det i fritidsnämnden.",
+      "lossquote": "TBD"
+    },
+    "cashier": {
+      "title": "En butikssäljare, en man, står framför en kassadisk i en närbutik och gör en uppgiven gest med handen",
+      "components": {
+        "start": "En butikssäljare, med grått hår och skägg, röd skjorta och blå byxor, som gör en uppgiven gest med handen",
+        "end": "En butikssäljare, med grått hår och skägg, röd skjorta och blå byxor, som gör en uppgiven gest med handen",
+        "background": "En kassadisk i en närbutik, bredvid kassadisken hyllor med frukt och med cupcakes"
+      },
+      "statements": [
+        "Det är ingen idé. Tar de en så dyker det bara upp nya.",
+        "Men hör du inte vad jag säger. Polisen gör ändå ingenting."
+      ],
+      "conversationEntries": {
+        "a": "De säljer droger här utanför affären. Det är läskigt!",
+        "b": "Kan du ringa polisen. Jag har sett några som säljer droger?"
+      },
+      "winquote": "Ja, du har förstås rätt. Det är klart att jag ska ringa polisen. Även om det känns lite hopplöst. Bra att du säger till.",
+      "lossquote": "TBD"
+    },
+    "borderpolice": {
+      "title": "En gränspolis, en kvinna i polisuniform står utanför ingången till en stationsbyggnad i rött tegel",
+      "components": {
+        "start": "En gränspolis, en kvinna, med mörkt kort hår klädd i polisuniform",
+        "end": "En gränspolis, en kvinna, med mörkt kort hår klädd i polisuniform",
+        "background": "En stationsbyggnad i rött tegel, två fönster och en klocka på väggen"
+      },
+      "statements": [
+        "Då får du söka asyl. Men det är inte säkert att du får stanna."
+      ],
+      "conversationEntries": {
+        "a": "Jag kan inte åka tillbaka. Om jag inte får stanna i Sverige kan jag bli dödad.",
+        "b": "Jag kan bli dödad om jag tvingas tillbaka till mitt hemland."
+      },
+      "winquote": "Jo jag vet. Men det är inte jag som bestämmer. Det är en myndighet som heter Migrationsverket som bestämmer det.",
+      "lossquote": "TBD"
+    },
+    "mumtodisabledchild": {
+      "title": "En mamma står utanför en port i ett hyreshus, som slår ut sina armar och ser uppgiven ut",
+      "components": {
+        "start": "En mamma i trettiofemårsåldern, med brunt hår, vita byxor, ljusblå tröja som slår ut armarna och ser uppgiven",
+        "end": "En mamma i trettiofemårsåldern, med brunt hår, vita byxor, ljusblå tröja som slår ut armarna och ser uppgiven",
+        "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
+      },
+      "statements": [
+        "Ja. Och jag har verkligen försökt på alla sätt och sagt att du sitter i rullstol. Men de sa nej tyvärr.",
+        "Ja vet, men jag har egentligen inte tid med det här trasslet."
+      ],
+      "conversationEntries": {
+        "a": "Mamma, du skulle ju ringa och fråga om jag kan få färdtjänst till teckningskursen",
+        "b": "Har du ringt och frågat efter färdtjänst?"
+      },
+      "winquote": "Ja, det har du helt rätt i. De kanske inte känner till barns rättigheter. Jag ringer igen.",
+      "lossquote": "TBD"
+    },
+    "foreigndad": {
+      "title": "En pappa står framför porten i ett hyreshus och ser sträng ut",
+      "components": {
+        "start": "BeskrEn pappa, med mörkt hår och skägg, svarta byxor, vit skjorta som ser sträng utivning",
+        "end": "En pappa, med mörkt hår och skägg, svarta byxor, vit skjorta som ser sträng ut",
+        "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
+      },
+      "statements": [
+        "Nu är det jag som bestämmer. Du följer med!"
+      ],
+      "conversationEntries": {
+        "a": "Men jag vill bo kvar i Sverige! Jag är ju född här.",
+        "b": "Jag vill inte följa med till släkten, tänk om de tvingar mig att stanna. Jag vill bo kvar här, där jag är född."
+      },
+      "winquote": "Va? Kan det vara så. Det måste jag kolla upp!",
+      "lossquote": "TBD"
+    },
+    "salesPerson": {
+      "title": "En butikssäljare, en ung kvinna, står i en skobutik och ser överlägsen ut",
+      "components": {
+        "start": "En butikssäljare, en kvinna i tjugoårsåldern med långt mellanblont hår, svart klänning, rosa pumps som ser överlägsen ut",
+        "end": "En butikssäljare, en kvinna i tjugoårsåldern med långt mellanblont hår, svart klänning, rosa pumps som ser överlägsen ut",
+        "background": "En interiör från en skobutik med hyllor som visar träningsskor i olika färger"
+      },
+      "statements": [
+        "Behöver du som sitter i rullstol verkligen så här bra skor? Och borde inte du ha med dig en normal person som hjälper dig att handla?",
+        "Jag vill bara hjälpa till. Det spelar väl ingen roll vad en sån som du har på fötterna."
+      ],
+      "conversationEntries": {
+        "a": "Hej, jag skulle vilja köpa de här skorna.",
+        "b": "Hej, hur mycket kostar de här skorna?"
+      },
+      "winquote": "Jag är verkligen ledsen om jag var klumpig. Du har verkligen valt ett par jättesnygga skor...",
+      "lossquote": "TBD"
+    },
+    "racistTeacher": {
+      "title": "En ishockeytränare står i ishockeyhallens omklädningsrum och småler",
+      "components": {
+        "start": "En ishockeytränare, en man i trettioårsåldern, klädd i blå träningsoverall, keps på huvudet, som håller i en ishockeyklubba och småler",
+        "end": "En ishockeytränare, en man i trettioårsåldern, klädd i blå träningsoverall, keps på huvudet, som håller i en ishockeyklubba och småler",
+        "background": "Ett omklädningsrum i en ishockeyhall, med blå skåp och en bänk. På bänken en ishockeyhjälm, under bänken ett par skridskor och en stor bag"
+      },
+      "statements": [
+        "Jaså, finns det is i Afrika? Haha! Skämt åsido, har du spelat hockey förut då?",
+        "Men herregud, jag kan väl inte hjälpa att de flesta med din hudfärg brukar spela basket eller vinna OS i löpning?",
+        "Jaja, det är bra att du försvarar dig. Men det skulle nog vara bättre om du inte var så känslig. Jag skämtar ju bara lite."
+      ],
+      "conversationEntries": {
+        "a": "Hej, det är första träningen för mig idag.",
+        "b": "Hej, jag ska träffa mitt nya lag idag."
+      },
+      "winquote": "Ok, det här blev helt fel. Inser att det var ett väldigt dumt skämt. Välkommen till laget!",
+      "lossquote": "TBD"
+    },
+    "homophobicAdult": {
+      "title": "En äldre kvinna står på gatan utanför ett hyreshus, hytter med ett finger och ser besvärad ut",
+      "components": {
+        "start": "En äldre kvinna med grått hår, glasögon, grön klänning, grön kofta, hytter med ett finger och ser besvärad ut",
+        "end": "En äldre kvinna med grått hår, glasögon, grön klänning, grön kofta, hytter med ett finger och ser besvärad ut",
+        "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
+      },
+      "statements": [
+        "Tjejer! Hallå där! Inte kan ni väl gå runt och visa upp er på stan. Sånt får ni göra hemma."
+      ],
+      "conversationEntries": {
+        "a": "Jag vill hålla dig i handen och visa att vi är kära.",
+        "b": "Visst måste två tjejer som är kära kunna hålla varandra i handen?"
+      },
+      "winquote": "Jaha, ja annat var det när jag var ung. Men det är väl annorlunda nu. Ber om ursäkt för att en gammal människa som jag blev lite upprörd.",
+      "lossquote": "TBD"
+    },
+    "adoptiveDad": {
+      "title": "En pappa står i ett kök och ser snäll och lite skuldmedveten ut",
+      "components": {
+        "start": "En pappa i fyrtioårsåldern, med ljusbrunt hår och glasögon, bär jeans och ljusblå tröja, som ser snäll och lite skuldmedveten ut",
+        "end": "En pappa i fyrtioårsåldern, med ljusbrunt hår och glasögon, bär jeans och ljusblå tröja, som ser snäll och lite skuldmedveten ut",
+        "background": "Ett gult kök med en mikrovågsugn på köksbänken och en klocka på väggen"
+      },
+      "statements": [
+        "Det där är ingenting att prata om. Vi glömmer det och fixar lite fika istället?"
+      ],
+      "conversationEntries": {
+        "a": "Varför har jag ett svenskt namn? Jag kommer ju från Korea?",
+        "b": "Varför kommer jag från Korea och du och mamma från Sverige?"
+      },
+      "winquote": "Jag förstår att du vill veta. Det är nog dags för det här samtalet nu. Vi tar det ikväll när mamma kommer hem. Blir det bra?",
+      "lossquote": "TBD"
+    },
+    "noOpinionsDad": {
+      "title": "En pappa står i ett vardagsrum, med armarna i kors och ser bister ut",
+      "components": {
+        "start": "En pappa, med grått hår och skägg, beige byxor, grön tröja, står med armarna i kors och ser bister ut",
+        "end": "En pappa, med grått hår och skägg, beige byxor, grön tröja, står med armarna i kors och ser bister ut",
+        "background": "Ett vardagsrum med en grön fåtölj, gul golvlampa och en vägghylla med böcker"
+      },
+      "statements": [
+        "Men vad har du läst för skit nu då?",
+        "Ja men, du kanske ska fråga mig och mamma vilka tidningar och program som du borde undvika.",
+        "Jaha du, men vänta åtminstone med att tänka en massa strunt tills du förstår mer."
+      ],
+      "conversationEntries": {
+        "a": "Om jag fick rösta skulle jag rösta på ett parti som brydde sig om miljön.",
+        "b": "Alla vuxna som bryr sig om sina barn borde rösta för miljön."
+      },
+      "winquote": "Du är inte så dum du! Jag måste säga att jag är imponerad av att du håller fast vid dina åsikter. Det ska bli kul att diskutera mer med dig.",
+      "lossquote": "TBD"
     }
   }
 }

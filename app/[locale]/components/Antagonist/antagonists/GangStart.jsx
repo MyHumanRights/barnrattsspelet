@@ -13,7 +13,7 @@ const GangStart = (props) => {
       {...props}
     >
       <title id='gang-start-title'>
-        {t('antagonists:gang:components:start')}
+        {t('antagonists.gang.components.start')}
       </title>
       <defs>
         <clipPath id='gang-b'>

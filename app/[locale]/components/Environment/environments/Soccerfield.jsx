@@ -12,7 +12,7 @@ const Soccerfield = (props) => {
       {...props}
     >
       <title id='soccerfield-title'>
-        {t('antagonists:coach:components:background')}
+        {t('antagonists.coach.components.background')}
       </title>
       <defs>
         <clipPath id='b'>

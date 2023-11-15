@@ -1,24 +1,20 @@
-import { memo, lazy, Suspense } from 'react'
+import { memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { useWindowSize } from '@/utils/hooks/useWindowSize'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import antagonistsJson from '@/data/antagonists.json'
-import { ICard } from '@/utils/types'
+import { IAntagonistObject, ICard } from '@/utils/types'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonVariant } from '@/utils/constants'
 import { getAntagonistFromCard } from '@/api/engine'
-import { Button } from '../Button/Button'
-import Plus from '../Icons/Plus'
-import ChevronRight from '../Icons/ChevronRight'
+import { Button } from '../Button'
+import { Plus } from '../Icons/Plus'
+import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './CardItem.module.scss'
-import SkeletonCard from '../Skeletons/SkeletonCard'
 
-const LazyCard = dynamic(() => import('../Card').then((mod) => mod.Card), {
-  loading: () => <SkeletonCard size='small' />,
-})
+const LazyCard = dynamic(() => import('../Card').then((mod) => mod.Card))
 
 interface Props {
   card: ICard
@@ -52,13 +48,12 @@ export const CardItem: React.FC<Props> = memo(
   }) => {
     const t = useTranslations()
     const {
+      isMobile,
       options: { shouldReduceMotion },
     } = useOptionsContext()
     const [animateAdd, triggerAdd] = useAnimation({ scale: 1.3 })
     const [animatePlay, triggerPlay] = useAnimation({ x: 4 })
     const [animateStar, triggerStar] = useAnimation({ scale: 1.2 })
-    const { width } = useWindowSize()
-    const isMobile = width < 768
 
     const hoverAnimation = {
       initial: {
@@ -101,7 +96,10 @@ export const CardItem: React.FC<Props> = memo(
     const cardClassName = !isApp ? `${active && styles.activeCard}` : ''
 
     function checkIsPlayable(card: ICard) {
-      return getAntagonistFromCard(antagonistsJson, card)
+      return getAntagonistFromCard(
+        antagonistsJson as any as IAntagonistObject,
+        card
+      )
     }
 
     return (
@@ -123,7 +121,7 @@ export const CardItem: React.FC<Props> = memo(
             isOpen={active}
             isApp={isApp}
           />
-          {/* <AnimatePresence>
+          <AnimatePresence>
             {active && cardSelectable && (
               <motion.div
                 key={card.id}
@@ -186,7 +184,7 @@ export const CardItem: React.FC<Props> = memo(
                 )}
               </motion.div>
             )}
-          </AnimatePresence> */}
+          </AnimatePresence>
         </motion.div>
       </li>
     )

@@ -1,4 +1,4 @@
-@import '../../global';
+@import '../../../global.scss';
 
 .frame {
   position: relative;
@@ -16,13 +16,13 @@
   height: 75%;
   /* every svg part */
   overflow: hidden;
-  
+
   svg {
     position: absolute;
     height: 100%;
     width: 100%;
   }
-  
+
   &.builder {
     svg {
       position: absolute;

@@ -1,10 +1,10 @@
 export const MAX_CARDS = 7
 
-export const CATEGORIES = {
-  HAIR: 'hair',
-  FACE: 'face',
-  BODY: 'body',
-  ACCESSORY: 'accessory',
+export enum CATEGORIES {
+  HAIR = 'hair',
+  FACE = 'face',
+  BODY = 'body',
+  ACCESSORY = 'accessory',
 }
 
 export const OWLS = {
@@ -28,17 +28,17 @@ export const STAT_COLLECTION_NAMES = {
   FIRST_TIME_COLLECTION_VIEW_APP: 'firstTimeCollectionViewerApp',
 }
 
-export const STAT_FLAGS = {
+export enum STAT_FLAGS {
   //Used to check if we have written to the db or not
-  IS_FIRST_TIME_HOME: 'isFirstTimeHome',
-  IS_FIRST_TIME_START: 'isFirstTimeStart',
-  IS_FIRST_TIME_PERSUATION: 'isFirstTimePersuation',
-  IS_FIRST_TIME_WIN: 'isFirstTimeWin',
-  IS_FIRST_TIME_WIN_THREE: 'isFirstTimeWinThree',
-  IS_FIRST_TIME_WIN_TEN: 'isFirstTimeWinTen',
-  IS_FIRST_TIME_WIN_GAME_COMPLETE: 'isFirstTimeGameComplete',
-  IS_FIRST_TIME_COLLECTION_VIEWER: 'isFirstTimeCollectionViewer',
-  IS_FIRST_TIME_COLLECTION_VIEW_APP: 'isFirstTimeCollectionViewerApp',
+  IS_FIRST_TIME_HOME = 'isFirstTimeHome',
+  IS_FIRST_TIME_START = 'isFirstTimeStart',
+  IS_FIRST_TIME_PERSUATION = 'isFirstTimePersuation',
+  IS_FIRST_TIME_WIN = 'isFirstTimeWin',
+  IS_FIRST_TIME_WIN_THREE = 'isFirstTimeWinThree',
+  IS_FIRST_TIME_WIN_TEN = 'isFirstTimeWinTen',
+  IS_FIRST_TIME_WIN_GAME_COMPLETE = 'isFirstTimeGameComplete',
+  IS_FIRST_TIME_COLLECTION_VIEWER = 'isFirstTimeCollectionViewer',
+  IS_FIRST_TIME_COLLECTION_VIEW_APP = 'isFirstTimeCollectionViewerApp',
 }
 
 export enum ButtonVariant {

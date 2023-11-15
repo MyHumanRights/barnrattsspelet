@@ -11,7 +11,7 @@ const SiblingStart = (props) => {
       {...props}
     >
       <title id='sibling-start-title'>
-        {t('antagonists:sibling:components:end')}
+        {t('antagonists.sibling.components.end')}
       </title>
       <defs>
         <clipPath id='sibling-b'>

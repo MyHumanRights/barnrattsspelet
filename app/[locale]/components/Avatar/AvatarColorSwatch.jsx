@@ -1,8 +1,8 @@
-import getIsBrightColor from '../../utils/getIsBrightColor'
-import Check from '../Icons/Check'
+import getIsBrightColor from '@/utils/getIsBrightColor'
+import { Check } from '../Icons/Check'
 import styles from './AvatarColorSwatch.module.scss'
 
-const AvatarColorSwatch = ({
+export const AvatarColorSwatch = ({
   colorsArray,
   colorCategory,
   onClick,
@@ -35,5 +35,3 @@ const AvatarColorSwatch = ({
     </>
   )
 }
-
-export default AvatarColorSwatch

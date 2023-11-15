@@ -10,15 +10,22 @@ const useAvatarSVGImport = (options = {}) => {
 
   async function init(path) {
     setLoading(true)
-    try {
-      ImportedIconRef.current = (
-        await import(`../../assets/svgs/avatar/${path}.svg`)
-      ).ReactComponent
 
+    try {
+      const { default: namedImport } = await import(
+        `/assets/svgs/avatar/${path}.svg`
+      )
+      ImportedIconRef.current = namedImport
       setImportedSVG(ImportedIconRef.current)
-      if (onCompleted) {
-        onCompleted(path, ImportedIconRef.current)
-      }
+
+      // ImportedIconRef.current = (
+      //   await import(`/assets/svgs/avatar/${path}.svg`)
+      // ).ReactComponent
+
+      // setImportedSVG(ImportedIconRef.current)
+      // if (onCompleted) {
+      //   onCompleted(path, ImportedIconRef.current)
+      // }
     } catch (err) {
       setImportedSVG(null)
       if (onError) {

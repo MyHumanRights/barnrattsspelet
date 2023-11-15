@@ -14,7 +14,7 @@ const ComputerScreen = (props) => {
       {...props}
     >
       <title id='computerscreen-title'>
-        {t('antagonists:troll:components:background')}
+        {t('antagonists.troll.components.background')}
       </title>
       <defs>
         <clipPath id='computer-b'>

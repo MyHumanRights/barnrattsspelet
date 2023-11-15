@@ -14,7 +14,7 @@ const Office = (props) => {
       {...props}
     >
       <title id='office-title'>
-        {t('antagonists:politician:components:background')}
+        {t('antagonists.politician.components.background')}
       </title>
       <defs>
         <clipPath id='office-b'>

@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import variables from '../../_export.module.scss'
 import styles from './Box.module.scss'
 
 const Box = ({ onClick, openBox }) => {
   const t = useTranslations()
-  const { shouldReduceMotion } = useContext(OptionsContext).options
+  const {
+    options: { shouldReduceMotion },
+  } = useOptionsContext()
   const [animation, setAnimation] = useState(false)
 
   const DURATION = shouldReduceMotion ? 0.0001 : 1
@@ -62,7 +62,7 @@ const Box = ({ onClick, openBox }) => {
       >
         <div className={styles.box}>
           <button className='sr-only' ref={ref} onClick={onClick}>
-            {t('common:lootbox:openlootbox')}
+            {t('openlootbox')}
           </button>
           <div className={`${styles.side} ${styles.front}`} />
           <div
@@ -80,13 +80,13 @@ const Box = ({ onClick, openBox }) => {
           <div className={`${styles.side} ${styles.right}`} />
           <motion.div
             initial={{
-              y: variables.halfboxsize,
+              y: '100px',
               rotateY: 0,
               rotateX: '90deg',
             }}
             animate={
               openBox && {
-                y: variables.halfboxsize,
+                y: '100px',
                 rotateY: '230deg',
                 rotateX: '90deg',
               }
@@ -96,15 +96,15 @@ const Box = ({ onClick, openBox }) => {
           />
           <motion.div
             initial={{
-              y: variables.halfboxsize,
-              x: variables.halfboxsize,
+              y: '100px',
+              x: '100px',
               rotateY: 0,
               rotateX: '90deg',
             }}
             animate={
               openBox && {
-                y: variables.halfboxsize,
-                x: variables.halfboxsize,
+                y: '100px',
+                x: '100px',
                 rotateX: '90deg',
                 rotateY: '-230deg',
               }
@@ -114,14 +114,14 @@ const Box = ({ onClick, openBox }) => {
           />
           <motion.div
             initial={{
-              y: variables.halfboxsize,
-              z: variables.halfboxsize,
+              y: '100px',
+              z: '100px',
               rotateX: '90deg',
             }}
             animate={
               openBox && {
-                y: variables.halfboxsize,
-                z: variables.halfboxsize,
+                y: '100px',
+                z: '100px',
                 rotateX: '320deg',
               }
             }
@@ -130,14 +130,14 @@ const Box = ({ onClick, openBox }) => {
           />
           <motion.div
             initial={{
-              y: variables.boxsize,
-              z: variables.neghalfboxsize,
+              y: '200px',
+              z: '-100px',
               rotateX: '90deg',
             }}
             animate={
               openBox && {
-                y: variables.boxsize,
-                z: variables.neghalfboxsize,
+                y: '200px',
+                z: '-100px',
                 rotateX: '-140deg',
               }
             }

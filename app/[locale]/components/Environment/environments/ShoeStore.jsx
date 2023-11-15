@@ -14,7 +14,7 @@ const Nature = (props) => {
       {...props}
     >
       <title id='shoe-store-title'>
-        {t('antagonists:salesPerson:components:background')}
+        {t('antagonists.salesPerson.components.background')}
       </title>
       <defs>
         <clipPath id='shoe-store-a'>

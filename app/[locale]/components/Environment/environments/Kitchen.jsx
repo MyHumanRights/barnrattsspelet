@@ -13,7 +13,7 @@ const Kitchen = (props) => {
       {...props}
     >
       <title id='kitchen-title'>
-        {t('antagonists:dad:components:background')}
+        {t('antagonists.dad.components.background')}
       </title>
       <defs>
         <clipPath id='kitchen-b'>

@@ -13,7 +13,7 @@ const MumBefore = (props) => {
       {...props}
     >
       <title id='mum-before-title'>
-        {t('antagonists:mum:components:start')}
+        {t('antagonists.mum.components.start')}
       </title>
       <defs>
         <clipPath id='mum-b'>

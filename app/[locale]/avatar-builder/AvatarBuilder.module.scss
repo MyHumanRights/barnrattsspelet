@@ -1,0 +1,151 @@
+@import '../../global.scss';
+
+.wrapper {
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  h1 {
+    margin-top: 0;
+    line-height: 1;
+    @include fontBangers;
+  }
+
+  .avatarBuildWrapper {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 25vw 30vw 25vw;
+    justify-content: space-between;
+    padding: 0 3%;
+  }
+
+  .avatarPreviewWrapper {
+    margin: 0 0.5em;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+
+    .avatarPreview {
+      width: 100%;
+      height: min-content;
+      background-color: white;
+      position: relative;
+      margin-bottom: 1rem;
+      @include box-shadow(medium);
+    }
+    .randomButton {
+      margin-left: 0.12em;
+
+      .btnText {
+        padding-right: 6px;
+      }
+      svg {
+        margin: 0;
+      }
+    }
+  }
+
+  .primaryButton {
+    @media (min-width: 700px) {
+      align-self: flex-end;
+    }
+  }
+
+  .colorPickWrapper {
+    margin: 0 0.5em;
+
+    form {
+      height: fit-content;
+      margin-bottom: 0.8em;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .avatarBuildWrapper {
+      grid-template-columns: 40vw 1fr;
+      grid-template-rows: 1fr min-content;
+      grid-template-areas:
+        'parts avatar'
+        'colors avatar';
+
+      & > div {
+        margin: 0;
+        margin-bottom: 0.8em;
+      }
+
+      .avatarPreviewWrapper {
+        align-items: center;
+        grid-area: avatar;
+      }
+      .partSelectorWrapper {
+        grid-area: part;
+        grid-column: unset;
+        grid-row: unset;
+      }
+      .colorPickWrapper {
+        grid-area: colors;
+        grid-column: unset;
+        grid-row: unset;
+      }
+    }
+  }
+
+  @media (max-width: 700px) and (orientation: portrait) {
+    .avatarBuildWrapper {
+      padding: 0 10vw;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'avatar'
+        'parts'
+        'colors';
+      grid-gap: 1em;
+
+      .avatarPreviewWrapper,
+      .partSelectorWrapper,
+      .colorPickWrapper {
+        width: 300px;
+        justify-self: center;
+      }
+    }
+  }
+
+  .skipButton {
+    display: flex;
+    margin-top: auto;
+    justify-content: flex-end;
+    padding: 0 3% 3% 0;
+  }
+}
+
+.menuBar {
+  padding: $topGutter 0 1rem 20px;
+}
+
+.blurBkgd {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    backdrop-filter: blur(10px);
+  }
+}
+
+.opacityBkgd {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.content {
+  position: relative;
+}

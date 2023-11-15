@@ -11,7 +11,7 @@ const RelativeStart = (props) => {
       {...props}
     >
       <title id='relative-start-title'>
-        {t('antagonists:relative:components:start')}
+        {t('antagonists.relative.components.start')}
       </title>
       <path
         d='M1544.66 175.73c-4.8.69-30.06-2.7-36.17 6.68-6.11 9.39-2.5 15.42-5.01 24.46-2.52 9.04 1.37 17.07.29 22.98s5.75 19.82 5.75 19.82l70.56 3.96s3.11-16.12 4.9-24.12c1.8-8 5.8-14.16 2.93-21.81-2.87-7.65-4.72-11.56-9.04-18.87-4.31-7.3-10.16-17.06-18.79-17.75-8.62-.7-10.63 3.97-15.42 4.66Z'

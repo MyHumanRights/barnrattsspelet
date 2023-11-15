@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-/* import getIsBrightColor from '../../utils/getIsBrightColor' */
+/* import getIsBrightColor from '@/utils/getIsBrightColor' */
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import Sound from '../Icons/Sound'
@@ -17,7 +17,7 @@ export const VoiceoverButton = ({
 }) => {
   const { options, playVoiceover } = useOptionsContext()
   const [audio, setAudio] = useState<HTMLAudioElement | undefined>(undefined)
-  const t = useTranslations('common')
+  const t = useTranslations()
   const [animateVoBtn, triggerVoBtn] = useAnimation({ scale: 1.4 })
 
   async function handlePlayVoiceover(

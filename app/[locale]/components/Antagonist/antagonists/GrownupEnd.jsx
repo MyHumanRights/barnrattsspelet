@@ -13,7 +13,7 @@ const GrownupEnd = (props) => {
       {...props}
     >
       <title id='grownup-end-title'>
-        {t('antagonists:grownup:components:end')}
+        {t('antagonists.grownup.components.end')}
       </title>
       <defs>
         <clipPath id='grownup-b'>

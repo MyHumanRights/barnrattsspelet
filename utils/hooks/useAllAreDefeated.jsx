@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { checkIfAllAntagonistsDefeated } from '../../api/engine'
-import { readDefeatedAntagonists } from '../../api/storage'
-import antagonists from '../../data/antagonists.json'
+import { checkIfAllAntagonistsDefeated } from '@/api/engine'
+import { readDefeatedAntagonists } from '@/api/storage'
+import antagonists from '@/data/antagonists.json'
 
 const useAllAreDefeated = () => {
   const [allDefeated, setAllDefeated] = useState()
@@ -14,7 +14,7 @@ const useAllAreDefeated = () => {
     const defeated = await readDefeatedAntagonists()
     const allAntagonistsDefeated = checkIfAllAntagonistsDefeated(
       antagonists,
-      defeated,
+      defeated
     )
     setAllDefeated(allAntagonistsDefeated)
   }
