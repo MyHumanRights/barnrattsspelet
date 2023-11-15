@@ -1,5 +1,11 @@
 import { CATEGORIES } from './constants'
 
+export interface LocaleParams {
+  params: {
+    locale: string
+  }
+}
+
 export interface IBoostAnswer {
   text: string
   id: string
@@ -37,12 +43,16 @@ export interface ICard {
 
 export interface IAnimation {
   initial: {
+    y?: number
+    x?: number
     rotateX?: number
     rotateY?: number
     translateY?: number
     transformPerspective?: number
   }
   animate: {
+    y?: number
+    x?: number
     rotateX?: number
     rotateY?: number
     translateY?: number
@@ -52,19 +62,19 @@ export interface IAnimation {
 }
 
 export type AvatarPart = {
-  id: string | null
-  isDefault: boolean
-  isNewPart: boolean
-  isSuperHero: boolean
-  color?: string
+  isNewPart?: true
+  id?: string | null | undefined
+  isDefault?: boolean | undefined
+  isSuperHero?: boolean | undefined
+  color?: string | undefined
 }
 
 export interface IAvatarParts {
-  [key: string]: AvatarPart[]
-  face: AvatarPart[]
-  body: AvatarPart[]
-  hair: AvatarPart[]
-  accessory: AvatarPart[]
+  [key: string]: AvatarPart[] | undefined
+  face?: AvatarPart[] | undefined
+  body?: AvatarPart[] | undefined
+  hair?: AvatarPart[] | undefined
+  accessory?: AvatarPart[] | undefined
 }
 
 export interface IAvatarColors {
@@ -104,8 +114,8 @@ export interface IGameAntagonist {
   health: number
   name: string
   components: {
-    start: string
-    end: string
+    start: string | null
+    end: string | null
     background: string
   }
   scenarioImage: string
@@ -145,4 +155,11 @@ export interface IScenario {
   place: string
   playable: string[]
   unbeaten: string[]
+}
+
+export interface ILootItem {
+  category: string
+  id: string
+  color: string
+  isNewPart?: boolean
 }

@@ -11,7 +11,6 @@ import { TextWithVoiceover } from '../TextWithVoiceover'
 import Repeat from '../Icons/Repeat'
 import styles from './Card.module.scss'
 import { Highlight } from './Highlight'
-import SkeletonCard from '../Skeletons/SkeletonCard'
 import { IAnimation, ICard } from '@/utils/types'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 

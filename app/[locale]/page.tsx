@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'
 import { Footer } from './components/Footer'
 import { Link } from './components/Link/Link'
@@ -11,9 +12,7 @@ import styles from './page.module.scss'
 
 export async function generateMetadata({
   params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+}: LocaleParams): Promise<Metadata> {
   const t = await getTranslator(locale, 'meta')
 
   return {
@@ -22,7 +21,7 @@ export async function generateMetadata({
   }
 }
 
-const Start = ({ params: { locale } }: { params: { locale: string } }) => {
+const Start = ({ params: { locale } }: LocaleParams) => {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Start')
 

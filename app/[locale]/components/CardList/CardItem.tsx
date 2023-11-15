@@ -57,16 +57,10 @@ export const CardItem: React.FC<Props> = memo(
 
     const hoverAnimation = {
       initial: {
-        rotateX: 0,
-        rotateY: 0,
-        translateY: 0,
-        transformPerspective: 600,
+        y: 0,
       },
       animate: {
-        rotateX: shouldReduceMotion ? 0 : 2,
-        rotateY: shouldReduceMotion ? 0 : 4,
-        translateY: shouldReduceMotion ? 0 : -5,
-        transformPerspective: 600,
+        y: -3,
         transition: {
           type: 'spring',
         },

@@ -80,7 +80,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [numberOfNewCards, setNumberOfNewCards] = useState(0)
   const [currentTokens, setCurrentTokens] = useState(0)
   const [hasNewParts, setHasNewParts] = useState(false)
-  const [defeatedAntagonists, setDefeatedAntagonists] = useState('')
+  const [defeatedAntagonists, setDefeatedAntagonists] = useState([''])
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [owlTip, setOwlTip] = useState<IOwlContent | null>(null)
   const [multipleOwlMessages, setMultipleOwlMessages] = useState(false)

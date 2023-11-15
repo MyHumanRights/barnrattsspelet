@@ -1,16 +1,15 @@
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
+import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
+import { LocaleParams } from '@/utils/types'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Manual.module.scss'
-import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata({
   params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+}: LocaleParams): Promise<Metadata> {
   const t = await getTranslator(locale, 'meta')
 
   return {
@@ -19,14 +18,9 @@ export async function generateMetadata({
   }
 }
 
-const Manual = ({ params: { locale } }: { params: { locale: string } }) => {
+const Manual = ({ params: { locale } }: LocaleParams) => {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Manual')
-  // const { toggleThemeSound } = useOptionsContext()
-
-  // useEffect(() => {
-  //   toggleThemeSound(false)
-  // }, [toggleThemeSound])
 
   return (
     <div className={styles.manual}>

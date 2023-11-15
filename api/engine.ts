@@ -64,7 +64,7 @@ function checkIfAntagonistBeaten() {
 }
 
 export function checkIfAllAntagonistsDefeated(
-  antagonists: IGameAntagonist,
+  antagonists: IAntagonistObject,
   defeated: string[]
 ) {
   const allDefeated = Object.values(antagonists).every((antagonist) => {
@@ -370,7 +370,11 @@ export function getRandomAvatar(parts: IAvatar, colors: IAvatarColors) {
   return avatar
 }
 
-export function getItemToLootBox(collectedParts, parts, storedAvatar) {
+export function getItemToLootBox(
+  collectedParts,
+  parts,
+  storedAvatar
+): AvatarPart[] {
   // collect all non-collected items in array as { category: 'face', id: 'avatar-face01' }
   let nonCollectedItems = []
   Object.entries(parts).forEach((category) => {
@@ -400,7 +404,11 @@ export function getItemToLootBox(collectedParts, parts, storedAvatar) {
   }
 }
 
-export function getSuperHeroToLootBox(collectedParts, parts, storedAvatar) {
+export function getSuperHeroToLootBox(
+  collectedParts,
+  parts,
+  storedAvatar
+): AvatarPart[] {
   let superHero = []
 
   Object.entries(collectedParts).forEach((category) => {
@@ -429,7 +437,7 @@ export function getSuperHeroToLootBox(collectedParts, parts, storedAvatar) {
   return superHero
 }
 
-export function getNewAvatarParts(collectedParts) {
+export function getNewAvatarParts(collectedParts): IAvatarPart[] {
   // Get all new parts from our already collected avatar parts
   let newParts = []
   Object.entries(collectedParts).forEach((category) => {

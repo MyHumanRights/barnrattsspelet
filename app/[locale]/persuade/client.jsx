@@ -35,7 +35,6 @@ import {
   getShownFlipCardTip,
   setShownFlipCardTip,
 } from '@/api/storage'
-import useRandomText from '@/utils/hooks/useRandomText'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useTokens } from '@/utils/hooks/useTokens'
@@ -103,10 +102,7 @@ export const PersuadeClient = () => {
 
   const scrollableRef = useRef(null)
 
-  const randomWrongAnswer = useRandomText(
-    'persuasion.genericwrongcardanswers',
-    lines
-  )
+  const randomWrongAnswer = Math.floor(Math.random() * 6) + 1
   const [ownedTokens, removeTokens] = useTokens(showModal)
 
   const addFirstTimePersuation = useAddToStatistics(
@@ -190,7 +186,7 @@ export const PersuadeClient = () => {
   }
 
   useEffect(() => {
-    if (!hasShownTokenTip && ownedTokens > 0) {
+    if (!hasShownTokenTip && ownedTokens > 0 && ownedTokens < 3) {
       setShowOwl(OWLS.TOKEN)
       setHasShownTokenTip(true)
     }
@@ -419,7 +415,7 @@ export const PersuadeClient = () => {
           {ownedTokens > 0 && <Token ownedTokens={ownedTokens} />}
         </AnimatePresence>
       </div>
-      <OwlTips {...{ showOwl, setShowOwl }} />
+      <OwlTips showOwl={showOwl} setShowOwl={setShowOwl} />
       <div className={styles.playerWrapper}>
         {!isScenarioMode && (
           <div className={styles.avatarWrapper}>

@@ -2,19 +2,17 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 import { getTranslator } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
-// import { setCardHand, setPlayFromScenario } from '../../../api/storage'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { LocaleParams } from '@/utils/types'
 import { PageHeader } from '../components/PageHeader'
 import Footer from '../components/Footer'
 import styles from './Guidance.module.scss'
 import { DownloadPdf } from '../components/DownloadPdf'
 import { Link } from '../components/Link/Link'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 export async function generateMetadata({
   params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+}: LocaleParams): Promise<Metadata> {
   const t = await getTranslator(locale, 'meta')
 
   return {
@@ -23,7 +21,7 @@ export async function generateMetadata({
   }
 }
 
-const Guidance = ({ params: { locale } }: { params: { locale: string } }) => {
+const Guidance = ({ params: { locale } }: LocaleParams) => {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Guidance')
 

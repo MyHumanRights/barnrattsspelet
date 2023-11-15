@@ -26,20 +26,26 @@ import {
 import { getDefaultAvatorParts, getRandomAvatar } from '../../../../api/engine'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { IAvatarColors, IAvatarParts } from '@/utils/types'
 import styles from './Settings.module.scss'
 import { Button } from '../Button'
 import { Link } from '../Link/Link'
 import { OwlDialogue } from '../OwlDialogue'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
 import { AnimatePresence, motion } from 'framer-motion'
-import avatarData from '@/data/avatar.json'
 import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
 
 interface Props {
   handleModal: () => void
+  avatarParts: IAvatarParts
+  avatarColors: IAvatarColors
 }
 
-export const SettingsModal: React.FC<Props> = ({ handleModal }) => {
+export const SettingsModal: React.FC<Props> = ({
+  handleModal,
+  avatarParts,
+  avatarColors,
+}) => {
   const t = useTranslations('Settings')
   const {
     options: {
@@ -92,8 +98,8 @@ export const SettingsModal: React.FC<Props> = ({ handleModal }) => {
   }
 
   const handleReset = async () => {
-    const defaultAvatarParts = getDefaultAvatorParts(avatarData.parts)
-    const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarData.colors)
+    const defaultAvatarParts = getDefaultAvatorParts(avatarParts)
+    const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarColors)
 
     await setAvatarPartCollection(defaultAvatarParts)
     await setAvatar(randomAvatar)

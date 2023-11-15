@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { checkIfAllAntagonistsDefeated } from '@/api/engine'
 import { readDefeatedAntagonists } from '@/api/storage'
 import antagonists from '@/data/antagonists.json'
+import { IAntagonistObject } from '../types'
 
-const useAllAreDefeated = () => {
-  const [allDefeated, setAllDefeated] = useState()
+export const useAllAreDefeated = () => {
+  const allAntaonists: IAntagonistObject = antagonists
+  const [allDefeated, setAllDefeated] = useState(false)
 
   useEffect(() => {
     func()
@@ -13,7 +15,7 @@ const useAllAreDefeated = () => {
   const func = async () => {
     const defeated = await readDefeatedAntagonists()
     const allAntagonistsDefeated = checkIfAllAntagonistsDefeated(
-      antagonists,
+      allAntaonists,
       defeated
     )
     setAllDefeated(allAntagonistsDefeated)
@@ -21,5 +23,3 @@ const useAllAreDefeated = () => {
 
   return allDefeated
 }
-
-export default useAllAreDefeated

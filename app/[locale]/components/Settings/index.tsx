@@ -143,7 +143,11 @@ export const Settings: React.FC<Props> = ({
       <AnimatePresence>
         {showModal && (
           <Modal onModalClose={handleModal}>
-            <SettingsModal handleModal={handleModal} />
+            <SettingsModal
+              handleModal={handleModal}
+              avatarColors={avatarColors}
+              avatarParts={defaultAvatarParts}
+            />
           </Modal>
         )}
       </AnimatePresence>

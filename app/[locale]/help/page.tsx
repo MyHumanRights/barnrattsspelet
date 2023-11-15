@@ -1,20 +1,26 @@
-'use client'
-
-import { useEffect } from 'react'
+import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
+import { LocaleParams } from '@/utils/types'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
 import { HomeIcon } from '../components/Icons/HomeIcon'
 import styles from './Help.module.scss'
 
-const Help = () => {
-  const t = useTranslations()
-  const { toggleThemeSound } = useOptionsContext()
+export async function generateMetadata({
+  params: { locale },
+}: LocaleParams): Promise<Metadata> {
+  const t = await getTranslator(locale, 'meta')
 
-  useEffect(() => {
-    toggleThemeSound(false)
-  }, [toggleThemeSound])
+  return {
+    title: t('title.help'),
+    description: t('description.help'),
+  }
+}
+
+const Help = ({ params: { locale } }: LocaleParams) => {
+  unstable_setRequestLocale(locale)
+  const t = useTranslations()
 
   return (
     <>

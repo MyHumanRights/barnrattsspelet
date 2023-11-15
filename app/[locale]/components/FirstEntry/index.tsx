@@ -1,5 +1,5 @@
 import ChatBubble from '../ChatBubble'
-import styles from './firstEntry.module.scss'
+import styles from './FirstEntry.module.scss'
 
 interface Props {
   i18nKey: string

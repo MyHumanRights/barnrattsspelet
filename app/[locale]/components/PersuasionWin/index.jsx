@@ -10,7 +10,7 @@ import {
   readDefeatedAntagonists,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import useAllAreDefeated from '@/utils/hooks/useAllAreDefeated'
+import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
 import useHaveWonSuperHero from '@/utils/hooks/useHaveWonSuperHero'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'

@@ -11,26 +11,27 @@ export const useAddToStatistics = (docName, flagName) => {
     if (!statFlags[flagName]) return
 
     try {
-      const docRef = doc(db, YEAR, docName)
-      const docSnap = await getDoc(docRef)
+      console.log('Adding to statistics', flagName)
+      // const docRef = doc(db, YEAR, docName)
+      // const docSnap = await getDoc(docRef)
 
-      if (docSnap.exists()) {
-        const { total_visits, monthly_visits } = docSnap.data()
-        const currentMonth = getCurrentMonth()
+      // if (docSnap.exists()) {
+      //   const { total_visits, monthly_visits } = docSnap.data()
+      //   const currentMonth = getCurrentMonth()
 
-        await updateDoc(docRef, {
-          total_visits: total_visits + 1,
-          [`monthly_visits.${getCurrentMonth()}`]:
-            (monthly_visits[currentMonth] || 0) + 1,
-        })
-      } else {
-        await setDoc(docRef, {
-          total_visits: 1,
-          monthly_visits: {
-            [getCurrentMonth()]: 1,
-          },
-        })
-      }
+      //   await updateDoc(docRef, {
+      //     total_visits: total_visits + 1,
+      //     [`monthly_visits.${getCurrentMonth()}`]:
+      //       (monthly_visits[currentMonth] || 0) + 1,
+      //   })
+      // } else {
+      //   await setDoc(docRef, {
+      //     total_visits: 1,
+      //     monthly_visits: {
+      //       [getCurrentMonth()]: 1,
+      //     },
+      //   })
+      // }
       setStatFlags({ ...statFlags, [flagName]: false })
     } catch (err) {
       // TODO: Handle error

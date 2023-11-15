@@ -369,22 +369,22 @@
   "persuasion": {
     "startgame": "Starta spelet",
     "genericwrongcardanswers": {
-      "answer_1": {
+      "1": {
         "text": "Hoppsan, fel rättighet, gör ett nytt försök"
       },
-      "answer_2": {
+      "2": {
         "text": "Prova igen med ett annat rättighetskort"
       },
-      "answer_3": {
+      "3": {
         "text": "Nu blev det lite fel men prova igen så blir det säkert rätt"
       },
-      "answer_4": {
+      "4": {
         "text": "Bra tänkt, men försök igen med en annan rättighet"
       },
-      "answer_5": {
+      "5": {
         "text": "Det där är också en viktig rättighet, men nu blev det fel så prova igen"
       },
-      "answer_6": {
+      "6": {
         "text": "Gör ett nytt försök så blir det nog rätt"
       }
     }

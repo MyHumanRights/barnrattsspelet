@@ -8,6 +8,7 @@ interface Props {
 export const MapBackground: React.FC<Props> = ({ opacity }) => {
   return (
     <Image
+      priority
       className={styles.imageMap}
       src='/images/start/map-large.svg'
       alt='Karta'

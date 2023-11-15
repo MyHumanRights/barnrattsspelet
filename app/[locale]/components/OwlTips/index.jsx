@@ -5,6 +5,7 @@ import {
   setShownTokenTip,
   getShownTokenTip,
   setShownEnableCardTip,
+  getShownEnableCardTip,
   getFirstTimePlaying,
 } from '@/api/storage'
 import { OwlDialogue } from '../OwlDialogue'
@@ -14,6 +15,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
   const [firstTimer, setFirstTimer] = useState()
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
   const [hasShownIntroOwl, setHasShownIntroOwl] = useState(false)
+  const [hasShownEnableCardTip, setHasShownEnableCardTip] = useState(false)
 
   function onHideTokenTip() {
     setHasShownTokenTip(true)
@@ -23,6 +25,8 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
   useEffect(() => {
     ;(async function () {
       const shownTokenTip = await getShownTokenTip()
+      const shownEnableCardTip = await getShownEnableCardTip()
+      setHasShownEnableCardTip(shownEnableCardTip)
       setHasShownTokenTip(shownTokenTip)
       const firstTimePlaying = await getFirstTimePlaying()
       setFirstTimer(firstTimePlaying)
@@ -48,7 +52,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
           </motion.div>
         )}
 
-        {showOwl === OWLS.ENABLE_CARD && (
+        {!hasShownEnableCardTip && showOwl === OWLS.ENABLE_CARD && (
           <motion.div
             className={styles.enableOwlWrapper}
             initial={{ scale: 0 }}
