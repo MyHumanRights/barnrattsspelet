@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
