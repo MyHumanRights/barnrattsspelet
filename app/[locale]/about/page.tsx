@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
-import { LocaleParams } from '@/utils/types'
+import { IAntagonistObject, LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
-import { getCards } from '@/utils/getData'
+import { getAntagonists, getCards } from '@/utils/getData'
 import { AboutClient } from './client'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { Link } from '../components/Link/Link'
@@ -25,6 +25,9 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   const t = await getTranslator(locale)
 
   const cards = await getCards()
+  const antagonists: IAntagonistObject = await getAntagonists()
+
+  console.log(antagonists)
 
   return (
     <div>
