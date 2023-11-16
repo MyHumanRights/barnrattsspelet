@@ -51,8 +51,7 @@ import styles from './LootBox.module.scss'
 const ROT_DEGREE = 10
 const TOP_OFFSET = 20
 
-const LootBox = ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale)
+const LootBox = () => {
   const t = useTranslations()
   const router = useRouter()
   const { isByingLootbox, gameEnvironment, allowedLootbox } =

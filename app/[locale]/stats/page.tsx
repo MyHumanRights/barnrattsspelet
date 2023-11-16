@@ -17,8 +17,7 @@ type StatsData = {
 }
 // TODO: Don't index this page
 
-const Stats: React.FC<LocaleParams> = ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale)
+const Stats: React.FC = () => {
   const [data, setData] = useState<StatsData>({})
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
