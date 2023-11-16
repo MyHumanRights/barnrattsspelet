@@ -3,6 +3,7 @@ import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
 import { getCards } from '@/utils/getData'
+import { CardGrid } from './CardGrid'
 
 export async function generateMetadata({
   params: { locale },
@@ -22,14 +23,13 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
 
   const cards = await getCards()
 
-  console.log(cards)
-
   return (
     <div>
       <h1>{t('readmoreonhelp')}</h1>
       <ChatBubbleSimple>
         <p>chat bubble simple</p>
       </ChatBubbleSimple>
+      <CardGrid cards={cards} />
     </div>
   )
 }
