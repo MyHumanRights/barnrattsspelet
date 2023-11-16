@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { unstable_setRequestLocale } from 'next-intl/server'
 import { useRouter } from 'next/navigation'
 import Particles from 'react-particles'
 import { loadFull } from 'tsparticles'
@@ -32,8 +31,6 @@ import unlockCardSound2 from '@/assets/sounds/fx/13-card-unlocked-02.mp3'
 import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
 import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import antagonists from '@/data/antagonists.json'
-import avatarData from '@/data/avatar.json'
-import cardData from '@/data/cards.json'
 import { useGameStateContext } from '@/contexts/GameStateContext'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
@@ -47,11 +44,19 @@ import LootItemCard from '../components/Card/LootItemCard'
 import { Check } from '../components/Icons/Check'
 import { MapBackground } from '../components/MapBackground'
 import styles from './LootBox.module.scss'
+import { IAvatarParts, ICard, ILootItem } from '@/utils/types'
+import { Engine } from 'tsparticles-engine'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 const ROT_DEGREE = 10
 const TOP_OFFSET = 20
 
-const LootBox = () => {
+interface Props {
+  cardData: ICard[]
+  avatarParts: IAvatarParts
+}
+
+export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const t = useTranslations()
   const router = useRouter()
   const { isByingLootbox, gameEnvironment, allowedLootbox } =
@@ -62,14 +67,16 @@ const LootBox = () => {
     playSoundEffect,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
-  const [showConfetti, setShowContetti] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
   const [bgColor, setBgColor] = useState('none')
   const [openBox, setOpenBox] = useState(false)
-  const [collectedItems, setCollectedItems] = useState()
-  const [lootItem, setLootItem] = useState()
-  const [lootCards, setLootCards] = useState([])
-  const [myLootCards, setMyLootCards] = useState([])
-  const [collection, setCollection] = useState([])
+  const [collectedItems, setCollectedItems] = useState<IAvatarParts | null>(
+    null
+  )
+  const [lootItem, setLootItem] = useState<ILootItem[]>([])
+  const [lootCards, setLootCards] = useState<ICard[]>([])
+  const [myLootCards, setMyLootCards] = useState<ICard[]>([])
+  const [collection, setCollection] = useState<ICard[]>([])
   const [isFirstLoot, setIsFirstLoot] = useState(false)
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [showLootItem, setShowLootItem] = useState(false)
@@ -101,7 +108,7 @@ const LootBox = () => {
   useEffect(() => {
     const init = async () => {
       let tempLootCards = []
-      const cardCollection = await getCardCollection(lootCards)
+      const cardCollection = await getCardCollection()
 
       if (isByingLootbox) {
         const availableTokens = await readTokens()
@@ -130,14 +137,10 @@ const LootBox = () => {
         const item = allAreDefeated
           ? getSuperHeroToLootBox(
               avatarPartCollection,
-              avatarData.parts,
+              avatarParts,
               storedAvatar
             )
-          : getItemToLootBox(
-              avatarPartCollection,
-              avatarData.parts,
-              storedAvatar
-            )
+          : getItemToLootBox(avatarPartCollection, avatarParts, storedAvatar)
 
         if (tempLootCards.length === 0 && !item.length) {
           router.push('/home')
@@ -172,7 +175,7 @@ const LootBox = () => {
     soundEffectsOn && playOpenBoxSound()
     !shouldReduceMotion
       ? setTimeout(() => {
-          setShowContetti(true)
+          setShowConfetti(true)
           setShowOwlTip(true)
         }, 2000) // sync with box opening
       : setShowOwlTip(true)
@@ -180,19 +183,19 @@ const LootBox = () => {
     lootItemOnly && setShowLootItem(true)
   }
 
-  function getrotation(index, len) {
+  function getrotation(index: number, len: number) {
     return (index + 1 - (len + 1) / 2) * ROT_DEGREE
   }
 
-  function gettop(index, len) {
+  function gettop(index: number, len: number) {
     return Math.abs(index + 1 - (len + 1) / 2) * TOP_OFFSET
   }
 
-  function getleftpos(index, len) {
+  function getleftpos(index: number, len: number) {
     return (100 / (len - 1)) * index
   }
 
-  function getxpos(index, len) {
+  function getxpos(index: number, len: number) {
     return (100 / (len - 1)) * index * -1
   }
 
@@ -226,42 +229,52 @@ const LootBox = () => {
   }
 
   async function saveLootToStorage() {
-    let items = {}
+    let items: IAvatarParts = {}
 
-    if (lootItem.length === 1) {
-      let lootItemData = avatarData.parts[lootItem[0].category].find(
-        (item) => item.id === lootItem[0].id
-      )
+    const loot = lootItem[0]
+    const avatarDetail = avatarParts[loot.category]
+
+    if (lootItem.length === 1 && avatarDetail !== undefined) {
+      let lootItemData = avatarDetail.find((item) => item.id === lootItem[0].id)
+
       lootItemData = { ...lootItemData, isNewPart: true }
 
-      await setAvatarPartCollection({
-        ...collectedItems,
-        [lootItem[0].category]: [
-          ...collectedItems[lootItem[0].category],
-          lootItemData,
-        ],
-      })
+      if (collectedItems) {
+        await setAvatarPartCollection({
+          ...collectedItems,
+          [lootItem[0].category]: [
+            //@ts-ignore
+            ...collectedItems[lootItem[0].category],
+            lootItemData,
+          ],
+        })
+      }
     } else {
       lootItem.map((loot) => {
-        let lootItemData = avatarData.parts[loot.category].find(
-          (item) => item.id === loot.id
-        )
-        items[loot.category] = { ...lootItemData, isNewPart: true }
-        return null
+        const avatarDetail = avatarParts[lootItem[0].category]
+        if (avatarDetail !== undefined) {
+          let lootItemData = avatarDetail.find((item) => item.id === loot.id)
+          //@ts-ignore
+          items[loot.category] = { ...lootItemData, isNewPart: true }
+          return null
+        }
       })
 
-      await setAvatarPartCollection({
-        ...collectedItems,
-        accessory: [...collectedItems['accessory'], items.accessory],
-        body: [...collectedItems['body'], items.body],
-        hair: [...collectedItems['hair'], items.hair],
-        face: [...collectedItems['face'], items.face],
-      })
+      if (collectedItems) {
+        await setAvatarPartCollection({
+          ...collectedItems,
+          //@ts-ignore
+          accessory: [...collectedItems['accessory'], items.accessory],
+          body: [...collectedItems['body'], items.body],
+          hair: [...collectedItems['hair'], items.hair],
+          face: [...collectedItems['face'], items.face],
+        })
+      }
     }
     router.push('/home')
   }
 
-  function handleClickOnCard(card) {
+  function handleClickOnCard(card: ICard) {
     if (isFirstLoot) return
 
     // If clicking twice on same card, remove it from myLootCards
@@ -279,7 +292,7 @@ const LootBox = () => {
       (myLootCards.length > 0 ? playUnlockCardSound2() : playUnlockCardSound1())
   }
 
-  function checkIfActive(id) {
+  function checkIfActive(id: string) {
     if (myLootCards.some((y) => y.id === id) && !isFirstLoot) {
       return true
     } else {
@@ -314,7 +327,7 @@ const LootBox = () => {
     return <NotAllowed />
   }
 
-  const particlesInit = async (main) => {
+  const particlesInit = async (main: Engine) => {
     await loadFull(main)
   }
 
@@ -408,10 +421,10 @@ const LootBox = () => {
         {!openBox && (
           <div className={styles.ctaWrapper}>
             <Button
-              size='xlarge'
+              size={ButtonSize.XLARGE}
               onClick={() => handleClick()}
               hasOwnSound
-              variant='text'
+              variant={ButtonVariant.TEXT}
             >
               {t('openlootbox')}
             </Button>
@@ -563,8 +576,8 @@ const LootBox = () => {
                 {!isFirstLoot && (
                   <div className={styles.buttonWrapper}>
                     <Button
-                      variant='secondary'
-                      size='small'
+                      variant={ButtonVariant.SECONDARY}
+                      size={ButtonSize.SMALL}
                       onClick={() => handleClickOnCard(card)}
                     >
                       {t('lootbox.choose')}
@@ -642,5 +655,3 @@ const LootBox = () => {
     </>
   )
 }
-
-export default LootBox

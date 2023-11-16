@@ -46,7 +46,8 @@
       "manual": "Manual - Barnrättsspelet",
       "persuade": "Övertalning - Barnrättsspelet",
       "scenarios": "Spela en specifik utmaning - Barnrättsspelet",
-      "start": "Barnrättsspelet"
+      "start": "Barnrättsspelet",
+      "stats": "Statistik - Barnrättsspelet"
     },
     "description": {
       "avatarbuilder": "Skapa en avatar genom att välja olika hårstilar, kläder, ansikten och färger",
@@ -59,7 +60,8 @@
       "lootbox": "Öppna lådan för att få rättighetskort",
       "manual": "Läs manualen som förklarar hur du spelar Barnrättssplelet",
       "scenarios": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om",
-      "start": "Testa vad du kan om dina rättigheter och träna på att använda dem."
+      "start": "Testa vad du kan om dina rättigheter och träna på att använda dem.",
+      "stats": "Se statistik"
     }
   },
   "mobilewarning": {

@@ -61,14 +61,6 @@ export interface IAnimation {
   }
 }
 
-export type AvatarPart = {
-  isNewPart?: true
-  id?: string | null | undefined
-  isDefault?: boolean | undefined
-  isSuperHero?: boolean | undefined
-  color?: string | undefined
-}
-
 export interface IAvatarParts {
   [key: string]: AvatarPart[] | undefined
   face?: AvatarPart[] | undefined
@@ -162,4 +154,12 @@ export interface ILootItem {
   id: string
   color: string
   isNewPart?: boolean
+}
+
+export type AvatarPart = {
+  isNewPart?: true
+  id?: string | null | undefined
+  isDefault?: boolean | undefined
+  isSuperHero?: boolean | undefined
+  color?: string | undefined
 }

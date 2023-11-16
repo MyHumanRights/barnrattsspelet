@@ -16,6 +16,10 @@ export async function generateMetadata({
   return {
     title: t('title.scenarios'),
     description: t('description.scenarios'),
+    robots: {
+      index: false,
+      follow: false,
+    },
   }
 }
 

@@ -15,6 +15,10 @@ export async function generateMetadata({
   return {
     title: t('title.collectionviewer'),
     description: t('description.collectionviewer'),
+    robots: {
+      index: false,
+      follow: false,
+    },
   }
 }
 

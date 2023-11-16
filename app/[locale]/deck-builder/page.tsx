@@ -14,6 +14,10 @@ export async function generateMetadata({
   return {
     title: t('title.deckbuilder'),
     description: t('description.deckbuilder'),
+    robots: {
+      index: false,
+      follow: false,
+    },
   }
 }
 

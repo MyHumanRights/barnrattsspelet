@@ -1,8 +1,8 @@
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
-import { LocaleParams } from '@/utils/types'
-import { StatsClient } from './client'
-import styles from './Stats.module.scss'
 import { Metadata } from 'next'
+import { LocaleParams } from '@/utils/types'
+import { getAvatarParts, getCards } from '@/utils/getData'
+import { LootBoxClient } from './client'
 
 export async function generateMetadata({
   params: { locale },
@@ -20,13 +20,10 @@ export async function generateMetadata({
   }
 }
 
-const Stats: React.FC = () => {
-  return (
-    <>
-      <main className={styles.wrapper}>
-        <StatsClient />
-      </main>
-    </>
-  )
+const LootBox = async () => {
+  const cards = await getCards()
+  const avatarParts = await getAvatarParts()
+  return <LootBoxClient cardData={cards} avatarParts={avatarParts} />
 }
-export default Stats
+
+export default LootBox
