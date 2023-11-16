@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
+import { getCards } from '@/utils/getData'
 
 export async function generateMetadata({
   params: { locale },
@@ -18,6 +19,10 @@ export async function generateMetadata({
 const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   unstable_setRequestLocale(locale)
   const t = await getTranslator(locale)
+
+  const cards = await getCards()
+
+  console.log(cards)
 
   return (
     <div>
