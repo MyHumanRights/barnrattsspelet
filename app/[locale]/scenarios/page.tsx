@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { Link } from '../components/Link/Link'
 import { getTranslator } from 'next-intl/server'
 import { Metadata } from 'next'
@@ -54,9 +53,7 @@ const Scenarios: React.FC<LocaleParams> = async ({ params: { locale } }) => {
               <DownloadPdf />
             </div>
           </div>
-          <Suspense fallback={<p>Loading feed...</p>}>
-            <ScenariosClient antagonistsObj={antagonists} cards={cards} />
-          </Suspense>
+          <ScenariosClient antagonistsObj={antagonists} cards={cards} />
         </div>
       </main>
     </>

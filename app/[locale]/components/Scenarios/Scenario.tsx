@@ -1,7 +1,9 @@
+'use client'
+
 import React, { useState, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from './Scenario.module.scss'
 
 export interface ScenarioProps {

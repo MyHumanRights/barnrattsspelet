@@ -4,6 +4,9 @@ import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
 import { getCards } from '@/utils/getData'
 import { AboutClient } from './client'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { Link } from '../components/Link/Link'
+import { DownloadPdf } from '../components/DownloadPdf'
 
 export async function generateMetadata({
   params: { locale },
@@ -29,6 +32,10 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
       <ChatBubbleSimple>
         <p>chat bubble simple</p>
       </ChatBubbleSimple>
+      <Link to='/' variant={ButtonVariant.SECONDARY} size={ButtonSize.SMALL}>
+        {t('mainmenu.startpage')}
+      </Link>
+      <DownloadPdf />
       <AboutClient cards={cards} />
     </div>
   )

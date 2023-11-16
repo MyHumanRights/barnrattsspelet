@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
@@ -6,8 +8,8 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import { getScenarioCards } from '@/api/engine'
 import { ICard, IGameAntagonist } from '@/utils/types'
 import { setCardHand, setPlayFromScenario } from '@/api/storage'
-import styles from './ScenarioList.module.scss'
 import { Scenario } from './Scenario'
+import styles from './ScenarioList.module.scss'
 
 const uuid = crypto.randomUUID()
 

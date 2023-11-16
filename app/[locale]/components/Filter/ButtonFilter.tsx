@@ -1,3 +1,5 @@
+'use client'
+
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
@@ -8,8 +10,8 @@ import { ICard, IGameAntagonist } from '@/utils/types'
 import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { ArrowRight } from '../Icons/ArrowRight'
 import { ChevronRight } from '../Icons/ChevronRight'
-import { Button } from '../Button'
 import FilterFunnel from '../Icons/FilterFunnel'
+import { Button } from '../Button'
 import styles from './ButtonFilter.module.scss'
 
 interface Props {
