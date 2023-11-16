@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { unstable_setRequestLocale } from 'next-intl/server'
 import { useRouter } from 'next/navigation'
 import Particles from 'react-particles'
 import { loadFull } from 'tsparticles'
@@ -44,13 +45,14 @@ import { NotAllowed } from '../components/NotAllowed'
 import { OwlDialogue } from '../components/OwlDialogue'
 import LootItemCard from '../components/Card/LootItemCard'
 import { Check } from '../components/Icons/Check'
-import styles from './LootBox.module.scss'
 import { MapBackground } from '../components/MapBackground'
+import styles from './LootBox.module.scss'
 
 const ROT_DEGREE = 10
 const TOP_OFFSET = 20
 
-const LootBox = () => {
+const LootBox = ({ params: { locale } }) => {
+  unstable_setRequestLocale(locale)
   const t = useTranslations()
   const router = useRouter()
   const { isByingLootbox, gameEnvironment, allowedLootbox } =

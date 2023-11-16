@@ -1,5 +1,5 @@
 import { getCards, getNonPlayableCards } from '@/utils/getData'
-import { getTranslator } from 'next-intl/server'
+import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { MobileCollectionViewerClient } from './client'
 import styles from '../CollectionViewer.module.scss'
 import { Metadata } from 'next'
@@ -9,6 +9,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  unstable_setRequestLocale(locale)
   const t = await getTranslator(locale, 'meta')
 
   return {

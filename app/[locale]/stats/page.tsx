@@ -5,9 +5,11 @@ import { doc, getDoc } from 'firebase/firestore/lite'
 import { useTranslations } from 'next-intl'
 import { db } from '@/utils/firebase'
 import { STAT_COLLECTION_NAMES } from '@/utils/constants'
+import styles from './Stats.module.scss'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { LocaleParams } from '@/utils/types'
 import { Button } from '../components/Button'
 import { Loader } from '../components/Loader'
-import styles from './Stats.module.scss'
 
 const FRIEND = 'mellon'
 type StatsData = {
@@ -15,7 +17,8 @@ type StatsData = {
 }
 // TODO: Don't index this page
 
-const Stats = () => {
+const Stats: React.FC<LocaleParams> = ({ params: { locale } }) => {
+  unstable_setRequestLocale(locale)
   const [data, setData] = useState<StatsData>({})
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
