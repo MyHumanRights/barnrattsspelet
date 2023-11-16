@@ -1,16 +1,15 @@
 'use client'
 
-import { ICard } from '@/utils/types'
 import { useEffect } from 'react'
 
-export const AboutClient = ({ cards }: { cards: ICard[] }) => {
+export const AboutClient = () => {
   useEffect(() => {
-    console.log(cards)
-  }, [cards])
+    console.log('AboutClient')
+  }, [])
 
   return (
     <>
-      <h1>About</h1>
+      <h1>About Client</h1>
     </>
   )
 }
