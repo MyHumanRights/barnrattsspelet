@@ -1,4 +1,3 @@
-import { AboutClient } from './client'
 import { Metadata } from 'next'
 import { getTranslator } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
@@ -20,7 +19,6 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   return (
     <div>
       <h1>{t('readmoreonhelp')}</h1>
-      <AboutClient />
     </div>
   )
 }
