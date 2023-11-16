@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { mapAntagonistsToArray } from '@/api/engine'
 import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
+import { ScenarioList } from '../components/Scenarios/ScenarioList'
 
 export interface ScenariosClientProps {
   antagonistsObj: IAntagonistObject
@@ -22,9 +23,6 @@ export const AboutClient: React.FC<ScenariosClientProps> = ({
     setAllScenarios(antagonists)
   }, [antagonistsObj])
 
-  console.log(cards)
-  console.log(antagonistsObj)
-
   return (
     <>
       <header>
@@ -35,6 +33,13 @@ export const AboutClient: React.FC<ScenariosClientProps> = ({
           isCollectionView
         />
       </header>
+      {allScenarios && (
+        <ScenarioList
+          filter={filter}
+          allScenarios={allScenarios}
+          cards={cards}
+        />
+      )}
     </>
   )
 }
