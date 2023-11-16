@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
-import { IAntagonistObject, LocaleParams } from '@/utils/types'
+import { IAntagonistObject, ICard, LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
 import { getAntagonists, getCards } from '@/utils/getData'
 import { AboutClient } from './client'
@@ -24,10 +24,8 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   unstable_setRequestLocale(locale)
   const t = await getTranslator(locale)
 
-  const cards = await getCards()
+  const cards: ICard[] = await getCards()
   const antagonists: IAntagonistObject = await getAntagonists()
-
-  console.log(antagonists)
 
   return (
     <div>
@@ -39,7 +37,7 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
         {t('mainmenu.startpage')}
       </Link>
       <DownloadPdf />
-      <AboutClient cards={cards} />
+      <AboutClient antagonistsObj={antagonists} cards={cards} />
     </div>
   )
 }
