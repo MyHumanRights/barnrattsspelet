@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { mapAntagonistsToArray } from '@/api/engine'
+import { ScenarioList } from '../components/Scenarios/ScenarioList'
 import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
-import { ScenarioList } from '../components/Scenarios/ScenarioList'
 
 export interface ScenariosClientProps {
   antagonistsObj: IAntagonistObject

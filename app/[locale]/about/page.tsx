@@ -1,17 +1,16 @@
 import { Metadata } from 'next'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { IAntagonistObject, ICard, LocaleParams } from '@/utils/types'
-import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
-import { getAntagonists, getCards } from '@/utils/getData'
-import { AboutClient } from './client'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { Link } from '../components/Link/Link'
+import { getAntagonists, getCards } from '@/utils/getData'
 import { DownloadPdf } from '../components/DownloadPdf'
+import { Link } from '../components/Link/Link'
+import { AboutClient } from './client'
+import styles from './about.module.scss'
 
 export async function generateMetadata({
   params: { locale },
 }: LocaleParams): Promise<Metadata> {
-  unstable_setRequestLocale(locale)
   const t = await getTranslator(locale, 'meta')
 
   return {
@@ -23,22 +22,42 @@ export async function generateMetadata({
 const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   unstable_setRequestLocale(locale)
   const t = await getTranslator(locale)
-
-  const cards: ICard[] = await getCards()
   const antagonists: IAntagonistObject = await getAntagonists()
+  const cards: ICard[] = await getCards()
 
   return (
-    <div>
-      <h1>{t('readmoreonhelp')}</h1>
-      <ChatBubbleSimple>
-        <p>chat bubble simple</p>
-      </ChatBubbleSimple>
-      <Link to='/' variant={ButtonVariant.SECONDARY} size={ButtonSize.SMALL}>
-        {t('mainmenu.startpage')}
-      </Link>
-      <DownloadPdf />
-      <AboutClient antagonistsObj={antagonists} cards={cards} />
-    </div>
+    <>
+      <main
+        className={styles.wrapper}
+        style={{
+          backgroundImage: 'url(/images/start/map-large.svg)',
+        }}
+      >
+        <div className={styles.blurBkgd} />
+        <div className={styles.opacityBkgd} />
+        <div className={styles.content}>
+          <div className={styles.topWrapper}>
+            <div className={styles.headerLink}>
+              <Link
+                to='/'
+                variant={ButtonVariant.SECONDARY}
+                size={ButtonSize.SMALL}
+              >
+                {t('mainmenu.startpage')}
+              </Link>
+            </div>
+            <div className={styles.titleWrapper}>
+              <h1>{t('scenarios.header')}</h1>
+              <p>{t('scenarios.description')}</p>
+            </div>
+            <div className={styles.downloadWrapper}>
+              <DownloadPdf />
+            </div>
+          </div>
+          <AboutClient antagonistsObj={antagonists} cards={cards} />
+        </div>
+      </main>
+    </>
   )
 }
 
