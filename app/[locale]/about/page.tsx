@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
+import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
 
 export async function generateMetadata({
   params: { locale },
@@ -21,6 +22,9 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   return (
     <div>
       <h1>{t('readmoreonhelp')}</h1>
+      <ChatBubbleSimple>
+        <p>chat bubble simple</p>
+      </ChatBubbleSimple>
     </div>
   )
 }
