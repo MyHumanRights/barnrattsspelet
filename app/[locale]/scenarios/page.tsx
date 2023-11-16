@@ -7,13 +7,11 @@ import { getAntagonists, getCards } from '@/utils/getData'
 import { DownloadPdf } from '../components/DownloadPdf'
 import { ScenariosClient } from './ScenariosClient'
 import styles from './Scenarios.module.scss'
-import { IAntagonistObject, ICard } from '@/utils/types'
+import { IAntagonistObject, ICard, LocaleParams } from '@/utils/types'
 
 export async function generateMetadata({
   params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+}: LocaleParams): Promise<Metadata> {
   const t = await getTranslator(locale, 'meta')
 
   return {
@@ -22,13 +20,7 @@ export async function generateMetadata({
   }
 }
 
-interface Props {
-  params: {
-    locale: string
-  }
-}
-
-const Scenarios: React.FC<Props> = async ({ params: { locale } }) => {
+const Scenarios: React.FC<LocaleParams> = async ({ params: { locale } }) => {
   const t = await getTranslator(locale)
   const antagonists: IAntagonistObject = await getAntagonists()
   const cards: ICard[] = await getCards()
