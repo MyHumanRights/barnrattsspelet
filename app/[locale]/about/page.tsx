@@ -3,7 +3,7 @@ import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from '../components/ChatBubble/ChatBubbleSimple'
 import { getCards } from '@/utils/getData'
-import { CardGrid } from './CardGrid'
+import { AboutClient } from './client'
 
 export async function generateMetadata({
   params: { locale },
@@ -29,7 +29,7 @@ const About: React.FC<LocaleParams> = async ({ params: { locale } }) => {
       <ChatBubbleSimple>
         <p>chat bubble simple</p>
       </ChatBubbleSimple>
-      <CardGrid cards={cards} />
+      <AboutClient cards={cards} />
     </div>
   )
 }

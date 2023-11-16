@@ -1,7 +1,7 @@
 import { ICard } from '@/utils/types'
 import { Card } from '../components/Card'
 
-export const CardGrid = ({ cards }: { cards: ICard[] }) => {
+export const AboutClient = ({ cards }: { cards: ICard[] }) => {
   return (
     <div>
       <h1>CardGrid</h1>
