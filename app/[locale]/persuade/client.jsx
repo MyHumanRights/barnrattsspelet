@@ -65,13 +65,13 @@ export const PersuadeClient = () => {
   const router = useRouter()
   // TODO: send antagonist as a param from scenario
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
-  const activeAntagonist = readGameStateValue('activeAntagonist')
 
   const {
     isMobile,
     toggleThemeSound,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const [activeAntagonist, setActiveAntagonist] = useState(null)
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {
@@ -112,6 +112,8 @@ export const PersuadeClient = () => {
   )
 
   useEffect(() => {
+    const antagonist = readGameStateValue('activeAntagonist')
+    setActiveAntagonist(antagonist)
     addFirstTimePersuation()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

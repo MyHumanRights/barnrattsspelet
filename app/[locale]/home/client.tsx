@@ -24,7 +24,6 @@ import {
   setShownSecondChallengeTip,
   getAvatarPartCollection,
   setGameStateValue,
-  readGameStateValue,
 } from '@/api/storage'
 import { getNumberOfNewCards, getNewAvatarParts } from '@/api/engine'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -58,7 +57,6 @@ interface Props {
 export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const t = useTranslations()
   const router = useRouter()
-  const gameEnvironment = readGameStateValue('gameEnvironment')
   const {
     clientHeight: height,
     clientWidth: width,
@@ -373,7 +371,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     }
 
     init()
-  }, [])
+  }, [antagonists])
 
   useEffect(() => {
     toggleThemeSound()
@@ -495,7 +493,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
               body={owlTip?.body}
               setShowOwl={setShowOwlTip}
               onClick={handleOwlClick}
-              hasOwnSound={!!gameEnvironment}
             />
           </motion.div>
         )}

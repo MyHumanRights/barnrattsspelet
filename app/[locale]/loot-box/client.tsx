@@ -59,13 +59,14 @@ interface Props {
 export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const t = useTranslations()
   const router = useRouter()
-  const isByingLootbox = readGameStateValue('isByingLootbox')
-  const gameEnvironment = readGameStateValue('gameEnvironment')
   const {
     isMobile,
     playSoundEffect,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
+  const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(true)
+  const [isAllowedLootbox, setIsAllowedLootbox] = useState<boolean | null>(true)
   const [showConfetti, setShowConfetti] = useState(false)
   const [bgColor, setBgColor] = useState('none')
   const [openBox, setOpenBox] = useState(false)
@@ -99,12 +100,17 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const lootItemOnly = lootCards.length === 0
 
   const allAreDefeated = useAllAreDefeated()
-  const isAllowedLootbox = readGameStateValue('allowedLootbox')
 
   useEffect(() => {
     const init = async () => {
       let tempLootCards = []
       const cardCollection = await getCardCollection()
+      const byingLootbox = await readGameStateValue('isByingLootbox')
+      const environment = await readGameStateValue('gameEnvironment')
+      const allowedLootbox = await readGameStateValue('allowedLootbox')
+      setIsAllowedLootbox(allowedLootbox)
+      setGameEnvironment(environment)
+      setIsByingLootbox(byingLootbox)
 
       if (isByingLootbox) {
         const availableTokens = await readTokens()
@@ -157,7 +163,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     Promise.resolve(init()).catch((error) => console.error(error))
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allAreDefeated, isByingLootbox])
+  }, [allAreDefeated])
 
   useEffect(() => {
     // find svg background (floor) color
@@ -196,6 +202,8 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   }
 
   async function saveCardsToStorage() {
+    const isByingLootbox = await readGameStateValue('isByingLootbox')
+    const gameEnvironment = await readGameStateValue('gameEnvironment')
     soundEffectsOn && playUnlockCardSound3()
     gameEnvironment && playSoundEffect(playMapSound, 1000)
 

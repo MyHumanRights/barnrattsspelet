@@ -53,10 +53,10 @@ export const Settings: React.FC<Props> = ({
     rotation: shouldReduceMotion ? 0 : 40,
   })
   const reducedMotion = useReducedMotion() || isMobile
+  setActiveUser({ name: 'JohnDoe' })
 
   const init = async () => {
     // TODO: Set a user in a login state
-    setActiveUser({ name: 'JohnDoe' })
 
     const [
       avatar,
