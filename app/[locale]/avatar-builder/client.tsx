@@ -2,6 +2,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import NextLink from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -72,6 +73,8 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   const router = useRouter()
   const formRef = useRef<HTMLDivElement>(null)
+  const homeLinkRef = useRef<HTMLAnchorElement>(null)
+  const lootBoxLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     ;(async function () {
@@ -117,8 +120,8 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
     //TODO: make sure they're allowed to go to loot box
     firstTimer
-      ? (setAllowedLootbox(true), router.push('/loot-box'))
-      : router.push('/home')
+      ? (setAllowedLootbox(true), lootBoxLinkRef.current?.click())
+      : homeLinkRef.current?.click()
   }
 
   useEffect(() => {
@@ -194,12 +197,12 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
     const resetParts = resetNewAvatarParts(avatarCollection)
     setAvatarPartCollection(resetParts)
 
-    router.push('/home')
+    homeLinkRef.current?.click()
   }
 
   const handleGoToLootbox = () => {
     setAllowedLootbox(true)
-    router.push('/loot-box')
+    lootBoxLinkRef.current?.click()
   }
 
   function handleColorClick(category: CATEGORIES, color: string) {
@@ -236,6 +239,12 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   return (
     <div className={styles.content}>
+      <NextLink href='/home' className='invisible' ref={homeLinkRef}>
+        {t('mainmenu.home')}
+      </NextLink>
+      <NextLink href='/loot-box' className='invisible' ref={lootBoxLinkRef}>
+        Loot Box
+      </NextLink>
       <div className={styles.menuBar}>
         {firstTimer ? (
           <Button

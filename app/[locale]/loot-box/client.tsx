@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import NextLink from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -94,12 +95,15 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     volume: effectsVolume,
     interupt: true,
   })
+  const homeLinkRef = useRef<HTMLAnchorElement>(null)
 
   const FULL_LOOT_AMOUNT = isFirstLoot ? 10 : lootCards.length >= 2 ? 2 : 1
   const FULL_LOOT = myLootCards.length === FULL_LOOT_AMOUNT
   const lootItemOnly = lootCards.length === 0
 
   const allAreDefeated = useAllAreDefeated()
+
+  console.log({ allowedLootbox })
 
   useEffect(() => {
     toggleThemeSound(false)
@@ -143,7 +147,8 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
           : getItemToLootBox(avatarPartCollection, avatarParts, storedAvatar)
 
         if (tempLootCards.length === 0 && !item.length) {
-          router.push('/home')
+          homeLinkRef.current?.click()
+          // router.push('/home')
           return
         } else if (tempLootCards.length === 0 && isByingLootbox) {
           setCollectedItems(avatarPartCollection)
@@ -218,13 +223,15 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
     if (isFirstLoot) {
       // If playing for the first time, send user to home
-      router.push('/home')
+      homeLinkRef.current?.click()
+      // router.push('/home')
     } else if (lootItem.length && !isByingLootbox) {
       // If player still can win loot items
       setShowLootItem(true)
     } else {
       // If player has won all loot items already
-      router.push('/home')
+      homeLinkRef.current?.click()
+      // router.push('/home')
     }
   }
 
@@ -271,7 +278,8 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
         })
       }
     }
-    router.push('/home')
+    homeLinkRef.current?.click()
+    // router.push('/home')
   }
 
   function handleClickOnCard(card: ICard) {
@@ -339,6 +347,9 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
           backgroundColor: bgColor !== 'none' ? bgColor : 'transparent',
         }}
       >
+        <NextLink href='/home' className='invisible' ref={homeLinkRef}>
+          {t('mainmenu.home')}
+        </NextLink>
         {!gameEnvironment && <MapBackground opacity={1} />}
         {gameEnvironment ? (
           <div className={styles.background}>
