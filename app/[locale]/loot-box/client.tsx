@@ -65,7 +65,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
-  const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(true)
+  const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(false)
   const [isAllowedLootbox, setIsAllowedLootbox] = useState<boolean | null>(true)
   const [showConfetti, setShowConfetti] = useState(false)
   const [bgColor, setBgColor] = useState('none')
@@ -202,8 +202,6 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   }
 
   async function saveCardsToStorage() {
-    const isByingLootbox = await readGameStateValue('isByingLootbox')
-    const gameEnvironment = await readGameStateValue('gameEnvironment')
     soundEffectsOn && playUnlockCardSound3()
     gameEnvironment && playSoundEffect(playMapSound, 1000)
 
