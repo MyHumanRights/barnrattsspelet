@@ -127,10 +127,10 @@ export const PersuadeClient = () => {
     addFirstTimePersuation()
 
     const init = async () => {
-      const antagonist = await readGameStateValue('activeAntagonist')
-      setActiveAntagonist(antagonist)
+      const gameStateAntagonist = await readGameStateValue('activeAntagonist')
+      setActiveAntagonist(gameStateAntagonist)
       const cards = await getCardHand()
-      const useAntagonist = antagonists[activeAntagonist]
+      const useAntagonist = antagonists[gameStateAntagonist]
 
       resetGameState()
       const currentState = setGameState({
