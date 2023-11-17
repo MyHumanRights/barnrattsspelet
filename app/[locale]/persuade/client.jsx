@@ -112,13 +112,6 @@ export const PersuadeClient = () => {
   )
 
   useEffect(() => {
-    const antagonist = readGameStateValue('activeAntagonist')
-    setActiveAntagonist(antagonist)
-    addFirstTimePersuation()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
     toggleThemeSound(false)
   }, [toggleThemeSound])
 
@@ -130,24 +123,26 @@ export const PersuadeClient = () => {
     }
   }, [lines])
 
-  const init = useCallback(async () => {
-    const cards = await getCardHand()
-    const useAntagonist = antagonists[activeAntagonist]
-
-    resetGameState()
-    const currentState = setGameState({
-      antagonist: useAntagonist,
-      cardHand: cards,
-    })
-    setCurrentState(currentState)
-    setAntagonistComp(useAntagonist.components.start)
-    setEnvironment(useAntagonist.components.background)
-    setChatBubblePosition(useAntagonist.chatBubblePosition)
-    setArrowPosition(useAntagonist.antagonistPosition)
-  }, [activeAntagonist])
-
   useEffect(() => {
-    ;(async function () {
+    addFirstTimePersuation()
+
+    const init = async () => {
+      const antagonist = await readGameStateValue('activeAntagonist')
+      setActiveAntagonist(antagonist)
+      const cards = await getCardHand()
+      const useAntagonist = antagonists[activeAntagonist]
+
+      resetGameState()
+      const currentState = setGameState({
+        antagonist: useAntagonist,
+        cardHand: cards,
+      })
+      setCurrentState(currentState)
+      setAntagonistComp(useAntagonist.components.start)
+      setEnvironment(useAntagonist.components.background)
+      setChatBubblePosition(useAntagonist.chatBubblePosition)
+      setArrowPosition(useAntagonist.antagonistPosition)
+
       const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
         await Promise.all([
           getPlayFromScenario(),
@@ -159,10 +154,11 @@ export const PersuadeClient = () => {
       setAnsweredIncorrectly(wrongAnswers)
       setHasShownFlipCardTip(shownFlipCardTip || false)
       setHasShownTokenTip(shownTokenTip)
-    })()
+    }
 
     init()
-  }, [init])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeAntagonist])
 
   useEffect(() => {
     // find svg background (floor) color
