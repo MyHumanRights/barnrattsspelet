@@ -12,7 +12,6 @@ import wrongAnswerSound from '@/assets/sounds/fx/02-incorrect-card-played.mp3'
 import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
 import gameOverSound from '@/assets/sounds/fx/05-lose.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useGameStateContext } from '@/contexts/GameStateContext'
 import { OWLS, STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import {
   answer,
@@ -34,6 +33,8 @@ import {
   setWrongAnswers,
   getShownFlipCardTip,
   setShownFlipCardTip,
+  setGameStateValue,
+  readGameStateValue,
 } from '@/api/storage'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
@@ -64,8 +65,8 @@ export const PersuadeClient = () => {
   const router = useRouter()
   // TODO: send antagonist as a param from scenario
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
-  const { activeAntagonist, setGameEnvironment, setAllowedLootbox } =
-    useGameStateContext()
+  const activeAntagonist = readGameStateValue('activeAntagonist')
+
   const {
     isMobile,
     toggleThemeSound,
@@ -375,8 +376,7 @@ export const PersuadeClient = () => {
 
   function handleGotoLootBox() {
     setCardHand([])
-    setGameEnvironment(environment)
-    setAllowedLootbox(true)
+    setGameStateValue({ allowedLootbox: true, gameEnvironment: environment })
     router.push('/loot-box')
   }
 

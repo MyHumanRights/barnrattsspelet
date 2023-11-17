@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import NextLink from 'next/link'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -25,6 +24,7 @@ import {
   setShownNoUndefeatedTip,
   setTokens,
   setFirstTimeLootBox,
+  readGameStateValue,
 } from '@/api/storage'
 import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
 import unlockCardSound1 from '@/assets/sounds/fx/13-card-unlocked-01.mp3'
@@ -32,7 +32,6 @@ import unlockCardSound2 from '@/assets/sounds/fx/13-card-unlocked-02.mp3'
 import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
 import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import antagonists from '@/data/antagonists.json'
-import { useGameStateContext } from '@/contexts/GameStateContext'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
 import Box from '../components/Box/Box'
@@ -60,11 +59,10 @@ interface Props {
 export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const t = useTranslations()
   const router = useRouter()
-  const { isByingLootbox, gameEnvironment, allowedLootbox } =
-    useGameStateContext()
+  const isByingLootbox = readGameStateValue('isByingLootbox')
+  const gameEnvironment = readGameStateValue('gameEnvironment')
   const {
     isMobile,
-    toggleThemeSound,
     playSoundEffect,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
@@ -95,19 +93,13 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     volume: effectsVolume,
     interupt: true,
   })
-  const homeLinkRef = useRef<HTMLAnchorElement>(null)
 
   const FULL_LOOT_AMOUNT = isFirstLoot ? 10 : lootCards.length >= 2 ? 2 : 1
   const FULL_LOOT = myLootCards.length === FULL_LOOT_AMOUNT
   const lootItemOnly = lootCards.length === 0
 
   const allAreDefeated = useAllAreDefeated()
-
-  console.log({ allowedLootbox })
-
-  useEffect(() => {
-    toggleThemeSound(false)
-  }, [toggleThemeSound])
+  const isAllowedLootbox = readGameStateValue('allowedLootbox')
 
   useEffect(() => {
     const init = async () => {
@@ -147,8 +139,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
           : getItemToLootBox(avatarPartCollection, avatarParts, storedAvatar)
 
         if (tempLootCards.length === 0 && !item.length) {
-          homeLinkRef.current?.click()
-          // router.push('/home')
+          router.push('/home')
           return
         } else if (tempLootCards.length === 0 && isByingLootbox) {
           setCollectedItems(avatarPartCollection)
@@ -223,15 +214,13 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
     if (isFirstLoot) {
       // If playing for the first time, send user to home
-      homeLinkRef.current?.click()
-      // router.push('/home')
+      router.push('/home')
     } else if (lootItem.length && !isByingLootbox) {
       // If player still can win loot items
       setShowLootItem(true)
     } else {
       // If player has won all loot items already
-      homeLinkRef.current?.click()
-      // router.push('/home')
+      router.push('/home')
     }
   }
 
@@ -278,8 +267,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
         })
       }
     }
-    homeLinkRef.current?.click()
-    // router.push('/home')
+    router.push('/home')
   }
 
   function handleClickOnCard(card: ICard) {
@@ -331,7 +319,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     return `Owl.lootbox.won${FULL_LOOT_AMOUNT}.body`
   }
 
-  if (!allowedLootbox) {
+  if (!isAllowedLootbox) {
     return <NotAllowed />
   }
 
@@ -347,9 +335,6 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
           backgroundColor: bgColor !== 'none' ? bgColor : 'transparent',
         }}
       >
-        <NextLink href='/home' className='invisible' ref={homeLinkRef}>
-          {t('mainmenu.home')}
-        </NextLink>
         {!gameEnvironment && <MapBackground opacity={1} />}
         {gameEnvironment ? (
           <div className={styles.background}>

@@ -163,3 +163,10 @@ export type AvatarPart = {
   isSuperHero?: boolean | undefined
   color?: string | undefined
 }
+
+export interface IGameStateObject {
+  isByingLootbox: boolean
+  allowedLootbox: boolean
+  activeAntagonist: null | string
+  gameEnvironment: null | string
+}

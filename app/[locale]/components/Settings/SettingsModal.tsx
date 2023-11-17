@@ -20,6 +20,7 @@ import {
   resetShownTips,
   setVoiceover,
   resetWrongAnswers,
+  resetGameState,
   // setLanguage,
 } from '../../../../api/storage'
 
@@ -112,6 +113,7 @@ export const SettingsModal: React.FC<Props> = ({
     await setFirstTimeLootBox(true)
     await setCardCollection([])
     await setPlayFromScenario(false)
+    await resetGameState()
 
     handleModal()
 

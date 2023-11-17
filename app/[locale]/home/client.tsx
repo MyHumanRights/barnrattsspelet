@@ -23,6 +23,8 @@ import {
   getShownSecondChallengeTip,
   setShownSecondChallengeTip,
   getAvatarPartCollection,
+  setGameStateValue,
+  readGameStateValue,
 } from '@/api/storage'
 import { getNumberOfNewCards, getNewAvatarParts } from '@/api/engine'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -34,7 +36,6 @@ import {
   IOwlContent,
   IScenario,
 } from '@/utils/types'
-import { useGameStateContext } from '@/contexts/GameStateContext'
 import { Button } from '../components/Button'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
@@ -57,13 +58,7 @@ interface Props {
 export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const t = useTranslations()
   const router = useRouter()
-  const {
-    setActiveAntagonist,
-    setGameEnvironment,
-    gameEnvironment,
-    setAllowedLootbox,
-    setIsByingLootbox,
-  } = useGameStateContext()
+  const gameEnvironment = readGameStateValue('gameEnvironment')
   const {
     clientHeight: height,
     clientWidth: width,
@@ -181,7 +176,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       antagonists[Math.floor(Math.random() * antagonists.length)]
 
     //TODO: use params to pass antagonist to persuade page
-    setActiveAntagonist(randomAntagonist)
+    setGameStateValue({ activeAntagonist: randomAntagonist })
     router.push('/persuade')
   }
 
@@ -292,9 +287,11 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   }
 
   useEffect(() => {
-    setGameEnvironment('')
-    setIsByingLootbox(false)
-    setAllowedLootbox(false)
+    setGameStateValue({
+      allowedLootbox: false,
+      gameEnvironment: null,
+      isByingLootbox: false,
+    })
     const init = async () => {
       const cardCollection = await getCardCollection()
       setNumberOfCards(cardCollection.length)

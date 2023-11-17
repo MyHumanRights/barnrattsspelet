@@ -1,9 +1,11 @@
-import { IAvatar, IAvatarParts, ICard } from '@/utils/types'
+import { IAvatar, IAvatarParts, ICard, IGameStateObject } from '@/utils/types'
 
 let activeUser: null | { name: string } = null
 
-async function save(collection: string, value: any) {
-  if (!activeUser) return new Error('No User Set')
+function save(collection: string, value: any) {
+  if (!activeUser) {
+    return new Error('No User Set')
+  }
 
   return window.localStorage.setItem(
     `${activeUser.name}:${collection}`,
@@ -11,7 +13,7 @@ async function save(collection: string, value: any) {
   )
 }
 
-async function read(collection: string): Promise<any> {
+function read(collection: string): any {
   if (!activeUser) throw new Error('No User Set')
 
   const item = window.localStorage.getItem(`${activeUser.name}:${collection}`)
@@ -287,4 +289,35 @@ export async function readSettings(reducedMotion: boolean) {
     voiceover,
     language,
   }
+}
+
+function readGameState(): IGameStateObject {
+  return read('gameState')
+}
+
+export function setGameStateValue(updatedValues: Partial<IGameStateObject>) {
+  const currentGameState = readGameState()
+
+  // Merge the updated values with the current state
+  const newGameState = { ...currentGameState, ...updatedValues }
+
+  return save('gameState', newGameState)
+}
+
+export function readGameStateValue<T extends keyof IGameStateObject>(
+  key: T
+): IGameStateObject[T] | null {
+  const currentGameState = readGameState()
+
+  // Check if the key exists in the game state
+  if (currentGameState && key in currentGameState) {
+    return currentGameState[key]
+  }
+
+  // Return a default value or handle the case when the key is not found
+  return null
+}
+
+export function resetGameState(): void | Error {
+  return save('gameState', null)
 }

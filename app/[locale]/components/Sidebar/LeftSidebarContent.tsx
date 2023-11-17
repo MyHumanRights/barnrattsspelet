@@ -16,7 +16,7 @@ import NewCards from '../Icons/NewCards'
 import NewPart from '../Icons/NewPart'
 import styles from './LeftSidebarContent.module.scss'
 import { ICard } from '@/utils/types'
-import { useGameStateContext } from '@/contexts/GameStateContext'
+import { setGameStateValue } from '@/api/storage'
 
 interface AvatarProps {
   link: React.ReactNode
@@ -61,7 +61,6 @@ export const LeftSidebarContent: React.FC<Props> = ({
   const [animateAvatar, triggerAvatar] = useAnimation(animationConfig)
   const [animateToken, triggerToken] = useAnimation(animationConfig)
   const { isMobile } = useOptionsContext()
-  const { setIsByingLootbox, setAllowedLootbox } = useGameStateContext()
 
   const deckBuilderRef = useRef<HTMLAnchorElement>(null)
   const avatarRef = useRef<HTMLAnchorElement>(null)
@@ -84,8 +83,7 @@ export const LeftSidebarContent: React.FC<Props> = ({
   }
 
   const handleGoToLootbox = () => {
-    setIsByingLootbox(true)
-    setAllowedLootbox(true)
+    setGameStateValue({ allowedLootbox: true, isByingLootbox: true })
     router.push('/loot-box')
   }
 

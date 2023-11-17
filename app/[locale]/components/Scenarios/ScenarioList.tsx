@@ -3,11 +3,14 @@
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { useGameStateContext } from '@/contexts/GameStateContext'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { getScenarioCards } from '@/api/engine'
 import { ICard, IGameAntagonist } from '@/utils/types'
-import { setCardHand, setPlayFromScenario } from '@/api/storage'
+import {
+  setCardHand,
+  setGameStateValue,
+  setPlayFromScenario,
+} from '@/api/storage'
 import { Scenario } from './Scenario'
 import styles from './ScenarioList.module.scss'
 
@@ -24,8 +27,10 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
   filter,
   cards,
 }) => {
-  const { shouldReduceMotion } = useOptionsContext().options
-  const { setActiveAntagonist } = useGameStateContext()
+  const {
+    options: { shouldReduceMotion },
+  } = useOptionsContext()
+
   const router = useRouter()
 
   const hoverAnimation = useMemo(
@@ -54,7 +59,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
 
     const cardHand = getScenarioCards(scenario, cards)
     setCardHand(cardHand)
-    setActiveAntagonist(scenario.name)
+    setGameStateValue({ activeAntagonist: scenario.name })
     router.push('/persuade')
   }
 

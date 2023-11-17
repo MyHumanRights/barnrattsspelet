@@ -2,13 +2,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import NextLink from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import useSound from 'use-sound'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useGameStateContext } from '@/contexts/GameStateContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import {
   getRandomAvatar,
@@ -21,6 +19,7 @@ import {
   setAvatarPartCollection,
   setAvatar,
   getFirstTimeLootBox,
+  setGameStateValue,
 } from '@/api/storage'
 import { ButtonSize, ButtonVariant, CATEGORIES } from '@/utils/constants'
 import { Button } from '../components/Button'
@@ -35,7 +34,7 @@ import bodySound from '@/assets/sounds/fx/21-avatar-body.mp3'
 import hairSound from '@/assets/sounds/fx/20-avatar-hair.mp3'
 import accessorySound from '@/assets/sounds/fx/18-avatar-accessory.mp3'
 import styles from './AvatarBuilder.module.scss'
-import { IAvatar, IAvatarColors, IAvatarNew, IAvatarParts } from '@/utils/types'
+import { IAvatar, IAvatarColors, IAvatarNew } from '@/utils/types'
 
 const { HAIR, FACE, BODY, ACCESSORY } = CATEGORIES
 
@@ -56,7 +55,6 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
   const [activeBodyColor, setActiveBodyColor] = useState<string | null>(null)
   const [firstTimer, setFirstTimer] = useState(false)
   const [index, setIndex] = useState({})
-  const { setAllowedLootbox } = useGameStateContext()
   const { toggleThemeSound, options } = useOptionsContext()
   const [playFaceSound] = useSound(faceSound, { volume: options.effectsVolume })
   const [playBodySound] = useSound(bodySound, { volume: options.effectsVolume })
@@ -73,8 +71,6 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   const router = useRouter()
   const formRef = useRef<HTMLDivElement>(null)
-  const homeLinkRef = useRef<HTMLAnchorElement>(null)
-  const lootBoxLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     ;(async function () {
@@ -120,8 +116,8 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
     //TODO: make sure they're allowed to go to loot box
     firstTimer
-      ? (setAllowedLootbox(true), lootBoxLinkRef.current?.click())
-      : homeLinkRef.current?.click()
+      ? (setGameStateValue({ allowedLootbox: true }), router.push('/loot-box'))
+      : router.push('/home')
   }
 
   useEffect(() => {
@@ -197,12 +193,12 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
     const resetParts = resetNewAvatarParts(avatarCollection)
     setAvatarPartCollection(resetParts)
 
-    homeLinkRef.current?.click()
+    router.push('/home')
   }
 
   const handleGoToLootbox = () => {
-    setAllowedLootbox(true)
-    lootBoxLinkRef.current?.click()
+    setGameStateValue({ allowedLootbox: true })
+    router.push('/loot-box')
   }
 
   function handleColorClick(category: CATEGORIES, color: string) {
@@ -239,12 +235,6 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   return (
     <div className={styles.content}>
-      <NextLink href='/home' className='invisible' ref={homeLinkRef}>
-        {t('mainmenu.home')}
-      </NextLink>
-      <NextLink href='/loot-box' className='invisible' ref={lootBoxLinkRef}>
-        Loot Box
-      </NextLink>
       <div className={styles.menuBar}>
         {firstTimer ? (
           <Button
