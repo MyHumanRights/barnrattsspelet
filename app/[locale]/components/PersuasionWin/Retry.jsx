@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { motion } from 'framer-motion'
 
 import { useAnimation } from '@/utils/hooks/useAnimation'

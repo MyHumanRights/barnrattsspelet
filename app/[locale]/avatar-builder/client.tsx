@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { motion } from 'framer-motion'
 import useSound from 'use-sound'
 import { useOptionsContext } from '@/contexts/OptionsContext'

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { Card } from '../Card'
 import { Plus } from '../Icons/Plus'
 import styles from './CardHandSmall.module.scss'

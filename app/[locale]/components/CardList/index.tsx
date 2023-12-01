@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useSound from 'use-sound'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { MAX_CARDS } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 import { useOptionsContext } from '@/contexts/OptionsContext'

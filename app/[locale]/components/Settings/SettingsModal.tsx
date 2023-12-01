@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { useTranslations } from 'next-intl'
 import { Close } from '../Icons/Close'
 

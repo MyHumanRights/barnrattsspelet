@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { LocaleParams } from '@/utils/types'
@@ -13,7 +13,7 @@ import { Link } from '../components/Link/Link'
 export async function generateMetadata({
   params: { locale },
 }: LocaleParams): Promise<Metadata> {
-  const t = await getTranslator(locale, 'meta')
+  const t = await getTranslations('meta')
 
   return {
     title: t('title.guidance'),

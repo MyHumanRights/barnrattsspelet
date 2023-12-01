@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import Particles from 'react-particles'
 import { loadFull } from 'tsparticles'
 import useSound from 'use-sound'

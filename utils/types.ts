@@ -1,3 +1,4 @@
+import { AppPathnames } from '@/config'
 import { CATEGORIES } from './constants'
 
 export interface LocaleParams {
@@ -35,7 +36,7 @@ export interface ICard {
   theme: string
   color: string
   textColor: string
-  linkPath: string
+  linkPath: AppPathnames
   image: string
   quiz: IQuiz
   iconColor: string

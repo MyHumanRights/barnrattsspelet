@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
-import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { LocaleParams } from '@/utils/types'
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'
@@ -13,7 +13,7 @@ import styles from './page.module.scss'
 export async function generateMetadata({
   params: { locale },
 }: LocaleParams): Promise<Metadata> {
-  const t = await getTranslator(locale, 'meta')
+  const t = await getTranslations('meta')
 
   return {
     title: t('title.start'),
