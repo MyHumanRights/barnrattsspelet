@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { useTranslations } from 'next-intl'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Button } from '../Button'

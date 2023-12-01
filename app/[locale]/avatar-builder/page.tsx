@@ -2,7 +2,7 @@ import { Client } from './client'
 import styles from './AvatarBuilder.module.scss'
 import { getAvatarColors } from '@/utils/getData'
 import { Metadata } from 'next'
-import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata({
   params: { locale },
@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   unstable_setRequestLocale(locale)
-  const t = await getTranslator(locale, 'meta')
+  const t = await getTranslations('meta')
 
   return {
     title: t('title.avatarbuilder'),

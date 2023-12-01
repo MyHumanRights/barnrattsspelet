@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { getScenarioCards } from '@/api/engine'
 import { ICard, IGameAntagonist } from '@/utils/types'

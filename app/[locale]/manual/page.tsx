@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
-import { getTranslator, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { LocaleParams } from '@/utils/types'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
@@ -10,7 +10,7 @@ import styles from './Manual.module.scss'
 export async function generateMetadata({
   params: { locale },
 }: LocaleParams): Promise<Metadata> {
-  const t = await getTranslator(locale, 'meta')
+  const t = await getTranslations('meta')
 
   return {
     title: t('title.manual'),

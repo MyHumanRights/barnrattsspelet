@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { MAX_CARDS } from '@/utils/constants'
