@@ -32,6 +32,7 @@ import { SettingsModal } from './SettingsModal'
 import styles from './Settings.module.scss'
 import Modal from '../Modal'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
+import { useStatsContext } from '@/contexts/StatsContext'
 
 interface Props {
   defaultAvatarParts: IAvatarParts
@@ -124,6 +125,9 @@ export const Settings: React.FC<Props> = ({
     setShowModal(!showModal)
     document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
+
+  const { statFlags } = useStatsContext()
+  console.log(statFlags)
 
   return (
     <>
