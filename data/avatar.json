@@ -2,115 +2,115 @@
   "parts": {
     "face": [
       {
-        "id": "avatar-face01",
+        "id": "Face01",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face02",
+        "id": "Face02",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face03",
+        "id": "Face03",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face04",
+        "id": "Face04",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face05",
+        "id": "Face05",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face06",
+        "id": "Face06",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face07",
+        "id": "Face07",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face08",
+        "id": "Face08",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face09",
+        "id": "Face09",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face10",
+        "id": "Face10",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face11",
+        "id": "Face11",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face12",
+        "id": "Face12",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face13",
+        "id": "Face13",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face14",
+        "id": "Face14",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face15",
+        "id": "Face15",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face16",
+        "id": "Face16",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face17",
+        "id": "Face17",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-face18",
+        "id": "Face18",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": true
       },
       {
-        "id": "avatar-face19",
+        "id": "Face19",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
@@ -118,115 +118,115 @@
     ],
     "body": [
       {
-        "id": "avatar-body01",
+        "id": "Body01",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body02",
+        "id": "Body02",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body03",
+        "id": "Body03",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body04",
+        "id": "Body04",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body05",
+        "id": "Body05",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body06",
+        "id": "Body06",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body07",
+        "id": "Body07",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body08",
+        "id": "Body08",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body09",
+        "id": "Body09",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body10",
+        "id": "Body10",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body11",
+        "id": "Body11",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body12",
+        "id": "Body12",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body13",
+        "id": "Body13",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body14",
+        "id": "Body14",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body15",
+        "id": "Body15",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body16",
+        "id": "Body16",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body17",
+        "id": "Body17",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-body18",
+        "id": "Body18",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": true
       },
       {
-        "id": "avatar-body19",
+        "id": "Body19",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
@@ -234,115 +234,115 @@
     ],
     "hair": [
       {
-        "id": "avatar-hair01",
+        "id": "Hair01",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair02",
+        "id": "Hair02",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair03",
+        "id": "Hair03",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair04",
+        "id": "Hair04",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair05",
+        "id": "Hair05",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair06",
+        "id": "Hair06",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair07",
+        "id": "Hair07",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair08",
+        "id": "Hair08",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair09",
+        "id": "Hair09",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair10",
+        "id": "Hair10",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair11",
+        "id": "Hair11",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair12",
+        "id": "Hair12",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair13",
+        "id": "Hair13",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair14",
+        "id": "Hair14",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair15",
+        "id": "Hair15",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair16",
+        "id": "Hair16",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair17",
+        "id": "Hair17",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-hair18",
+        "id": "Hair18",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": true
       },
       {
-        "id": "avatar-hair19",
+        "id": "Hair19",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
@@ -356,115 +356,115 @@
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory01",
+        "id": "Accessory01",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory02",
+        "id": "Accessory02",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory03",
+        "id": "Accessory03",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory04",
+        "id": "Accessory04",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory05",
+        "id": "Accessory05",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory06",
+        "id": "Accessory06",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory07",
+        "id": "Accessory07",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory08",
+        "id": "Accessory08",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory09",
+        "id": "Accessory09",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory10",
+        "id": "Accessory10",
         "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory11",
+        "id": "Accessory11",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory12",
+        "id": "Accessory12",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory13",
+        "id": "Accessory13",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory14",
+        "id": "Accessory14",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory15",
+        "id": "Accessory15",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory16",
+        "id": "Accessory16",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory17",
+        "id": "Accessory17",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory18",
+        "id": "Accessory18",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
-        "id": "avatar-accessory19",
+        "id": "Accessory19",
         "isDefault": false,
         "isNewPart": false,
         "isSuperHero": true

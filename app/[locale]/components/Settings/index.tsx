@@ -126,9 +126,6 @@ export const Settings: React.FC<Props> = ({
     document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
 
-  const { statFlags } = useStatsContext()
-  console.log(statFlags)
-
   return (
     <>
       <div className={styles.configWrapper}>

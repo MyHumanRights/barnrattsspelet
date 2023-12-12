@@ -150,7 +150,7 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
   }
 
   function handleClickRandom() {
-    const randomAvatar =
+    const randomAvatar: IAvatar =
       avatarCollection && colors && getRandomAvatar(avatarCollection, colors)
     setChoices(randomAvatar)
     setActiveHairColor(randomAvatar.hair.color)
@@ -160,18 +160,14 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   function handleClick(category: CATEGORIES, direction: string) {
     const categoryCollection = avatarCollection![category]
-    //@ts-ignore
     const collectionLength = categoryCollection.length
     if (collectionLength === 0) {
       return
     }
-    //@ts-ignore
     const currentIndex = categoryCollection.findIndex(
-      //@ts-ignore
       (svg) => svg.id === choices[category].id
     )
     const newIndex =
-      //@ts-ignore
       (currentIndex + direction + collectionLength) % collectionLength
     if (options.soundEffectsOn) {
       sounds[category]()

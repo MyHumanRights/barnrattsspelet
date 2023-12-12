@@ -44,7 +44,7 @@ import LootItemCard from '../components/Card/LootItemCard'
 import { Check } from '../components/Icons/Check'
 import { MapBackground } from '../components/MapBackground'
 import styles from './LootBox.module.scss'
-import { IAvatarParts, ICard, ILootItem } from '@/utils/types'
+import { AvatarPart, IAvatarParts, ICard, ILootItem } from '@/utils/types'
 import { Engine } from 'tsparticles-engine'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
@@ -237,7 +237,9 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     const avatarDetail = avatarParts[loot.category]
 
     if (lootItem.length === 1 && avatarDetail !== undefined) {
-      let lootItemData = avatarDetail.find((item) => item.id === lootItem[0].id)
+      let lootItemData = avatarDetail.find(
+        (item) => item.id === lootItem[0].id
+      ) as AvatarPart
 
       lootItemData = { ...lootItemData, isNewPart: true }
 

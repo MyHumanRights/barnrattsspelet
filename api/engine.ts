@@ -344,64 +344,55 @@ export function getAntagonistsByPlace(
   })
 }
 
-export function getDefaultAvatorParts(parts: IAvatarParts) {
-  const defaultParts = { ...parts }
-  Object.entries(defaultParts).forEach((category) => {
-    const filtered = category[1].filter((svg) => svg.isDefault)
-    defaultParts[category[0]] = filtered
-  })
-  return defaultParts
+export const getDefaultAvatorParts = (parts: IAvatarParts) => {
+  return Object.entries(parts).reduce((defaultParts, [key, value]) => {
+    defaultParts[key] = value.filter((svg) => svg.isDefault)
+    return defaultParts
+  }, {} as IAvatarParts)
 }
 
-export function getRandomAvatar(parts: IAvatar, colors: IAvatarColors) {
-  const avatar: IAvatar = {}
-  Object.entries(parts).forEach((category) => {
-    const randomPartIndex = Math.floor(Math.random() * category[1].length)
-    avatar[category[0]] = {
-      id: category[1][randomPartIndex].id,
+export const getRandomAvatar = (parts: IAvatar, colors: IAvatarColors) => {
+  return Object.entries(parts).reduce((avatar, [key, value]) => {
+    const randomPartIndex = Math.floor(Math.random() * value.length)
+    avatar[key] = {
+      id: value[randomPartIndex].id,
     }
-    if (colors[category[0]]) {
-      const randomColorIndex = Math.floor(
-        Math.random() * colors[category[0]].length
-      )
-      avatar[category[0]].color = colors[category[0]][randomColorIndex]
+    if (colors[key]) {
+      const randomColorIndex = Math.floor(Math.random() * colors[key].length)
+      avatar[key].color = colors[key][randomColorIndex]
     }
-  })
-  return avatar
+    return avatar
+  }, {} as IAvatar)
 }
 
-export function getItemToLootBox(
-  collectedParts,
-  parts,
-  storedAvatar
-): AvatarPart[] {
-  // collect all non-collected items in array as { category: 'face', id: 'avatar-face01' }
-  let nonCollectedItems = []
-  Object.entries(parts).forEach((category) => {
-    category[1].forEach((item) => {
-      const isCollected = collectedParts[category[0]].some(
-        (collectedItem) => collectedItem.id === item.id
-      )
-      const isSuperHero = item.isSuperHero === true
-
-      if (!isCollected && !isSuperHero) {
-        nonCollectedItems.push({
-          category: category[0],
-          id: item.id,
-          color: storedAvatar[category[0]].color,
+export const getItemToLootBox = (
+  collectedParts: IAvatar,
+  parts: IAvatarParts,
+  storedAvatar: IAvatar
+): AvatarPart[] => {
+  const nonCollectedItems = Object.entries(parts).reduce(
+    (items, [key, value]) => {
+      const nonCollected = value
+        .filter((item) => {
+          const isCollected = collectedParts[key].some(
+            (collectedItem) => collectedItem.id === item.id
+          )
+          const isSuperHero = item.isSuperHero === true
+          return !isCollected && !isSuperHero
         })
-      }
-    })
-  })
-  // select random item from array
+        .map((item) => ({
+          category: key,
+          id: item.id,
+          color: storedAvatar[key].color,
+        }))
+      return [...items, ...nonCollected]
+    },
+    []
+  )
+
   const randomItemIndex = Math.floor(Math.random() * nonCollectedItems.length)
 
-  if (!nonCollectedItems.length) {
-    // Return empty array if we have no non collected items
-    return nonCollectedItems
-  } else {
-    return [nonCollectedItems[randomItemIndex]]
-  }
+  return nonCollectedItems.length ? [nonCollectedItems[randomItemIndex]] : []
 }
 
 export function getSuperHeroToLootBox(
