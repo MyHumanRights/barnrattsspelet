@@ -1,6 +1,10 @@
 import { AppPathnames } from '@/config'
 import { CATEGORIES } from './constants'
 
+import { AvatarPart } from '../app/[locale]/components/AvatarPart'
+
+type AvatarId = keyof typeof AvatarPart
+
 export interface LocaleParams {
   params: {
     locale: string
@@ -77,10 +81,10 @@ export interface IAvatarColors {
 }
 
 export interface IAvatar {
-  face: { id: string; color: string }
-  body: { id: string; color: string }
-  hair: { id: string; color: string }
-  accessory: { id: string }
+  face: { id: AvatarId; color: string }
+  body: { id: AvatarId; color: string }
+  hair: { id: AvatarId; color: string }
+  accessory: { id: AvatarId; color?: string }
 }
 
 export interface IAvatarNew {
@@ -152,14 +156,14 @@ export interface IScenario {
 
 export interface ILootItem {
   category: string
-  id: string
+  id: AvatarId
   color: string
   isNewPart?: boolean
 }
 
 export type AvatarPart = {
   isNewPart?: true
-  id?: string | null | undefined
+  id: AvatarId
   isDefault?: boolean | undefined
   isSuperHero?: boolean | undefined
   color?: string | undefined
