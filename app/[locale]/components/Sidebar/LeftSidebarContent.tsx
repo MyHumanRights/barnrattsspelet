@@ -98,7 +98,7 @@ export const LeftSidebarContent: React.FC<Props> = ({
       uppercase
     >
       <span>
-        {t('home.play')}
+        {t('home.continue')}
         <motion.span animate={animateArrow}>
           <ArrowRight />
         </motion.span>
