@@ -6,7 +6,12 @@ import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from '@/navigation'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import {
+  ButtonSize,
+  ButtonVariant,
+  STAT_COLLECTION_NAMES,
+  STAT_FLAGS,
+} from '@/utils/constants'
 import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
 import {
   getCardCollection,
@@ -35,6 +40,7 @@ import {
   IOwlContent,
   IScenario,
 } from '@/utils/types'
+import { Link } from '../components/Link/Link'
 import { Button } from '../components/Button'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
@@ -90,7 +96,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [initialized, setInitialized] = useState(false)
   const [gameProgress, setGameProgress] = useState(0)
 
-  function toggleShowingSidebar() {
+  const toggleShowingSidebar = () => {
     setShowingSidebar(showingSidebar === 'left' ? 'right' : 'left')
   }
 
@@ -436,6 +442,28 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         <div className={styles.progressbar}>
           <Progressbar progress={gameProgress} />
         </div>
+      </motion.div>
+
+      <motion.div
+        className={styles.playButtonWrapper}
+        initial={{ left: 0 }}
+        animate={{
+          left:
+            showingSidebar === 'left'
+              ? isMobile
+                ? 0
+                : `${leftPosOfProgressbar}px`
+              : `-${leftPosOfProgressbar}px`,
+        }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
+      >
+        <Button
+          variant={ButtonVariant.PRIMARY}
+          size={ButtonSize.XXLARGE}
+          onClick={() => console.log('click')}
+        >
+          {t('home.play')}
+        </Button>
       </motion.div>
 
       {!isMobile && (
