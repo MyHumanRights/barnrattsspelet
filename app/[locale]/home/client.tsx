@@ -40,7 +40,6 @@ import {
   IOwlContent,
   IScenario,
 } from '@/utils/types'
-import { Link } from '../components/Link/Link'
 import { Button } from '../components/Button'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
@@ -316,13 +315,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       const defeated = await readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
 
-      const TotalNoOfAntagonists = Object.keys(antagonists).length
-      const progress = Math.round(
-        (defeated.length / TotalNoOfAntagonists) * 100
-      )
-
-      setGameProgress(progress)
-
       if (defeated.length === 1) {
         setDefeatedAntagonists(defeated)
       }
@@ -440,7 +432,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
       >
         <div className={styles.progressbar}>
-          <Progressbar progress={gameProgress} />
+          <Progressbar />
         </div>
       </motion.div>
 

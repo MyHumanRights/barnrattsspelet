@@ -2,15 +2,16 @@ import '../../../global.scss'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { motion, useAnimation } from 'framer-motion'
+import playableCards from '@/data/cards.json'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { getCardCollection } from '@/api/storage'
 import styles from './Progressbar.module.scss'
 
-interface Props {
-  progress: number
-}
+const cardsInTotal = playableCards.length
 
-export const Progressbar: React.FC<Props> = ({ progress }) => {
+export const Progressbar = () => {
   const [progressAnimation, setProgressAnimation] = useState('')
+  const [progress, setProgress] = useState(0)
   const t = useTranslations('progressbar')
   const heartAnimation = useAnimation()
   const { shouldReduceMotion } = useOptionsContext().options
@@ -33,6 +34,18 @@ export const Progressbar: React.FC<Props> = ({ progress }) => {
 
     heartAnimation.start(() => progressbarAnimation)
   }, [progress, heartAnimation, shouldReduceMotion])
+
+  useEffect(() => {
+    const updateProgress = async () => {
+      const cardCollection = await getCardCollection()
+      const gameProgress = Math.round(
+        (cardCollection.length / cardsInTotal) * 100
+      )
+      setProgress(gameProgress)
+    }
+
+    updateProgress()
+  }, [])
 
   return (
     <section className={styles.progressbar}>
