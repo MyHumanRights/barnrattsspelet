@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: auto 0 40px;
   align-items: center;
-  // height: 80px;
   border-radius: 5px;
   position: relative;
   z-index: 1;
@@ -15,10 +14,18 @@
   }
 
   label {
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    @include box-shadow(medium);
+    background-color: $primaryColor;
+    border-radius: 6px;
+    bottom: -1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    left: 50%;
+    padding: 4px 8px;
     position: absolute;
+    text-wrap: nowrap;
+    transform: translateX(-70%);
   }
 
   .percentage {
