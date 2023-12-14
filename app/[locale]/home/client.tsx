@@ -31,6 +31,7 @@ import {
   setGameStateValue,
 } from '@/api/storage'
 import { getNumberOfNewCards, getNewAvatarParts } from '@/api/engine'
+import { useCardsContext } from '@/contexts/CardsContext'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import {
   IAntagonistObject,
@@ -40,7 +41,6 @@ import {
   IOwlContent,
   IScenario,
 } from '@/utils/types'
-import { Link } from '../components/Link/Link'
 import { Button } from '../components/Button'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
@@ -70,12 +70,12 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     toggleThemeSound,
     options: { shouldReduceMotion, themeMusicOn, themeVolume },
   } = useOptionsContext()
+  const { cardsInTotal, cardCollection } = useCardsContext()
   const addToStatistics = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_HOME,
     STAT_FLAGS.IS_FIRST_TIME_HOME
   )
 
-  const [numberOfCards, setNumberOfCards] = useState(0)
   const [numberOfNewCards, setNumberOfNewCards] = useState(0)
   const [currentTokens, setCurrentTokens] = useState(0)
   const [hasNewParts, setHasNewParts] = useState(false)
@@ -291,15 +291,18 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   }
 
   useEffect(() => {
+    const progress = Math.round((cardCollection.length / cardsInTotal) * 100)
+
+    setGameProgress(progress)
+  }, [cardCollection, cardsInTotal])
+
+  useEffect(() => {
     setGameStateValue({
       allowedLootbox: false,
       gameEnvironment: null,
       isByingLootbox: false,
     })
     const init = async () => {
-      const cardCollection = await getCardCollection()
-      setNumberOfCards(cardCollection.length)
-
       // get number of new cards
       const noOfNewCards = getNumberOfNewCards(cardCollection)
       // get number of tokens
@@ -315,13 +318,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       const cards = await getCardHand()
       const defeated = await readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
-
-      const TotalNoOfAntagonists = Object.keys(antagonists).length
-      const progress = Math.round(
-        (defeated.length / TotalNoOfAntagonists) * 100
-      )
-
-      setGameProgress(progress)
 
       if (defeated.length === 1) {
         setDefeatedAntagonists(defeated)
@@ -377,7 +373,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     }
 
     init()
-  }, [antagonists])
+  }, [antagonists, cardCollection])
 
   useEffect(() => {
     toggleThemeSound()
@@ -419,7 +415,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
           <LeftSidebarContent
             cardHand={cardHand}
             toggleShowingSidebar={toggleShowingSidebar}
-            numberOfCards={numberOfCards}
             numberOfNewCards={numberOfNewCards}
             currentTokens={currentTokens}
             hasNewParts={hasNewParts}

@@ -1,12 +1,7 @@
-interface Props {
-  numberOfCards: number
-  numberOfPlayableCards: number
-}
+import { useCardsContext } from '@/contexts/CardsContext'
 
-export const CardCollectionIcon: React.FC<Props> = ({
-  numberOfCards,
-  numberOfPlayableCards,
-}) => {
+export const CardCollectionIcon = () => {
+  const { cardsInTotal, cardCount } = useCardsContext()
   return (
     <svg viewBox='0 0 341 145' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <g clipPath='url(#a)'>
@@ -464,13 +459,13 @@ export const CardCollectionIcon: React.FC<Props> = ({
         letterSpacing='0em'
       >
         <tspan x={10.182} y={21.424}>
-          {numberOfCards}
+          {cardCount}
         </tspan>
         <tspan x={9.889} y={47.424}>
           {'av '}
         </tspan>
         <tspan x={8.213} y={73.424}>
-          {numberOfPlayableCards}
+          {cardsInTotal}
         </tspan>
       </text>
       <defs>

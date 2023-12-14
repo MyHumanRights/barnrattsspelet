@@ -15,10 +15,18 @@
   }
 
   label {
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    @include box-shadow(medium);
+    background-color: $primaryColor;
+    border-radius: 6px;
+    bottom: -1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    left: 50%;
+    padding: 4px 8px;
     position: absolute;
+    text-wrap: nowrap;
+    transform: translateX(-70%);
   }
 
   .percentage {
