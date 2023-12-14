@@ -7,11 +7,11 @@ import { motion } from 'framer-motion'
 import { MAX_CARDS } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useCardsContext } from '@/contexts/CardsContext'
 import { getHandSuggestion, resetNewCards } from '@/api/engine'
 import {
   setCardHand,
   getCardHand,
-  getCardCollection,
   setCardCollection,
   readDefeatedAntagonists,
   getShownChangeHandTip,
@@ -41,6 +41,7 @@ export const DeckBuilderClient = () => {
   const [suggestHandError, setSuggestHandError] = useState(null)
   const [showHandError, setShowHandError] = useState(true)
   const [filter, setFilter] = useState(null)
+  const { cardCollection } = useCardsContext()
 
   const [animate, trigger] = useAnimation({ scale: 1.2 })
   const router = useRouter()
@@ -66,10 +67,7 @@ export const DeckBuilderClient = () => {
 
   useEffect(() => {
     async function setCardsFromStorage() {
-      const [cardCollection, cardHand] = await Promise.all([
-        getCardCollection(),
-        getCardHand(),
-      ])
+      const cardHand = await getCardHand()
       setMyCards(cardHand)
 
       if (cardHand.length > 0) {
@@ -83,14 +81,13 @@ export const DeckBuilderClient = () => {
     }
 
     setCardsFromStorage()
-  }, [])
+  }, [cardCollection])
 
   async function getSuggestedHand() {
     // get a random hand with playable scenario
     // if no new scenario, save error owl
-    const [cardCollection, shownChangeHandTip, defeated, shownNoUndefeatedTip] =
+    const [shownChangeHandTip, defeated, shownNoUndefeatedTip] =
       await Promise.all([
-        getCardCollection(),
         getShownChangeHandTip(),
         readDefeatedAntagonists(),
         getShownNoUndefeatedTip(),
@@ -141,7 +138,6 @@ export const DeckBuilderClient = () => {
   }
 
   async function saveToStorage() {
-    const cardCollection = await getCardCollection()
     const updatedCardCollection = resetNewCards(cardCollection)
     setCardCollection(updatedCardCollection)
 

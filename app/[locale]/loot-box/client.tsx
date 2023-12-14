@@ -16,7 +16,6 @@ import {
 import {
   getAvatar,
   getAvatarPartCollection,
-  getCardCollection,
   readTokens,
   setAvatarPartCollection,
   setCardCollection,
@@ -34,6 +33,7 @@ import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import antagonists from '@/data/antagonists.json'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
+import { useCardsContext } from '@/contexts/CardsContext'
 import Box from '../components/Box/Box'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -64,6 +64,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     playSoundEffect,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const { cardCollection, cardCount } = useCardsContext()
   const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
   const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(false)
   const [isAllowedLootbox, setIsAllowedLootbox] = useState<boolean | null>(true)
@@ -104,7 +105,6 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   useEffect(() => {
     const init = async () => {
       let tempLootCards = []
-      const cardCollection = await getCardCollection()
       const byingLootbox = await readGameStateValue('isByingLootbox')
       const environment = await readGameStateValue('gameEnvironment')
       const allowedLootbox = await readGameStateValue('allowedLootbox')
@@ -120,7 +120,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
         }
       }
 
-      if (!cardCollection || cardCollection.length === 0) {
+      if (cardCount === 0) {
         const startingCards = getStartingCards(antagonists, cardData)
 
         tempLootCards = startingCards

@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { useRouter } from '@/navigation'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import playableCards from '@/data/cards.json'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { Link } from '../Link/Link'
@@ -35,12 +34,9 @@ const animationConfig = {
   },
 }
 
-const NO_OF_PLAYABLE_CARDS = playableCards.length
-
 interface Props {
   cardHand: ICard[]
   toggleShowingSidebar: () => void
-  numberOfCards: number
   numberOfNewCards: number
   currentTokens: number
   hasNewParts: boolean
@@ -49,7 +45,6 @@ interface Props {
 export const LeftSidebarContent: React.FC<Props> = ({
   cardHand,
   toggleShowingSidebar,
-  numberOfCards,
   numberOfNewCards,
   currentTokens,
   hasNewParts,
@@ -136,10 +131,7 @@ export const LeftSidebarContent: React.FC<Props> = ({
                   </p>
                 </div>
               )}
-              <CardCollectionIcon
-                numberOfCards={numberOfCards}
-                numberOfPlayableCards={NO_OF_PLAYABLE_CARDS}
-              />
+              <CardCollectionIcon />
             </div>
           </div>
           <Link

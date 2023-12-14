@@ -3,15 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { useCardsContext } from '@/contexts/CardsContext'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
-import {
-  getCardCollection,
-  setCardHand,
-  setPlayFromScenario,
-} from '@/api/storage'
+import { setCardHand, setPlayFromScenario } from '@/api/storage'
 import { ButtonVariant } from '@/utils/constants'
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'
 import { Link } from './components/Link/Link'
@@ -31,6 +28,7 @@ export const Client = () => {
     toggleThemeSound,
     isMobile,
   } = useOptionsContext()
+  const { cardCollection } = useCardsContext()
   const [firstTimer, setFirstTimer] = useState(true)
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [showModal, setShowModal] = useState(isMobile)
@@ -40,6 +38,10 @@ export const Client = () => {
     STAT_COLLECTION_NAMES.FIRST_TIME_START,
     STAT_FLAGS.IS_FIRST_TIME_START
   )
+
+  useEffect(() => {
+    cardCollection?.length > 0 ? setFirstTimer(false) : setFirstTimer(true)
+  }, [cardCollection])
 
   useEffect(() => {
     setShowModal(isMobile)
@@ -55,13 +57,6 @@ export const Client = () => {
       await setCardHand([])
     })()
   }, [])
-
-  useEffect(() => {
-    ;(async function () {
-      const cardCollection = await getCardCollection()
-      cardCollection?.length > 0 ? setFirstTimer(false) : setFirstTimer(true)
-    })()
-  })
 
   useEffect(() => {
     const timer = setTimeout(() => {

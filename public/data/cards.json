@@ -1,0 +1,1342 @@
+[
+  {
+    "id": "1",
+    "article": "1",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "safety",
+    "color": "#35A936",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-1.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "2a",
+    "article": "2",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "equality",
+    "color": "#D9BBBE",
+    "textColor": "#000",
+    "linkPath": "/help/#discriminated-advise",
+    "image": "/images/cards/card-2a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "2b",
+    "article": "2",
+    "isDisabled": false,
+    "category": ["family", "school"],
+    "theme": "equality",
+    "color": "#D7E1D3",
+    "textColor": "#000",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-2b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "2c",
+    "article": "2",
+    "isDisabled": false,
+    "category": ["school", "afterschool", "world"],
+    "theme": "equality",
+    "color": "#a3a379",
+    "textColor": "#000",
+    "linkPath": "/help/#discriminated-advise",
+    "image": "/images/cards/card-2c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "2d",
+    "article": "2",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "equality",
+    "color": "#c389bb",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-2d.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "2e",
+    "article": "2",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "equality",
+    "color": "#FDD200",
+    "textColor": "#000",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-2e.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "3a",
+    "article": "3",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "participation",
+    "color": "#A49447",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-3a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "3b",
+    "article": "3",
+    "isDisabled": false,
+    "category": ["afterschool", "school"],
+    "theme": "protection",
+    "color": "#1F3537",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-3b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "4a",
+    "article": "4",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "protection",
+    "color": "#85814f",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-4a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "6a",
+    "article": "6",
+    "isDisabled": false,
+    "category": ["family", "afterschool"],
+    "theme": "development",
+    "color": "#D292C0",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-6a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "6b",
+    "article": "6",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "development",
+    "color": "#cfddbf",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-6b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "7a",
+    "article": "7",
+    "isDisabled": false,
+    "category": [],
+    "theme": "safety",
+    "color": "#929B9E",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-7a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "7c",
+    "article": "7",
+    "isDisabled": false,
+    "category": [],
+    "theme": "safety",
+    "color": "#ED6B6C",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-7c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "8",
+    "article": "8",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "safety",
+    "color": "#15832f",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-8.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "9a",
+    "article": "9",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "safety",
+    "color": "#ced7a4",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-9a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "11a",
+    "article": "11",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "safety",
+    "color": "#d9a7a9",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-11a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "12a",
+    "article": "12",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "participation",
+    "color": "#ae9e9f",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-12a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "12b",
+    "article": "12",
+    "isDisabled": false,
+    "category": ["afterschool", "family"],
+    "theme": "participation",
+    "color": "#CBB2AD",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-12b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "13a",
+    "article": "13",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "expression",
+    "color": "#ed7004",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-13a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "13b",
+    "article": "13",
+    "isDisabled": false,
+    "category": ["family", "afterschool"],
+    "theme": "expression",
+    "color": "#4c2636",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-13b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "13c",
+    "article": "13",
+    "isDisabled": false,
+    "category": [],
+    "theme": "expression",
+    "color": "#f1d3c8",
+    "textColor": "#000",
+    "iconColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-13c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "14a",
+    "article": "14",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "expression",
+    "color": "#1a1b21",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-14a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "14b",
+    "article": "14",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "expression",
+    "color": "#71BDB6",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-14b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "15",
+    "article": "15",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "expression",
+    "color": "#F6B5C5",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-15.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "16a",
+    "article": "16",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "expression",
+    "color": "#98A793",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-16a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "16b",
+    "article": "16",
+    "isDisabled": false,
+    "category": ["family", "afterschool", "school"],
+    "theme": "equality",
+    "color": "#ecdfd5",
+    "textColor": "#000",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-16b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "16c",
+    "article": "16",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "equality",
+    "color": "#0a0419",
+    "textColor": "#fff",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-16c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "17",
+    "article": "17",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "expression",
+    "color": "#583997",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-17.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "18",
+    "article": "18",
+    "isDisabled": false,
+    "category": [],
+    "theme": "safety",
+    "color": "#120f19",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-18.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "19a",
+    "article": "19",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "protection",
+    "color": "#0c171e",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-19a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "19b",
+    "article": "19",
+    "isDisabled": false,
+    "category": ["family"],
+    "theme": "equality",
+    "color": "#3eaf8c",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-19b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "20",
+    "article": "20",
+    "isDisabled": false,
+    "category": [],
+    "theme": "protection",
+    "color": "#7ab698",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-20.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "22a",
+    "article": "22",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "safety",
+    "color": "#caa0b0",
+    "textColor": "#fff",
+    "linkPath": "/help/#refugee-advise",
+    "image": "/images/cards/card-22a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "23a",
+    "article": "23",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "equality",
+    "color": "#6f3294",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-23a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "24a",
+    "article": "24",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "safety",
+    "color": "#ccc2b3",
+    "textColor": "#000",
+    "linkPath": "/help/#repression-advise",
+    "image": "/images/cards/card-24a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "24b",
+    "article": "24",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "safety",
+    "color": "#D7C3BE",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-24b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "26",
+    "article": "26",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "safety",
+    "color": "#3F2B3E",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-26.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "27b",
+    "article": "27",
+    "isDisabled": false,
+    "category": [],
+    "theme": "development",
+    "color": "#75B0A3",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-27b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "28a",
+    "article": "28",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "development",
+    "color": "#827F32",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-28a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "28b",
+    "article": "28",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "safety",
+    "color": "#a1b489",
+    "textColor": "#000",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-28b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "29a",
+    "article": "29",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "development",
+    "color": "#2d2325",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-29a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "29b",
+    "article": "29",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "equality",
+    "color": "#1a6bae",
+    "textColor": "#fff",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-29b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "29c",
+    "article": "29",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "development",
+    "color": "#ff4818",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-29c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "30a",
+    "article": "30",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "equality",
+    "color": "#451735",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-30a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "30b",
+    "article": "30",
+    "isDisabled": false,
+    "category": [],
+    "theme": "expression",
+    "color": "#0a51a1",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-30b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "30c",
+    "article": "30",
+    "isDisabled": false,
+    "category": [],
+    "theme": "equality",
+    "color": "#0a51a1",
+    "textColor": "#fff",
+    "linkPath": "/help/#bullying-help",
+    "image": "/images/cards/card-30c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "31a",
+    "article": "31",
+    "isDisabled": false,
+    "category": ["afterschool", "world"],
+    "theme": "development",
+    "color": "#89b396",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-31a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "31b",
+    "article": "31",
+    "isDisabled": false,
+    "category": ["school"],
+    "theme": "development",
+    "color": "#018837",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-31b.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "31c",
+    "article": "31",
+    "isDisabled": false,
+    "category": ["afterschool"],
+    "theme": "development",
+    "color": "#92bab0",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-31c.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "32",
+    "article": "32",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "safety",
+    "color": "#9a8584",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-32.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "33a",
+    "article": "33",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "protection",
+    "color": "#292231",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-33a.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "34",
+    "article": "34",
+    "isDisabled": false,
+    "category": ["family", "afterschool"],
+    "theme": "protection",
+    "color": "#c09f9b",
+    "textColor": "#000",
+    "linkPath": "/help/#sexual-abuse-advise",
+    "image": "/images/cards/card-34.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "36",
+    "article": "36",
+    "isDisabled": false,
+    "category": ["family", "afterschool"],
+    "theme": "protection",
+    "color": "#7c0e6f",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-36.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "38",
+    "article": "38",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "protection",
+    "color": "#e2d1d6",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-38.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "isCorrect": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "39",
+    "article": "39",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "protection",
+    "color": "#f8bc00",
+    "textColor": "#000",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-39.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "41",
+    "article": "41",
+    "isDisabled": false,
+    "category": ["world"],
+    "theme": "development",
+    "color": "#304135",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-41.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "42",
+    "article": "42",
+    "isDisabled": false,
+    "category": ["family", "afterschool"],
+    "theme": "safety",
+    "color": "#2c1b08",
+    "textColor": "#fff",
+    "linkPath": "/help/#general-advise",
+    "image": "/images/cards/card-42.svg",
+    "quiz": {
+      "answers": [
+        {
+          "id": "a",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "isCorrect": false
+        }
+      ]
+    }
+  }
+]

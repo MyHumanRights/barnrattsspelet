@@ -1,10 +1,13 @@
+import { CardsProvider } from '@/contexts/CardsContext'
 import { OptionsProvider } from '@/contexts/OptionsContext'
 import { StatsProvider } from '@/contexts/StatsContext'
 
 const RootProviders: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <OptionsProvider>
-      <StatsProvider>{children}</StatsProvider>
+      <CardsProvider>
+        <StatsProvider>{children}</StatsProvider>
+      </CardsProvider>
     </OptionsProvider>
   )
 }
