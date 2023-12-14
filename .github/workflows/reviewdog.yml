@@ -1,0 +1,15 @@
+name: reviewdog
+on: [pull_request]
+jobs:
+  eslint:
+    name: Sniffing Code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: yarn install
+      - uses: reviewdog/action-eslint@v1
+        with:
+          reporter: github-pr-review
