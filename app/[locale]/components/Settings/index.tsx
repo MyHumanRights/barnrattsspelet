@@ -1,38 +1,39 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useAnimation } from '@/utils/hooks/useAnimation'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { useEffect, useState } from 'react'
+
+import { getRandomAvatar } from '@/api/engine'
 import {
-  setActiveUser,
-  setCardHand,
+  getAvatar,
   getCardHand,
+  getFirstTimeLootBox,
+  getFirstTimePlaying,
   readDefeatedAntagonists,
-  setDefeatedAntagonists,
+  readSettings,
   readTokens,
-  setTokens,
   readWrongAnswers,
   resetWrongAnswers,
-  setFirstTimePlaying,
-  getFirstTimePlaying,
-  setFirstTimeLootBox,
-  getFirstTimeLootBox,
+  setActiveUser,
   setAvatar,
   setAvatarPartCollection,
-  getAvatar,
-  readSettings,
+  setCardHand,
+  setDefeatedAntagonists,
+  setFirstTimeLootBox,
+  setFirstTimePlaying,
+  setTokens,
 } from '@/api/storage'
-import { getRandomAvatar } from '@/api/engine'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import { IAvatarColors, IAvatarParts } from '@/utils/types'
+
 import { Button } from '../Button'
 import ConfigIcon from '../Icons/ConfigIcon'
-import { SettingsModal } from './SettingsModal'
-import styles from './Settings.module.scss'
 import Modal from '../Modal'
-import { IAvatarColors, IAvatarParts } from '@/utils/types'
-import { useStatsContext } from '@/contexts/StatsContext'
+import styles from './Settings.module.scss'
+import { SettingsModal } from './SettingsModal'
 
 interface Props {
   defaultAvatarParts: IAvatarParts
