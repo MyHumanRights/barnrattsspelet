@@ -1,13 +1,15 @@
 'use client'
 
-import { useState } from 'react'
 import { doc, getDoc } from 'firebase/firestore/lite'
 import { useTranslations } from 'next-intl'
-import { db } from '@/utils/firebase'
+import { useState } from 'react'
+
 import { STAT_COLLECTION_NAMES } from '@/utils/constants'
-import styles from './Stats.module.scss'
+import { db } from '@/utils/firebase'
+
 import { Loader } from '../components/Loader'
 import { LogInForm } from './logInForm'
+import styles from './Stats.module.scss'
 
 const FRIEND = 'mellon'
 type StatsData = {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
 export const useRandomText = (i18nPath, dependency = null) => {
   const i18n = useTranslations()

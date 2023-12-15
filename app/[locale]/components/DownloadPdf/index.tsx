@@ -1,8 +1,10 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+
 import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { DownloadIcon } from '../Icons/DownloadIcon'
 import styles from './DownloadPdf.module.scss'
 

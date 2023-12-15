@@ -1,20 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import React, { useRef, useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
+
 import flipSound from '@/assets/sounds/fx/09-flip-card.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import getIsBrightColor from '@/utils/getIsBrightColor'
 import { useAnimation } from '@/utils/hooks/useAnimation'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { IAnimation, ICard } from '@/utils/types'
+
+import Repeat from '../Icons/Repeat'
 import { Link } from '../Link/Link'
 import { TextWithVoiceover } from '../TextWithVoiceover'
-import Repeat from '../Icons/Repeat'
 import styles from './Card.module.scss'
 import { Highlight } from './Highlight'
-import { IAnimation, ICard } from '@/utils/types'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 interface Props {
   which: ICard

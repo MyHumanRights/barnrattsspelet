@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import React, { useEffect, useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+
 import { VoiceoverButton } from '../VoiceoverButton'
 
 interface Props {

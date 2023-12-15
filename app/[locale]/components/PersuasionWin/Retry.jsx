@@ -1,12 +1,13 @@
-import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimation } from '@/utils/hooks/useAnimation'
 import { setCardHand, setPlayFromScenario } from '@/api/storage'
+import { useRouter } from '@/navigation'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { Button } from '../Button'
-import { OwlDialogue } from '../OwlDialogue'
 import { Replay } from '../Icons/Replay'
+import { OwlDialogue } from '../OwlDialogue'
 import styles from './Retry.module.scss'
 
 export const Retry = ({ message, onReplay, isScenarioMode }) => {

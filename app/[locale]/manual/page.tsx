@@ -1,8 +1,10 @@
-import Image from 'next/image'
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { LocaleParams } from '@/utils/types'
+
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Manual.module.scss'

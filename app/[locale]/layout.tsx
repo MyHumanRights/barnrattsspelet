@@ -1,15 +1,18 @@
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { NextIntlClientProvider } from 'next-intl'
-import { Quicksand, Bangers } from 'next/font/google'
-import RootProviders from './components/RootProviders'
-import { Settings } from './components/Settings'
-import { getAvatarColors, getAvatarParts } from '@/utils/getData'
-import { IAvatarColors, IAvatarParts } from '@/utils/types'
 import 'react-loading-skeleton/dist/skeleton.css'
-import styles from './layout.module.scss'
 import '../global.scss'
 import '../index.scss'
+
+import type { Metadata } from 'next'
+import { Bangers, Quicksand } from 'next/font/google'
+import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
+
+import { getAvatarColors, getAvatarParts } from '@/utils/getData'
+import { IAvatarColors, IAvatarParts } from '@/utils/types'
+
+import RootProviders from './components/RootProviders'
+import { Settings } from './components/Settings'
+import styles from './layout.module.scss'
 
 const quicksand = Quicksand({
   subsets: ['latin'],

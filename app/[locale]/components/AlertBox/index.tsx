@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import { Close } from '../Icons/Close'
 import { Link } from '../Link/Link'
 import styles from './AlertBox.module.scss'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 interface Props {
   showingSidebar: string

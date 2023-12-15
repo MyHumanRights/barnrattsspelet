@@ -1,37 +1,38 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+
+import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
+import { getNewAvatarParts, getNumberOfNewCards } from '@/api/engine'
+import {
+  getAvatarPartCollection,
+  getCardCollection,
+  getCardHand,
+  getShownNoUndefeatedTip,
+  getShownPlayTip,
+  getShownSecondChallengeTip,
+  getShownWelcomeTip,
+  readDefeatedAntagonists,
+  readTokens,
+  setGameStateValue,
+  setPlayFromScenario,
+  setShownChangeHandTip,
+  setShownPlayTip,
+  setShownSecondChallengeTip,
+  setShownWelcomeTip,
+} from '@/api/storage'
+import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/navigation'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import {
   ButtonSize,
   ButtonVariant,
   STAT_COLLECTION_NAMES,
   STAT_FLAGS,
 } from '@/utils/constants'
-import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
-import {
-  getCardCollection,
-  readTokens,
-  getCardHand,
-  readDefeatedAntagonists,
-  setPlayFromScenario,
-  setShownChangeHandTip,
-  getShownNoUndefeatedTip,
-  getShownWelcomeTip,
-  setShownWelcomeTip,
-  getShownPlayTip,
-  setShownPlayTip,
-  getShownSecondChallengeTip,
-  setShownSecondChallengeTip,
-  getAvatarPartCollection,
-  setGameStateValue,
-} from '@/api/storage'
-import { getNumberOfNewCards, getNewAvatarParts } from '@/api/engine'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import {
   IAntagonistObject,
   ICard,
@@ -40,14 +41,15 @@ import {
   IOwlContent,
   IScenario,
 } from '@/utils/types'
+
+import { AlertBox } from '../components/AlertBox'
 import { Button } from '../components/Button'
+import { MapBackground } from '../components/MapBackground'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
-import { AlertBox } from '../components/AlertBox'
 import { LeftSidebarContent } from '../components/Sidebar/LeftSidebarContent'
 import { RightSidebarContent } from '../components/Sidebar/RightSidebarContent'
 import styles from './Home.module.scss'
-import { MapBackground } from '../components/MapBackground'
 
 const Map = dynamic(() => import('../components/Map').then((mod) => mod.Map))
 

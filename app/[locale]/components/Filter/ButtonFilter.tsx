@@ -1,17 +1,19 @@
 'use client'
 
-import { Dispatch, SetStateAction, useState } from 'react'
-import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { Dispatch, SetStateAction, useState } from 'react'
 import useSound from 'use-sound'
+
+import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard, IGameAntagonist } from '@/utils/types'
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
+
+import { Button } from '../Button'
 import { ArrowRight } from '../Icons/ArrowRight'
 import { ChevronRight } from '../Icons/ChevronRight'
 import FilterFunnel from '../Icons/FilterFunnel'
-import { Button } from '../Button'
 import styles from './ButtonFilter.module.scss'
 
 interface Props {

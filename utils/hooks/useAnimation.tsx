@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+
 import { useOptionsContext } from '../../contexts/OptionsContext'
 
 type UseAnimationReturn = [{}, () => void]

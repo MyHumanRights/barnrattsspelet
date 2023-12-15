@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
-import { useAnimation, motion } from 'framer-motion'
-import styles from './ChatBubble.module.scss'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { TextWithVoiceover } from '../TextWithVoiceover'
+import { motion, useAnimation } from 'framer-motion'
 import Image from 'next/image'
+import { useEffect } from 'react'
+
+import { useOptionsContext } from '@/contexts/OptionsContext'
+
+import { TextWithVoiceover } from '../TextWithVoiceover'
+import styles from './ChatBubble.module.scss'
 
 interface Props {
   statement: string

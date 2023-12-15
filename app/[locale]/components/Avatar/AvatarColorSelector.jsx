@@ -1,5 +1,5 @@
-import { AvatarColorSwatch } from './AvatarColorSwatch'
 import styles from './AvatarColorSelector.module.scss'
+import { AvatarColorSwatch } from './AvatarColorSwatch'
 
 export const AvatarColorSelector = ({
   title,

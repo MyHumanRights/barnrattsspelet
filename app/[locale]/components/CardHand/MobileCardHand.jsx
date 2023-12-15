@@ -1,17 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useTranslations } from 'next-intl'
 import { AnimatePresence, motion } from 'framer-motion'
-import useSound from 'use-sound'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import React, { useEffect, useRef, useState } from 'react'
+import useSound from 'use-sound'
+
 import { setGameState } from '@/api/engine'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useAnimation } from '@/utils/hooks/useAnimation'
 import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
+import { Button } from '../Button'
 import { Card } from '../Card'
 import { ChevronRight } from '../Icons/ChevronRight'
-import { Button } from '../Button'
 import styles from './MobileCardHand.module.scss'
-import { ButtonVariant } from '@/utils/constants'
 
 const BOOST_COST = -1
 

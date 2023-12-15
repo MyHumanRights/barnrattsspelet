@@ -1,13 +1,15 @@
 'use client'
 
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { useState } from 'react'
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion'
 import { useTranslations } from 'use-intl'
-import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { Button } from '../Button'
-import { Trashbin } from '../Icons/Trashbin'
 import { Check } from '../Icons/Check'
+import { Trashbin } from '../Icons/Trashbin'
 import styles from './DeleteButton.module.scss'
 
 export const DeleteButton: React.FC = () => {

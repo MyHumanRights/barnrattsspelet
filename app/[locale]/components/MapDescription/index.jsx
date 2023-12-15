@@ -1,6 +1,8 @@
-import { useRouter } from '@/navigation'
-import { useTranslations } from 'next-intl'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+
+import { useRouter } from '@/navigation'
+
 import { Button } from '../Button'
 import styles from './MapDescription.module.scss'
 

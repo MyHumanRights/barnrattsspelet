@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import { AppPathnames } from '@/config'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { Link } from '../Link/Link'
 import styles from './PageHeader.module.scss'
 

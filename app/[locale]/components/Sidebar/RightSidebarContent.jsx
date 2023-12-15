@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
-import { Link } from '../Link/Link'
+
+import { Button } from '../Button'
 import { CardHandSmall } from '../CardHandSmall'
 import { ArrowRight } from '../Icons/ArrowRight'
-import { Button } from '../Button'
+import { Link } from '../Link/Link'
 import styles from './RightSidebarContent.module.scss'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 export const RightSidebarContent = ({
   cardHand,

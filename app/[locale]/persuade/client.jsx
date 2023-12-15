@@ -1,53 +1,55 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
 import { AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
-import chatSound from '@/assets/sounds/fx/08-talk.mp3'
-import victorySound from '@/assets/sounds/fx/22-map-added-color.mp3'
-import wrongAnswerSound from '@/assets/sounds/fx/02-incorrect-card-played.mp3'
-import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
-import gameOverSound from '@/assets/sounds/fx/05-lose.mp3'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { OWLS, STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import {
   answer,
-  getGameState,
-  setGameState,
-  resetGameState,
   ANSWER_TYPES,
+  getGameState,
+  resetGameState,
+  setGameState,
 } from '@/api/engine'
-import { GAME_STATES } from '@/utils/types'
 import {
-  getShownTokenTip,
   getCardHand,
-  readDefeatedAntagonists,
-  setDefeatedAntagonists,
-  setCardHand,
-  setFirstTimePlaying,
   getPlayFromScenario,
-  readWrongAnswers,
-  setWrongAnswers,
   getShownFlipCardTip,
-  setShownFlipCardTip,
-  setGameStateValue,
+  getShownTokenTip,
+  readDefeatedAntagonists,
   readGameStateValue,
+  readWrongAnswers,
+  setCardHand,
+  setDefeatedAntagonists,
+  setFirstTimePlaying,
+  setGameStateValue,
+  setShownFlipCardTip,
+  setWrongAnswers,
 } from '@/api/storage'
+import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
+import wrongAnswerSound from '@/assets/sounds/fx/02-incorrect-card-played.mp3'
+import gameOverSound from '@/assets/sounds/fx/05-lose.mp3'
+import chatSound from '@/assets/sounds/fx/08-talk.mp3'
+import victorySound from '@/assets/sounds/fx/22-map-added-color.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
-import { useTokens } from '@/utils/hooks/useTokens'
+import { useRouter } from '@/navigation'
+import { OWLS, STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useTokens } from '@/utils/hooks/useTokens'
+import { GAME_STATES } from '@/utils/types'
+
 import { Antagonist } from '../components/Antagonist'
 import { Avatar } from '../components/Avatar/'
 import { Button } from '../components/Button'
 import { CardHand } from '../components/CardHand'
+import { MobileCardHand } from '../components/CardHand/MobileCardHand'
 import { ChatBubble } from '../components/ChatBubble'
 import { Environment } from '../components/Environment'
+import { FirstEntry } from '../components/FirstEntry'
 import { Healthbar } from '../components/Healthbar'
-import { MobileCardHand } from '../components/CardHand/MobileCardHand'
 import { Modal } from '../components/Modal'
 import { ModalContent } from '../components/Modal/ModalContent'
 import { OwlTips } from '../components/OwlTips'
@@ -55,7 +57,6 @@ import { PersuasionWin } from '../components/PersuasionWin'
 import { Retry } from '../components/PersuasionWin/Retry'
 import { Token } from '../components/Token'
 import styles from './Persuade.module.scss'
-import { FirstEntry } from '../components/FirstEntry'
 
 const ANSWER_DELAY = 1500
 const CARD_EXIT = 800

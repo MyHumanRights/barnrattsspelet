@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { DeleteButton } from '../components/DeleteButton'
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader/'

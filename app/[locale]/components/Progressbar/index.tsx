@@ -1,10 +1,13 @@
 import '../../../global.scss'
-import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
+
 import { motion, useAnimation } from 'framer-motion'
-import playableCards from '@/data/cards.json'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+
 import { getCardCollection } from '@/api/storage'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import playableCards from '@/data/cards.json'
+
 import styles from './Progressbar.module.scss'
 
 const cardsInTotal = playableCards.length

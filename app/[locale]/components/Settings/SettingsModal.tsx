@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from '@/navigation'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { Close } from '../Icons/Close'
+import React, { useEffect, useState } from 'react'
 
-import {
-  resetTokens,
-  setCardHand,
-  setReducedMotion,
-  setDefeatedAntagonists,
-  setHighContrast,
-  setCardCollection,
-  setFirstTimePlaying,
-  setFirstTimeLootBox,
-  setAvatarPartCollection,
-  setAvatar,
-  setPlayFromScenario,
-  setThemeMusicOn,
-  setSoundEffectsOn,
-  resetShownTips,
-  setVoiceover,
-  resetWrongAnswers,
-  resetGameState,
-  // setLanguage,
-} from '../../../../api/storage'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useRouter } from '@/navigation'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
+import { IAvatarColors, IAvatarParts } from '@/utils/types'
 
 import { getDefaultAvatorParts, getRandomAvatar } from '../../../../api/engine'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { IAvatarColors, IAvatarParts } from '@/utils/types'
-import styles from './Settings.module.scss'
+import {
+  resetGameState,
+  resetShownTips,
+  resetTokens,
+  resetWrongAnswers,
+  setAvatar,
+  setAvatarPartCollection,
+  setCardCollection,
+  setCardHand,
+  setDefeatedAntagonists,
+  setFirstTimeLootBox,
+  setFirstTimePlaying,
+  setHighContrast,
+  setPlayFromScenario,
+  setReducedMotion,
+  setSoundEffectsOn,
+  setThemeMusicOn,
+  setVoiceover,
+  // setLanguage,
+} from '../../../../api/storage'
 import { Button } from '../Button'
+import { Close } from '../Icons/Close'
 import { Link } from '../Link/Link'
 import { OwlDialogue } from '../OwlDialogue'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
-import { AnimatePresence, motion } from 'framer-motion'
-import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
+import styles from './Settings.module.scss'
 
 interface Props {
   handleModal: () => void

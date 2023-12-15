@@ -1,8 +1,10 @@
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import styles from './Footer.module.scss'
+
 import { Link } from '../Link/Link'
+import styles from './Footer.module.scss'
 
 export const Footer: React.FC = () => {
   const t = useTranslations('Start')

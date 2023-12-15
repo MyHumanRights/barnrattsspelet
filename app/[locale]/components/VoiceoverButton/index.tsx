@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import React, { useEffect, useState } from 'react'
+
 /* import getIsBrightColor from '@/utils/getIsBrightColor' */
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import Sound from '../Icons/Sound'
 import styles from './VoiceoverButton.module.scss'
-import { motion } from 'framer-motion'
 
 export const VoiceoverButton = ({
   path = '08-talk',

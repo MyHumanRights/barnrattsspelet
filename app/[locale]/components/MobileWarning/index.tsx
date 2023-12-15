@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import { Button } from '../Button'
 import styles from './MobileWarning.module.scss'
 

@@ -1,8 +1,10 @@
-import { Client } from './client'
-import styles from './AvatarBuilder.module.scss'
-import { getAvatarColors } from '@/utils/getData'
 import { Metadata } from 'next'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
+import { getAvatarColors } from '@/utils/getData'
+
+import styles from './AvatarBuilder.module.scss'
+import { Client } from './client'
 
 export async function generateMetadata({
   params: { locale },

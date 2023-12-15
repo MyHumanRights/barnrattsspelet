@@ -1,5 +1,6 @@
-import { useEffect, createRef, useCallback, PropsWithChildren } from 'react'
 import { motion } from 'framer-motion'
+import { createRef, PropsWithChildren, useCallback, useEffect } from 'react'
+
 import Portal from '../Portal/Portal'
 import styles from './Modal.module.scss'
 

@@ -1,13 +1,15 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { LocaleParams } from '@/utils/types'
+
+import { Client } from './client'
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'
 import { Footer } from './components/Footer'
 import { Link } from './components/Link/Link'
 import { MapBackground } from './components/MapBackground'
-import { Client } from './client'
 import styles from './page.module.scss'
 
 export async function generateMetadata({

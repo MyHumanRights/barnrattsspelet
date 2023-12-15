@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs'
+
 import { IAntagonistObject, IAvatarColors, IAvatarParts, ICard } from './types'
 
 export async function getCards(): Promise<ICard[]> {

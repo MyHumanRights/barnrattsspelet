@@ -1,52 +1,54 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
+import { useEffect, useState } from 'react'
 import Particles from 'react-particles'
 import { loadFull } from 'tsparticles'
+import { Engine } from 'tsparticles-engine'
 import useSound from 'use-sound'
+
 import {
   getCardsToLootBox,
   getItemToLootBox,
-  getSuperHeroToLootBox,
   getStartingCards,
+  getSuperHeroToLootBox,
 } from '@/api/engine'
 import {
   getAvatar,
   getAvatarPartCollection,
   getCardCollection,
+  readGameStateValue,
   readTokens,
   setAvatarPartCollection,
   setCardCollection,
+  setFirstTimeLootBox,
   setShownChangeHandTip,
   setShownNoUndefeatedTip,
   setTokens,
-  setFirstTimeLootBox,
-  readGameStateValue,
 } from '@/api/storage'
 import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
 import unlockCardSound1 from '@/assets/sounds/fx/13-card-unlocked-01.mp3'
 import unlockCardSound2 from '@/assets/sounds/fx/13-card-unlocked-02.mp3'
 import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
 import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
-import antagonists from '@/data/antagonists.json'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import antagonists from '@/data/antagonists.json'
+import { useRouter } from '@/navigation'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
+import { AvatarPart, IAvatarParts, ICard, ILootItem } from '@/utils/types'
+
 import Box from '../components/Box/Box'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
-import { Environment } from '../components/Environment'
-import { NotAllowed } from '../components/NotAllowed'
-import { OwlDialogue } from '../components/OwlDialogue'
 import LootItemCard from '../components/Card/LootItemCard'
+import { Environment } from '../components/Environment'
 import { Check } from '../components/Icons/Check'
 import { MapBackground } from '../components/MapBackground'
+import { NotAllowed } from '../components/NotAllowed'
+import { OwlDialogue } from '../components/OwlDialogue'
 import styles from './LootBox.module.scss'
-import { AvatarPart, IAvatarParts, ICard, ILootItem } from '@/utils/types'
-import { Engine } from 'tsparticles-engine'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 const ROT_DEGREE = 10
 const TOP_OFFSET = 20

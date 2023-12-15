@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import styles from './Antagonist.module.scss'
+import { useEffect } from 'react'
 
+import { useOptionsContext } from '@/contexts/OptionsContext'
+
+import styles from './Antagonist.module.scss'
 import * as antagonistsComponents from './antagonists'
 
 export const antagonists = {

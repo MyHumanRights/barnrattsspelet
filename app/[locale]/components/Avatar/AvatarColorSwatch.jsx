@@ -1,4 +1,5 @@
 import getIsBrightColor from '@/utils/getIsBrightColor'
+
 import { Check } from '../Icons/Check'
 import styles from './AvatarColorSwatch.module.scss'
 

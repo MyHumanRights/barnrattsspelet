@@ -1,13 +1,14 @@
 'use client'
 
-import React, { PropsWithChildren, forwardRef } from 'react'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import React, { forwardRef, PropsWithChildren } from 'react'
+import useSound from 'use-sound'
 
 import btnSound from '@/assets/sounds/fx/14-button.mp3'
 import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import styles from './Button.module.scss'
-import useSound from 'use-sound'
 
 interface Props {
   as?: React.ElementType

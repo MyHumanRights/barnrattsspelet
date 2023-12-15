@@ -1,7 +1,9 @@
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
-import { LocaleParams } from '@/utils/types'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { getAvatarParts, getCards } from '@/utils/getData'
+import { LocaleParams } from '@/utils/types'
+
 import { LootBoxClient } from './client'
 
 export async function generateMetadata({

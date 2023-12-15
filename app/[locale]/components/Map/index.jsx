@@ -1,13 +1,15 @@
 import { useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+
+import { MapDescription } from '../MapDescription'
+import ProgressIcons from '../ProgressIcons/ProgressIcons'
+import Activities from './Environments/Activities'
 import Home from './Environments/Home'
+import Play from './Environments/Play'
 import Roads from './Environments/Roads'
 import School from './Environments/School'
-import Play from './Environments/Play'
 import World from './Environments/World'
-import Activities from './Environments/Activities'
-import ProgressIcons from '../ProgressIcons/ProgressIcons'
-import { MapDescription } from '../MapDescription'
 import styles from './Map.module.scss'
 
 export const Map = ({ onClick, progress = {}, playable = [] }) => {

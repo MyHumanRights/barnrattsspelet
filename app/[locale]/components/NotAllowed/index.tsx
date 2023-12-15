@@ -1,9 +1,11 @@
-import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
-import { useAnimation } from '@/utils/hooks/useAnimation'
+import { useTranslations } from 'next-intl'
+
 import { ButtonVariant } from '@/utils/constants'
-import { Link } from '../Link/Link'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { HomeIcon } from '../Icons/HomeIcon'
+import { Link } from '../Link/Link'
 import styles from './NotAllowed.module.scss'
 
 export const NotAllowed = () => {

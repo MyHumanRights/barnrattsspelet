@@ -1,14 +1,14 @@
-import { PropsWithChildren, useEffect } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { PropsWithChildren, useEffect } from 'react'
+
+import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import { Button } from '../Button'
-// import owlOnTwig from '@/assets/svgs/owl-on-twig.svg'
-// import owl from '@/assets/svgs/owl.svg'
 import { TextWithVoiceover } from '../TextWithVoiceover'
-import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import styles from './OwlDialogue.module.scss'
-import Image from 'next/image'
 
 interface Props {
   body?: string | null

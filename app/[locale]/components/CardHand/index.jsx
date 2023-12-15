@@ -1,14 +1,16 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
-import useSound from 'use-sound'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useAnimation } from '@/utils/hooks/useAnimation'
-import { Card } from '../Card'
-import { setGameState } from '@/api/engine'
-import { useTranslations } from 'next-intl'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
-import styles from './CardHand.module.scss'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import useSound from 'use-sound'
+
+import { setGameState } from '@/api/engine'
+import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
+import { Card } from '../Card'
+import styles from './CardHand.module.scss'
 
 const BOOST_COST = -1
 
