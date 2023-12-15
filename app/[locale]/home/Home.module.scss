@@ -105,16 +105,3 @@
     margin-top: 0;
   }
 }
-
-.playButtonWrapper {
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  display: flex;
-  z-index: 1;
-  pointer-events: none;
-
-  > * {
-    pointer-events: all;
-  }
-}
