@@ -1,6 +1,7 @@
-import { PropsWithChildren } from 'react'
-import styles from './Folder.module.scss'
 import Image from 'next/image'
+import { PropsWithChildren } from 'react'
+
+import styles from './Folder.module.scss'
 
 export const Folder: React.FC<PropsWithChildren> = ({ children }) => {
   return (

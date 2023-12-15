@@ -1,16 +1,18 @@
 'use client'
 
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { useRouter } from '@/navigation'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useMemo } from 'react'
+
 import { getScenarioCards } from '@/api/engine'
-import { ICard, IGameAntagonist } from '@/utils/types'
 import {
   setCardHand,
   setGameStateValue,
   setPlayFromScenario,
 } from '@/api/storage'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useRouter } from '@/navigation'
+import { ICard, IGameAntagonist } from '@/utils/types'
+
 import { Scenario } from './Scenario'
 import styles from './ScenarioList.module.scss'
 

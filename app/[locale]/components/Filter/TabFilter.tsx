@@ -1,11 +1,13 @@
-import { Dispatch, SetStateAction } from 'react'
 import { useTranslations } from 'next-intl'
+import { Dispatch, SetStateAction } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import useSound from 'use-sound'
+
+import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ICard } from '@/utils/types'
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
+
 import styles from './TabFilter.module.scss'
-import Skeleton from 'react-loading-skeleton'
 
 interface Props {
   filter: string | null

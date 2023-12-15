@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+
 import { getAvatar } from '@/api/storage'
 import { IAvatar } from '@/utils/types'
+
 import { AvatarPart } from '../AvatarPart'
 import styles from './Avatar.module.scss'
 

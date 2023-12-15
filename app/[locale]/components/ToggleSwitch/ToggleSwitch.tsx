@@ -1,6 +1,8 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+
 import styles from './ToggleSwitch.module.scss'
 
 interface Props {

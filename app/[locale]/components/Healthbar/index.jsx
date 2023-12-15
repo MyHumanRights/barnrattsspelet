@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
 import '../../../global.scss'
+
 import { motion, useAnimation } from 'framer-motion'
-import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useTranslations } from 'next-intl'
+import React, { useEffect, useState } from 'react'
+
+import { useOptionsContext } from '@/contexts/OptionsContext'
+
 import styles from './Healthbar.module.scss'
 
 export const Healthbar = ({ health }) => {

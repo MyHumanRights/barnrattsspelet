@@ -1,40 +1,42 @@
 //@ts-nocheck
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import {
-  getRandomAvatar,
   getNewAvatarParts,
+  getRandomAvatar,
   resetNewAvatarParts,
 } from '@/api/engine'
 import {
   getAvatar,
   getAvatarPartCollection,
-  setAvatarPartCollection,
-  setAvatar,
   getFirstTimeLootBox,
+  setAvatar,
+  setAvatarPartCollection,
   setGameStateValue,
 } from '@/api/storage'
+import accessorySound from '@/assets/sounds/fx/18-avatar-accessory.mp3'
+import faceSound from '@/assets/sounds/fx/19-avatar-face.mp3'
+import hairSound from '@/assets/sounds/fx/20-avatar-hair.mp3'
+import bodySound from '@/assets/sounds/fx/21-avatar-body.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant, CATEGORIES } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import { IAvatar, IAvatarColors, IAvatarNew } from '@/utils/types'
+
+import { Avatar } from '../components/Avatar'
+import { AvatarColorSelector } from '../components/Avatar/AvatarColorSelector'
+import { AvatarPartSelector } from '../components/Avatar/AvatarPartSelector'
 import { Button } from '../components/Button'
 import { HomeIcon } from '../components/Icons/HomeIcon'
 import { Replay } from '../components/Icons/Replay'
 import Skip from '../components/Icons/Skip'
-import { Avatar } from '../components/Avatar'
-import { AvatarPartSelector } from '../components/Avatar/AvatarPartSelector'
-import { AvatarColorSelector } from '../components/Avatar/AvatarColorSelector'
-import faceSound from '@/assets/sounds/fx/19-avatar-face.mp3'
-import bodySound from '@/assets/sounds/fx/21-avatar-body.mp3'
-import hairSound from '@/assets/sounds/fx/20-avatar-hair.mp3'
-import accessorySound from '@/assets/sounds/fx/18-avatar-accessory.mp3'
 import styles from './AvatarBuilder.module.scss'
-import { IAvatar, IAvatarColors, IAvatarNew } from '@/utils/types'
 
 const { HAIR, FACE, BODY, ACCESSORY } = CATEGORIES
 

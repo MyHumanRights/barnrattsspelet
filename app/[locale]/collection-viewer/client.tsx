@@ -1,23 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
 import { AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useTokens } from '@/utils/hooks/useTokens'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { ICard } from '@/utils/types'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
-import { Link } from '../components/Link/Link'
-import { Folder } from '../components/Folder/'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useTokens } from '@/utils/hooks/useTokens'
+import { ICard } from '@/utils/types'
+
 import { CardList } from '../components/CardList/'
-import { Modal } from '../components/Modal'
-import { ModalContent } from '../components/Modal/ModalContent'
 import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { TabFilter } from '../components/Filter/TabFilter'
+import { Folder } from '../components/Folder/'
+import { Link } from '../components/Link/Link'
+import { Modal } from '../components/Modal'
+import { ModalContent } from '../components/Modal/ModalContent'
 import { Token } from '../components/Token/'
-
 import styles from './CollectionViewer.module.scss'
 
 interface Props {

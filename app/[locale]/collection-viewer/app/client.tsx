@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useEffect, useState } from 'react'
+
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { ICard } from '@/utils/types'
+
 import { CardList } from '../../components/CardList'
 import { ButtonFilter } from '../../components/Filter/ButtonFilter'
 import styles from '../CollectionViewer.module.scss'

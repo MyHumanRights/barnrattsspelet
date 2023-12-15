@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useEffect } from 'react'
+
 import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import styles from './Token.module.scss'
 
 interface Props {

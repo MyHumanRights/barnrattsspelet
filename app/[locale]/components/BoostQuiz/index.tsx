@@ -1,15 +1,17 @@
 'use client'
 
-import useSound from 'use-sound'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useAnimation } from '@/utils/hooks/useAnimation'
+import useSound from 'use-sound'
+
 import winSound from '@/assets/sounds/fx/10-correct-quiz-answer.mp3'
 import loseSound from '@/assets/sounds/fx/11-incorrect-quiz-answer.mp3'
-import { IBoostAnswer, IBoostQuiz } from '@/utils/types'
+import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import { IBoostAnswer, IBoostQuiz } from '@/utils/types'
+
 import { Button } from '../Button'
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './BoostQuiz.module.scss'

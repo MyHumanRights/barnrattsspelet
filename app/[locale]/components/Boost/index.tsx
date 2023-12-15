@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+
+import { setTokens } from '@/api/storage'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { ICard } from '@/utils/types'
-import { setTokens } from '@/api/storage'
+
 import { BoostQuiz } from '../BoostQuiz'
 import { Plus } from '../Icons/Plus'
 import styles from './Boost.module.scss'

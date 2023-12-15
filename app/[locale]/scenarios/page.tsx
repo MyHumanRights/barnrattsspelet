@@ -1,12 +1,14 @@
-import { Link } from '../components/Link/Link'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { getAntagonists, getCards } from '@/utils/getData'
-import { DownloadPdf } from '../components/DownloadPdf'
-import { ScenariosClient } from './ScenariosClient'
 import { IAntagonistObject, ICard, LocaleParams } from '@/utils/types'
+
+import { DownloadPdf } from '../components/DownloadPdf'
+import { Link } from '../components/Link/Link'
 import styles from './Scenarios.module.scss'
+import { ScenariosClient } from './ScenariosClient'
 
 export async function generateMetadata({
   params: { locale },

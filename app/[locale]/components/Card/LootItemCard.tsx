@@ -1,4 +1,5 @@
-import { AvatarPart as IAvatarPart, ILootItem } from '@/utils/types'
+import { ILootItem } from '@/utils/types'
+
 import { AvatarPart } from '../AvatarPart'
 import styles from './LootItemCard.module.scss'
 

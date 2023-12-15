@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { OWLS } from '@/utils/constants'
+import React, { useEffect, useState } from 'react'
+
 import {
-  setShownTokenTip,
+  getFirstTimePlaying,
+  getShownEnableCardTip,
   getShownTokenTip,
   setShownEnableCardTip,
-  getShownEnableCardTip,
-  getFirstTimePlaying,
+  setShownTokenTip,
 } from '@/api/storage'
+import { OWLS } from '@/utils/constants'
+
 import { OwlDialogue } from '../OwlDialogue'
 import styles from './OwlTips.module.scss'
 

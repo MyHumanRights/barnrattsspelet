@@ -1,14 +1,16 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { Link as NavLink } from '@/navigation'
 import useSound from 'use-sound'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
 import btnSound from '@/assets/sounds/fx/14-button.mp3'
 import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
-import styles from './Link.module.scss'
-import { useOptionsContext } from '@/contexts/OptionsContext'
 import { AppPathnames } from '@/config'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { Link as NavLink } from '@/navigation'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
+
+import styles from './Link.module.scss'
 
 interface Props {
   to: AppPathnames

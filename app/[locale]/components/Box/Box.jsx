@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import React, { useEffect, useRef, useState } from 'react'
+
 import { useOptionsContext } from '@/contexts/OptionsContext'
+
 import styles from './Box.module.scss'
 
 const Box = ({ onClick, openBox }) => {

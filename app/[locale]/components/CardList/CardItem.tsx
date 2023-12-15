@@ -1,17 +1,19 @@
-import { memo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
+import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useAnimation } from '@/utils/hooks/useAnimation'
-import antagonistsJson from '@/data/antagonists.json'
-import { IAntagonistObject, ICard } from '@/utils/types'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { ButtonVariant } from '@/utils/constants'
+import { memo } from 'react'
+
 import { getAntagonistFromCard } from '@/api/engine'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import antagonistsJson from '@/data/antagonists.json'
+import { ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import { IAntagonistObject, ICard } from '@/utils/types'
+
 import { Button } from '../Button'
-import { Plus } from '../Icons/Plus'
 import { ChevronRight } from '../Icons/ChevronRight'
+import { Plus } from '../Icons/Plus'
 import styles from './CardItem.module.scss'
 
 const LazyCard = dynamic(() => import('../Card').then((mod) => mod.Card))

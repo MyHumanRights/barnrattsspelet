@@ -1,22 +1,24 @@
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { motion } from 'framer-motion'
-import { useRouter } from '@/navigation'
+import { useRef } from 'react'
+
+import { setGameStateValue } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import playableCards from '@/data/cards.json'
-import { useAnimation } from '@/utils/hooks/useAnimation'
+import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { Link } from '../Link/Link'
-import { CardCollectionIcon } from '../CardCollectionIcon'
-import { Token } from '../Token'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+import { ICard } from '@/utils/types'
+
 import { Button } from '../Button'
+import { CardCollectionIcon } from '../CardCollectionIcon'
 import { ArrowRight } from '../Icons/ArrowRight'
 import NewCards from '../Icons/NewCards'
 import NewPart from '../Icons/NewPart'
+import { Link } from '../Link/Link'
+import { Token } from '../Token'
 import styles from './LeftSidebarContent.module.scss'
-import { ICard } from '@/utils/types'
-import { setGameStateValue } from '@/api/storage'
 
 interface AvatarProps {
   link: React.ReactNode

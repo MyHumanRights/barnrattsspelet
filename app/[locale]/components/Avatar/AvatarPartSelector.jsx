@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
-import { useAnimation } from '@/utils/hooks/useAnimation'
-import { ButtonVariant } from '@/utils/constants'
 import Image from 'next/image'
-import { Button } from '../Button'
-import { ChevronRight } from '../Icons/ChevronRight'
-import { ArrowRight } from '../Icons/ArrowRight'
+import { useTranslations } from 'next-intl'
 
-import styles from './AvatarPartSelector.module.scss'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { ButtonVariant } from '@/utils/constants'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
+import { Button } from '../Button'
+import { ArrowRight } from '../Icons/ArrowRight'
+import { ChevronRight } from '../Icons/ChevronRight'
+import styles from './AvatarPartSelector.module.scss'
 
 const WINDOW_BREAKPOINT = 600
 

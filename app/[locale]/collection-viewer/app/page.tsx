@@ -1,8 +1,10 @@
-import { getCards, getNonPlayableCards } from '@/utils/getData'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import { MobileCollectionViewerClient } from './client'
-import styles from '../CollectionViewer.module.scss'
 import { Metadata } from 'next'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
+import { getCards, getNonPlayableCards } from '@/utils/getData'
+
+import styles from '../CollectionViewer.module.scss'
+import { MobileCollectionViewerClient } from './client'
 
 export async function generateMetadata({
   params: { locale },

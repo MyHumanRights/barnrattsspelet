@@ -1,20 +1,22 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import useSound from 'use-sound'
-import { useRouter } from '@/navigation'
-import { MAX_CARDS } from '@/utils/constants'
-import { ICard } from '@/utils/types'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import antagonistsJson from '@/data/antagonists.json'
-import cardsJson from '@/data/cards.json'
-import addCardSound from '@/assets/sounds/fx/07-add-card-to-hand.mp3'
-import showCardSound from '@/assets/sounds/fx/14-button.mp3'
+
+import { getAntagonistFromCard, getScenarioCards } from '@/api/engine'
 import {
   setCardHand,
   setGameStateValue,
   setPlayFromScenario,
 } from '@/api/storage'
-import { getScenarioCards, getAntagonistFromCard } from '@/api/engine'
+import addCardSound from '@/assets/sounds/fx/07-add-card-to-hand.mp3'
+import showCardSound from '@/assets/sounds/fx/14-button.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import antagonistsJson from '@/data/antagonists.json'
+import cardsJson from '@/data/cards.json'
+import { useRouter } from '@/navigation'
+import { MAX_CARDS } from '@/utils/constants'
+import { ICard } from '@/utils/types'
+
 import { OwlDialogue } from '../OwlDialogue'
 import { CardItem } from './CardItem'
 import styles from './CardList.module.scss'

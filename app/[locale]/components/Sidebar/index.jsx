@@ -1,9 +1,11 @@
-import { useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import useSound from 'use-sound'
 import { useTranslations } from 'next-intl'
-import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useCallback, useEffect, useState } from 'react'
+import useSound from 'use-sound'
+
 import sideBarSound from '@/assets/sounds/fx/09-flip-card.mp3'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './Sidebar.module.scss'
 

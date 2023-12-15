@@ -1,19 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
+import { useEffect, useRef } from 'react'
+
 import {
-  setPlayFromScenario,
-  setCardHand,
-  setTokens,
   readDefeatedAntagonists,
+  setCardHand,
+  setPlayFromScenario,
+  setTokens,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useRouter } from '@/navigation'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
 import useHaveWonSuperHero from '@/utils/hooks/useHaveWonSuperHero'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+
 import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import { Token } from '../Token'

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+
 import styles from './Highlight.module.scss'
 
 export const Highlight = () => (

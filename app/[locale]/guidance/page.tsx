@@ -1,14 +1,16 @@
-import { unstable_setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
+
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { LocaleParams } from '@/utils/types'
-import { PageHeader } from '../components/PageHeader'
-import Footer from '../components/Footer'
-import styles from './Guidance.module.scss'
+
 import { DownloadPdf } from '../components/DownloadPdf'
+import Footer from '../components/Footer'
 import { Link } from '../components/Link/Link'
+import { PageHeader } from '../components/PageHeader'
+import styles from './Guidance.module.scss'
 
 export async function generateMetadata({
   params: { locale },

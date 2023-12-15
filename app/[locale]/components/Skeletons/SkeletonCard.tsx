@@ -1,5 +1,6 @@
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+
+import Skeleton from 'react-loading-skeleton'
 
 interface Props {
   size: 'xsmall' | 'small' | 'medium' | 'large' | 'appCard'

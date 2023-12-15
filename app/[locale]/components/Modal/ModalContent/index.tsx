@@ -1,6 +1,8 @@
 import React from 'react'
-import { Boost } from '../../../components/Boost'
+
 import { ICard } from '@/utils/types'
+
+import { Boost } from '../../../components/Boost'
 
 interface Props {
   onModalClose: () => void

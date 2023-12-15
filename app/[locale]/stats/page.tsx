@@ -1,8 +1,10 @@
+import { Metadata } from 'next'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+
 import { LocaleParams } from '@/utils/types'
+
 import { StatsClient } from './client'
 import styles from './Stats.module.scss'
-import { Metadata } from 'next'
 
 export async function generateMetadata({
   params: { locale },

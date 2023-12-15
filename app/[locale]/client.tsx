@@ -1,24 +1,26 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
-import { useAnimation } from '@/utils/hooks/useAnimation'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import { useEffect, useState } from 'react'
+
 import {
   getCardCollection,
   setCardHand,
   setPlayFromScenario,
 } from '@/api/storage'
+import { useOptionsContext } from '@/contexts/OptionsContext'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { ButtonVariant } from '@/utils/constants'
+import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useAnimation } from '@/utils/hooks/useAnimation'
+
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'
+import { ArrowRight } from './components/Icons/ArrowRight'
 import { Link } from './components/Link/Link'
 import { MobileWarning } from './components/MobileWarning'
 import { Modal } from './components/Modal'
 import { OwlDialogue } from './components/OwlDialogue'
-import { ArrowRight } from './components/Icons/ArrowRight'
 import styles from './page.module.scss'
 
 const TIME = 10000
