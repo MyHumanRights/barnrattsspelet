@@ -140,7 +140,7 @@ export const SettingsModal: React.FC<Props> = ({
 
   return (
     <section className={styles.wrapper}>
-      <ul className={`${styles.list} ${rtl ? styles.rightToLeft : undefined}`}>
+      <ul className={`${styles.list} ${rtl ? styles.rightToLeft : ''}`}>
         <li>
           {!isApp && (
             <Button

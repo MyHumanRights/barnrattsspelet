@@ -1,0 +1,39 @@
+.playButtonWrapper {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  pointer-events: none;
+
+  > * {
+    pointer-events: all;
+  }
+}
+
+.closeButton {
+  $heightWidth: 1.8rem;
+  width: $heightWidth;
+  height: $heightWidth;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    color: black;
+  }
+
+  @media (max-width: 600px) {
+    height: 45px;
+    width: 45px;
+  }
+}
+
+.wrapper {
+  background-color: #fff;
+  width: 100%;
+  padding: 24px;
+}

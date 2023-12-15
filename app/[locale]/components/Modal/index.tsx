@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { createRef, PropsWithChildren, useCallback, useEffect } from 'react'
+import { PropsWithChildren, useCallback, useEffect, useRef } from 'react'
 
 import Portal from '../Portal/Portal'
 import styles from './Modal.module.scss'
@@ -14,7 +14,19 @@ export const Modal: React.FC<PropsWithChildren<Props>> = ({
 }) => {
   // Element that was focused when opening the modal
   const activeElement = document.activeElement as HTMLElement
-  const modalRef = createRef<HTMLDivElement>()
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (modalRef.current) {
+      const focusableModalElements = modalRef.current.querySelectorAll(
+        'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], input[type="submit"], select'
+      )
+      const firstElement = focusableModalElements[0] as HTMLElement
+      if (firstElement) {
+        firstElement.focus()
+      }
+    }
+  }, [])
 
   const handleTabKey = useCallback(
     (e: KeyboardEvent) => {
@@ -41,12 +53,12 @@ export const Modal: React.FC<PropsWithChildren<Props>> = ({
 
   useEffect(() => {
     const keyListenersMap = new Map([
-      [27, onModalClose],
-      [9, handleTabKey],
+      ['Escape', onModalClose],
+      ['Tab', handleTabKey],
     ])
 
     const keyListener = (e: KeyboardEvent) => {
-      const listener = keyListenersMap.get(e.keyCode)
+      const listener = keyListenersMap.get(e.key)
       return listener && listener(e)
     }
     document.addEventListener('keydown', keyListener)

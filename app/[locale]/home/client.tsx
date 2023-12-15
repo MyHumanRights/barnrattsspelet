@@ -26,12 +26,7 @@ import {
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/navigation'
-import {
-  ButtonSize,
-  ButtonVariant,
-  STAT_COLLECTION_NAMES,
-  STAT_FLAGS,
-} from '@/utils/constants'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import {
   IAntagonistObject,
@@ -49,6 +44,7 @@ import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
 import { LeftSidebarContent } from '../components/Sidebar/LeftSidebarContent'
 import { RightSidebarContent } from '../components/Sidebar/RightSidebarContent'
+import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
 
 const Map = dynamic(() => import('../components/Map').then((mod) => mod.Map))
@@ -398,6 +394,13 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     return isMobile ? sideBarWidth : sideBarWidth / 2
   }, [sideBarWidth, isMobile])
 
+  const getLeftPosition = () =>
+    showingSidebar === 'left' && isMobile
+      ? '0'
+      : showingSidebar === 'left'
+      ? `${leftPosOfProgressbar}px`
+      : `-${leftPosOfProgressbar}px`
+
   return (
     <>
       {isMobile && <MapBackground />}
@@ -424,12 +427,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         className={styles.progressbarWrapper}
         initial={{ left: 0 }}
         animate={{
-          left:
-            showingSidebar === 'left'
-              ? isMobile
-                ? 0
-                : `${leftPosOfProgressbar}px`
-              : `-${leftPosOfProgressbar}px`,
+          left: getLeftPosition(),
         }}
         transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
       >
@@ -438,27 +436,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         </div>
       </motion.div>
 
-      <motion.div
-        className={styles.playButtonWrapper}
-        initial={{ left: 0 }}
-        animate={{
-          left:
-            showingSidebar === 'left'
-              ? isMobile
-                ? 0
-                : `${leftPosOfProgressbar}px`
-              : `-${leftPosOfProgressbar}px`,
-        }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
-      >
-        <Button
-          variant={ButtonVariant.PRIMARY}
-          size={ButtonSize.XXLARGE}
-          onClick={() => console.log('click')}
-        >
-          {t('home.play')}
-        </Button>
-      </motion.div>
+      <SlimPlay left={getLeftPosition()} />
 
       {!isMobile && (
         <section className={styles.map}>
