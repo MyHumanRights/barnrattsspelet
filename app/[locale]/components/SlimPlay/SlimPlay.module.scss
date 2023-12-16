@@ -1,3 +1,5 @@
+@import '../../../global.scss';
+
 .playButtonWrapper {
   justify-content: center;
   position: absolute;
@@ -34,6 +36,11 @@
 
 .wrapper {
   background-color: #fff;
-  width: 100%;
+  width: min(90%, 650px);
   padding: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  @include box-shadow(medium);
 }

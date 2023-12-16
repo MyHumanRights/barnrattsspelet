@@ -91,7 +91,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [sideBarWidth, setSideBarWidth] = useState(400)
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
-  const [gameProgress, setGameProgress] = useState(0)
 
   const toggleShowingSidebar = () => {
     setShowingSidebar(showingSidebar === 'left' ? 'right' : 'left')

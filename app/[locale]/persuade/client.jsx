@@ -462,6 +462,7 @@ export const PersuadeClient = () => {
                     arrowRight={arrowPosition === 'right'}
                     miniCard={
                       !isMobile &&
+                      selectedCard?.id &&
                       t(`cards.${selectedCard?.id}.answerline`) ===
                         t(line.text) &&
                       selectedCard?.image

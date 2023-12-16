@@ -2,8 +2,9 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { readGameStateValue, setGameStateValue } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
@@ -14,14 +15,23 @@ import styles from './SlimPlay.module.scss'
 
 export const SlimPlay = ({ left }: { left: string }) => {
   const t = useTranslations()
+  const [isSlim, setIsSlim] = useState<boolean | null>(false)
   const {
     options: { shouldReduceMotion },
   } = useOptionsContext()
-  const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    const getPlayMode = async () => {
+      const isSlimPlay = await readGameStateValue('isSlimPlay')
+      setIsSlim(isSlimPlay)
+    }
+
+    getPlayMode()
+  }, [])
 
   const handleModal = () => {
-    setShowModal(!showModal)
-    document?.querySelector('html')?.classList.toggle('scroll-lock')
+    setGameStateValue({ isSlimPlay: true })
+    setIsSlim(!isSlim)
   }
 
   return (
@@ -43,11 +53,7 @@ export const SlimPlay = ({ left }: { left: string }) => {
         </Button>
       </motion.div>
       <AnimatePresence>
-        {showModal && (
-          <Modal onModalClose={handleModal}>
-            <PlayModal handleModal={handleModal} />
-          </Modal>
-        )}
+        {isSlim && <PlayModal handleModal={handleModal} />}
       </AnimatePresence>
     </>
   )
