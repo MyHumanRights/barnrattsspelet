@@ -110,15 +110,10 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
 
   const getAnyUnbeaten = useCallback(() => {
     // check if any unbeaten antagonists, all places
-    let anyUnbeaten = false
-    unlockedPlaces.forEach((place) => {
+    return unlockedPlaces.some((place) => {
       const unbeaten = getUnbeaten(place)
-      if (unbeaten?.length > 0) {
-        anyUnbeaten = true
-      }
+      return unbeaten?.length > 0
     })
-
-    return anyUnbeaten
   }, [getUnbeaten, unlockedPlaces])
 
   function getPlayable(place: string) {

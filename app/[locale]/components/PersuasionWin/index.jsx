@@ -50,6 +50,8 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }) => {
     options: { shouldReduceMotion },
   } = useOptionsContext()
 
+  // TODO: set flag in local storage when all are defeated
+  // only do this hook if flag is false
   const allAreDefeated = useAllAreDefeated()
   const hasSuperhero = useHaveWonSuperHero()
 
