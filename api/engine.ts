@@ -67,8 +67,9 @@ export function checkIfAllAntagonistsDefeated(
   antagonists: IAntagonistObject,
   defeated: string[]
 ) {
+  const defeatedSet = new Set(defeated)
   const allDefeated = Object.values(antagonists).every((antagonist) => {
-    return defeated.includes(antagonist.name)
+    return defeatedSet.has(antagonist.name)
   })
   return allDefeated
 }

@@ -1,10 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { getScenarioCards } from '@/api/engine'
 import {
+  readDefeatedAntagonists,
   setCardHand,
   setGameStateValue,
   setPlayFromScenario,
@@ -24,6 +25,7 @@ export interface ScenarioListProps {
   filter?: string | null
   cards: ICard[]
   isSlimPlay?: boolean
+  allAreDefeated?: boolean
 }
 
 export const ScenarioList: React.FC<ScenarioListProps> = ({
@@ -31,12 +33,23 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
   filter,
   cards,
   isSlimPlay = false,
+  allAreDefeated = false,
 }) => {
   const {
     options: { shouldReduceMotion },
   } = useOptionsContext()
 
   const router = useRouter()
+
+  const [defeatedAntagonists, setDefeatedAntagonists] = useState<string[]>([])
+
+  useEffect(() => {
+    if (!isSlimPlay) return
+    const getDefeated = async () => {
+      setDefeatedAntagonists(await readDefeatedAntagonists())
+    }
+    getDefeated()
+  }, [isSlimPlay])
 
   const hoverAnimation = useMemo(
     () => ({
@@ -60,7 +73,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
   )
 
   const handleClickOnScenario = (scenario: IGameAntagonist) => {
-    setPlayFromScenario(true)
+    setPlayFromScenario(!isSlimPlay)
 
     const cardHand = getScenarioCards(scenario, cards)
     setCardHand(cardHand)
@@ -77,10 +90,20 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
   )
 
   const scenarios = useMemo(() => {
-    return isSlimPlay
-      ? shuffleArray(allScenarios).slice(0, 3)
-      : filteredScenarios
-  }, [isSlimPlay, allScenarios, filteredScenarios])
+    if (isSlimPlay) {
+      // Filter out defeated antagonists if all are not defeated
+      const filteredScenarioArray = allAreDefeated
+        ? filteredScenarios
+        : filteredScenarios.filter(
+            (obj) => !defeatedAntagonists.includes(obj.name)
+          )
+
+      // Shuffle and return three scenarios
+      return shuffleArray(filteredScenarioArray).slice(0, 3)
+    }
+
+    return filteredScenarios
+  }, [isSlimPlay, filteredScenarios, defeatedAntagonists, allAreDefeated])
 
   return (
     <section
