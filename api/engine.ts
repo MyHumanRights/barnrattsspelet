@@ -1,11 +1,11 @@
 // @ts-nocheck
 import {
-  ICard,
-  IGameState,
   GAME_STATES,
-  IGameAntagonist,
-  IAvatarParts,
   IAvatarColors,
+  IAvatarParts,
+  ICard,
+  IGameAntagonist,
+  IGameState,
 } from '@/utils/types'
 
 const MAX_PROGRESS = 100

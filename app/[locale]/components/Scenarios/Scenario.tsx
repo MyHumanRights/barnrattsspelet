@@ -19,6 +19,7 @@ export interface ScenarioProps {
     animate: any
   }
   id: string
+  isSlimPlay?: boolean
 }
 
 export const Scenario: React.FC<ScenarioProps> = ({
@@ -26,6 +27,7 @@ export const Scenario: React.FC<ScenarioProps> = ({
   onClick,
   animation,
   id,
+  isSlimPlay = false,
 }) => {
   const t = useTranslations()
   const [isFocused, setIsFocused] = useState(false)
@@ -66,10 +68,12 @@ export const Scenario: React.FC<ScenarioProps> = ({
           {t('scenarios.environment')}{' '}
           {t('map.' + which.environment + '.header')}
         </h2>
-        <h2>
-          {' '}
-          {t('scenarios.theme')} {t(`theme.${which.theme}`)}
-        </h2>
+        {!isSlimPlay && (
+          <h2>
+            {' '}
+            {t('scenarios.theme')} {t(`theme.${which.theme}`)}
+          </h2>
+        )}
       </div>
     </motion.li>
   )

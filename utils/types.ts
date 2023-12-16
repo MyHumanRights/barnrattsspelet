@@ -1,7 +1,7 @@
 import { AppPathnames } from '@/config'
-import { CATEGORIES } from './constants'
 
 import { AvatarPart } from '../app/[locale]/components/AvatarPart'
+import { CATEGORIES } from './constants'
 
 type AvatarId = keyof typeof AvatarPart
 
@@ -33,7 +33,7 @@ export interface IQuiz {
 
 export interface ICard {
   id: string
-  isNewCard: boolean
+  isNewCard?: boolean
   article: string
   isDisabled: boolean
   category: string[]
@@ -174,4 +174,5 @@ export interface IGameStateObject {
   allowedLootbox: boolean
   activeAntagonist: null | string
   gameEnvironment: null | string
+  isSlimPlay: boolean
 }

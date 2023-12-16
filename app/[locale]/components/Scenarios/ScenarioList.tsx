@@ -11,6 +11,7 @@ import {
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/navigation'
+import { shuffleArray } from '@/utils/shuffleArray'
 import { ICard, IGameAntagonist } from '@/utils/types'
 
 import { Scenario } from './Scenario'
@@ -22,12 +23,14 @@ export interface ScenarioListProps {
   allScenarios: IGameAntagonist[]
   filter?: string | null
   cards: ICard[]
+  isSlimPlay?: boolean
 }
 
 export const ScenarioList: React.FC<ScenarioListProps> = ({
   allScenarios,
   filter,
   cards,
+  isSlimPlay = false,
 }) => {
   const {
     options: { shouldReduceMotion },
@@ -73,10 +76,18 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
     [allScenarios, filter]
   )
 
+  const scenarios = useMemo(() => {
+    return isSlimPlay
+      ? shuffleArray(allScenarios).slice(0, 3)
+      : filteredScenarios
+  }, [isSlimPlay, allScenarios, filteredScenarios])
+
   return (
-    <section className={styles.wrapper}>
+    <section
+      className={`${isSlimPlay ? styles.slimPlayWrapper : styles.wrapper}`}
+    >
       <ul>
-        {filteredScenarios?.map((scenario) => (
+        {scenarios?.map((scenario) => (
           <motion.div
             layout={!shouldReduceMotion}
             key={`${scenario.name}-${uuid}`}
@@ -87,6 +98,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
               onClick={() => handleClickOnScenario(scenario)}
               animation={hoverAnimation}
               id={`scenario-${scenario.name}`}
+              isSlimPlay={isSlimPlay}
             />
           </motion.div>
         ))}
