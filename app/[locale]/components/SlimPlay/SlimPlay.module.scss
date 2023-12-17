@@ -36,11 +36,15 @@
 
 .wrapper {
   background-color: #fff;
-  width: min(90%, 650px);
+  width: auto;
   padding: 24px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   @include box-shadow(medium);
+
+  @media (min-width: 768px) {
+    width: min(90%, 650px);
+  }
 }
