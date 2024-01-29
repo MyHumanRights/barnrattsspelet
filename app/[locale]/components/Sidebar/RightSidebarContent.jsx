@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 
+import { setGameStateValue } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 
 import { Button } from '../Button'
 import { CardHandSmall } from '../CardHandSmall'
 import { ArrowRight } from '../Icons/ArrowRight'
-import { Link } from '../Link/Link'
 import styles from './RightSidebarContent.module.scss'
 
 export const RightSidebarContent = ({
@@ -21,11 +22,18 @@ export const RightSidebarContent = ({
 }) => {
   const { isMobile } = useOptionsContext()
   const t = useTranslations()
+  const router = useRouter()
   const [animateArrow, triggerArrow] = useAnimation({ x: 5 })
   const [animateBackArrow, triggerBackArrow] = useAnimation({ x: -5 })
 
+  const onChooseCards = () => {
+    setGameStateValue({ isSlimPlay: false })
+    router.push('/deck-builder')
+  }
+
   const linkButton = (
-    <Link
+    <Button
+      onClick={onChooseCards}
       to='/deck-builder'
       variant={ButtonVariant.SECONDARY}
       size={ButtonSize.SMALL}
@@ -35,7 +43,7 @@ export const RightSidebarContent = ({
       <motion.span animate={animateArrow}>
         <ArrowRight />
       </motion.span>
-    </Link>
+    </Button>
   )
 
   return (

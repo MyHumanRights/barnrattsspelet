@@ -1,3 +1,4 @@
+import { setGameStateValue } from '@/api/storage'
 import { useRouter } from '@/navigation'
 
 import { Card } from '../Card'
@@ -7,7 +8,8 @@ import styles from './CardHandSmall.module.scss'
 export const CardHandSmall = ({ cards, trigger = () => {} }) => {
   const router = useRouter()
 
-  function handleClick() {
+  const handleClick = () => {
+    setGameStateValue({ isSlimPlay: false })
     router.push('/deck-builder')
   }
 

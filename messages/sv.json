@@ -510,6 +510,14 @@
         "heading": "Bra jobbat!",
         "body": "Välj 2 rättighetskort att lägga i din samling."
       },
+      "wonCardHand": {
+        "heading": "Bra jobbat!",
+        "body": "Du har vunnit nya kort till din samling."
+      },
+      "bought0": {
+        "heading": "Du köpte en låda!",
+        "body": "Du har redan vunnit alla kort. Här får du en ny grej till din avatar istället."
+      },
       "bought1": {
         "heading": "Du köpte en låda!",
         "body": "Välj 1 rättighetskort att lägga i din samling."
@@ -518,12 +526,19 @@
         "heading": "Du köpte en låda!",
         "body": "Välj 2 rättighetskort att lägga i din samling."
       },
+      "boughtEmptyBox": {
+        "heading": "Grattis!",
+        "body": "Du har redan vunnit allt!"
+      },
       "item": {
         "body": "Du har också fått en ny grej till din avatar."
       },
       "itemonly": {
         "heading": "Bra jobbat!",
         "body": "Du har redan vunnit alla rättighetskort som går att samla på. Här får du en ny grej till din avatar."
+      },
+      "noCardsToWin": {
+        "body": "Du har redan vunnit alla kort från den här korthanden. Här får du en ny grej till din avatar."
       },
       "start": {
         "heading": "Först ska du bygga upp din korthand med rättigheter.",

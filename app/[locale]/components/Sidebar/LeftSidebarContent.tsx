@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 
-import { setGameStateValue } from '@/api/storage'
+import { getCardCollection, setGameStateValue } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import playableCards from '@/data/cards.json'
 import { useRouter } from '@/navigation'
@@ -89,11 +89,24 @@ export const LeftSidebarContent: React.FC<Props> = ({
     router.push('/loot-box')
   }
 
+  const continueGame = async () => {
+    setGameStateValue({ isSlimPlay: false })
+    // check if there are any cards in cardCollection
+    // if not, go to deck-builder
+    // else go to play
+    await getCardCollection().then((cardCollection) => {
+      if (cardCollection.length > 0) {
+        router.push('/deck-builder')
+      } else {
+        setGameStateValue({ allowedLootbox: true })
+        router.push('/loot-box')
+      }
+    })
+  }
+
   const playButton = (
     <Button
-      as={cardHand.length ? 'button' : Link}
-      to={cardHand.length ? undefined : '/deck-builder'}
-      onClick={cardHand.length ? toggleShowingSidebar : undefined}
+      onClick={cardHand.length ? toggleShowingSidebar : continueGame}
       variant={ButtonVariant.PRIMARY}
       size={isMobile ? ButtonSize.LARGE : ButtonSize.SMALL}
       onMouseEnter={triggerArrow}

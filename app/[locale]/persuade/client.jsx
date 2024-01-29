@@ -20,7 +20,6 @@ import {
   readDefeatedAntagonists,
   readGameStateValue,
   readWrongAnswers,
-  setCardHand,
   setDefeatedAntagonists,
   setFirstTimePlaying,
   setGameStateValue,
@@ -374,7 +373,7 @@ export const PersuadeClient = () => {
   }
 
   function handleGotoLootBox() {
-    setCardHand([])
+    // setCardHand([])
     setGameStateValue({ allowedLootbox: true, gameEnvironment: environment })
     router.push('/loot-box')
   }
