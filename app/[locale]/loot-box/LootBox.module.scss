@@ -23,11 +23,6 @@
   @include backdrop;
 }
 
-.owlWrapper {
-  padding-top: 24px;
-  z-index: 1;
-}
-
 .owlWelcomeWrapper {
   position: absolute;
   top: 50%;
@@ -52,33 +47,8 @@
   }
 }
 
-.cardList {
-  list-style: none;
-  width: min(90vw, 1200px);
-  margin: 16px auto 0;
-  padding: 0;
-  position: relative;
-  z-index: 1;
-
-  li {
-    position: absolute;
-  }
-}
-
 .lootItem {
   position: relative;
-}
-
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
-  padding: 0.3rem 0;
-}
-
-.active {
-  margin-top: 3px;
-  box-shadow: $newCardGlow;
-  border-radius: 12px;
 }
 
 .blurBkgd {

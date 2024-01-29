@@ -14,7 +14,6 @@ import {
 import {
   getAvatar,
   getAvatarPartCollection,
-  getFirstTimeLootBox,
   setAvatar,
   setAvatarPartCollection,
   setGameStateValue,
@@ -32,6 +31,7 @@ import { IAvatar, IAvatarColors, IAvatarNew } from '@/utils/types'
 import { Avatar } from '../components/Avatar'
 import { AvatarColorSelector } from '../components/Avatar/AvatarColorSelector'
 import { AvatarPartSelector } from '../components/Avatar/AvatarPartSelector'
+import { Body19, Face19 } from '../components/AvatarPart/avatarParts'
 import { Button } from '../components/Button'
 import { HomeIcon } from '../components/Icons/HomeIcon'
 import { Replay } from '../components/Icons/Replay'
@@ -76,8 +76,6 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
 
   useEffect(() => {
     ;(async function () {
-      let firstTimeLootBox = await getFirstTimeLootBox()
-      setFirstTimer(firstTimeLootBox)
       setColors(avatarColors)
       const storedAvatar: IAvatar = await getAvatar()
       const storedPartCollection = await getAvatarPartCollection()
@@ -187,19 +185,14 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
     })
   }
 
-  function handleGoToHome() {
+  const handleGoToHome = () => {
     const resetParts = resetNewAvatarParts(avatarCollection)
     setAvatarPartCollection(resetParts)
 
     router.push('/home')
   }
 
-  const handleGoToLootbox = () => {
-    setGameStateValue({ allowedLootbox: true })
-    router.push('/loot-box')
-  }
-
-  function handleColorClick(category: CATEGORIES, color: string) {
+  const handleColorClick = (category: CATEGORIES, color: string) => {
     // Prevent scroll down to overflow outside html small screens
     // If there's another solution this could be removed
     window.scrollTo(0, 0)
@@ -234,31 +227,17 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
   return (
     <div className={styles.content}>
       <div className={styles.menuBar}>
-        {firstTimer ? (
-          <Button
-            onClick={handleGoToLootbox}
-            onMouseEnter={triggerSkip}
-            variant={ButtonVariant.SECONDARY}
-            size={ButtonSize.SMALL}
-          >
-            {t('avatarbuilder.skip')}
-            <motion.span animate={animateSkip}>
-              <Skip />
-            </motion.span>
-          </Button>
-        ) : (
-          <Button
-            variant={ButtonVariant.SECONDARY}
-            size={ButtonSize.SMALL}
-            onMouseEnter={trigger}
-            onClick={handleGoToHome}
-          >
-            {t('mainmenu.home')}
-            <motion.span animate={animate}>
-              <HomeIcon />
-            </motion.span>
-          </Button>
-        )}
+        <Button
+          variant={ButtonVariant.SECONDARY}
+          size={ButtonSize.SMALL}
+          onMouseEnter={trigger}
+          onClick={handleGoToHome}
+        >
+          {t('mainmenu.home')}
+          <motion.span animate={animate}>
+            <HomeIcon />
+          </motion.span>
+        </Button>
       </div>
       <div className={styles.avatarBuildWrapper}>
         {avatarCollection && (

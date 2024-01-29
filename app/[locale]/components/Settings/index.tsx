@@ -91,7 +91,7 @@ export const Settings: React.FC<Props> = ({
     }
 
     if (firstTimeLootBox == null) {
-      await setFirstTimeLootBox(true)
+      await setFirstTimeLootBox(false)
     }
 
     if (!cards) {
