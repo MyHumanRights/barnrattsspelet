@@ -288,7 +288,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       isBuyingLootbox: false,
     })
     const init = async () => {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       setNumberOfCards(cardCollection.length)
 
       // get number of new cards

@@ -109,7 +109,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
   useEffect(() => {
     const init = async () => {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       const buyingLootbox = await readGameStateValue('isBuyingLootbox')
       const environment = await readGameStateValue('gameEnvironment')
       const isSlimPlay = await readGameStateValue('isSlimPlay')
@@ -153,7 +153,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
       const handleDefaultCase = async () => {
         const cardHand = await getCardHand()
-        const cardCollection = await getCardCollection()
+        const cardCollection = (await getCardCollection()) || []
 
         // remove cards from cardHand that are already in cardCollection
         const filteredCardHand = cardHand.filter(
