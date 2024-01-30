@@ -8,7 +8,7 @@ export const useHasWonAllCards = () => {
 
   useEffect(() => {
     const checkCards = async () => {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       setHasWonAllCards(cardCollection.length === allCards.length)
     }
 

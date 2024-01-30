@@ -9,7 +9,6 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import { Button } from '../Button'
-import Modal from '../Modal'
 import { PlayModal } from './PlayModal'
 import styles from './SlimPlay.module.scss'
 

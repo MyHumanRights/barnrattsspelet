@@ -60,7 +60,7 @@ export const Client = () => {
 
   useEffect(() => {
     ;(async function () {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       cardCollection?.length > 0 ? setFirstTimer(false) : setFirstTimer(true)
     })()
   })

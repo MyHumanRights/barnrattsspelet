@@ -400,7 +400,8 @@
     "description": "Här är alla utmaningar som finns i spelet grupperade i kategorier som visar vilka övergripande rättigheter det handlar om.",
     "allThemes": "Alla",
     "environment": "Plats: ",
-    "theme": "Tema: "
+    "theme": "Tema: ",
+    "winableCards": "Kort att vinna: {winableCards}"
   },
   "cardhand": {
     "boost": "Svara på en bonusfråga för att vinna ett mynt",

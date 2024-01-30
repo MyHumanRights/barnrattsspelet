@@ -70,7 +70,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const [showConfetti, setShowConfetti] = useState(false)
   const [openBox, setOpenBox] = useState(false)
   const [bgColor, setBgColor] = useState('none')
-  const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(false)
+  const [isBuyingLootbox, setIsBuyingLootbox] = useState<boolean | null>(false)
   const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [showLootItem, setShowLootItem] = useState(false)
@@ -109,8 +109,8 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
   useEffect(() => {
     const init = async () => {
-      const cardCollection = await getCardCollection()
-      const byingLootbox = await readGameStateValue('isByingLootbox')
+      const cardCollection = (await getCardCollection()) || []
+      const buyingLootbox = await readGameStateValue('isBuyingLootbox')
       const environment = await readGameStateValue('gameEnvironment')
       const isSlimPlay = await readGameStateValue('isSlimPlay')
       const allowedLootbox = await readGameStateValue('allowedLootbox')
@@ -119,11 +119,11 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
       setIsAllowedLootbox(allowedLootbox)
       setGameEnvironment(environment)
-      setIsByingLootbox(byingLootbox)
+      setIsBuyingLootbox(buyingLootbox)
       setLocalCollection(cardCollection)
 
       const item =
-        !hasWonAllCards || isByingLootbox
+        !hasWonAllCards || isBuyingLootbox
           ? getItemToLootBox(avatarPartCollection, avatarParts, storedAvatar)
           : getSuperHeroToLootBox(
               avatarPartCollection,
@@ -134,22 +134,26 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
       setLootItem(item)
       setCollectedItems(avatarPartCollection)
 
-      // If user has no cards and is not playing the slim version, give user starting cards
-      if (!isSlimPlay && cardCollection.length === 0) {
+      const handleSlimPlay = async () => {
         const startingCards = getStartingCards(antagonists, cardData)
         setMyLootCards(startingCards)
         setLootCards(startingCards)
         setIsFirstLoot(true)
-      } else if (byingLootbox) {
+      }
+
+      const handleBuyingLootbox = async () => {
         const availableTokens = await readTokens()
         if (availableTokens < 5) {
           router.back()
+          return
         }
         const cardsToLootbox = getCardsToLootBox(cardCollection, cardData, 3)
         setLootCards(cardsToLootbox)
-      } else {
+      }
+
+      const handleDefaultCase = async () => {
         const cardHand = await getCardHand()
-        const cardCollection = await getCardCollection()
+        const cardCollection = (await getCardCollection()) || []
 
         // remove cards from cardHand that are already in cardCollection
         const filteredCardHand = cardHand.filter(
@@ -160,10 +164,18 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
         setMyLootCards(filteredCardHand)
         setCardHand([])
       }
+
+      if (!isSlimPlay && cardCollection.length === 0) {
+        handleSlimPlay()
+      } else if (buyingLootbox) {
+        handleBuyingLootbox()
+      } else {
+        handleDefaultCase()
+      }
     }
     init()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardData, hasWonAllCards, avatarParts, isByingLootbox])
+  }, [cardData, hasWonAllCards, avatarParts, isBuyingLootbox])
 
   useEffect(() => {
     // find svg background (floor) color
@@ -231,7 +243,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
     await setAvatarPartCollection(uniqueData)
     // if user doesn't get an item, don't take tokens
-    isByingLootbox && lootItem.length > 0 && setTokens(-5)
+    isBuyingLootbox && lootItem.length > 0 && setTokens(-5)
     router.push('/home')
   }
 
@@ -246,11 +258,11 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
       ).values(),
     ])
 
-    isByingLootbox && setTokens(-5)
+    isBuyingLootbox && setTokens(-5)
     setShownNoUndefeatedTip(false)
     setShownChangeHandTip(0)
 
-    if (isFirstLoot || !lootItem.length || isByingLootbox) {
+    if (isFirstLoot || !lootItem.length || isBuyingLootbox) {
       // If playing for the first time or player has won all loot items already, send user to home
       router.push('/home')
     } else {
@@ -263,7 +275,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     if (
       myLootCards.some((y) => y.id === id) &&
       !isFirstLoot &&
-      isByingLootbox
+      isBuyingLootbox
     ) {
       return true
     } else {
@@ -272,7 +284,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   }
 
   const handleClickOnCard = (card: ICard) => {
-    if (!isByingLootbox) return
+    if (!isBuyingLootbox) return
 
     // If clicking twice on same card, remove it from myLootCards
     if (myLootCards.some((y) => y.id === card.id)) {
@@ -314,7 +326,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
             <LootBoxOwl
               lootItemOnly={lootItemOnly}
               showLootItem={showLootItem}
-              isByingLootbox={isByingLootbox}
+              isBuyingLootbox={isBuyingLootbox}
               fullLootAmount={fullLootAmount}
               fullLoot={fullLoot}
               saveLootToStorage={saveLootToStorage}
@@ -369,7 +381,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
             lootCards={lootCards}
             handleClickOnCard={handleClickOnCard}
             checkIfActive={checkIfActive}
-            isByingLootbox={isByingLootbox}
+            isBuyingLootbox={isBuyingLootbox}
             openBox={openBox}
           />
         )}

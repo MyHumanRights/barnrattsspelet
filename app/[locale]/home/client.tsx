@@ -285,10 +285,10 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     setGameStateValue({
       allowedLootbox: false,
       gameEnvironment: null,
-      isByingLootbox: false,
+      isBuyingLootbox: false,
     })
     const init = async () => {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       setNumberOfCards(cardCollection.length)
 
       // get number of new cards

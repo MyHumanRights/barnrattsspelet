@@ -143,7 +143,7 @@ export const DeckBuilderClient = () => {
   }
 
   async function saveToStorage() {
-    const cardCollection = await getCardCollection()
+    const cardCollection = (await getCardCollection()) || []
     const updatedCardCollection = resetNewCards(cardCollection)
     setCardCollection(updatedCardCollection)
 

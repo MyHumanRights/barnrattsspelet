@@ -7,6 +7,7 @@ import { Bangers, Quicksand } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 
+import { getDefaultAvatorParts } from '@/api/engine'
 import { getAvatarColors, getAvatarParts } from '@/utils/getData'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
 
@@ -57,6 +58,7 @@ const RootLayout = async ({
   }
 
   const avatarParts: IAvatarParts = await getAvatarParts()
+  const defaultAvatarParts = getDefaultAvatorParts(avatarParts)
   const avatarColors: IAvatarColors = await getAvatarColors()
 
   return (
@@ -74,7 +76,7 @@ const RootLayout = async ({
                 messages={messages}
               >
                 <Settings
-                  defaultAvatarParts={avatarParts}
+                  defaultAvatarParts={defaultAvatarParts}
                   avatarColors={avatarColors}
                 />
                 {children}

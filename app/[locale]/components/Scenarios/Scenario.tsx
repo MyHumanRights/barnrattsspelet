@@ -1,39 +1,39 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+
+import { getWonCardsFromHand } from '@/utils/getWonCardsFromHand'
+import { ICard, IGameAntagonist } from '@/utils/types'
 
 import styles from './Scenario.module.scss'
 
 export interface ScenarioProps {
-  which: {
-    environment: string
-    theme: string
-    scenarioImage: string
-  }
-  onClick: () => void
+  which: IGameAntagonist
+  onClick: (which: IGameAntagonist, cardHand: ICard[]) => void
   animation?: {
     initial: any
     animate: any
   }
   id: string
   isSlimPlay?: boolean
+  cardHand: ICard[]
 }
 
-export const Scenario: React.FC<ScenarioProps> = ({
+export const Scenario = ({
   which,
   onClick,
   animation,
   id,
   isSlimPlay = false,
-}) => {
+  cardHand,
+}: ScenarioProps) => {
   const t = useTranslations()
   const [isFocused, setIsFocused] = useState(false)
+  const [winableCards, setWinableCards] = useState(0)
   const ref = useRef<HTMLLIElement>(null)
 
-  function renderAnimation() {
+  const renderAnimation = () => {
     if (animation && isFocused) {
       return animation.animate
     } else if (animation && !isFocused) {
@@ -42,12 +42,20 @@ export const Scenario: React.FC<ScenarioProps> = ({
     return null
   }
 
+  useEffect(() => {
+    const getNumberOfWinableCards = async () => {
+      const { filteredCardsCount } = await getWonCardsFromHand(cardHand)
+      setWinableCards(filteredCardsCount)
+    }
+    getNumberOfWinableCards()
+  }, [which, cardHand])
+
   return (
     <motion.li
       id={id}
       className={styles.scenarioLi}
       ref={ref}
-      onClick={onClick}
+      onClick={() => onClick(which, cardHand)}
       animate={renderAnimation()}
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
@@ -68,11 +76,13 @@ export const Scenario: React.FC<ScenarioProps> = ({
           {t('scenarios.environment')}{' '}
           {t('map.' + which.environment + '.header')}
         </h2>
-        {!isSlimPlay && (
+        {!isSlimPlay ? (
           <h2>
             {' '}
             {t('scenarios.theme')} {t(`theme.${which.theme}`)}
           </h2>
+        ) : (
+          <p>{t('scenarios.winableCards', { winableCards })}</p>
         )}
       </div>
     </motion.li>

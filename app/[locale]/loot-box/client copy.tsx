@@ -69,7 +69,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
-  const [isByingLootbox, setIsByingLootbox] = useState<boolean | null>(false)
+  const [isBuyingLootbox, setIsBuyingLootbox] = useState<boolean | null>(false)
   const [isAllowedLootbox, setIsAllowedLootbox] = useState<boolean | null>(true)
   const [showConfetti, setShowConfetti] = useState(false)
   const [bgColor, setBgColor] = useState('none')
@@ -108,20 +108,20 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   useEffect(() => {
     const init = async () => {
       // if won persuasion getCardHand
-      // if isByingLootbox getRandomCards
+      // if isBuyingLootbox getRandomCards
       // if is first time getStartingCards
       // else empy array
 
       // let tempLootCards = []
       const cardCollection = await getCardCollection()
-      const byingLootbox = await readGameStateValue('isByingLootbox')
+      const buyingLootbox = await readGameStateValue('isBuyingLootbox')
       const environment = await readGameStateValue('gameEnvironment')
       const allowedLootbox = await readGameStateValue('allowedLootbox')
       setIsAllowedLootbox(allowedLootbox)
       setGameEnvironment(environment)
-      setIsByingLootbox(byingLootbox)
+      setIsBuyingLootbox(buyingLootbox)
 
-      if (byingLootbox) {
+      if (buyingLootbox) {
         const availableTokens = await readTokens()
         if (availableTokens < 5) {
           router.back()
@@ -129,7 +129,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
         }
       }
 
-      let tempLootCards = byingLootbox
+      let tempLootCards = buyingLootbox
         ? getCardsToLootBox(cardCollection, cardData, 3)
         : await getCardHand()
 
@@ -158,7 +158,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
           if (!item.length) {
             router.push('/home')
             return
-          } else if (byingLootbox) {
+          } else if (buyingLootbox) {
             tempLootCards = getCardsToLootBox(cardCollection, cardData, 3)
             setCollectedItems(avatarPartCollection)
             setLootItem(item)
@@ -227,14 +227,14 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     await setCardCollection(uniqueCollection)
     setFirstTimeLootBox(false)
 
-    isByingLootbox && setTokens(-5)
+    isBuyingLootbox && setTokens(-5)
     setShownNoUndefeatedTip(false)
     setShownChangeHandTip(0)
 
     if (isFirstLoot) {
       // If playing for the first time, send user to home
       router.push('/home')
-    } else if (lootItem.length && !isByingLootbox) {
+    } else if (lootItem.length && !isBuyingLootbox) {
       // If player still can win loot items
       setShowLootItem(true)
     } else {
@@ -292,7 +292,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   }
 
   function handleClickOnCard(card: ICard) {
-    if (!isByingLootbox) return
+    if (!isBuyingLootbox) return
 
     // If clicking twice on same card, remove it from myLootCards
     if (myLootCards.some((y) => y.id === card.id)) {
@@ -324,7 +324,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     if (showLootItem) {
       return null
     }
-    if (isByingLootbox) {
+    if (isBuyingLootbox) {
       return `Owl.lootbox.bought${FULL_LOOT_AMOUNT}.heading`
     }
     return `Owl.lootbox.won${FULL_LOOT_AMOUNT}.heading`
@@ -590,7 +590,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
                     onClick={() => handleClickOnCard(card)}
                   />
                 </div>
-                {isByingLootbox && (
+                {isBuyingLootbox && (
                   <div className={styles.buttonWrapper}>
                     <Button
                       variant={ButtonVariant.SECONDARY}

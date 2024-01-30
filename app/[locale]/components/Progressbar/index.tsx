@@ -40,7 +40,7 @@ export const Progressbar = () => {
 
   useEffect(() => {
     const updateProgress = async () => {
-      const cardCollection = await getCardCollection()
+      const cardCollection = (await getCardCollection()) || []
       const gameProgress = Math.round(
         (cardCollection.length / cardsInTotal) * 100
       )
