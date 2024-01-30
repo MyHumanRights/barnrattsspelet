@@ -85,7 +85,7 @@ export const LeftSidebarContent: React.FC<Props> = ({
   }
 
   const handleGoToLootbox = () => {
-    setGameStateValue({ allowedLootbox: true, isByingLootbox: true })
+    setGameStateValue({ allowedLootbox: true, isBuyingLootbox: true })
     router.push('/loot-box')
   }
 

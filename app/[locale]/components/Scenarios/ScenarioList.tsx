@@ -72,10 +72,11 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
     [shouldReduceMotion]
   )
 
-  const handleClickOnScenario = (scenario: IGameAntagonist) => {
+  const handleClickOnScenario = (
+    scenario: IGameAntagonist,
+    cardHand: ICard[]
+  ) => {
     setPlayFromScenario(!isSlimPlay)
-
-    const cardHand = getScenarioCards(scenario, cards)
     setCardHand(cardHand)
     setGameStateValue({ activeAntagonist: scenario.name })
     router.push('/persuade')
@@ -110,21 +111,27 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
       className={`${isSlimPlay ? styles.slimPlayWrapper : styles.wrapper}`}
     >
       <ul>
-        {scenarios?.map((scenario) => (
-          <motion.div
-            layout={!shouldReduceMotion}
-            key={`${scenario.name}-${uuid}`}
-            className={styles.scenarioWrapper}
-          >
-            <Scenario
-              which={scenario}
-              onClick={() => handleClickOnScenario(scenario)}
-              animation={hoverAnimation}
-              id={`scenario-${scenario.name}`}
-              isSlimPlay={isSlimPlay}
-            />
-          </motion.div>
-        ))}
+        {scenarios?.map((scenario) => {
+          // In order to know the number of winable cards, we need to get the card hand here
+          // we can't create the card hand when clicking on the scenario
+          const cardHand = getScenarioCards(scenario, cards as ICard[])
+          return (
+            <motion.div
+              layout={!shouldReduceMotion}
+              key={`${scenario.name}-${uuid}`}
+              className={styles.scenarioWrapper}
+            >
+              <Scenario
+                which={scenario}
+                onClick={handleClickOnScenario}
+                animation={hoverAnimation}
+                id={`scenario-${scenario.name}`}
+                isSlimPlay={isSlimPlay}
+                cardHand={cardHand}
+              />
+            </motion.div>
+          )
+        })}
       </ul>
     </section>
   )

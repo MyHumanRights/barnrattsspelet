@@ -9,7 +9,7 @@ import styles from './LootBoxOwl.module.scss'
 interface Props {
   lootItemOnly?: boolean
   showLootItem?: boolean
-  isByingLootbox?: boolean | null
+  isBuyingLootbox?: boolean | null
   fullLootAmount: number
   fullLoot?: boolean
   saveLootToStorage?: () => void
@@ -21,7 +21,7 @@ interface Props {
 export const LootBoxOwl = ({
   lootItemOnly,
   showLootItem,
-  isByingLootbox,
+  isBuyingLootbox,
   fullLootAmount,
   fullLoot,
   saveLootToStorage,
@@ -35,7 +35,7 @@ export const LootBoxOwl = ({
   } = useOptionsContext()
 
   const getOwlHeading = () => {
-    if (isByingLootbox) {
+    if (isBuyingLootbox) {
       return !hasLootItem && fullLootAmount === 0
         ? `Owl.lootbox.boughtEmptyBox.heading`
         : `Owl.lootbox.bought${fullLootAmount}.heading`
@@ -50,7 +50,7 @@ export const LootBoxOwl = ({
   }
 
   const getOwlBody = () => {
-    if (isByingLootbox) {
+    if (isBuyingLootbox) {
       return !hasLootItem && fullLootAmount === 0
         ? `Owl.lootbox.boughtEmptyBox.body`
         : `Owl.lootbox.bought${fullLootAmount}.body`

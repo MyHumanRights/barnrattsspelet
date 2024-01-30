@@ -21,7 +21,7 @@ interface Props {
   openBox: boolean
   checkIfActive: (id: string) => boolean
   handleClickOnCard: (card: ICard) => void
-  isByingLootbox?: boolean | null
+  isBuyingLootbox?: boolean | null
 }
 
 export const LootBoxCards = ({
@@ -29,7 +29,7 @@ export const LootBoxCards = ({
   openBox,
   checkIfActive,
   handleClickOnCard,
-  isByingLootbox,
+  isBuyingLootbox,
 }: Props) => {
   const t = useTranslations()
   const {
@@ -71,7 +71,7 @@ export const LootBoxCards = ({
               onClick={() => handleClickOnCard(card)}
             />
           </div>
-          {isByingLootbox && (
+          {isBuyingLootbox && (
             <div className={styles.buttonWrapper}>
               <Button
                 variant={ButtonVariant.SECONDARY}
