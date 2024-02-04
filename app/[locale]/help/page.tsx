@@ -75,7 +75,7 @@ const Help = ({ params: { locale } }: LocaleParams) => {
                   </a>
                   <p>
                     {t('common:help:paragraphBarnombudsmannen.part1')}
-                    <a href='tel:116 111'>020 23 1010</a>
+                    <a href='tel:020 23 1010'>020 23 1010</a>
                     {t('common:help:paragraphBarnombudsmannen.part2')}
                   </p>
                 </li>
@@ -90,7 +90,7 @@ const Help = ({ params: { locale } }: LocaleParams) => {
                   </a>
                   <p>
                     {t('common:help:paragraphBrottsofferjouren.part1')}
-                    <a href='tel:116 111'>116 006</a>
+                    <a href='tel:116 006'>116 006</a>
                     {t('common:help:paragraphBrottsofferjouren.part2')}
                   </p>
                 </li>
