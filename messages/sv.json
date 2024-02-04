@@ -73,7 +73,8 @@
     "safety": "Rätt till trygghet",
     "participation": "Rätt till delaktighet",
     "expression": "Rätt att tycka och tala",
-    "protection": "Rätt till skydd"
+    "protection": "Rätt till skydd",
+    "fundamentals": "Grundprinciperna"
   },
   "category": {
     "family": "Jag & min familj",
@@ -180,7 +181,17 @@
     "paragraph4": {
       "part1": "Till Bris, Barnens rätt i samhället, kan du ringa på ",
       "part2": ", mejla eller chatta. Du kan också läsa, kolla in filmer och lyssna på poddar om viktiga ämnen."
-    } ,
+    },
+    "linkBarnombudsmannen": "Barnombudsmannen",
+    "paragraphBarnombudsmannen": {
+      "part1":"Till Barnombudsmannens egen telefonlinje för barn och unga - ",
+      "part2": ", kan du ringa för att få reda på vilka rättigheter du har enligt barnkonventionen och hur du kan få hjälp."
+    },
+    "linkBrottsofferjouren": "Brottsofferjouren",
+    "paragraphBrottsofferjouren": {
+      "part1":"Om du blivit utsatt för ett brott, som stöld, misshandel, hot eller blivit vittne till ett brott och känner dig rädd och osäker, kan du ringa ",
+      "part2": " eller chatta anonymt med Brottsofferjouren."
+    },
     "link2": "Röda korsets jourhavande kompis",
     "paragraph5": "Känner du dig ensam? Här kan du chatta om precis vad som helst med unga vuxna. De finns för dig när du behöver det.",
     "link3": "Trygga Barnens chatt",

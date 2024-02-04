@@ -31,7 +31,12 @@ export const TabFilter: React.FC<Props> = ({
   const t = useTranslations()
 
   const categories = [...new Set(JSONsource.flatMap((card) => card.category))]
-  const themes = [...new Set(JSONsource.map((obj) => obj.theme))]
+  const themes = [...new Set(JSONsource.flatMap((obj) => obj.theme))]
+
+  // Sort themes so that 'fundamentals' is always first
+  themes.sort((a, b) =>
+    a === 'fundamentals' ? -1 : b === 'fundamentals' ? 1 : 0
+  )
 
   const filters = isCollectionView ? themes : categories
 
