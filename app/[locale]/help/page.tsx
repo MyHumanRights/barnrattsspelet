@@ -74,7 +74,7 @@ const Help = ({ params: { locale } }: LocaleParams) => {
                     {t('help.linkBarnombudsmannen')}
                   </a>
                   <p>
-                    {t('help:paragraphBarnombudsmannen.part1')}
+                    {t('help.paragraphBarnombudsmannen.part1')}
                     <a href='tel:020 23 1010'>020 23 1010</a>
                     {t('help.paragraphBarnombudsmannen.part2')}
                   </p>
