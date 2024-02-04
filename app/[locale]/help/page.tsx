@@ -67,6 +67,36 @@ const Help = ({ params: { locale } }: LocaleParams) => {
 
                 <li>
                   <a
+                    href='https://www.barnombudsmannen.se/kontakta-oss/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {t('common:help:linkBarnombudsmannen')}
+                  </a>
+                  <p>
+                    {t('common:help:paragraphBarnombudsmannen.part1')}
+                    <a href='tel:116 111'>020 23 1010</a>
+                    {t('common:help:paragraphBarnombudsmannen.part2')}
+                  </p>
+                </li>
+
+                <li>
+                  <a
+                    href='https://www.brottsofferjouren.se/brottsofferstod/sarskilt-sarbara/ungbrottsutsatt/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {t('common:help:linkBrottsofferjouren')}
+                  </a>
+                  <p>
+                    {t('common:help:paragraphBrottsofferjouren.part1')}
+                    <a href='tel:116 111'>116 006</a>
+                    {t('common:help:paragraphBrottsofferjouren.part2')}
+                  </p>
+                </li>
+
+                <li>
+                  <a
                     href='https://rkuf.se/vad-vi-gor/jourhavande-kompis/'
                     target='_blank'
                     rel='noreferrer'
