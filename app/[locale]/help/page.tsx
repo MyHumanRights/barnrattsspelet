@@ -71,12 +71,12 @@ const Help = ({ params: { locale } }: LocaleParams) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    {t('common:help:linkBarnombudsmannen')}
+                    {t('help.linkBarnombudsmannen')}
                   </a>
                   <p>
-                    {t('common:help:paragraphBarnombudsmannen.part1')}
+                    {t('help:paragraphBarnombudsmannen.part1')}
                     <a href='tel:020 23 1010'>020 23 1010</a>
-                    {t('common:help:paragraphBarnombudsmannen.part2')}
+                    {t('help.paragraphBarnombudsmannen.part2')}
                   </p>
                 </li>
 
@@ -86,12 +86,12 @@ const Help = ({ params: { locale } }: LocaleParams) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    {t('common:help:linkBrottsofferjouren')}
+                    {t('help.linkBrottsofferjouren')}
                   </a>
                   <p>
-                    {t('common:help:paragraphBrottsofferjouren.part1')}
+                    {t('help.paragraphBrottsofferjouren.part1')}
                     <a href='tel:116 006'>116 006</a>
-                    {t('common:help:paragraphBrottsofferjouren.part2')}
+                    {t('help.paragraphBrottsofferjouren.part2')}
                   </p>
                 </li>
 
