@@ -46,7 +46,7 @@ interface Props {
   hasNewParts: boolean
 }
 
-export const LeftSidebarContent: React.FC<Props> = ({
+export const Sidebar: React.FC<Props> = ({
   numberOfCards,
   numberOfNewCards,
   currentTokens,

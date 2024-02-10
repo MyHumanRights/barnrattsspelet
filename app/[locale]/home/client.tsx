@@ -39,19 +39,13 @@ import {
 
 import { AlertBox } from '../components/AlertBox'
 import { Button } from '../components/Button'
+import { Map } from '../components/Map'
 import { MapBackground } from '../components/MapBackground'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
-import { LeftSidebarContent } from '../components/Sidebar/LeftSidebarContent'
-import { RightSidebarContent } from '../components/Sidebar/RightSidebarContent'
+import { Sidebar } from '../components/Sidebar'
 import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
-
-const Map = dynamic(() => import('../components/Map').then((mod) => mod.Map))
-
-const LazySidebar = dynamic(() =>
-  import('../components/Sidebar').then((mod) => mod.Sidebar)
-)
 
 interface Props {
   antagonists: IAntagonistObject
@@ -88,13 +82,10 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [cardHand, setCardHand] = useState<ICard[]>([])
   const [places, setPlaces] = useState<IScenario[]>([])
   const [showingSidebar, setShowingSidebar] = useState('left')
-  const [sideBarWidth, setSideBarWidth] = useState(400)
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
-  const toggleShowingSidebar = () => {
-    setShowingSidebar(showingSidebar === 'left' ? 'right' : 'left')
-  }
+  const sideBarWidth = 310
 
   const getUnbeaten = useCallback(
     (place: string) => {
@@ -104,9 +95,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     },
     [places]
   )
-
-  const showLeftSidebar = isMobile ? showingSidebar === 'left' : true
-  const showRightSidebar = isMobile ? showingSidebar === 'right' : true
 
   const getAnyUnbeaten = useCallback(() => {
     // check if any unbeaten antagonists, all places
@@ -388,35 +376,19 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     return isMobile ? sideBarWidth : sideBarWidth / 2
   }, [sideBarWidth, isMobile])
 
-  const getLeftPosition = () =>
-    showingSidebar === 'left' && isMobile
-      ? '0'
-      : showingSidebar === 'left'
-      ? `${leftPosOfProgressbar}px`
-      : `-${leftPosOfProgressbar}px`
+  const getLeftPosition = () => (isMobile ? '0' : `${leftPosOfProgressbar}px`)
 
   return (
     <>
       {isMobile && <MapBackground />}
       <AlertBox showingSidebar={showingSidebar} sideBarWidth={sideBarWidth} />
-      {showLeftSidebar && (
-        <LazySidebar
-          side='left'
-          isShowing={showingSidebar === 'left'}
-          onToggle={toggleShowingSidebar}
-          width={sideBarWidth}
-          setWidth={setSideBarWidth}
-        >
-          <LeftSidebarContent
-            cardHand={cardHand}
-            toggleShowingSidebar={toggleShowingSidebar}
-            numberOfCards={numberOfCards}
-            numberOfNewCards={numberOfNewCards}
-            currentTokens={currentTokens}
-            hasNewParts={hasNewParts}
-          />
-        </LazySidebar>
-      )}
+      <Sidebar
+        cardHand={cardHand}
+        numberOfCards={numberOfCards}
+        numberOfNewCards={numberOfNewCards}
+        currentTokens={currentTokens}
+        hasNewParts={hasNewParts}
+      />
       <motion.div
         className={styles.progressbarWrapper}
         initial={{ left: 0 }}
@@ -449,25 +421,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
           </motion.div>
         </section>
       )}
-      {showRightSidebar && (
-        <LazySidebar
-          side='right'
-          onToggle={toggleShowingSidebar}
-          isShowing={showingSidebar === 'right'}
-          width={sideBarWidth}
-          setWidth={setSideBarWidth}
-        >
-          <RightSidebarContent
-            cardHand={cardHand}
-            unlockedPlaces={unlockedPlaces}
-            getAnyUnbeaten={getAnyUnbeaten}
-            getUnbeaten={getUnbeaten}
-            sidebarEnvironment={sidebarEnvironment}
-            onToggle={toggleShowingSidebar}
-          />
-        </LazySidebar>
-      )}
-      {/* )} */}
       <AnimatePresence>
         {showOwlTip && (
           <motion.div
