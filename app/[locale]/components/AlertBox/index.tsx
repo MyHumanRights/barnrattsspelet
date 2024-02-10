@@ -10,11 +10,10 @@ import { Link } from '../Link/Link'
 import styles from './AlertBox.module.scss'
 
 interface Props {
-  showingSidebar: string
   sideBarWidth: number
 }
 
-export const AlertBox: React.FC<Props> = ({ showingSidebar, sideBarWidth }) => {
+export const AlertBox: React.FC<Props> = ({ sideBarWidth }) => {
   const t = useTranslations()
   const {
     isMobile,
@@ -40,11 +39,7 @@ export const AlertBox: React.FC<Props> = ({ showingSidebar, sideBarWidth }) => {
   }, [shouldShowAlertBox, TIME])
 
   const animateConfig = {
-    left: !isMobile
-      ? showingSidebar === 'right'
-        ? 0
-        : `${sideBarWidth}px`
-      : undefined,
+    left: !isMobile ? `${sideBarWidth}px` : undefined,
     opacity: showAlertbox ? 1 : 0,
     scale: showAlertbox ? 1 : 0,
   }

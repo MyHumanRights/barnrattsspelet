@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
@@ -16,7 +15,6 @@ import {
   getShownSecondChallengeTip,
   getShownWelcomeTip,
   readDefeatedAntagonists,
-  readTokens,
   setGameStateValue,
   setPlayFromScenario,
   setShownChangeHandTip,
@@ -38,20 +36,13 @@ import {
 } from '@/utils/types'
 
 import { AlertBox } from '../components/AlertBox'
-import { Button } from '../components/Button'
+import { Map } from '../components/Map'
 import { MapBackground } from '../components/MapBackground'
 import { OwlDialogue } from '../components/OwlDialogue'
 import { Progressbar } from '../components/Progressbar'
-import { LeftSidebarContent } from '../components/Sidebar/LeftSidebarContent'
-import { RightSidebarContent } from '../components/Sidebar/RightSidebarContent'
+import { Sidebar } from '../components/Sidebar'
 import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
-
-const Map = dynamic(() => import('../components/Map').then((mod) => mod.Map))
-
-const LazySidebar = dynamic(() =>
-  import('../components/Sidebar').then((mod) => mod.Sidebar)
-)
 
 interface Props {
   antagonists: IAntagonistObject
@@ -74,7 +65,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
 
   const [numberOfCards, setNumberOfCards] = useState(0)
   const [numberOfNewCards, setNumberOfNewCards] = useState(0)
-  const [currentTokens, setCurrentTokens] = useState(0)
   const [hasNewParts, setHasNewParts] = useState(false)
   const [defeatedAntagonists, setDefeatedAntagonists] = useState([''])
   const [showOwlTip, setShowOwlTip] = useState(false)
@@ -87,14 +77,10 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   >([])
   const [cardHand, setCardHand] = useState<ICard[]>([])
   const [places, setPlaces] = useState<IScenario[]>([])
-  const [showingSidebar, setShowingSidebar] = useState('left')
-  const [sideBarWidth, setSideBarWidth] = useState(400)
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
-  const toggleShowingSidebar = () => {
-    setShowingSidebar(showingSidebar === 'left' ? 'right' : 'left')
-  }
+  const sideBarWidth = 310
 
   const getUnbeaten = useCallback(
     (place: string) => {
@@ -104,9 +90,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     },
     [places]
   )
-
-  const showLeftSidebar = isMobile ? showingSidebar === 'left' : true
-  const showRightSidebar = isMobile ? showingSidebar === 'right' : true
 
   const getAnyUnbeaten = useCallback(() => {
     // check if any unbeaten antagonists, all places
@@ -137,10 +120,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     const isMediumScreen = aspectRatio < wideScreen && aspectRatio > smallScreen
     const isSmallScreen = aspectRatio < smallScreen
 
-    function getOffsetSign(val: number) {
-      return showingSidebar === 'left' ? val : -val
-    }
-
     if (isPortrait) {
       return offset
     }
@@ -149,12 +128,12 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       // distance between sidebar and interactive map square
       const offsetVal = (width - height) / 2 - sideBarWidth
       // convert sign before checking left/right
-      const signedVal = getOffsetSign(offsetVal * -1)
+      const signedVal = offsetVal * -1
       offset = signedVal
     }
 
     if (isSmallScreen) {
-      offset = getOffsetSign((width - height) / 2)
+      offset = (width - height) / 2
     }
     return offset
   }
@@ -260,27 +239,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     }
   }
 
-  const sidebarEnvironment = (place: string, newScenario: boolean) => {
-    return (
-      <div
-        key={place}
-        className={`${isMobile && styles.textWrapper}`}
-        onClick={() => handleMapClick(place)}
-      >
-        <h3>{t('map.' + place + '.header')}</h3>
-        {newScenario && (
-          <p className={styles.newScenario}>{t('map.newscenario')}</p>
-        )}
-        <p>{t('map.' + place + '.body')}</p>
-        <Button onClick={() => handleMapClick(place)}>
-          {t('map.play', {
-            place: t('map.' + place + '.header'),
-          })}
-        </Button>
-      </div>
-    )
-  }
-
   useEffect(() => {
     setGameStateValue({
       allowedLootbox: false,
@@ -293,10 +251,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
 
       // get number of new cards
       const noOfNewCards = getNumberOfNewCards(cardCollection)
-      // get number of tokens
       setNumberOfNewCards(noOfNewCards)
-      const noOfTokens = await readTokens()
-      setCurrentTokens(noOfTokens)
 
       const storedPartCollection = await getAvatarPartCollection()
       const getNewParts = getNewAvatarParts(storedPartCollection).length
@@ -311,7 +266,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         setDefeatedAntagonists(defeated)
       }
 
-      cards.length > 0 && setShowingSidebar('right')
       setPlayableAntagonists(antagonistsByHand)
       setCardHand(cards)
 
@@ -388,35 +342,18 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     return isMobile ? sideBarWidth : sideBarWidth / 2
   }, [sideBarWidth, isMobile])
 
-  const getLeftPosition = () =>
-    showingSidebar === 'left' && isMobile
-      ? '0'
-      : showingSidebar === 'left'
-      ? `${leftPosOfProgressbar}px`
-      : `-${leftPosOfProgressbar}px`
+  const getLeftPosition = () => (isMobile ? '0' : `${leftPosOfProgressbar}px`)
 
   return (
     <>
       {isMobile && <MapBackground />}
-      <AlertBox showingSidebar={showingSidebar} sideBarWidth={sideBarWidth} />
-      {showLeftSidebar && (
-        <LazySidebar
-          side='left'
-          isShowing={showingSidebar === 'left'}
-          onToggle={toggleShowingSidebar}
-          width={sideBarWidth}
-          setWidth={setSideBarWidth}
-        >
-          <LeftSidebarContent
-            cardHand={cardHand}
-            toggleShowingSidebar={toggleShowingSidebar}
-            numberOfCards={numberOfCards}
-            numberOfNewCards={numberOfNewCards}
-            currentTokens={currentTokens}
-            hasNewParts={hasNewParts}
-          />
-        </LazySidebar>
-      )}
+      <AlertBox sideBarWidth={sideBarWidth} />
+      <Sidebar
+        cardHand={cardHand}
+        numberOfCards={numberOfCards}
+        numberOfNewCards={numberOfNewCards}
+        hasNewParts={hasNewParts}
+      />
       <motion.div
         className={styles.progressbarWrapper}
         initial={{ left: 0 }}
@@ -449,25 +386,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
           </motion.div>
         </section>
       )}
-      {showRightSidebar && (
-        <LazySidebar
-          side='right'
-          onToggle={toggleShowingSidebar}
-          isShowing={showingSidebar === 'right'}
-          width={sideBarWidth}
-          setWidth={setSideBarWidth}
-        >
-          <RightSidebarContent
-            cardHand={cardHand}
-            unlockedPlaces={unlockedPlaces}
-            getAnyUnbeaten={getAnyUnbeaten}
-            getUnbeaten={getUnbeaten}
-            sidebarEnvironment={sidebarEnvironment}
-            onToggle={toggleShowingSidebar}
-          />
-        </LazySidebar>
-      )}
-      {/* )} */}
       <AnimatePresence>
         {showOwlTip && (
           <motion.div
