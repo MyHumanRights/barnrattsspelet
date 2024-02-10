@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
@@ -16,7 +15,6 @@ import {
   getShownSecondChallengeTip,
   getShownWelcomeTip,
   readDefeatedAntagonists,
-  readTokens,
   setGameStateValue,
   setPlayFromScenario,
   setShownChangeHandTip,
@@ -38,7 +36,6 @@ import {
 } from '@/utils/types'
 
 import { AlertBox } from '../components/AlertBox'
-import { Button } from '../components/Button'
 import { Map } from '../components/Map'
 import { MapBackground } from '../components/MapBackground'
 import { OwlDialogue } from '../components/OwlDialogue'
@@ -68,7 +65,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
 
   const [numberOfCards, setNumberOfCards] = useState(0)
   const [numberOfNewCards, setNumberOfNewCards] = useState(0)
-  const [currentTokens, setCurrentTokens] = useState(0)
   const [hasNewParts, setHasNewParts] = useState(false)
   const [defeatedAntagonists, setDefeatedAntagonists] = useState([''])
   const [showOwlTip, setShowOwlTip] = useState(false)
@@ -81,7 +77,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   >([])
   const [cardHand, setCardHand] = useState<ICard[]>([])
   const [places, setPlaces] = useState<IScenario[]>([])
-  const [showingSidebar, setShowingSidebar] = useState('left')
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
@@ -125,10 +120,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     const isMediumScreen = aspectRatio < wideScreen && aspectRatio > smallScreen
     const isSmallScreen = aspectRatio < smallScreen
 
-    function getOffsetSign(val: number) {
-      return showingSidebar === 'left' ? val : -val
-    }
-
     if (isPortrait) {
       return offset
     }
@@ -137,12 +128,12 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       // distance between sidebar and interactive map square
       const offsetVal = (width - height) / 2 - sideBarWidth
       // convert sign before checking left/right
-      const signedVal = getOffsetSign(offsetVal * -1)
+      const signedVal = offsetVal * -1
       offset = signedVal
     }
 
     if (isSmallScreen) {
-      offset = getOffsetSign((width - height) / 2)
+      offset = (width - height) / 2
     }
     return offset
   }
@@ -248,27 +239,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     }
   }
 
-  const sidebarEnvironment = (place: string, newScenario: boolean) => {
-    return (
-      <div
-        key={place}
-        className={`${isMobile && styles.textWrapper}`}
-        onClick={() => handleMapClick(place)}
-      >
-        <h3>{t('map.' + place + '.header')}</h3>
-        {newScenario && (
-          <p className={styles.newScenario}>{t('map.newscenario')}</p>
-        )}
-        <p>{t('map.' + place + '.body')}</p>
-        <Button onClick={() => handleMapClick(place)}>
-          {t('map.play', {
-            place: t('map.' + place + '.header'),
-          })}
-        </Button>
-      </div>
-    )
-  }
-
   useEffect(() => {
     setGameStateValue({
       allowedLootbox: false,
@@ -281,10 +251,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
 
       // get number of new cards
       const noOfNewCards = getNumberOfNewCards(cardCollection)
-      // get number of tokens
       setNumberOfNewCards(noOfNewCards)
-      const noOfTokens = await readTokens()
-      setCurrentTokens(noOfTokens)
 
       const storedPartCollection = await getAvatarPartCollection()
       const getNewParts = getNewAvatarParts(storedPartCollection).length
@@ -299,7 +266,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         setDefeatedAntagonists(defeated)
       }
 
-      cards.length > 0 && setShowingSidebar('right')
       setPlayableAntagonists(antagonistsByHand)
       setCardHand(cards)
 
@@ -381,12 +347,11 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   return (
     <>
       {isMobile && <MapBackground />}
-      <AlertBox showingSidebar={showingSidebar} sideBarWidth={sideBarWidth} />
+      <AlertBox sideBarWidth={sideBarWidth} />
       <Sidebar
         cardHand={cardHand}
         numberOfCards={numberOfCards}
         numberOfNewCards={numberOfNewCards}
-        currentTokens={currentTokens}
         hasNewParts={hasNewParts}
       />
       <motion.div
