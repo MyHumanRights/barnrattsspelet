@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/jennieandersson/childrens-rights/compare/v1.0.0...v1.1.0) (2024-02-11)
+
+
+### Features
+
+* add health page ([4611d32](https://github.com/jennieandersson/childrens-rights/commit/4611d32a797073ef3ff58f995440202d21f8893e))
+* set `unstable_setRequestLocale` ([3f49dab](https://github.com/jennieandersson/childrens-rights/commit/3f49dab508ff76b40514703d125b47fec9ab96f6))
+
 # 1.0.0 (2024-02-11)
 
 
