@@ -53,7 +53,7 @@
       "avatarbuilder": "Skapa en avatar genom att välja olika hårstilar, kläder, ansikten och färger",
       "collectionviewer": "Se alla rättighetskort som finns tillgängliga och läs mer om dem",
       "cookiepolicy": "Läs mer om hur vi hanterar kakor på denna webbplats",
-      "deckbuilder": "Se alla hittade rättighetskort och bygg en korthand",
+      "deckbuilder": "Se alla hittade rättighetskort",
       "guidance": "Ladda ned handledningen för att få tips på hur barns kunskaper om sina rättigheter kan utvecklas och stärkas med hjälp av Barnrättsspelet",
       "help": "Här finns information om var du kan vända dig om du behöver prata med någon",
       "home": "Testa vad du kan om dina rättigheter och träna på att använda dem",
@@ -336,16 +336,10 @@
     "newscenario": "Ny utmaning!"
   },
   "deckbuilder": {
-    "heading": "Välj 7 rättighetskort för att starta en utmaning",
-    "preamble": "Du ska ha 7 rättighetskort i handen för att spela. Men du kan ta bort ett rättighetskort om du vill byta.",
-    "wrongAmountOfCards": "Du måste välja 7 rättighetskort",
-    "emptyhand": "Töm korthand",
-    "cardsselected": "av {maxcards} rättighetskort valda",
-    "cardsselectedmobile": "av {maxcards} valda",
+    "heading": "Se dina rättighetskort",
+    "preamble": "Här ser du vilka rättighetskort du har samlat på dig.",
     "categories": {
-      "all": "Alla",
-      "mamma": "Mamma",
-      "pappa": "Pappa"
+      "all": "Alla"
     }
   },
   "avatarbuilder": {

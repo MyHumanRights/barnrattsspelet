@@ -13,7 +13,6 @@ import { IAntagonistObject, ICard } from '@/utils/types'
 
 import { Button } from '../Button'
 import { ChevronRight } from '../Icons/ChevronRight'
-import { Plus } from '../Icons/Plus'
 import styles from './CardItem.module.scss'
 
 const LazyCard = dynamic(() => import('../Card').then((mod) => mod.Card))
@@ -28,7 +27,6 @@ interface Props {
   onOpenBoost: (card: ICard) => void
   setActiveCardId: (cardId: string | null) => void
   playCardScenario: (card: ICard) => void
-  addCardToHand: (card: ICard) => void
   renderSize: (
     active: boolean
   ) => 'small' | 'large' | 'medium' | 'appCard' | 'xsmall'
@@ -45,7 +43,6 @@ export const CardItem: React.FC<Props> = memo(
     onOpenBoost,
     setActiveCardId,
     playCardScenario,
-    addCardToHand,
     renderSize,
   }) => {
     const t = useTranslations()
@@ -165,18 +162,6 @@ export const CardItem: React.FC<Props> = memo(
                       </Button>
                     )}
                   </div>
-                )}
-                {!isCollectionViewer && !isApp && (
-                  <Button
-                    onClick={() => addCardToHand(card)}
-                    hasOwnSound
-                    onMouseEnter={triggerAdd}
-                  >
-                    {t('carddata.addtohand')}
-                    <motion.span animate={animateAdd}>
-                      <Plus />
-                    </motion.span>
-                  </Button>
                 )}
               </motion.div>
             )}

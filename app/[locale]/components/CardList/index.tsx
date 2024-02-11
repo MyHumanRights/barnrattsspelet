@@ -121,22 +121,6 @@ export const CardList: React.FC<Props> = ({
     router.push('/persuade')
   }
 
-  function addCardToHand(currentCard: ICard) {
-    setActiveCardId(null)
-
-    if (FULL_HAND) {
-      setShowMaxCardsOwl(true)
-      return
-    }
-
-    soundEffectsOn && playAddCardSound()
-
-    setMyCards([...myCards, currentCard])
-    const newCards = cards.filter((card) => card.id !== currentCard.id)
-
-    setAllCards(newCards)
-  }
-
   const renderEmptyCard = (card: ICard) => {
     return (
       <li key={card.id}>
@@ -231,7 +215,6 @@ export const CardList: React.FC<Props> = ({
             onOpenBoost={onOpenBoost}
             setActiveCardId={setActiveCardId}
             playCardScenario={playCardScenario}
-            addCardToHand={addCardToHand}
             renderSize={renderSize}
           />
         ) : (
