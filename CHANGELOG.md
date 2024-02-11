@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/jennieandersson/childrens-rights/compare/v1.1.0...v1.2.0) (2024-02-11)
+
+
+### Features
+
+* remove owls mentioning cardhand ([1139dea](https://github.com/jennieandersson/childrens-rights/commit/1139dea8f58fd01bdbbe020d7abe1048da1c1f25))
+
 # [1.1.0](https://github.com/jennieandersson/childrens-rights/compare/v1.0.0...v1.1.0) (2024-02-11)
 
 
