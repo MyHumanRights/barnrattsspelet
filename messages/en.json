@@ -284,8 +284,6 @@
   },
   "map": {
     "mainheading": "Karta",
-    "playheading": "Välj en plats för att spela",
-    "playheadingnocards": "Välj en korthand för att spela",
     "text": "Kort beskrivning om vilka teman du kan tänkas möte på denna plats",
     "nomoreantagonists": "Du har redan vunnit mot alla här, men du kan spela om utmaningar för att vinna fler rättighetskort",
     "cardhand": "Min korthand",
@@ -461,10 +459,6 @@
     "flipcardtip": {
       "heading": "Prova att vända på korten",
       "body": "På baksidan av korten står det mer text som kanske gör det lättare för dig att hitta rätt kort."
-    },
-    "secondchallenge": {
-      "heading": "Dags för en ny utmaning!",
-      "body": "Välj 7 nya rättighetskort."
     },
     "noplayablescenarios": {
       "heading": "Oj, det fanns ingen utmaning här",

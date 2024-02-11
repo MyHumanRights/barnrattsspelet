@@ -170,16 +170,6 @@ export async function getShownPlayTip(): Promise<boolean> {
   return read('shownPlayTip')
 }
 
-export async function setShownSecondChallengeTip(
-  boolean: boolean
-): Promise<void | Error> {
-  return save('shownSecondChallengeTip', boolean)
-}
-
-export async function getShownSecondChallengeTip(): Promise<boolean> {
-  return read('shownSecondChallengeTip')
-}
-
 export async function setShownEnableCardTip(
   boolean: boolean
 ): Promise<void | Error> {
@@ -214,7 +204,6 @@ export async function resetShownTips(): Promise<void | Error> {
   save('shownChangeHandTip', 0)
   save('shownWelcomeTip', false)
   save('shownPlayTip', false)
-  save('shownSecondChallengeTip', false)
   save('shownEnableCardTip', false)
   save('shownTokenTip', false)
   save('shownFlipCardTip', false)

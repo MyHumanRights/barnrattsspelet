@@ -12,14 +12,12 @@ import {
   getCardHand,
   getShownNoUndefeatedTip,
   getShownPlayTip,
-  getShownSecondChallengeTip,
   getShownWelcomeTip,
   readDefeatedAntagonists,
   setGameStateValue,
   setPlayFromScenario,
   setShownChangeHandTip,
   setShownPlayTip,
-  setShownSecondChallengeTip,
   setShownWelcomeTip,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -66,7 +64,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [numberOfCards, setNumberOfCards] = useState(0)
   const [numberOfNewCards, setNumberOfNewCards] = useState(0)
   const [hasNewParts, setHasNewParts] = useState(false)
-  const [defeatedAntagonists, setDefeatedAntagonists] = useState([''])
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [owlTip, setOwlTip] = useState<IOwlContent | null>(null)
   const [multipleOwlMessages, setMultipleOwlMessages] = useState(false)
@@ -166,18 +163,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
           body: 'Owl.homewelcome.text_1.body',
         }
       }
-
-      // check if player just won first challenge
-      if (defeatedAntagonists.length === 1) {
-        const shownSecond = await getShownSecondChallengeTip()
-        if (!shownSecond) {
-          setShownSecondChallengeTip(true)
-          return {
-            heading: 'Owl.secondchallenge.heading',
-            body: 'Owl.secondchallenge.body',
-          }
-        }
-      }
     } else {
       // check if no playable or no unplayed available, set owl tip
       // Skip if player has already been notified that
@@ -212,7 +197,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       }
     }
     return false
-  }, [cardHand, defeatedAntagonists, getAnyUnbeaten, unlockedPlaces])
+  }, [cardHand, getAnyUnbeaten, unlockedPlaces])
 
   function handleOwlClick() {
     if (multipleOwlMessages) {
@@ -223,7 +208,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         },
         { heading: null, body: 'Owl.homewelcome.text_2.body' },
         { heading: null, body: 'Owl.homewelcome.text_3.body' },
-        { heading: null, body: 'Owl.homewelcome.text_4.body' },
       ]
 
       if (owlMessageIndex + 1 === welcomeTextsArr.length) {
@@ -261,10 +245,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       const cards = await getCardHand()
       const defeated = await readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
-
-      if (defeated.length === 1) {
-        setDefeatedAntagonists(defeated)
-      }
 
       setPlayableAntagonists(antagonistsByHand)
       setCardHand(cards)
