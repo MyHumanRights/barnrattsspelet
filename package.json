@@ -1,6 +1,6 @@
 {
   "name": "childrensrightsgame-next",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -46,7 +46,9 @@
     "@semantic-release/git"
   ],
   "release": {
-    "branches": [ "main" ],
+    "branches": [
+      "main"
+    ],
     "prepare": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
