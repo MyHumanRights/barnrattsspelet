@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jennieandersson/childrens-rights/compare/v1.2.0...v1.3.0) (2024-02-11)
+
+
+### Features
+
+* remove build card hand ([b96fb5a](https://github.com/jennieandersson/childrens-rights/commit/b96fb5a3aab9b5c6e8badc957e0ab9e7a6134b8e))
+
 # [1.2.0](https://github.com/jennieandersson/childrens-rights/compare/v1.1.0...v1.2.0) (2024-02-11)
 
 
