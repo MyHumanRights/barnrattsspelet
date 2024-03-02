@@ -144,7 +144,6 @@ export const Card: React.FC<Props> = ({
       el.removeAttribute('tabIndex')
     }
   }, [isOpen])
-
   return (
     <motion.article
       layout
@@ -195,6 +194,7 @@ export const Card: React.FC<Props> = ({
                 backgroundImage: `url(${which.image})`,
               }}
             >
+              <div className={styles.article}>{which.article}</div>
               {!nonInteractive && (
                 <button
                   className={styles.flipButton}
