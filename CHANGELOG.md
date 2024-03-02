@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/jennieandersson/childrens-rights/compare/v1.3.0...v1.4.0) (2024-03-02)
+
+
+### Features
+
+* add article number ([a60f894](https://github.com/jennieandersson/childrens-rights/commit/a60f894e1c525446ec17b95c1d66383cc1833a02))
+
 # [1.3.0](https://github.com/jennieandersson/childrens-rights/compare/v1.2.0...v1.3.0) (2024-02-11)
 
 
