@@ -46,27 +46,21 @@
 .menu {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  margin: 3rem 0 1rem 0;
-  gap: 2rem;
+  justify-content: space-between;
+  flex: 1;
 
-  @media (min-width: 768px) {
-    margin-top: 1rem;
+  a {
+    justify-content: center;
+    width: 100%;
+    font-size: 1rem;
   }
-}
-
-.menu > * a,
-.menu > * button {
-  justify-content: center;
-  width: 100%;
-  font-size: 1rem;
-  @include fontBangers;
 }
 
 .linkWrapper {
   padding: 0.5rem 0px;
   margin: 0 0 0.5rem 0;
   cursor: pointer;
+  @include fontBangers;
 
   @media (max-width: 600px) and (min-height: 850px) {
     margin: 3rem 0;

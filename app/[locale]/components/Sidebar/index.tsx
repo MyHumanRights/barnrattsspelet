@@ -4,6 +4,7 @@ import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 
+import { HelpBox } from '../HelpBox'
 import { Link } from '../Link/Link'
 import { AvatarLink } from './AvatarLink'
 import { CardCollectionLink } from './CardCollectionLink'
@@ -73,6 +74,8 @@ export const Sidebar: React.FC<Props> = ({
           />
 
           <AvatarLink hasNewParts={hasNewParts} />
+
+          <HelpBox />
 
           {/* <motion.div
             className={`${styles.linkWrapper} ${

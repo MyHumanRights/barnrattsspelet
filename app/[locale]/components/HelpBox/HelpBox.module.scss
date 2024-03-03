@@ -1,0 +1,11 @@
+@import '../../../global.scss';
+
+.box {
+  background-color: #fff;
+  margin-inline: -24px;
+  padding: 1rem 2rem;
+
+  h2 {
+    @include fontBangers;
+  }
+}
