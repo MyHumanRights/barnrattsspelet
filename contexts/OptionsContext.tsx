@@ -31,8 +31,6 @@ interface OptionsContextProps {
   playSoundEffect: (playSound: () => void, delay?: number) => void
   playVoiceover: (path: string) => Promise<HTMLAudioElement | undefined>
   setOptions: React.Dispatch<React.SetStateAction<Options>>
-  setShouldShowAlertBox: React.Dispatch<React.SetStateAction<boolean>>
-  shouldShowAlertBox: boolean
   toggleThemeSound: (soundOn?: boolean) => void
 }
 
@@ -43,7 +41,6 @@ const OptionsContext = createContext<OptionsContextProps>(
 export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [shouldShowAlertBox, setShouldShowAlertBox] = useState(true)
   const [currentVoiceover, setCurrentVoiceover] =
     useState<HTMLAudioElement | null>(null)
   const [options, setOptions] = useState({
@@ -153,8 +150,6 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
         clientHeight,
         clientWidth,
         isMobile,
-        shouldShowAlertBox,
-        setShouldShowAlertBox,
       }}
     >
       {children}
