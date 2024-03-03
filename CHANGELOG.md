@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/jennieandersson/childrens-rights/compare/v1.4.0...v1.5.0) (2024-03-03)
+
+
+### Features
+
+* remove alertbox, add helpbox ([6c0e9d3](https://github.com/jennieandersson/childrens-rights/commit/6c0e9d3b3f6944a952687bfb35c165b74c431cc2))
+
 # [1.4.0](https://github.com/jennieandersson/childrens-rights/compare/v1.3.0...v1.4.0) (2024-03-02)
 
 
