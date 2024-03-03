@@ -33,7 +33,6 @@ import {
   IScenario,
 } from '@/utils/types'
 
-import { AlertBox } from '../components/AlertBox'
 import { Map } from '../components/Map'
 import { MapBackground } from '../components/MapBackground'
 import { OwlDialogue } from '../components/OwlDialogue'
@@ -327,7 +326,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   return (
     <>
       {isMobile && <MapBackground />}
-      <AlertBox sideBarWidth={sideBarWidth} />
       <Sidebar
         cardHand={cardHand}
         numberOfCards={numberOfCards}
