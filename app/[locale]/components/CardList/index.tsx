@@ -20,16 +20,12 @@ import { CardItem } from './CardItem'
 import styles from './CardList.module.scss'
 
 const WINDOW_SMALL = 768
-const WINDOW_800 = 800
-const WINDOW_900 = 900
 const WINDOW_1700 = 1700
 
 /** isApp variable:  for viewing the card without any buttons at all in android/iOs, and for design variation */
 
 interface Props {
-  myCards: ICard[]
   allCards: ICard[]
-  setAllCards: (cards: ICard[]) => void
   filter: string | null
   filterType: 'category' | 'theme'
   cardSelectable?: boolean
@@ -40,7 +36,6 @@ interface Props {
 
 export const CardList: React.FC<Props> = ({
   allCards,
-  setAllCards,
   filter,
   filterType,
   cardSelectable = true,
