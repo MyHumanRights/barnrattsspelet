@@ -49,10 +49,7 @@ export const MobileCollectionViewerClient: React.FC<Props> = ({
           </div>
           <div className={styles.folder}>
             <CardList
-              setMyCards={() => {}}
-              myCards={[]}
               allCards={allCards}
-              setAllCards={setAllCards}
               filter={filter}
               filterType='theme'
               isApp={true}
