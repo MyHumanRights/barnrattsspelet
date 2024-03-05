@@ -524,18 +524,29 @@
 }
 
 .article {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 900;
   background-color: #fff;
   border-radius: 0 0 $cardRadiusXSmall $cardRadiusXSmall;
   color: #000;
-  font-size: 0.7rem;
   left: 50%;
-  padding: 0.4rem 0.7rem;
+  padding: 0.2rem 0.7rem;
   position: absolute;
   text-align: center;
   top: 0;
   transform: translateX(-50%);
-  width: fit-content;
   z-index: 2;
+}
+
+.xsmall {
+  .article {
+    font-size: 0.8rem;
+  }
+}
+
+.appCard {
+  .article {
+    font-size: 1.5rem;
+    padding: 0.4rem 1.5rem;
+  }
 }

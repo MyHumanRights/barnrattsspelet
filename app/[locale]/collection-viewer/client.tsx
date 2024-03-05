@@ -98,10 +98,7 @@ export const Client: React.FC<Props> = ({
             <div className={styles.folder}>
               {isMobile ? (
                 <CardList
-                  setMyCards={() => {}}
-                  myCards={[]}
                   allCards={allCards}
-                  setAllCards={setAllCards}
                   filter={filter}
                   filterType='theme'
                   isCollectionViewer={true}
@@ -110,10 +107,7 @@ export const Client: React.FC<Props> = ({
               ) : (
                 <Folder>
                   <CardList
-                    setMyCards={() => {}}
-                    myCards={[]}
                     allCards={allCards}
-                    setAllCards={setAllCards}
                     filter={filter}
                     filterType='theme'
                     isCollectionViewer={true}

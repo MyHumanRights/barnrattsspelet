@@ -18,7 +18,6 @@ export const DeckBuilderClient = () => {
   const t = useTranslations()
 
   const [allCards, setAllCards] = useState<ICard[]>([])
-  const [myCards, setMyCards] = useState<ICard[]>([])
   const [filter, setFilter] = useState<string | null>(null)
 
   const {
@@ -84,20 +83,14 @@ export const DeckBuilderClient = () => {
         <div className={styles.folder}>
           {isMobile ? (
             <CardList
-              setMyCards={setMyCards}
-              myCards={myCards}
               allCards={allCards}
-              setAllCards={setAllCards}
               filter={filter}
               filterType='category'
             />
           ) : (
             <Folder>
               <CardList
-                setMyCards={setMyCards}
-                myCards={myCards}
                 allCards={allCards}
-                setAllCards={setAllCards}
                 filter={filter}
                 filterType='category'
               />

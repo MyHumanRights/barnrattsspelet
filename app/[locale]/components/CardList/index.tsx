@@ -8,13 +8,11 @@ import {
   setGameStateValue,
   setPlayFromScenario,
 } from '@/api/storage'
-import addCardSound from '@/assets/sounds/fx/07-add-card-to-hand.mp3'
 import showCardSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
 import { useRouter } from '@/navigation'
-import { MAX_CARDS } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 
 import { OwlDialogue } from '../OwlDialogue'
@@ -22,17 +20,12 @@ import { CardItem } from './CardItem'
 import styles from './CardList.module.scss'
 
 const WINDOW_SMALL = 768
-const WINDOW_800 = 800
-const WINDOW_900 = 900
 const WINDOW_1700 = 1700
 
 /** isApp variable:  for viewing the card without any buttons at all in android/iOs, and for design variation */
 
 interface Props {
-  setMyCards: (cards: ICard[]) => void
-  myCards: ICard[]
   allCards: ICard[]
-  setAllCards: (cards: ICard[]) => void
   filter: string | null
   filterType: 'category' | 'theme'
   cardSelectable?: boolean
@@ -42,10 +35,7 @@ interface Props {
 }
 
 export const CardList: React.FC<Props> = ({
-  setMyCards,
-  myCards,
   allCards,
-  setAllCards,
   filter,
   filterType,
   cardSelectable = true,
@@ -63,12 +53,9 @@ export const CardList: React.FC<Props> = ({
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
 
-  const [playAddCardSound] = useSound(addCardSound, { volume: effectsVolume })
   const [playOpenCardSound] = useSound(showCardSound, {
     volume: effectsVolume,
   })
-
-  const FULL_HAND = myCards.length === MAX_CARDS
 
   useEffect(() => {
     setCards(allCards)
@@ -132,17 +119,11 @@ export const CardList: React.FC<Props> = ({
     )
   }
 
-  function renderSize(active: boolean) {
-    if (active && clientWidth <= WINDOW_SMALL) {
+  const renderSize = (active: boolean) => {
+    if (clientWidth <= WINDOW_SMALL) {
       return 'appCard'
     } else if (active && clientWidth > WINDOW_SMALL) {
       return 'large'
-    } else if (clientWidth < WINDOW_SMALL) {
-      return 'appCard'
-    } else if (clientWidth < WINDOW_800) {
-      return 'small'
-    } else if (clientWidth < WINDOW_900) {
-      return 'xsmall'
     } else if (clientWidth < WINDOW_1700) {
       return 'small'
     } else {
