@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/jennieandersson/childrens-rights/compare/v1.5.0...v1.5.1) (2024-03-05)
+
+
+### Bug Fixes
+
+* css fix for article number ([e941766](https://github.com/jennieandersson/childrens-rights/commit/e9417664b57cb7707b92362a29ef4f070373de7e))
+* remove unused code in MobileCollectionViewerClient ([b4d1c92](https://github.com/jennieandersson/childrens-rights/commit/b4d1c92f0f0a26ecd7a97d6993d7b4f8743ce5ca))
+* remove unused props ([58cca41](https://github.com/jennieandersson/childrens-rights/commit/58cca4177575e9f48b538d96be4e828737ebcd72))
+
 # [1.5.0](https://github.com/jennieandersson/childrens-rights/compare/v1.4.0...v1.5.0) (2024-03-03)
 
 
