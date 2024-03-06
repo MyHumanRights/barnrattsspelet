@@ -7,7 +7,7 @@ import { Boost } from '../../../components/Boost'
 interface Props {
   onModalClose: () => void
   card: ICard | null
-  onCardBoosted: () => void
+  onCardBoosted: (card: ICard) => void
 }
 
 export const ModalContent: React.FC<Props> = ({

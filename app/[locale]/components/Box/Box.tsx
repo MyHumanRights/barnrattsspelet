@@ -6,7 +6,12 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 
 import styles from './Box.module.scss'
 
-const Box = ({ onClick, openBox }) => {
+type Props = {
+  onClick: () => void
+  openBox: boolean
+}
+
+const Box = ({ onClick, openBox }: Props) => {
   const t = useTranslations()
   const {
     options: { shouldReduceMotion },
@@ -19,7 +24,7 @@ const Box = ({ onClick, openBox }) => {
 
   const DIV = shouldReduceMotion ? 'div' : motion.div
 
-  const ref = useRef()
+  const ref = useRef<HTMLButtonElement>(null)
 
   const variants = {
     start: {
@@ -57,8 +62,7 @@ const Box = ({ onClick, openBox }) => {
       transition={{ type: 'tween', delay: DELAY * 4, duration: DURATION }}
     >
       <DIV
-        onClick={() => ref.current.click()}
-        controls
+        onClick={() => ref?.current?.click()}
         animate={animation && !openBox ? 'start' : 'stop'}
         variants={variants}
       >

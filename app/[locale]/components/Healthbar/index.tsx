@@ -1,6 +1,10 @@
 import '../../../global.scss'
 
-import { motion, useAnimation } from 'framer-motion'
+import {
+  AnimationDefinition,
+  motion,
+  useAnimationControls,
+} from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 
@@ -8,16 +12,20 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 
 import styles from './Healthbar.module.scss'
 
-export const Healthbar = ({ health }) => {
+type Props = {
+  health: number
+}
+
+export const Healthbar = ({ health }: Props) => {
   const [progressAnimation, setProgressAnimation] = useState('')
   const t = useTranslations('healthbar')
-  const starAnimation = useAnimation()
+  const starAnimation = useAnimationControls()
   const {
     options: { shouldReduceMotion },
   } = useOptionsContext()
 
   useEffect(() => {
-    let healthAnimation = {
+    let healthAnimation: AnimationDefinition = {
       scale: [1, 1.3, 0.9, 1],
       rotate: ['360deg', '360deg', '0deg', '0deg'],
       transition: { times: [0, 0.1, 0.9, 1] },
@@ -31,7 +39,7 @@ export const Healthbar = ({ health }) => {
       }
       setProgressAnimation('')
     }
-    starAnimation.start(() => healthAnimation)
+    starAnimation.start(healthAnimation)
   }, [health, starAnimation, shouldReduceMotion])
 
   return (

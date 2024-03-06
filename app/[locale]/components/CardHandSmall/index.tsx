@@ -1,11 +1,17 @@
 import { setGameStateValue } from '@/api/storage'
 import { useRouter } from '@/navigation'
+import { ICard } from '@/utils/types'
 
 import { Card } from '../Card'
 import { Plus } from '../Icons/Plus'
 import styles from './CardHandSmall.module.scss'
 
-export const CardHandSmall = ({ cards, trigger = () => {} }) => {
+type Props = {
+  cards: ICard[]
+  trigger?: () => void
+}
+
+export const CardHandSmall = ({ cards, trigger = () => {} }: Props) => {
   const router = useRouter()
 
   const handleClick = () => {
@@ -36,7 +42,7 @@ export const CardHandSmall = ({ cards, trigger = () => {} }) => {
             <li key={`${card.id}-${cardId}`}>
               <Card
                 which={card}
-                onClick={false}
+                onClick={undefined}
                 id={`card-${card.id}`}
                 size='xsmall'
                 nonInteractive={true}

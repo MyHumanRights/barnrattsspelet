@@ -1,6 +1,15 @@
 import styles from './AvatarColorSelector.module.scss'
 import { AvatarColorSwatch } from './AvatarColorSwatch'
 
+type Props = {
+  title: string
+  category: string
+  colors: string[]
+  activeColor: string
+  onClick: (color: string) => void
+  ariaLabel: string
+}
+
 export const AvatarColorSelector = ({
   title,
   category,
@@ -8,7 +17,7 @@ export const AvatarColorSelector = ({
   activeColor,
   onClick,
   ariaLabel,
-}) => {
+}: Props) => {
   return (
     <fieldset id={`${category}color`} className={styles.wrapper}>
       <h2 className='font-bangers'>{title}</h2>

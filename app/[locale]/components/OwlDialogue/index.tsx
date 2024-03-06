@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { PropsWithChildren, useEffect } from 'react'
+import { Dispatch, PropsWithChildren, SetStateAction, useEffect } from 'react'
 
 import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { ButtonSize, ButtonVariant } from '@/utils/constants'
+import { ButtonSize, ButtonVariant, OWLS } from '@/utils/constants'
 
 import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
@@ -13,7 +13,8 @@ import styles from './OwlDialogue.module.scss'
 interface Props {
   body?: string | null
   heading?: string | null
-  setShowOwl?: (show: boolean) => void
+  setShowOwl?: Dispatch<SetStateAction<boolean>>
+  setShowSpecificOwl?: Dispatch<SetStateAction<OWLS | null>>
   setHasShownOwlTip?: (show: boolean) => void
   cta?: string
   disabled?: boolean
@@ -30,7 +31,8 @@ interface Props {
 export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
   body,
   heading,
-  setShowOwl = () => {},
+  setShowOwl,
+  setShowSpecificOwl,
   setHasShownOwlTip = () => {},
   cta,
   disabled = false,
@@ -62,7 +64,8 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
 
   function handleClick() {
     setHasShownOwlTip(true)
-    setShowOwl(false)
+    setShowOwl && setShowOwl(false)
+    setShowSpecificOwl && setShowSpecificOwl(null)
     onClick()
   }
 

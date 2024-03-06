@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import {
   getFirstTimePlaying,
@@ -13,8 +13,13 @@ import { OWLS } from '@/utils/constants'
 import { OwlDialogue } from '../OwlDialogue'
 import styles from './OwlTips.module.scss'
 
-export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
-  const [firstTimer, setFirstTimer] = useState()
+type Props = {
+  showOwl: OWLS | null
+  setShowOwl: Dispatch<SetStateAction<OWLS | null>>
+}
+
+export const OwlTips = React.memo(({ showOwl, setShowOwl }: Props) => {
+  const [firstTimer, setFirstTimer] = useState<boolean | undefined>(undefined)
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
   const [hasShownIntroOwl, setHasShownIntroOwl] = useState(false)
   const [hasShownEnableCardTip, setHasShownEnableCardTip] = useState(false)
@@ -48,7 +53,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
             <OwlDialogue
               heading='Owl.intro.heading'
               body='Owl.intro.body'
-              setShowOwl={setShowOwl}
+              setShowSpecificOwl={setShowOwl}
               setHasShownOwlTip={setHasShownIntroOwl}
             />
           </motion.div>
@@ -64,7 +69,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
             <OwlDialogue
               heading='Owl.enablecard.heading'
               body='Owl.enablecard.body'
-              setShowOwl={setShowOwl}
+              setShowSpecificOwl={setShowOwl}
               onClick={() => setShownEnableCardTip(true)}
             />
           </motion.div>
@@ -80,7 +85,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
             <OwlDialogue
               heading='Owl.token.heading'
               body='Owl.token.body'
-              setShowOwl={setShowOwl}
+              setShowSpecificOwl={setShowOwl}
               setHasShownOwlTip={onHideTokenTip}
             />
           </motion.div>
@@ -96,7 +101,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
             <OwlDialogue
               heading='Owl.quiztip.heading'
               body='Owl.quiztip.body'
-              setShowOwl={setShowOwl}
+              setShowSpecificOwl={setShowOwl}
             />
           </motion.div>
         )}
@@ -111,7 +116,7 @@ export const OwlTips = React.memo(({ showOwl, setShowOwl }) => {
             <OwlDialogue
               heading='Owl.flipcardtip.heading'
               body='Owl.flipcardtip.body'
-              setShowOwl={setShowOwl}
+              setShowSpecificOwl={setShowOwl}
             />
           </motion.div>
         )}

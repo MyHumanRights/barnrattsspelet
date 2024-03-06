@@ -13,6 +13,17 @@ import styles from './AvatarPartSelector.module.scss'
 
 const WINDOW_BREAKPOINT = 600
 
+type Props = {
+  category: string
+  text: string
+  onClick: (category: string, direction: number) => void
+  disabled: boolean
+  ariaPrev: string
+  ariaNext: string
+  index: number
+  newPart?: boolean
+}
+
 export const AvatarPartSelector = ({
   category,
   text,
@@ -22,7 +33,7 @@ export const AvatarPartSelector = ({
   ariaNext,
   index,
   newPart,
-}) => {
+}: Props) => {
   const t = useTranslations()
   const [animatePrev, triggerPrev] = useAnimation({ x: -4 })
   const [animateNext, triggerNext] = useAnimation({ x: 4 })

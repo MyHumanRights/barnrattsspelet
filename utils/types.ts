@@ -1,3 +1,5 @@
+import { antagonists } from '@/app/[locale]/components/Antagonist'
+import { environments } from '@/app/[locale]/components/Environment'
 import { AppPathnames } from '@/config'
 
 import { AvatarPart } from '../app/[locale]/components/AvatarPart'
@@ -111,9 +113,9 @@ export interface IGameAntagonist {
   health: number
   name: string
   components: {
-    start: string | null
-    end: string | null
-    background: string
+    start: Antagonists | null
+    end: Antagonists | null
+    background: Environments
   }
   scenarioImage: string
   chatBubblePosition: string
@@ -133,7 +135,7 @@ export interface IGameState {
   statement: number
   progress: number
   cardHand: ICard[]
-  state: GAME_STATES.INTRO
+  state: GAME_STATES
 }
 
 export interface IOwlContent {
@@ -176,3 +178,6 @@ export interface IGameStateObject {
   gameEnvironment: null | string
   isSlimPlay: boolean
 }
+
+export type Environments = keyof typeof environments
+export type Antagonists = keyof typeof antagonists

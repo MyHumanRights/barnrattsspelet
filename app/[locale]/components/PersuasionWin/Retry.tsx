@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 
 import { setCardHand, setPlayFromScenario } from '@/api/storage'
 import { useRouter } from '@/navigation'
+import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 
 import { Button } from '../Button'
@@ -10,7 +11,16 @@ import { Replay } from '../Icons/Replay'
 import { OwlDialogue } from '../OwlDialogue'
 import styles from './Retry.module.scss'
 
-export const Retry = ({ message, onReplay, isScenarioMode }) => {
+type Props = {
+  message: {
+    heading: string
+    body: string
+  }
+  onReplay: () => void
+  isScenarioMode: boolean
+}
+
+export const Retry = ({ message, onReplay, isScenarioMode }: Props) => {
   const t = useTranslations('Owl.persuasiondone')
   const router = useRouter()
   const [animateReplay, triggerReplay] = useAnimation({ rotation: -40 })
@@ -38,10 +48,10 @@ export const Retry = ({ message, onReplay, isScenarioMode }) => {
         cta={isScenarioMode ? t('toscenarios') : t('tohome')}
         secondButton={
           <Button
-            variant='secondary'
+            variant={ButtonVariant.SECONDARY}
             onClick={onReplay}
             onMouseEnter={triggerReplay}
-            size='small'
+            size={ButtonSize.SMALL}
           >
             {t('retry')}
             <motion.span animate={animateReplay}>

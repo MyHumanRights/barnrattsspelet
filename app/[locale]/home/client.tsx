@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
@@ -15,19 +14,16 @@ import {
   getShownWelcomeTip,
   readDefeatedAntagonists,
   setGameStateValue,
-  setPlayFromScenario,
   setShownChangeHandTip,
   setShownPlayTip,
   setShownWelcomeTip,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useRouter } from '@/navigation'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import {
   IAntagonistObject,
   ICard,
-  IGameAntagonist,
   IGameProgress,
   IOwlContent,
   IScenario,
@@ -46,8 +42,6 @@ interface Props {
 }
 
 export const HomeClient: React.FC<Props> = ({ antagonists }) => {
-  const t = useTranslations()
-  const router = useRouter()
   const {
     clientHeight: height,
     clientWidth: width,
@@ -68,9 +62,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [multipleOwlMessages, setMultipleOwlMessages] = useState(false)
   const [owlMessageIndex, setOwlMessageIndex] = useState(0)
   const [unlockedPlaces, setUnlockedPlaces] = useState<string[]>([])
-  const [playableAntagonists, setPlayableAntagonists] = useState<
-    IGameAntagonist[]
-  >([])
   const [cardHand, setCardHand] = useState<ICard[]>([])
   const [places, setPlaces] = useState<IScenario[]>([])
   const [progress, setProgress] = useState({})
@@ -95,12 +86,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     })
   }, [getUnbeaten, unlockedPlaces])
 
-  function getPlayable(place: string) {
-    const currentPlace = places.filter((obj) => obj.place === place)
-    return currentPlace[0].playable
-  }
-
-  function getMapOffset() {
+  const getMapOffset = () => {
     let offset = 0
 
     // current aspect ratio except sidebar
@@ -132,22 +118,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       offset = (width - height) / 2
     }
     return offset
-  }
-
-  const handleMapClick = (place: string) => {
-    setPlayFromScenario(false)
-    let antagonists = getUnbeaten(place)
-
-    if (!antagonists.length) {
-      antagonists = getPlayable(place)
-    }
-
-    const randomAntagonist =
-      antagonists[Math.floor(Math.random() * antagonists.length)]
-
-    //TODO: use params to pass antagonist to persuade page
-    setGameStateValue({ activeAntagonist: randomAntagonist })
-    router.push('/persuade')
   }
 
   const getOwlTip = useCallback(async () => {
@@ -245,7 +215,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       const defeated = await readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
 
-      setPlayableAntagonists(antagonistsByHand)
       setCardHand(cards)
 
       // make progress object
@@ -356,8 +325,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
             transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
           >
             <Map
-              playable={playableAntagonists}
-              onClick={handleMapClick}
               progress={progress}
               // highlightEnv={environment} TODO: use to highligt environments
             />
