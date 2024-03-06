@@ -11,7 +11,11 @@ import {
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/navigation'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import {
+  ButtonVariant,
+  STAT_COLLECTION_NAMES,
+  STAT_FLAGS,
+} from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
 import useHaveWonSuperHero from '@/utils/hooks/useHaveWonSuperHero'
@@ -23,11 +27,16 @@ import styles from './PersuasionWin.module.scss'
 
 const WIN_AMOUNT = 3
 
-export const PersuasionWin = ({ onLootBox, isScenarioMode }) => {
+type Props = {
+  onLootBox: () => void
+  isScenarioMode: boolean
+}
+
+export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
   const t = useTranslations('Owl.persuasiondone')
   const router = useRouter()
   const { clientWidth } = useOptionsContext()
-  const ref = useRef()
+  const ref = useRef<HTMLButtonElement>(null)
 
   const addFirstTimeWin = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_WIN,
@@ -87,14 +96,9 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }) => {
     router.back()
   }
 
-  function goToHome() {
-    setCardHand([])
-    router.push('/home')
-  }
-
-  function goToNextPage(e) {
-    if (e.target.getAttribute('data-click') === null) {
-      ref.current.click()
+  function goToNextPage(e: React.MouseEvent) {
+    if ((e.target as HTMLElement).getAttribute('data-click') === null) {
+      ref.current?.click()
     }
   }
 
@@ -136,20 +140,15 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }) => {
               {!allAreDefeated && <p>{t('winpersuasion.body')}</p>}
               <div className={styles.tokenWrapper}>
                 <Token
-                  ownedTokens={`+${WIN_AMOUNT}`}
+                  ownedTokens={WIN_AMOUNT}
                   size={`${clientWidth > 600 ? 'medium' : 'small'}`}
                 />
               </div>
               <Button
                 ref={ref}
-                variant='text'
-                onClick={
-                  isScenarioMode
-                    ? goToScenarios
-                    : hasSuperhero
-                    ? goToHome
-                    : onLootBox
-                }
+                variant={ButtonVariant.TEXT}
+                //TODO: If user has won everything, go to home
+                onClick={isScenarioMode ? goToScenarios : onLootBox}
                 data-click='button'
               >
                 {isScenarioMode

@@ -3,6 +3,15 @@ import getIsBrightColor from '@/utils/getIsBrightColor'
 import { Check } from '../Icons/Check'
 import styles from './AvatarColorSwatch.module.scss'
 
+type Props = {
+  colorsArray: string[]
+  colorCategory: string
+  onClick: (colorCategory: string, color: string) => void
+  active: string
+  ariaLabel: string
+  group: string
+}
+
 export const AvatarColorSwatch = ({
   colorsArray,
   colorCategory,
@@ -10,7 +19,7 @@ export const AvatarColorSwatch = ({
   active,
   ariaLabel,
   group,
-}) => {
+}: Props) => {
   return (
     <>
       {colorsArray?.map((color) => (

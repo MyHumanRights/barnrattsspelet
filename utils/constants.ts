@@ -7,12 +7,12 @@ export enum CATEGORIES {
   ACCESSORY = 'accessory',
 }
 
-export const OWLS = {
-  INTRO: 'intro',
-  ENABLE_CARD: 'enableCard',
-  FLIP_CARD: 'flipCard',
-  QUIZ: 'quiz',
-  TOKEN: 'token',
+export enum OWLS {
+  INTRO = 'intro',
+  ENABLE_CARD = 'enableCard',
+  FLIP_CARD = 'flipCard',
+  QUIZ = 'quiz',
+  TOKEN = 'token',
 }
 
 export const STAT_COLLECTION_NAMES = {

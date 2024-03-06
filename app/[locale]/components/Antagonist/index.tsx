@@ -10,7 +10,11 @@ export const antagonists = {
   ...antagonistsComponents,
 }
 
-export const Antagonist = ({ antagonist }) => {
+type Props = {
+  antagonist: keyof typeof antagonists
+}
+
+export const Antagonist = ({ antagonist }: Props) => {
   const Antagonist = antagonists[antagonist]
   const startAnimation = useAnimation()
 

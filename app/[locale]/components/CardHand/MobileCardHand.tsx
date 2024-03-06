@@ -1,7 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
@@ -9,6 +15,7 @@ import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
+import { ICard, IGameState } from '@/utils/types'
 
 import { Button } from '../Button'
 import { Card } from '../Card'
@@ -16,6 +23,22 @@ import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './MobileCardHand.module.scss'
 
 const BOOST_COST = -1
+
+type Props = {
+  openBoost: (card: ICard) => void
+  setCurrentState: Dispatch<SetStateAction<IGameState | null>>
+  cards: ICard[]
+  onCardSelected: (card: ICard) => void
+  cardSelectText: string
+  boostedCards?: string[]
+  tokens?: number
+  boostable?: boolean
+  centeredCard?: string | null
+  removeTokens?: (amount: number) => void
+  correctCard?: string | null
+  interactive?: boolean
+  isPersuade?: boolean
+}
 
 export const MobileCardHand = ({
   openBoost,
@@ -31,10 +54,10 @@ export const MobileCardHand = ({
   correctCard,
   interactive = true,
   isPersuade = false,
-}) => {
+}: Props) => {
   const t = useTranslations('cardhand')
-  const interactionButtons = useRef(null)
-  const [cardIndex, setCardIndex] = useState()
+  const interactionButtons = useRef<HTMLButtonElement>(null)
+  const [cardIndex, setCardIndex] = useState<number | null>(null)
   const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
   const [animateSelectBtn, triggerSelectBtn] = useAnimation({ rotation: 1.3 })
   const [currentCard, setCurrentCard] = useState(0)
@@ -71,7 +94,7 @@ export const MobileCardHand = ({
     }
   }
 
-  function handleClickOnCard(index) {
+  const handleClickOnCard = (index: number) => {
     if (cardIndex === index) {
       setCardIndex(null)
       return
@@ -79,12 +102,12 @@ export const MobileCardHand = ({
     interactive && setCardIndex(index)
   }
 
-  function handleCardSelect(card) {
+  const handleCardSelect = (card: ICard) => {
     setCardIndex(null)
     onCardSelected(card)
   }
 
-  function enableCard(card) {
+  const enableCard = (card: ICard) => {
     removeTokens(BOOST_COST)
     cards.forEach((c) => {
       if (c.id === card.id) {
@@ -96,12 +119,13 @@ export const MobileCardHand = ({
     setCurrentState(currentState)
   }
 
-  if (cards.length > 0) {
-    cards.forEach((card, index) => {
-      if (cards.length - 1 === index) card.ref = true
-      else card.ref = false
-    })
-  }
+  // TODO: What is this doing?
+  // if (cards.length > 0) {
+  //   cards.forEach((card, index) => {
+  //     if (cards.length - 1 === index) card.ref = true
+  //     else card.ref = false
+  //   })
+  // }
 
   const buttonVariants = {
     initial: { y: '100px', x: 0 },
@@ -112,9 +136,7 @@ export const MobileCardHand = ({
   }
 
   useEffect(() => {
-    if (interactionButtons.current) {
-      interactionButtons.current.focus()
-    }
+    interactionButtons.current?.focus()
   }, [cardIndex])
 
   useEffect(() => {
@@ -283,8 +305,8 @@ export const MobileCardHand = ({
           >
             <Card
               disabledCard={card.isDisabled}
-              id={currentCard}
-              cardIndex={currentCard}
+              id={currentCard.toString()}
+              cardIndex={currentCard.toString()}
               which={card}
               onClick={() => handleClickOnCard(currentCard)}
               size={isPersuade ? 'medium' : 'small'}

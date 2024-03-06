@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import {
@@ -35,19 +35,34 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/navigation'
-import { OWLS, STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import { Antagonist as AntagonistType } from '@/utils/antagonistType'
+import {
+  ButtonSize,
+  ButtonVariant,
+  OWLS,
+  STAT_COLLECTION_NAMES,
+  STAT_FLAGS,
+} from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useTokens } from '@/utils/hooks/useTokens'
-import { GAME_STATES } from '@/utils/types'
+import {
+  AntagonistComps,
+  Environments,
+  GAME_STATES,
+  ICard,
+  IGameAntagonist,
+  IGameState,
+} from '@/utils/types'
 
 import { Antagonist } from '../components/Antagonist'
-import { Avatar } from '../components/Avatar/'
+import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
 import { CardHand } from '../components/CardHand'
 import { MobileCardHand } from '../components/CardHand/MobileCardHand'
 import { ChatBubble } from '../components/ChatBubble'
 import { Environment } from '../components/Environment'
 import { FirstEntry } from '../components/FirstEntry'
+import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
 import { Modal } from '../components/Modal'
 import { ModalContent } from '../components/Modal/ModalContent'
@@ -71,7 +86,8 @@ export const PersuadeClient = () => {
     toggleThemeSound,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
-  const [activeAntagonist, setActiveAntagonist] = useState(null)
+  const [activeAntagonist, setActiveAntagonist] =
+    useState<AntagonistType | null>(null)
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {
@@ -83,25 +99,30 @@ export const PersuadeClient = () => {
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
-  const [showOwl, setShowOwl] = useState(OWLS.INTRO)
-  const [currentState, setCurrentState] = useState(false)
-  const [environment, setEnvironment] = useState('')
-  const [antagonistComp, setAntagonistComp] = useState()
+  const [showOwl, setShowOwl] = useState<OWLS | null>(OWLS.INTRO)
+  const [currentState, setCurrentState] = useState<IGameState | null>(null)
+  const [environment, setEnvironment] = useState<Environments | null>(null)
+  const [antagonistComp, setAntagonistComp] = useState<AntagonistComps | null>(
+    null
+  )
   const [bgColor, setBgColor] = useState('none')
-  const [chatBubblePosition, setChatBubblePosition] = useState()
-  const [arrowPosition, setArrowPosition] = useState()
-  const [currentCard, setCurrentCard] = useState()
+  const [chatBubblePosition, setChatBubblePosition] = useState('')
+  const [arrowPosition, setArrowPosition] = useState('')
+  const [currentCard, setCurrentCard] = useState<ICard | null>(null)
   const [showModal, setShowModal] = useState(false)
-  const [boostedCards, setBoostedCards] = useState([])
-  const [activeCardId, setActiveCardId] = useState()
-  const [isScenarioMode, setIsScenarioMode] = useState()
+  const [boostedCards, setBoostedCards] = useState<string[]>([])
+  const [activeCardId, setActiveCardId] = useState<string | null>(null)
+  const [isScenarioMode, setIsScenarioMode] = useState(false)
   const [hasShownFlipCardTip, setHasShownFlipCardTip] = useState(true)
-  const [lines, setLines] = useState([])
+  const [lines, setLines] = useState<
+    { text: string; player: boolean; wrongAnswer?: boolean }[]
+  >([])
   const [showWinModal, setShowWinModal] = useState(false)
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(0)
-  const [correctCard, setCorrectCard] = useState(null)
+  const [correctCard, setCorrectCard] = useState<string | null>(null)
+  const [showIntro, setShowIntro] = useState(true)
 
-  const scrollableRef = useRef(null)
+  const scrollableRef = useRef<HTMLDivElement>(null)
 
   const randomWrongAnswer = Math.floor(Math.random() * 6) + 1
   const [ownedTokens, removeTokens] = useTokens(showModal)
@@ -123,38 +144,49 @@ export const PersuadeClient = () => {
     }
   }, [lines])
 
+  const handleIntro = () => {
+    setShowIntro(!showIntro)
+    document.querySelector('html')?.classList.toggle('scroll-lock')
+    startGame()
+  }
+
+  const init = useCallback(async () => {
+    const gameStateAntagonist = (await readGameStateValue(
+      'activeAntagonist'
+    )) as keyof typeof antagonists
+    if (!gameStateAntagonist) {
+      return
+    }
+    setActiveAntagonist(gameStateAntagonist)
+    const cards = await getCardHand()
+    const useAntagonist = antagonists[gameStateAntagonist] as IGameAntagonist
+
+    resetGameState()
+    const currentState = setGameState({
+      antagonist: useAntagonist,
+      cardHand: cards,
+    })
+    setCurrentState(currentState)
+    setAntagonistComp(useAntagonist.components.start)
+    setEnvironment(useAntagonist.components.background)
+    setChatBubblePosition(useAntagonist.chatBubblePosition)
+    setArrowPosition(useAntagonist.antagonistPosition)
+
+    const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
+      await Promise.all([
+        getPlayFromScenario(),
+        readWrongAnswers(),
+        getShownFlipCardTip(),
+        getShownTokenTip(),
+      ])
+    setIsScenarioMode(playFromScenario)
+    setAnsweredIncorrectly(wrongAnswers)
+    setHasShownFlipCardTip(shownFlipCardTip || false)
+    setHasShownTokenTip(shownTokenTip)
+  }, [])
+
   useEffect(() => {
     addFirstTimePersuation()
-
-    const init = async () => {
-      const gameStateAntagonist = await readGameStateValue('activeAntagonist')
-      setActiveAntagonist(gameStateAntagonist)
-      const cards = await getCardHand()
-      const useAntagonist = antagonists[gameStateAntagonist]
-
-      resetGameState()
-      const currentState = setGameState({
-        antagonist: useAntagonist,
-        cardHand: cards,
-      })
-      setCurrentState(currentState)
-      setAntagonistComp(useAntagonist.components.start)
-      setEnvironment(useAntagonist.components.background)
-      setChatBubblePosition(useAntagonist.chatBubblePosition)
-      setArrowPosition(useAntagonist.antagonistPosition)
-
-      const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
-        await Promise.all([
-          getPlayFromScenario(),
-          readWrongAnswers(),
-          getShownFlipCardTip(),
-          getShownTokenTip(),
-        ])
-      setIsScenarioMode(playFromScenario)
-      setAnsweredIncorrectly(wrongAnswers)
-      setHasShownFlipCardTip(shownFlipCardTip || false)
-      setHasShownTokenTip(shownTokenTip)
-    }
 
     init()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -167,7 +199,7 @@ export const PersuadeClient = () => {
     color && setBgColor(color)
   }, [environment])
 
-  const addDefeatedAntagonist = async (antagonist) => {
+  const addDefeatedAntagonist = async (antagonist: IGameAntagonist) => {
     const isScenarioMode = await getPlayFromScenario()
     if (isScenarioMode) {
       return
@@ -209,10 +241,10 @@ export const PersuadeClient = () => {
     !playFromScenario && (await setFirstTimePlaying(false))
   }
 
-  const startGame = async (i18nK) => {
+  const startGame = async () => {
     setLines([
       {
-        text: i18nK,
+        text: `antagonists.${activeAntagonist}.conversationEntries.a`,
         player: true,
       },
     ])
@@ -223,9 +255,13 @@ export const PersuadeClient = () => {
       soundEffectsOn && playChatSound()
     }, 1200)
     setTimeout(() => {
-      const useAntagonist = antagonists[activeAntagonist]
+      const useAntagonist = (
+        activeAntagonist !== null ? antagonists[activeAntagonist] : null
+      ) as IGameAntagonist
       const firstAntagonistLine = {
-        text: `antagonists.${useAntagonist.name}.statements.0`,
+        text: useAntagonist
+          ? `antagonists.${useAntagonist.name}.statements.0`
+          : '',
         player: false,
         miniCard: null,
       }
@@ -240,11 +276,16 @@ export const PersuadeClient = () => {
       }, 2000)
   }
 
-  const onCardSelected = (card) => {
+  const onCardSelected = (card: ICard) => {
     const { result } = answer(card)
 
     const state = getGameState()
     const { statement, antagonist } = state
+
+    if (!antagonist) {
+      console.error('No antagonist found')
+      return
+    }
 
     // Store player's answer in array
     setLines((prev) => [
@@ -271,7 +312,7 @@ export const PersuadeClient = () => {
           setLines((prev) => [
             ...prev,
             {
-              text: `antagonists.${antagonist.name}.statements.${statement}`,
+              text: `antagonists.${antagonist?.name}.statements.${statement}`,
               player: false,
             },
           ])
@@ -317,7 +358,7 @@ export const PersuadeClient = () => {
           // animate correct card & progress
           setCurrentState((prevState) => {
             return {
-              ...prevState,
+              ...(prevState as IGameState),
               cardHand: state.cardHand,
               progress: state.progress,
             }
@@ -380,10 +421,10 @@ export const PersuadeClient = () => {
 
   async function handleModal() {
     setShowModal(!showModal)
-    document.querySelector('html').classList.toggle('scroll-lock')
+    document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
 
-  function openBoost(card) {
+  function openBoost(card: ICard) {
     // setShowOwl(false)
 
     // Temp check of card.question during dev.
@@ -392,12 +433,12 @@ export const PersuadeClient = () => {
     handleModal()
   }
 
-  async function onCardBoosted(card) {
+  const onCardBoosted = (card: ICard) => {
     setBoostedCards([...boostedCards, card.id])
   }
 
   // TODO: Can probably remove this when antagonist gets set at other point
-  if (!currentState.antagonist) {
+  if (!currentState?.antagonist) {
     return null
   }
 
@@ -422,7 +463,7 @@ export const PersuadeClient = () => {
         )}
         {currentState.state === GAME_STATES.INTRO && (
           <>
-            <div className={styles.introA}>
+            {/* <div className={styles.introA}>
               <FirstEntry
                 i18nKey={`antagonists.${currentState.antagonist.name}.conversationEntries.a`}
                 startGame={startGame}
@@ -436,7 +477,14 @@ export const PersuadeClient = () => {
                 startGame={startGame}
                 arrowRight={true}
               />
-            </div>
+            </div> */}
+            {activeAntagonist && (
+              <GameIntro
+                antagonist={activeAntagonist}
+                showModal={showIntro}
+                handleIntro={handleIntro}
+              />
+            )}
           </>
         )}
       </div>
@@ -462,15 +510,15 @@ export const PersuadeClient = () => {
                     miniCard={
                       !isMobile &&
                       selectedCard?.id &&
-                      t(`cards.${selectedCard?.id}.answerline`) ===
-                        t(line.text) &&
-                      selectedCard?.image
+                      t(`cards.${selectedCard?.id}.answerline`) === t(line.text)
+                        ? selectedCard?.image
+                        : null
                     }
                     cta={
                       currentState.state === GAME_STATES.WIN ? (
                         <Button
-                          variant='secondary'
-                          size='small'
+                          variant={ButtonVariant.SECONDARY}
+                          size={ButtonSize.SMALL}
                           onClick={handleWin}
                         >
                           {t('continue')}
@@ -486,8 +534,8 @@ export const PersuadeClient = () => {
       <div className={styles.cancelWrapper}>
         <Button
           onClick={handleCancelScenario}
-          variant='secondary'
-          size='medium'
+          variant={ButtonVariant.SECONDARY}
+          size={ButtonSize.MEDIUM}
         >
           {t('cancel')}
         </Button>
@@ -503,7 +551,6 @@ export const PersuadeClient = () => {
             boostedCards={boostedCards}
             tokens={ownedTokens}
             boostable={true}
-            exitTime={CARD_EXIT}
             centeredCard={activeCardId}
             removeTokens={removeTokens}
             correctCard={correctCard}
@@ -549,7 +596,6 @@ export const PersuadeClient = () => {
           <Modal onModalClose={handleModal}>
             <ModalContent
               card={currentCard}
-              addCardAction={true}
               onModalClose={handleModal}
               onCardBoosted={onCardBoosted}
             />

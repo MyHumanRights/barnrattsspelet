@@ -1,22 +1,30 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, Transition } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
 import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
+import { ICard, IGameState } from '@/utils/types'
 
 import { Card } from '../Card'
 import styles from './CardHand.module.scss'
 
 const BOOST_COST = -1
 
-const WIN_SIZES = {
-  small: 'small',
-  wide: 'wide',
+enum WIN_SIZES {
+  small = 'small',
+  wide = 'wide',
 }
 const WINDOW_BREAKPOINT = 600
 const ROT_DEGREE = 2
@@ -27,14 +35,20 @@ const CARD_WIDTH = 200
 const CARD_HEIGHT = 300
 const uuid = crypto.randomUUID()
 
-function getrotation(index, len, centeredCard = false) {
+const getrotation = (index: number, len: number, centeredCard = false) => {
   if (centeredCard) {
     return 0
   }
   return (index + 1 - (len + 1) / 2) * ROT_DEGREE
 }
 
-function gettop(index, len, winSize, isSelected = false, centeredCard = false) {
+const gettop = (
+  index: number,
+  len: number,
+  winSize: WIN_SIZES,
+  isSelected = false,
+  centeredCard = false
+) => {
   if (centeredCard) {
     return -80
   }
@@ -49,7 +63,12 @@ function gettop(index, len, winSize, isSelected = false, centeredCard = false) {
   return Math.abs(index + 1 - (len + 1) / 2) * TOP_OFFSET
 }
 
-function getleft(index, len, winSize, centeredCard = false) {
+const getleft = (
+  index: number,
+  len: number,
+  winSize: WIN_SIZES,
+  centeredCard = false
+) => {
   const dist =
     winSize === WIN_SIZES.small ? SMALL_SCREEN_DIST : WIDE_SCREEN_DIST
   const total_vw = len * dist
@@ -63,7 +82,7 @@ function getleft(index, len, winSize, centeredCard = false) {
   return free_space + index * dist
 }
 
-function getoffset(len, winSize, centeredCard) {
+const getoffset = (len: number, winSize: WIN_SIZES, centeredCard: boolean) => {
   if (centeredCard) {
     return -(CARD_WIDTH / 4)
   }
@@ -74,6 +93,23 @@ function getoffset(len, winSize, centeredCard) {
     return 0
   }
   return CARD_WIDTH / 4
+}
+
+type Props = {
+  openBoost: (card: ICard) => void
+  setCurrentState: Dispatch<SetStateAction<IGameState | null>>
+  cards: ICard[]
+  onCardSelected: (card: ICard) => void
+  cardSelectText: string
+  boostedCards?: string[]
+  tokens?: number
+  boostable?: boolean
+  exitTime?: number
+  centeredCard?: string | null
+  removeTokens?: (amount: number) => void
+  correctCard: string | null
+  isDeckBuilder?: boolean
+  interactive?: boolean
 }
 
 export const CardHand = ({
@@ -91,10 +127,10 @@ export const CardHand = ({
   correctCard,
   isDeckBuilder = false,
   interactive = true,
-}) => {
+}: Props) => {
   const t = useTranslations('cardhand')
-  const interactionButtons = useRef(null)
-  const [cardIndex, setCardIndex] = useState()
+  const interactionButtons = useRef<HTMLButtonElement>(null)
+  const [cardIndex, setCardIndex] = useState<number | null>(null)
   const [winSize, setWinSize] = useState(WIN_SIZES.wide)
   const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
   const [animateSelectBtn, triggerSelectBtn] = useAnimation({ rotation: 1.3 })
@@ -107,8 +143,15 @@ export const CardHand = ({
     volume: effectsVolume,
   })
 
-  let cardTransition = { type: 'spring', damping: 15, stiffness: 200 }
-  let exitTransition = { type: 'tween', duration: exitTime / 1000 / 2 }
+  let cardTransition: Transition = {
+    type: 'spring',
+    damping: 15,
+    stiffness: 200,
+  }
+  let exitTransition: Transition = {
+    type: 'tween',
+    duration: exitTime / 1000 / 2,
+  }
 
   const checkWindow = useCallback(() => {
     let screenWidth = window.innerWidth
@@ -154,11 +197,11 @@ export const CardHand = ({
 
   useEffect(() => {
     if (interactionButtons.current) {
-      interactionButtons.current.focus()
+      interactionButtons.current?.focus()
     }
   }, [cardIndex])
 
-  function handleClickOnCard(index, leave) {
+  const handleClickOnCard = (index: number, leave: boolean) => {
     if (cardIndex === index && leave) {
       setCardIndex(null)
       return
@@ -166,12 +209,12 @@ export const CardHand = ({
     interactive && setCardIndex(index)
   }
 
-  function handleCardSelect(card) {
+  const handleCardSelect = (card: ICard) => {
     setCardIndex(null)
     onCardSelected(card)
   }
 
-  function enableCard(card) {
+  const enableCard = (card: ICard) => {
     removeTokens(BOOST_COST)
     cards.forEach((c) => {
       if (c.id === card.id) {
@@ -183,12 +226,13 @@ export const CardHand = ({
     setCurrentState(currentState)
   }
 
-  if (cards.length > 0) {
-    cards.forEach((card, index) => {
-      if (cards.length - 1 === index) card.ref = true
-      else card.ref = false
-    })
-  }
+  // TODO: Why is this here?
+  // if (cards.length > 0) {
+  //   cards.forEach((card, index) => {
+  //     if (cards.length - 1 === index) card.ref = true
+  //     else card.ref = false
+  //   })
+  // }
 
   return (
     <motion.section
@@ -200,12 +244,16 @@ export const CardHand = ({
             <motion.li
               key={`${card.id}-${uuid}`}
               initial={{
-                top: `${gettop(index, cards.length)}px`,
+                top: `${gettop(index, cards.length, winSize)}px`,
                 left: `calc(${getleft(
                   index,
                   cards.length,
                   winSize
-                )}vw - ${getoffset(cards.length, winSize)}px)`,
+                )}vw - ${getoffset(
+                  cards.length,
+                  winSize,
+                  centeredCard === card.id
+                )}px)`,
                 rotate: `${getrotation(index, cards.length)}deg`,
               }}
               animate={{
@@ -338,10 +386,10 @@ export const CardHand = ({
               </div>
               <Card
                 disabledCard={card.isDisabled}
-                id={index}
-                cardIndex={cardIndex}
+                id={index.toString()}
+                cardIndex={cardIndex?.toString()}
                 which={card}
-                onClick={() => handleClickOnCard(index)}
+                onClick={() => handleClickOnCard(index, false)}
                 animation={hoverAnimation}
                 size={`${clientWidth < 768 ? 'small' : 'medium'}`}
                 highlight={centeredCard === card.id}

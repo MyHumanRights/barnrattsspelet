@@ -134,9 +134,9 @@ export function answer(card: ICard) {
   }
 }
 
-export function mapAntagonistsToArray(antagonists: {
-  [key: string]: IGameAntagonist
-}) {
+export function mapAntagonistsToArray(
+  antagonists: IAntagonistObject
+): IGameAntagonist[] {
   return Object.keys(antagonists).map((antagonist) => antagonists[antagonist])
 }
 
@@ -165,9 +165,7 @@ export function getAntagonistsByHand(
 }
 
 export function getStartingCards(
-  antagonists: {
-    [key: string]: IGameAntagonist
-  },
+  antagonists: IAntagonistObject,
   cards: ICard[]
 ) {
   const antagonistCards = getAntagonistCards(antagonists, cards, 'mum', 'dad')
@@ -253,9 +251,7 @@ export function getScenarioCards(antagonist: IGameAntagonist, cards: ICard[]) {
 }
 
 export function getAntagonistCards(
-  antagonists: {
-    [key: string]: IGameAntagonist
-  },
+  antagonists: IAntagonistObject,
   cards: ICard[],
   ...names: string[]
 ) {

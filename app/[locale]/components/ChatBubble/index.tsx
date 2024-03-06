@@ -13,7 +13,7 @@ interface Props {
   arrowBottomLeft?: boolean
   player?: boolean
   wrongAnswer?: boolean
-  miniCard?: string
+  miniCard?: string | null
   cta?: React.ReactNode
 }
 
