@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/jennieandersson/childrens-rights/compare/v1.5.1...v1.6.0) (2024-03-06)
+
+
+### Bug Fixes
+
+* ts error ([92d6fa4](https://github.com/jennieandersson/childrens-rights/commit/92d6fa4bf389384f762e2c2d85e925e919ff095c))
+* ts errors ([403ca69](https://github.com/jennieandersson/childrens-rights/commit/403ca6953f5b3c213b9fb3218ea7ab735a62884b))
+
+
+### Features
+
+* change game intro ([e3090a1](https://github.com/jennieandersson/childrens-rights/commit/e3090a1baee2241e6ab736b6fd45a8023d2ccc22))
+
 ## [1.5.1](https://github.com/jennieandersson/childrens-rights/compare/v1.5.0...v1.5.1) (2024-03-05)
 
 
