@@ -180,7 +180,7 @@ export interface IGameStateObject {
   isBuyingLootbox: boolean
   allowedLootbox: boolean
   activeAntagonist: null | string
-  gameEnvironment: null | string
+  gameEnvironment: null | Environments
   isSlimPlay: boolean
 }
 

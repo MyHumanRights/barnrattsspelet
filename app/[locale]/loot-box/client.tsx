@@ -36,7 +36,13 @@ import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
 import { removeDuplicates } from '@/utils/removeDuplicates'
-import { AvatarPart, IAvatarParts, ICard, ILootItem } from '@/utils/types'
+import {
+  AvatarPart,
+  Environments,
+  IAvatarParts,
+  ICard,
+  ILootItem,
+} from '@/utils/types'
 
 import Box from '../components/Box/Box'
 import { Button } from '../components/Button'
@@ -71,7 +77,9 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
   const [openBox, setOpenBox] = useState(false)
   const [bgColor, setBgColor] = useState('none')
   const [isBuyingLootbox, setIsBuyingLootbox] = useState<boolean | null>(false)
-  const [gameEnvironment, setGameEnvironment] = useState<string | null>(null)
+  const [gameEnvironment, setGameEnvironment] = useState<Environments | null>(
+    null
+  )
   const [showOwlTip, setShowOwlTip] = useState(false)
   const [showLootItem, setShowLootItem] = useState(false)
   const [isAllowedLootbox, setIsAllowedLootbox] = useState<boolean | null>(true)
