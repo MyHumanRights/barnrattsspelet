@@ -3,6 +3,7 @@ import { environments } from '@/app/[locale]/components/Environment'
 import { AppPathnames } from '@/config'
 
 import { AvatarPart } from '../app/[locale]/components/AvatarPart'
+import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
 type AvatarId = keyof typeof AvatarPart
@@ -109,26 +110,30 @@ export enum GAME_STATES {
   RETRY = 'retry',
 }
 
-export interface IGameAntagonist {
+type Component = {
+  start: AntagonistComps | null
+  end: AntagonistComps | null
+  background: Environments
+}
+
+type Statement = {
+  cards: string[]
+}
+
+export type IGameAntagonist = {
   health: number
   name: string
-  components: {
-    start: Antagonists | null
-    end: Antagonists | null
-    background: Environments
-  }
+  components: Component
   scenarioImage: string
   chatBubblePosition: string
   antagonistPosition: string
   theme: string
   environment: string
-  statements: {
-    cards: string[]
-  }[]
+  statements: Statement[]
 }
 
-export interface IAntagonistObject {
-  [key: string]: IGameAntagonist
+export type IAntagonistObject = {
+  [key in Antagonist]: IGameAntagonist
 }
 export interface IGameState {
   antagonist: IGameAntagonist | null
@@ -180,4 +185,4 @@ export interface IGameStateObject {
 }
 
 export type Environments = keyof typeof environments
-export type Antagonists = keyof typeof antagonists
+export type AntagonistComps = keyof typeof antagonists

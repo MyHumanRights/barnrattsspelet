@@ -35,6 +35,7 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/navigation'
+import { Antagonist as AntagonistType } from '@/utils/antagonistType'
 import {
   ButtonSize,
   ButtonVariant,
@@ -45,7 +46,7 @@ import {
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useTokens } from '@/utils/hooks/useTokens'
 import {
-  Antagonists,
+  AntagonistComps,
   Environments,
   GAME_STATES,
   ICard,
@@ -61,6 +62,7 @@ import { MobileCardHand } from '../components/CardHand/MobileCardHand'
 import { ChatBubble } from '../components/ChatBubble'
 import { Environment } from '../components/Environment'
 import { FirstEntry } from '../components/FirstEntry'
+import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
 import { Modal } from '../components/Modal'
 import { ModalContent } from '../components/Modal/ModalContent'
@@ -84,9 +86,8 @@ export const PersuadeClient = () => {
     toggleThemeSound,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
-  const [activeAntagonist, setActiveAntagonist] = useState<
-    keyof typeof antagonists | null
-  >(null)
+  const [activeAntagonist, setActiveAntagonist] =
+    useState<AntagonistType | null>(null)
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {
@@ -101,7 +102,9 @@ export const PersuadeClient = () => {
   const [showOwl, setShowOwl] = useState<OWLS | null>(OWLS.INTRO)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [environment, setEnvironment] = useState<Environments | null>(null)
-  const [antagonistComp, setAntagonistComp] = useState<Antagonists | null>(null)
+  const [antagonistComp, setAntagonistComp] = useState<AntagonistComps | null>(
+    null
+  )
   const [bgColor, setBgColor] = useState('none')
   const [chatBubblePosition, setChatBubblePosition] = useState('')
   const [arrowPosition, setArrowPosition] = useState('')
@@ -117,6 +120,7 @@ export const PersuadeClient = () => {
   const [showWinModal, setShowWinModal] = useState(false)
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(0)
   const [correctCard, setCorrectCard] = useState<string | null>(null)
+  const [showIntro, setShowIntro] = useState(true)
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
@@ -139,6 +143,12 @@ export const PersuadeClient = () => {
       scrollable.scrollTop = scrollable.scrollHeight
     }
   }, [lines])
+
+  const handleIntro = () => {
+    setShowIntro(!showIntro)
+    document.querySelector('html')?.classList.toggle('scroll-lock')
+    startGame()
+  }
 
   const init = useCallback(async () => {
     const gameStateAntagonist = (await readGameStateValue(
@@ -231,10 +241,10 @@ export const PersuadeClient = () => {
     !playFromScenario && (await setFirstTimePlaying(false))
   }
 
-  const startGame = async (i18nK: string) => {
+  const startGame = async () => {
     setLines([
       {
-        text: i18nK,
+        text: `antagonists.${activeAntagonist}.conversationEntries.a`,
         player: true,
       },
     ])
@@ -453,7 +463,7 @@ export const PersuadeClient = () => {
         )}
         {currentState.state === GAME_STATES.INTRO && (
           <>
-            <div className={styles.introA}>
+            {/* <div className={styles.introA}>
               <FirstEntry
                 i18nKey={`antagonists.${currentState.antagonist.name}.conversationEntries.a`}
                 startGame={startGame}
@@ -467,7 +477,14 @@ export const PersuadeClient = () => {
                 startGame={startGame}
                 arrowRight={true}
               />
-            </div>
+            </div> */}
+            {activeAntagonist && (
+              <GameIntro
+                antagonist={activeAntagonist}
+                showModal={showIntro}
+                handleIntro={handleIntro}
+              />
+            )}
           </>
         )}
       </div>

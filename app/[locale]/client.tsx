@@ -78,7 +78,7 @@ export const Client = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  async function handleModal() {
+  const handleModal = () => {
     setShowModal(!showModal)
     document.querySelector('html')?.classList.toggle('scroll-lock')
   }

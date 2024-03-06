@@ -134,9 +134,9 @@ export function answer(card: ICard) {
   }
 }
 
-export function mapAntagonistsToArray(antagonists: {
-  [key: string]: IGameAntagonist
-}) {
+export function mapAntagonistsToArray(
+  antagonists: IAntagonistObject
+): IGameAntagonist[] {
   return Object.keys(antagonists).map((antagonist) => antagonists[antagonist])
 }
 

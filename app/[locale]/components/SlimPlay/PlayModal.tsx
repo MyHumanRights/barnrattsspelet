@@ -5,7 +5,7 @@ import { mapAntagonistsToArray } from '@/api/engine'
 import antagonistsObj from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
-import { ICard, IGameAntagonist } from '@/utils/types'
+import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
 
 import { Close } from '../Icons/Close'
 import { ScenarioList } from '../Scenarios/ScenarioList'
@@ -24,7 +24,9 @@ export const PlayModal = ({ handleModal }: Props) => {
   const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])
 
   useEffect(() => {
-    const antagonists: IGameAntagonist[] = mapAntagonistsToArray(antagonistsObj)
+    const antagonists = mapAntagonistsToArray(
+      antagonistsObj as IAntagonistObject
+    )
     setAllScenarios(antagonists)
   }, [])
 
