@@ -1,7 +1,6 @@
 export { default as ChangingRoom } from './ChangingRoom'
 export { default as ClassRoom } from './ClassRoom'
 export { default as ComputerScreen } from './ComputerScreen'
-export { default as Dummy } from './Dummy'
 export { default as Hockey } from './Hockey'
 export { default as Kitchen } from './Kitchen'
 export { default as Kitchen2 } from './Kitchen2'

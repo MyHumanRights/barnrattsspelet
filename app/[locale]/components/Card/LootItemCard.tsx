@@ -7,7 +7,7 @@ interface Props {
   lootItem: ILootItem[]
 }
 
-const LootItemCard = ({ lootItem }: Props) => {
+export const LootItemCard = ({ lootItem }: Props) => {
   return (
     <article className={styles.wrapper}>
       <div className={styles.cardContainer}>
@@ -32,5 +32,3 @@ const LootItemCard = ({ lootItem }: Props) => {
     </article>
   )
 }
-
-export default LootItemCard

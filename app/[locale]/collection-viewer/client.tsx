@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
@@ -16,9 +17,14 @@ import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { TabFilter } from '../components/Filter/TabFilter'
 import { Folder } from '../components/Folder/'
 import { Link } from '../components/Link/Link'
-import { Quiz } from '../components/Quiz'
-import { Token } from '../components/Token/'
 import styles from './CollectionViewer.module.scss'
+
+const Quiz = dynamic(() =>
+  import('../components/Quiz/Quiz').then((mod) => mod.Quiz)
+)
+const Token = dynamic(() =>
+  import('../components/Token').then((mod) => mod.Token)
+)
 
 interface Props {
   playableCards: ICard[]

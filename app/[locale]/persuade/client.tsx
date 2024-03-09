@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
@@ -19,7 +20,6 @@ import {
   getShownTokenTip,
   readDefeatedAntagonists,
   readGameStateValue,
-  readTokens,
   readWrongAnswers,
   setDefeatedAntagonists,
   setFirstTimePlaying,
@@ -55,21 +55,42 @@ import {
   IGameState,
 } from '@/utils/types'
 
-import { Antagonist } from '../components/Antagonist'
 import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
-import { CardHand } from '../components/CardHand'
-import { MobileCardHand } from '../components/CardHand/MobileCardHand'
-import { ChatBubble } from '../components/ChatBubble'
-import { Environment } from '../components/Environment'
 import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
-import { OwlTips } from '../components/OwlTips'
-import { PersuasionWin } from '../components/PersuasionWin'
-import { Retry } from '../components/PersuasionWin/Retry'
-import { Quiz } from '../components/Quiz'
-import { Token } from '../components/Token'
 import styles from './Persuade.module.scss'
+
+const Retry = dynamic(() =>
+  import('../components/PersuasionWin/Retry').then((mod) => mod.Retry)
+)
+const PersuasionWin = dynamic(() =>
+  import('../components/PersuasionWin').then((mod) => mod.PersuasionWin)
+)
+const OwlTips = dynamic(() =>
+  import('../components/OwlTips').then((mod) => mod.OwlTips)
+)
+const CardHand = dynamic(() =>
+  import('../components/CardHand').then((mod) => mod.CardHand)
+)
+const MobileCardHand = dynamic(() =>
+  import('../components/CardHand/MobileCardHand').then(
+    (mod) => mod.MobileCardHand
+  )
+)
+const ChatBubble = dynamic(() =>
+  import('../components/ChatBubble').then((mod) => mod.ChatBubble)
+)
+const Antagonist = dynamic(() =>
+  import('../components/Antagonist').then((mod) => mod.Antagonist)
+)
+const Environment = dynamic(() =>
+  import('../components/Environment').then((mod) => mod.Environment)
+)
+const Quiz = dynamic(() => import('../components/Quiz').then((mod) => mod.Quiz))
+const Token = dynamic(() =>
+  import('../components/Token').then((mod) => mod.Token)
+)
 
 const ANSWER_DELAY = 1500
 const CARD_EXIT = 800
@@ -104,7 +125,7 @@ export const PersuadeClient = () => {
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
-  const [showOwl, setShowOwl] = useState<OWLS | null>(OWLS.INTRO)
+  const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [environment, setEnvironment] = useState<Environments | null>(null)
   const [antagonistComp, setAntagonistComp] = useState<AntagonistComps | null>(
