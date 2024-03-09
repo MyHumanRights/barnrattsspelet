@@ -462,10 +462,6 @@
       "heading": "Hurra du klarade det!",
       "body": "Du fick ett mynt. Använd det för att låsa upp rättighetskort."
     },
-    "intro": {
-      "heading": "Då är vi igång",
-      "body": "Välj en av pratbubblorna för att sätta igång utmaningen"
-    },
     "enablecard": {
       "heading": "Nu blev det lite fel och rättighetskortet är låst.",
       "body": "Du kan låsa upp kortet genom att svara rätt på en quiz-fråga. Tryck på guldmyntet ovanför ett rättighetskort och testa!"
