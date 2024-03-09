@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/jennieandersson/childrens-rights/compare/v1.6.0...v1.6.1) (2024-03-09)
+
+
+### Bug Fixes
+
+* remove intro owl ([5b2e062](https://github.com/jennieandersson/childrens-rights/commit/5b2e062f5614b18a3a6ce4d730fee627b38bcfeb))
+* remove unused code ([6364613](https://github.com/jennieandersson/childrens-rights/commit/63646130eb7b442314dc19e04fdde78efea744d0))
+
 # [1.6.0](https://github.com/jennieandersson/childrens-rights/compare/v1.5.1...v1.6.0) (2024-03-06)
 
 
