@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
@@ -9,8 +10,11 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import { Button } from '../Button'
-import { PlayModal } from './PlayModal'
 import styles from './SlimPlay.module.scss'
+
+const PlayModal = dynamic(() =>
+  import('./PlayModal').then((mod) => mod.PlayModal)
+)
 
 export const SlimPlay = ({ left }: { left: string }) => {
   const t = useTranslations()

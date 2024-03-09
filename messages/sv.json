@@ -33,6 +33,9 @@
   "buttonFilter": "Filtrering av objekt",
   "article": "Artikel",
   "convention": "Barnkonventionen",
+  "error": {
+    "chooseOne": "Du måste välja ett alternativ"
+  },
   "meta": {
     "title": {
       "avatarbuilder": "Skapa din avatar - Barnrättsspelet",
@@ -458,10 +461,6 @@
     "token": {
       "heading": "Hurra du klarade det!",
       "body": "Du fick ett mynt. Använd det för att låsa upp rättighetskort."
-    },
-    "intro": {
-      "heading": "Då är vi igång",
-      "body": "Välj en av pratbubblorna för att sätta igång utmaningen"
     },
     "enablecard": {
       "heading": "Nu blev det lite fel och rättighetskortet är låst.",

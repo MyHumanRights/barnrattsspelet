@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
@@ -46,15 +47,28 @@ import {
 
 import Box from '../components/Box/Box'
 import { Button } from '../components/Button'
-import LootItemCard from '../components/Card/LootItemCard'
-import { Confetti } from '../components/Confetti'
 import { Environment } from '../components/Environment'
-import { LootBoxCards } from '../components/LootBoxCards'
-import { LootBoxOwl } from '../components/LootBoxOwl'
-import { MapBackground } from '../components/MapBackground'
 import { NotAllowed } from '../components/NotAllowed'
-import { OwlDialogue } from '../components/OwlDialogue'
 import styles from './LootBox.module.scss'
+
+const Confetti = dynamic(() =>
+  import('../components/Confetti').then((mod) => mod.Confetti)
+)
+const LootBoxCards = dynamic(() =>
+  import('../components/LootBoxCards').then((mod) => mod.LootBoxCards)
+)
+const LootItemCard = dynamic(() =>
+  import('../components/Card/LootItemCard').then((mod) => mod.LootItemCard)
+)
+const LootBoxOwl = dynamic(() =>
+  import('../components/LootBoxOwl').then((mod) => mod.LootBoxOwl)
+)
+const OwlDialogue = dynamic(() =>
+  import('../components/OwlDialogue').then((mod) => mod.OwlDialogue)
+)
+const MapBackground = dynamic(() =>
+  import('../components/MapBackground').then((mod) => mod.MapBackground)
+)
 
 interface Props {
   cardData: ICard[]

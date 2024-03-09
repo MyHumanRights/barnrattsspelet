@@ -20,8 +20,6 @@ import { ICard, IGameState } from '@/utils/types'
 import { Card } from '../Card'
 import styles from './CardHand.module.scss'
 
-const BOOST_COST = -1
-
 enum WIN_SIZES {
   small = 'small',
   wide = 'wide',
@@ -106,7 +104,7 @@ type Props = {
   boostable?: boolean
   exitTime?: number
   centeredCard?: string | null
-  removeTokens?: (amount: number) => void
+  removeTokens?: () => void
   correctCard: string | null
   isDeckBuilder?: boolean
   interactive?: boolean
@@ -215,7 +213,7 @@ export const CardHand = ({
   }
 
   const enableCard = (card: ICard) => {
-    removeTokens(BOOST_COST)
+    removeTokens()
     cards.forEach((c) => {
       if (c.id === card.id) {
         c.isDisabled = false

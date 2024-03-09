@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
@@ -54,31 +55,56 @@ import {
   IGameState,
 } from '@/utils/types'
 
-import { Antagonist } from '../components/Antagonist'
 import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
-import { CardHand } from '../components/CardHand'
-import { MobileCardHand } from '../components/CardHand/MobileCardHand'
-import { ChatBubble } from '../components/ChatBubble'
-import { Environment } from '../components/Environment'
-import { FirstEntry } from '../components/FirstEntry'
 import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
-import { Modal } from '../components/Modal'
-import { ModalContent } from '../components/Modal/ModalContent'
-import { OwlTips } from '../components/OwlTips'
-import { PersuasionWin } from '../components/PersuasionWin'
-import { Retry } from '../components/PersuasionWin/Retry'
-import { Token } from '../components/Token'
 import styles from './Persuade.module.scss'
+
+const Retry = dynamic(() =>
+  import('../components/PersuasionWin/Retry').then((mod) => mod.Retry)
+)
+const PersuasionWin = dynamic(() =>
+  import('../components/PersuasionWin').then((mod) => mod.PersuasionWin)
+)
+const OwlTips = dynamic(() =>
+  import('../components/OwlTips').then((mod) => mod.OwlTips)
+)
+const CardHand = dynamic(() =>
+  import('../components/CardHand').then((mod) => mod.CardHand)
+)
+const MobileCardHand = dynamic(() =>
+  import('../components/CardHand/MobileCardHand').then(
+    (mod) => mod.MobileCardHand
+  )
+)
+const ChatBubble = dynamic(() =>
+  import('../components/ChatBubble').then((mod) => mod.ChatBubble)
+)
+const Antagonist = dynamic(() =>
+  import('../components/Antagonist').then((mod) => mod.Antagonist)
+)
+const Environment = dynamic(() =>
+  import('../components/Environment').then((mod) => mod.Environment)
+)
+const Quiz = dynamic(() => import('../components/Quiz').then((mod) => mod.Quiz))
+const Token = dynamic(() =>
+  import('../components/Token').then((mod) => mod.Token)
+)
 
 const ANSWER_DELAY = 1500
 const CARD_EXIT = 800
 
+type Line = {
+  text: string
+  player: boolean
+  wrongAnswer?: boolean
+}
+
 export const PersuadeClient = () => {
   const t = useTranslations()
   const router = useRouter()
-  // TODO: send antagonist as a param from scenario
+
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
 
   const {
@@ -99,7 +125,7 @@ export const PersuadeClient = () => {
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
-  const [showOwl, setShowOwl] = useState<OWLS | null>(OWLS.INTRO)
+  const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [environment, setEnvironment] = useState<Environments | null>(null)
   const [antagonistComp, setAntagonistComp] = useState<AntagonistComps | null>(
@@ -114,18 +140,17 @@ export const PersuadeClient = () => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
   const [isScenarioMode, setIsScenarioMode] = useState(false)
   const [hasShownFlipCardTip, setHasShownFlipCardTip] = useState(true)
-  const [lines, setLines] = useState<
-    { text: string; player: boolean; wrongAnswer?: boolean }[]
-  >([])
+  const [lines, setLines] = useState<Line[]>([])
   const [showWinModal, setShowWinModal] = useState(false)
   const [answeredIncorrectly, setAnsweredIncorrectly] = useState(0)
   const [correctCard, setCorrectCard] = useState<string | null>(null)
   const [showIntro, setShowIntro] = useState(true)
+  const [quizType, setQuizType] = useState<'boost' | 'game'>('game')
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
   const randomWrongAnswer = Math.floor(Math.random() * 6) + 1
-  const [ownedTokens, removeTokens] = useTokens(showModal)
+  const [updateTokens, removeTokens, ownedTokens] = useTokens()
 
   const addFirstTimePersuation = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_PERSUATION,
@@ -148,6 +173,11 @@ export const PersuadeClient = () => {
     setShowIntro(!showIntro)
     document.querySelector('html')?.classList.toggle('scroll-lock')
     startGame()
+  }
+
+  const handleQuizModal = () => {
+    setShowModal(!showModal)
+    document.querySelector('html')?.classList.toggle('scroll-lock')
   }
 
   const init = useCallback(async () => {
@@ -236,7 +266,7 @@ export const PersuadeClient = () => {
     }
   }, [answeredIncorrectly, hasShownFlipCardTip])
 
-  async function setFirstTimePlayingToFalse() {
+  const setFirstTimePlayingToFalse = async () => {
     const playFromScenario = await getPlayFromScenario()
     !playFromScenario && (await setFirstTimePlaying(false))
   }
@@ -276,8 +306,12 @@ export const PersuadeClient = () => {
       }, 2000)
   }
 
-  const onCardSelected = (card: ICard) => {
-    const { result } = answer(card)
+  const onPlayCard = () => {
+    if (!currentCard) {
+      console.error('No current card')
+      return
+    }
+    const { result } = answer(currentCard)
 
     const state = getGameState()
     const { statement, antagonist } = state
@@ -291,7 +325,7 @@ export const PersuadeClient = () => {
     setLines((prev) => [
       ...prev,
       {
-        text: `cards.${card.id}.answerline`,
+        text: `cards.${currentCard.id}.answerline`,
         player: true,
       },
     ])
@@ -303,8 +337,8 @@ export const PersuadeClient = () => {
 
     switch (result) {
       case ANSWER_TYPES.CORRECT:
-        setActiveCardId(card.id)
-        setCorrectCard(card.id)
+        setActiveCardId(currentCard.id)
+        setCorrectCard(currentCard.id)
         soundEffectsOn && playRightAnswerSound()
         setTimeout(() => {
           setActiveCardId(null)
@@ -349,8 +383,8 @@ export const PersuadeClient = () => {
 
         break
       case ANSWER_TYPES.WIN:
-        setActiveCardId(card.id)
-        setCorrectCard(card.id)
+        setActiveCardId(currentCard.id)
+        setCorrectCard(currentCard.id)
         soundEffectsOn && playRightAnswerSound()
 
         setTimeout(() => {
@@ -398,43 +432,60 @@ export const PersuadeClient = () => {
     }
   }
 
-  function handleWin() {
+  const handleOpenQuiz = (type: 'boost' | 'game', card: ICard) => {
+    setCurrentCard(card)
+    setQuizType(type)
+    handleModal()
+  }
+
+  const onCardSelected = (card: ICard) => {
+    handleOpenQuiz('game', card)
+  }
+
+  const openBoost = (card: ICard) => {
+    handleOpenQuiz('boost', card)
+  }
+
+  const handleWin = () => {
     setShowWinModal(true)
     setLines([])
   }
 
-  function handleCancelScenario() {
+  const handleCancelScenario = () => {
     isScenarioMode ? router.push('/scenarios') : router.push('/home')
   }
 
-  async function handleReplay() {
+  const handleReplay = () => {
     setCorrectCard(null)
     resetGameState()
     init()
   }
 
-  function handleGotoLootBox() {
-    // setCardHand([])
+  const handleGotoLootBox = () => {
     setGameStateValue({ allowedLootbox: true, gameEnvironment: environment })
     router.push('/loot-box')
   }
 
-  async function handleModal() {
+  const handleModal = async () => {
     setShowModal(!showModal)
     document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
 
-  function openBoost(card: ICard) {
-    // setShowOwl(false)
-
-    // Temp check of card.question during dev.
-    if (!card.quiz) return
-    setCurrentCard(card)
+  const handleQuizAnswer = (isCorrect: boolean) => {
     handleModal()
-  }
-
-  const onCardBoosted = (card: ICard) => {
-    setBoostedCards([...boostedCards, card.id])
+    if (isCorrect) {
+      switch (quizType) {
+        case 'game':
+          onPlayCard()
+          break
+        case 'boost':
+          updateTokens(1)
+          if (currentCard) {
+            setBoostedCards([...boostedCards, currentCard.id])
+          }
+          break
+      }
+    }
   }
 
   // TODO: Can probably remove this when antagonist gets set at other point
@@ -463,21 +514,6 @@ export const PersuadeClient = () => {
         )}
         {currentState.state === GAME_STATES.INTRO && (
           <>
-            {/* <div className={styles.introA}>
-              <FirstEntry
-                i18nKey={`antagonists.${currentState.antagonist.name}.conversationEntries.a`}
-                startGame={startGame}
-                arrowRight={false}
-                arrowBottomLeft={true}
-              />
-            </div>
-            <div className={styles.introB}>
-              <FirstEntry
-                i18nKey={`antagonists.${currentState.antagonist.name}.conversationEntries.b`}
-                startGame={startGame}
-                arrowRight={true}
-              />
-            </div> */}
             {activeAntagonist && (
               <GameIntro
                 antagonist={activeAntagonist}
@@ -543,6 +579,7 @@ export const PersuadeClient = () => {
       {currentState.state === GAME_STATES.GAME &&
         (isMobile ? (
           <MobileCardHand
+            removeTokens={removeTokens}
             openBoost={openBoost}
             setCurrentState={setCurrentState}
             cards={currentState.cardHand}
@@ -552,13 +589,13 @@ export const PersuadeClient = () => {
             tokens={ownedTokens}
             boostable={true}
             centeredCard={activeCardId}
-            removeTokens={removeTokens}
             correctCard={correctCard}
             interactive={!activeCardId}
             isPersuade={true}
           />
         ) : (
           <CardHand
+            removeTokens={removeTokens}
             openBoost={openBoost}
             setCurrentState={setCurrentState}
             cards={currentState.cardHand}
@@ -569,7 +606,6 @@ export const PersuadeClient = () => {
             boostable={true}
             exitTime={CARD_EXIT}
             centeredCard={activeCardId}
-            removeTokens={removeTokens}
             correctCard={correctCard}
             interactive={!activeCardId}
           />
@@ -591,17 +627,13 @@ export const PersuadeClient = () => {
         />
       )}
 
-      <AnimatePresence>
-        {showModal && (
-          <Modal onModalClose={handleModal}>
-            <ModalContent
-              card={currentCard}
-              onModalClose={handleModal}
-              onCardBoosted={onCardBoosted}
-            />
-          </Modal>
-        )}
-      </AnimatePresence>
+      {showModal && currentCard && (
+        <Quiz
+          onAnswer={handleQuizAnswer}
+          card={currentCard}
+          onModalClose={handleQuizModal}
+        />
+      )}
     </main>
   )
 }

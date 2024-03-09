@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
@@ -16,10 +17,14 @@ import { ButtonFilter } from '../components/Filter/ButtonFilter'
 import { TabFilter } from '../components/Filter/TabFilter'
 import { Folder } from '../components/Folder/'
 import { Link } from '../components/Link/Link'
-import { Modal } from '../components/Modal'
-import { ModalContent } from '../components/Modal/ModalContent'
-import { Token } from '../components/Token/'
 import styles from './CollectionViewer.module.scss'
+
+const Quiz = dynamic(() =>
+  import('../components/Quiz/Quiz').then((mod) => mod.Quiz)
+)
+const Token = dynamic(() =>
+  import('../components/Token').then((mod) => mod.Token)
+)
 
 interface Props {
   playableCards: ICard[]
@@ -33,7 +38,7 @@ export const Client: React.FC<Props> = ({
   const t = useTranslations('Collectionviewer')
   const [showBoostModal, setShowBoostModal] = useState(false)
   const [currentCard, setCurrentCard] = useState<ICard | null>(null)
-  const [ownedTokens] = useTokens(showBoostModal)
+  const [, , ownedTokens] = useTokens()
   const [filter, setFilter] = useState<string | null>(null)
   const [allCards, setAllCards] = useState<ICard[]>([])
 
@@ -52,9 +57,16 @@ export const Client: React.FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function openBoost(card: ICard) {
+  const openBoost = (card: ICard) => {
     setCurrentCard(card)
     setShowBoostModal(true)
+  }
+
+  const handleQuizAnswer = (isCorrect: boolean) => {
+    setShowBoostModal(false)
+    if (isCorrect) {
+      // do nothing for now
+    }
   }
 
   return (
@@ -118,7 +130,15 @@ export const Client: React.FC<Props> = ({
             </div>
           </div>
 
-          <AnimatePresence>
+          {showBoostModal && currentCard && (
+            <Quiz
+              onAnswer={handleQuizAnswer}
+              card={currentCard}
+              onModalClose={() => setShowBoostModal(false)}
+            />
+          )}
+
+          {/* <AnimatePresence>
             {showBoostModal && (
               <Modal onModalClose={() => setShowBoostModal(false)}>
                 <ModalContent
@@ -128,7 +148,7 @@ export const Client: React.FC<Props> = ({
                 />
               </Modal>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
         </main>
       </div>
     </>

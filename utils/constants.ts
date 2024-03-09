@@ -8,7 +8,6 @@ export enum CATEGORIES {
 }
 
 export enum OWLS {
-  INTRO = 'intro',
   ENABLE_CARD = 'enableCard',
   FLIP_CARD = 'flipCard',
   QUIZ = 'quiz',

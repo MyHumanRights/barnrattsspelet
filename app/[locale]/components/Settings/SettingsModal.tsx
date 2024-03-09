@@ -30,7 +30,7 @@ import {
   // setLanguage,
 } from '../../../../api/storage'
 import { Button } from '../Button'
-import { Close } from '../Icons/Close'
+import { CloseButton } from '../CloseButton'
 import { Link } from '../Link/Link'
 import { OwlDialogue } from '../OwlDialogue'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
@@ -151,16 +151,7 @@ export const SettingsModal: React.FC<Props> = ({
               {t('reset')}
             </Button>
           )}
-          <button
-            onClick={handleModal}
-            className={`${styles.closeButton} ${
-              rtl ? styles.rightToLeft : undefined
-            }`}
-            autoFocus
-            aria-label={t('close')}
-          >
-            <Close />
-          </button>
+          <CloseButton onClick={handleModal} />
         </li>
 
         <li className={`${isApp ? styles.paddingApp : undefined}`}>
