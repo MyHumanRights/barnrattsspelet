@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
 import { readTokens, resetTokens, setTokens } from '@/api/storage'
@@ -7,39 +7,42 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 
 const UNLOCK_COST = -1
 
-type UseTokensReturn = [number, () => void]
-
-export const useTokens = (dependency: boolean): UseTokensReturn => {
+export const useTokens = (): [
+  updateTokens: (token: number) => void,
+  removeTokens: () => void,
+  ownedTokens: number
+] => {
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [playTokenSound] = useSound(tokenSound, { volume: effectsVolume })
+  const [ownedTokens, setOwnedTokens] = useState<number>(0)
 
-  const [ownedTokens, setOwnedTokens] = useState(0)
-
-  const updateTokens = useCallback(async () => {
-    const tokens = await readTokens()
-    if (tokens > ownedTokens && soundEffectsOn) {
-      soundEffectsOn && playTokenSound()
+  // when the component mounts, get the current tokens
+  useEffect(() => {
+    const getTokens = async () => {
+      const tokens = await readTokens()
+      setOwnedTokens(tokens)
     }
-    setOwnedTokens(tokens)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playTokenSound, soundEffectsOn])
+    getTokens()
+  }, [])
 
-  function removeTokens() {
+  const updateTokens = (token: number) => {
+    soundEffectsOn && playTokenSound()
+    setTokens(token)
+    setOwnedTokens((prev) => prev + token)
+  }
+
+  const removeTokens = () => {
     const updated = ownedTokens + UNLOCK_COST
     if (updated >= 0) {
-      setOwnedTokens(updated)
       setTokens(UNLOCK_COST)
+      setOwnedTokens(updated)
     } else {
-      setOwnedTokens(0)
       resetTokens()
+      setOwnedTokens(0)
     }
   }
 
-  useEffect(() => {
-    updateTokens()
-  }, [dependency, updateTokens])
-
-  return [ownedTokens, removeTokens]
+  return [updateTokens, removeTokens, ownedTokens]
 }

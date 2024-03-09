@@ -64,10 +64,9 @@ export async function readTokens(): Promise<number> {
   return read('tokens')
 }
 
-export async function setTokens(tokens: number): Promise<void | Error> {
-  let savedTokens = await readTokens()
-  savedTokens = savedTokens + tokens
-  return save('tokens', savedTokens)
+export const setTokens = async (tokens: number): Promise<void | Error> => {
+  const savedTokens = await readTokens()
+  return save('tokens', savedTokens + tokens)
 }
 
 export async function readWrongAnswers(): Promise<number> {

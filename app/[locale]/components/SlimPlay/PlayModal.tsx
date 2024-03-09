@@ -7,6 +7,7 @@ import cards from '@/data/cards.json'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
 import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
 
+import { CloseButton } from '../CloseButton'
 import { Close } from '../Icons/Close'
 import { ScenarioList } from '../Scenarios/ScenarioList'
 import styles from './SlimPlay.module.scss'
@@ -32,14 +33,7 @@ export const PlayModal = ({ handleModal }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <button
-        onClick={handleModal}
-        className={styles.closeButton}
-        autoFocus
-        aria-label={t('close')}
-      >
-        <Close />
-      </button>
+      <CloseButton onClick={handleModal} />
       {allAreDefeated ? (
         <h2 style={{ textAlign: 'center' }}>Du har klarat alla!</h2>
       ) : (

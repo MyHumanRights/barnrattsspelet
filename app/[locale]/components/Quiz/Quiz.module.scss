@@ -1,7 +1,21 @@
 @import '../../../global.scss';
 
 .wrapper {
-  height: min(70vh, 700px);
+  background-color: #efefed;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $primaryColor;
+
+  img {
+    position: absolute;
+    top: -50px;
+    left: -8px;
+    width: 100px;
+  }
+}
+
+.quizWrapper {
+  height: fit-content;
   overflow: hidden;
 
   form {
@@ -82,4 +96,14 @@
       margin: 30px;
     }
   }
+}
+
+.error {
+  background-color: #feb9b9;
+  border-left: 3px solid #fb2929;
+  color: #000;
+  margin: 0 30px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 0.5rem;
 }
