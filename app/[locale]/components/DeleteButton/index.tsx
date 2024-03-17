@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
+import { AnimatePresence, LazyMotion, m } from 'framer-motion'
 import { useState } from 'react'
 import { useTranslations } from 'use-intl'
 
@@ -11,6 +11,9 @@ import { Button } from '../Button'
 import { Check } from '../Icons/Check'
 import { Trashbin } from '../Icons/Trashbin'
 import styles from './DeleteButton.module.scss'
+
+const loadFeatures = () =>
+  import('../../../../utils/features.js').then((res) => res.default)
 
 export const DeleteButton: React.FC = () => {
   const t = useTranslations('Cookiepolicy')
@@ -23,19 +26,19 @@ export const DeleteButton: React.FC = () => {
   }
   return (
     <div className={styles.deleteBtnWrapper}>
-      <AnimatePresence>
-        <MotionConfig transition={{ duration: 0.75 }}>
+      <LazyMotion features={loadFeatures}>
+        <AnimatePresence>
           {deleted ? (
-            <motion.p
+            <m.p
               className={styles.deletedText}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
               {t('deleted')} <Check />
-            </motion.p>
+            </m.p>
           ) : (
-            <motion.div>
+            <m.div>
               <Button
                 variant={ButtonVariant.SECONDARY}
                 size={ButtonSize.SMALL}
@@ -46,14 +49,14 @@ export const DeleteButton: React.FC = () => {
                 exit={{ opacity: 1 }}
               >
                 {t('deletelocalstorage')}
-                <motion.span animate={animate}>
+                <m.span animate={animate}>
                   <Trashbin />
-                </motion.span>
+                </m.span>
               </Button>
-            </motion.div>
+            </m.div>
           )}
-        </MotionConfig>
-      </AnimatePresence>
+        </AnimatePresence>
+      </LazyMotion>
     </div>
   )
 }

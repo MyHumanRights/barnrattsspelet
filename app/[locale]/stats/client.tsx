@@ -2,7 +2,7 @@
 
 import { doc, getDoc } from 'firebase/firestore/lite'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { STAT_COLLECTION_NAMES } from '@/utils/constants'
 import { db } from '@/utils/firebase'
@@ -12,6 +12,8 @@ import { LogInForm } from './logInForm'
 import styles from './Stats.module.scss'
 
 const FRIEND = 'mellon'
+const currentYear = new Date().getFullYear()
+
 type StatsData = {
   [key: string]: { totalVisits: number; monthlyVisits: number }
 }
@@ -21,19 +23,28 @@ export const StatsClient: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [hasError, setHasError] = useState('')
   const [inputValue, setInputValue] = useState('')
+  const [selectedYear, setSelectedYear] = useState(currentYear)
+  const [isLoading, setIsLoading] = useState(false)
 
   const t = useTranslations()
+
+  const years = Array.from({ length: currentYear - 2022 }, (_, i) => 2023 + i)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     if (inputValue === FRIEND) {
       setIsLoggedIn(true)
-      fetchCounts()
+      fetchCounts(selectedYear.toString())
     }
   }
 
-  const fetchCounts = async () => {
-    const year = new Date().getFullYear().toString()
+  const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedYear(+e.target.value)
+    fetchCounts(e.target.value)
+  }
+
+  const fetchCounts = async (year: string) => {
+    setIsLoading(true)
     const newData: StatsData = {}
 
     try {
@@ -55,6 +66,8 @@ export const StatsClient: React.FC = () => {
         setHasError(e.message)
       }
       console.error('An error occurred: ', e)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -84,33 +97,54 @@ export const StatsClient: React.FC = () => {
   return (
     <>
       <h1>Statistik</h1>
-      {Object.keys(data).map((collection) => (
-        <section key={collection} className={styles.container}>
-          <h2>{t(`statistics.${collection}`)}</h2>
-          <p>Totalt antal under året: {data[collection].totalVisits}</p>
-          <h3>Månadsvis</h3>
-          <table>
-            <tbody>
-              <tr>
-                <th>Månad</th>
-                {Object.keys(data[collection].monthlyVisits).map((month) => (
-                  <td key={`${collection}-${month}`}>
-                    {t(`statistics.${month.split('-')[1]}`)}
-                  </td>
-                ))}
-              </tr>
-              <tr>
-                <th>Antal</th>
-                {Object.values(data[collection].monthlyVisits).map(
-                  (visits, index) => (
-                    <td key={`${index}-${visits}`}>{visits}</td>
-                  )
-                )}
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      ))}
+      <section className={styles.container}>
+        <label htmlFor='yearSelect' className={styles.label}>
+          Välj år
+        </label>
+        <select
+          id='yearSelect'
+          className={styles.dropdown}
+          value={selectedYear}
+          onChange={handleYearChange}
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </section>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        Object.keys(data).map((collection) => (
+          <section key={collection} className={styles.container}>
+            <h2>{t(`statistics.${collection}`)}</h2>
+            <p>Totalt antal under året: {data[collection].totalVisits}</p>
+            <h3>Månadsvis</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Månad</th>
+                  {Object.keys(data[collection].monthlyVisits).map((month) => (
+                    <td key={`${collection}-${month}`}>
+                      {t(`statistics.${month.split('-')[1]}`)}
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <th>Antal</th>
+                  {Object.values(data[collection].monthlyVisits).map(
+                    (visits, index) => (
+                      <td key={`${index}-${visits}`}>{visits}</td>
+                    )
+                  )}
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        ))
+      )}
     </>
   )
 }
