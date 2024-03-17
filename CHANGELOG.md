@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/jennieandersson/childrens-rights/compare/v1.6.1...v1.7.0) (2024-03-17)
+
+
+### Features
+
+* att stats to firebase ([2ae98a6](https://github.com/jennieandersson/childrens-rights/commit/2ae98a6fda541183cb0b8e92f234122cfbe0c23a))
+
 ## [1.6.1](https://github.com/jennieandersson/childrens-rights/compare/v1.6.0...v1.6.1) (2024-03-09)
 
 
