@@ -183,7 +183,7 @@ export const CardList: React.FC<Props> = ({
       </AnimatePresence>
       {filteredCards.map((card) => {
         const active = activeCardId === card.id
-        const collectedCard = cards.find((c) => c.id === card.id)
+        const collectedCard = cards ? cards.find((c) => c.id === card.id) : null
         return collectedCard ? (
           <CardItem
             key={card.id}
