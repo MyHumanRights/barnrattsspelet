@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/jennieandersson/childrens-rights/compare/v1.7.0...v1.7.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* null reference error in CardList and TabFilter components ([8558d10](https://github.com/jennieandersson/childrens-rights/commit/8558d103120eeb16188cca862d917a8c4565ca34))
+
 # [1.7.0](https://github.com/jennieandersson/childrens-rights/compare/v1.6.1...v1.7.0) (2024-03-17)
 
 
