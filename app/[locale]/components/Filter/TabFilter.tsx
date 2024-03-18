@@ -30,8 +30,12 @@ export const TabFilter: React.FC<Props> = ({
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
 
-  const categories = [...new Set(JSONsource.flatMap((card) => card.category))]
-  const themes = [...new Set(JSONsource.flatMap((obj) => obj.theme))]
+  const categories = JSONsource
+    ? [...new Set(JSONsource.flatMap((card) => card.category))]
+    : []
+  const themes = JSONsource
+    ? [...new Set(JSONsource.flatMap((obj) => obj.theme))]
+    : []
 
   // Sort themes so that 'fundamentals' is always first
   themes.sort((a, b) =>
