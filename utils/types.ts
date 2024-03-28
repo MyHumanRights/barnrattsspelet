@@ -41,7 +41,7 @@ export interface ICard {
   isDisabled: boolean
   category: string[]
   categoryColor: string
-  theme: string
+  theme: string[]
   color: string
   textColor: string
   linkPath: AppPathnames
@@ -129,7 +129,7 @@ export type IGameAntagonist = {
   scenarioImage: string
   chatBubblePosition: string
   antagonistPosition: string
-  theme: string[]
+  theme: string
   environment: string
   statements: Statement[]
 }
