@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/jennieandersson/childrens-rights/compare/v1.8.0...v1.9.0) (2024-03-28)
+
+
+### Features
+
+* check cat in answer ([3fc2145](https://github.com/jennieandersson/childrens-rights/commit/3fc214564ef18d97d7703f42cbd52be4d514a2bb))
+
 # [1.8.0](https://github.com/jennieandersson/childrens-rights/compare/v1.7.1...v1.8.0) (2024-03-28)
 
 
