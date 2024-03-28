@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/jennieandersson/childrens-rights/compare/v1.10.0...v1.10.1) (2024-03-28)
+
+
+### Bug Fixes
+
+* getAnswerLine logic to handle statement 0 ([6117cd7](https://github.com/jennieandersson/childrens-rights/commit/6117cd73ac126499cd89244d2db39c35c9d5b8b3))
+
 # [1.10.0](https://github.com/jennieandersson/childrens-rights/compare/v1.9.0...v1.10.0) (2024-03-28)
 
 
