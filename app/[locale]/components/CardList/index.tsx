@@ -113,7 +113,7 @@ export const CardList: React.FC<Props> = ({
       <li key={card.id}>
         <div
           className={styles.emptyCard}
-          style={{ border: `2px dashed ${card.color}` }}
+          style={{ border: `2px dashed ${card.categoryColor}` }}
         ></div>
       </li>
     )
