@@ -86,14 +86,15 @@ function moveForward(card: ICard) {
   const { statement, cardHand, antagonist } = currentGameState
   if (checkIfAntagonistBeaten()) {
     setGameState({
-      progress: ((statement + 1) / antagonist!.statements.length) * 100,
+      statement: statement + 1,
+      progress: ((statement + 1) / antagonist.statements.length) * 100,
       state: GAME_STATES.WIN,
     })
     return { result: ANSWER_TYPES.WIN }
   } else {
     setGameState({
       statement: statement + 1,
-      progress: ((statement + 1) / antagonist!.statements.length) * 100,
+      progress: ((statement + 1) / antagonist.statements.length) * 100,
     })
 
     // Current loss condition is when all cards are disabled
@@ -132,6 +133,13 @@ export function answer(card: ICard) {
   } else {
     return loss(card)
   }
+}
+
+export const getAnswerLine = () => {
+  const { antagonist, statement } = currentGameState
+  // need to subtract 1 because we are moving forward after the answer
+  const cardId = antagonist.statements[statement - 1].cards[0]
+  return `cards.${cardId}.answerline`
 }
 
 export function mapAntagonistsToArray(
