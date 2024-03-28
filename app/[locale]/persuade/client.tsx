@@ -9,6 +9,7 @@ import useSound from 'use-sound'
 import {
   answer,
   ANSWER_TYPES,
+  getAnswerLine,
   getGameState,
   resetGameState,
   setGameState,
@@ -93,7 +94,6 @@ const Token = dynamic(() =>
 )
 
 const ANSWER_DELAY = 1500
-const CARD_EXIT = 800
 
 type Line = {
   text: string
@@ -217,7 +217,6 @@ export const PersuadeClient = () => {
 
   useEffect(() => {
     addFirstTimePersuation()
-
     init()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeAntagonist])
@@ -321,28 +320,34 @@ export const PersuadeClient = () => {
       return
     }
 
-    // Store player's answer in array
-    setLines((prev) => [
-      ...prev,
-      {
-        text: `cards.${currentCard.id}.answerline`,
-        player: true,
-      },
-    ])
-
-    // We need to delay on correct
-    if (result !== ANSWER_TYPES.CORRECT && result !== ANSWER_TYPES.WIN) {
-      setCurrentState(state)
-    }
+    const text = getAnswerLine()
 
     switch (result) {
       case ANSWER_TYPES.CORRECT:
         setActiveCardId(currentCard.id)
         setCorrectCard(currentCard.id)
         soundEffectsOn && playRightAnswerSound()
+
+        // first delay animating exit of correct card
         setTimeout(() => {
           setActiveCardId(null)
           setCurrentState(state)
+        }, ANSWER_DELAY)
+
+        // then show player's answer
+        setTimeout(() => {
+          // Store player's answer in array
+          setLines((prev) => [
+            ...prev,
+            {
+              text,
+              player: true,
+            },
+          ])
+        }, ANSWER_DELAY * 1.5)
+
+        // then show next chat bubble
+        setTimeout(() => {
           setLines((prev) => [
             ...prev,
             {
@@ -351,10 +356,18 @@ export const PersuadeClient = () => {
             },
           ])
           soundEffectsOn && playChatSound()
-        }, ANSWER_DELAY)
+        }, ANSWER_DELAY * 2.5)
         break
       case ANSWER_TYPES.WRONG:
         soundEffectsOn && playWrongAnswerSound()
+        setLines((prev) => [
+          ...prev,
+          {
+            text: `cards.${currentCard.id}.answerline`,
+            player: true,
+          },
+        ])
+        setCurrentState(state)
         setWrongAnswers()
         setAnsweredIncorrectly((prev) => prev + 1)
         setTimeout(() => {
@@ -388,8 +401,6 @@ export const PersuadeClient = () => {
         soundEffectsOn && playRightAnswerSound()
 
         setTimeout(() => {
-          // update part of game state to delay process
-          // animate correct card & progress
           setCurrentState((prevState) => {
             return {
               ...(prevState as IGameState),
@@ -397,24 +408,31 @@ export const PersuadeClient = () => {
               progress: state.progress,
             }
           })
-
-          setTimeout(() => {
-            soundEffectsOn && playVictorySound()
-          }, ANSWER_DELAY * 0.5)
-
-          setTimeout(() => {
-            // update game state to show win scene
-            setCurrentState(state)
-            setLines([
-              {
-                text: `antagonists.${antagonist.name}.winquote`,
-                player: false,
-              },
-            ])
-            setAntagonistComp(antagonist.components.end)
-            addDefeatedAntagonist(antagonist)
-          }, ANSWER_DELAY * 0.8)
         }, ANSWER_DELAY)
+
+        setTimeout(() => {
+          soundEffectsOn && playVictorySound()
+          setLines((prev) => [
+            ...prev,
+            {
+              text,
+              player: true,
+            },
+          ])
+        }, ANSWER_DELAY * 2)
+
+        setTimeout(() => {
+          setCurrentState(state)
+          setLines([
+            {
+              text: `antagonists.${antagonist.name}.winquote`,
+              player: false,
+            },
+          ])
+          setAntagonistComp(antagonist.components.end)
+          addDefeatedAntagonist(antagonist)
+        }, ANSWER_DELAY * 4)
+
         break
       case ANSWER_TYPES.LOSS:
         setLines([
@@ -604,7 +622,6 @@ export const PersuadeClient = () => {
             boostedCards={boostedCards}
             tokens={ownedTokens}
             boostable={true}
-            exitTime={CARD_EXIT}
             centeredCard={activeCardId}
             correctCard={correctCard}
             interactive={!activeCardId}

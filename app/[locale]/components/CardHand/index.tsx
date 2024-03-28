@@ -102,7 +102,6 @@ type Props = {
   boostedCards?: string[]
   tokens?: number
   boostable?: boolean
-  exitTime?: number
   centeredCard?: string | null
   removeTokens?: () => void
   correctCard: string | null
@@ -119,7 +118,6 @@ export const CardHand = ({
   boostedCards = [],
   tokens = 0,
   boostable = false,
-  exitTime = 1000,
   centeredCard = null,
   removeTokens = () => {},
   correctCard,
@@ -148,7 +146,7 @@ export const CardHand = ({
   }
   let exitTransition: Transition = {
     type: 'tween',
-    duration: exitTime / 1000 / 2,
+    duration: 0.5,
   }
 
   const checkWindow = useCallback(() => {

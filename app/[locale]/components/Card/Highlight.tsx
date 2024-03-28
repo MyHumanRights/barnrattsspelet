@@ -12,8 +12,8 @@ export const Highlight = () => (
         rotate: -180,
       }}
       transition={{
-        scale: { duration: 1, delay: 0.4 },
-        rotate: { duration: 10 },
+        scale: { duration: 0.5, delay: 0.4 },
+        rotate: { duration: 3 },
       }}
     />
     <motion.img
@@ -25,8 +25,8 @@ export const Highlight = () => (
         rotate: -360,
       }}
       transition={{
-        scale: { duration: 1, delay: 0.2 },
-        rotate: { duration: 10 },
+        scale: { duration: 0.5, delay: 0.2 },
+        rotate: { duration: 3 },
       }}
     />
     <motion.img
@@ -38,8 +38,8 @@ export const Highlight = () => (
         rotate: 280,
       }}
       transition={{
-        scale: { duration: 1 },
-        rotate: { duration: 10 },
+        scale: { duration: 3 },
+        rotate: { duration: 3 },
       }}
     />
   </div>
