@@ -41,7 +41,7 @@ export interface ICard {
   isDisabled: boolean
   category: string[]
   categoryColor: string
-  theme: string
+  theme: string[]
   color: string
   textColor: string
   linkPath: AppPathnames
@@ -119,6 +119,7 @@ type Component = {
 
 type Statement = {
   cards: string[]
+  category: string
 }
 
 export type IGameAntagonist = {

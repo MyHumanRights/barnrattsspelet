@@ -1,6 +1,4 @@
-'use client'
-
-import { motion } from 'framer-motion'
+import { LazyMotion, m } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSound from 'use-sound'
@@ -15,6 +13,9 @@ import { ArrowRight } from '../Icons/ArrowRight'
 import { ChevronRight } from '../Icons/ChevronRight'
 import FilterFunnel from '../Icons/FilterFunnel'
 import styles from './ButtonFilter.module.scss'
+
+const loadFeatures = () =>
+  import('../../../../utils/features.js').then((res) => res.default)
 
 interface Props {
   filter: string | null
@@ -42,14 +43,19 @@ export const ButtonFilter: React.FC<Props> = ({
   if (!clientWidth || clientWidth >= 860) return null
 
   //TODO: use type guard instead of this:
-  const categories: string[] = [
-    ...new Set((JSONsource as ICard[]).flatMap((card: ICard) => card.category)),
+  const categories = [
+    ...new Set((JSONsource as ICard[]).flatMap((card) => card.category)),
   ]
-  const themes: string[] = [...new Set(JSONsource.map((obj) => obj.theme))]
+  const themes = [...new Set(JSONsource.flatMap((obj) => obj.theme))]
+
+  // Sort themes so that 'fundamentals' is always first
+  themes.sort((a, b) =>
+    a === 'fundamentals' ? -1 : b === 'fundamentals' ? 1 : 0
+  )
 
   const filters = isCollectionView ? themes : categories
 
-  const DIV = clientWidth >= 700 ? 'div' : motion.div
+  const DIV = clientWidth >= 700 ? 'div' : m.div
 
   const duration = 0.2
   const variants = {
@@ -141,27 +147,28 @@ export const ButtonFilter: React.FC<Props> = ({
           <FilterFunnel />
         </Button>
       </div>
-
-      <DIV
-        className={isApp ? styles.filtersWrapperInApp : styles.filtersWrapper}
-        variants={variants}
-        initial='initial'
-        animate={showFilter ? 'show' : 'hide'}
-        id='filter-buttons'
-      >
-        <ul>
-          {showFilter ? (
-            <>
-              <li>{renderTab(null)}</li>
-              {filters?.map((filter) => (
-                <li key={filter}>{renderTab(filter)}</li>
-              ))}
-            </>
-          ) : (
-            ''
-          )}
-        </ul>
-      </DIV>
+      <LazyMotion features={loadFeatures}>
+        <DIV
+          className={isApp ? styles.filtersWrapperInApp : styles.filtersWrapper}
+          variants={variants}
+          initial='initial'
+          animate={showFilter ? 'show' : 'hide'}
+          id='filter-buttons'
+        >
+          <ul>
+            {showFilter ? (
+              <>
+                <li>{renderTab(null)}</li>
+                {filters?.map((filter) => (
+                  <li key={filter}>{renderTab(filter)}</li>
+                ))}
+              </>
+            ) : (
+              ''
+            )}
+          </ul>
+        </DIV>
+      </LazyMotion>
     </fieldset>
   )
 }
