@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/jennieandersson/childrens-rights/compare/v1.9.0...v1.10.0) (2024-03-28)
+
+
+### Features
+
+* show correct answer line ([ff5828a](https://github.com/jennieandersson/childrens-rights/commit/ff5828a9c7a7792d98ee2e0bc2485ad6e95d4f6b))
+
 # [1.9.0](https://github.com/jennieandersson/childrens-rights/compare/v1.8.0...v1.9.0) (2024-03-28)
 
 
