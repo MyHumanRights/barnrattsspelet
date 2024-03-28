@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/jennieandersson/childrens-rights/compare/v1.7.1...v1.8.0) (2024-03-28)
+
+
+### Features
+
+* add categoryColor to cards ([f01d814](https://github.com/jennieandersson/childrens-rights/commit/f01d814e770f04886be6e8966d5ccc5b778ddfa1))
+
 ## [1.7.1](https://github.com/jennieandersson/childrens-rights/compare/v1.7.0...v1.7.1) (2024-03-18)
 
 
