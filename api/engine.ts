@@ -137,8 +137,12 @@ export function answer(card: ICard) {
 
 export const getAnswerLine = () => {
   const { antagonist, statement } = currentGameState
+
   // need to subtract 1 because we are moving forward after the answer
-  const cardId = antagonist.statements[statement - 1].cards[0]
+  // if statement is 0, it should be zero
+
+  const cardId =
+    antagonist.statements[statement === 0 ? statement : statement - 1].cards[0]
   return `cards.${cardId}.answerline`
 }
 
