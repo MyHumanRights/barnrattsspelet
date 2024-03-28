@@ -14,13 +14,16 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["6a"]
+        "cards": ["6a"],
+        "category": "development"
       },
       {
-        "cards": ["1"]
+        "cards": ["1"],
+        "category": "safety"
       },
       {
-        "cards": ["42"]
+        "cards": ["42"],
+        "category": "safety"
       }
     ]
   },
@@ -39,10 +42,12 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["16a"]
+        "cards": ["16a"],
+        "category": "expression"
       },
       {
-        "cards": ["2b"]
+        "cards": ["2b"],
+        "category": "equality"
       }
     ]
   },
@@ -61,10 +66,12 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["19b"]
+        "cards": ["19b"],
+        "category": "safety"
       },
       {
-        "cards": ["13b"]
+        "cards": ["13b"],
+        "category": "expression"
       }
     ]
   },
@@ -83,10 +90,12 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["34"]
+        "cards": ["34"],
+        "category": "protection"
       },
       {
-        "cards": ["3a"]
+        "cards": ["3a"],
+        "category": "participation"
       }
     ]
   },
@@ -105,10 +114,12 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["19a"]
+        "cards": ["19a"],
+        "category": "protection"
       },
       {
-        "cards": ["3b"]
+        "cards": ["3b"],
+        "category": "protection"
       }
     ]
   },
@@ -127,7 +138,8 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["16b"]
+        "cards": ["16b"],
+        "category": "expression"
       }
     ]
   },
@@ -146,10 +158,12 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["24a"]
+        "cards": ["24a"],
+        "category": "safety"
       },
       {
-        "cards": ["28a"]
+        "cards": ["28a"],
+        "category": "development"
       }
     ]
   },
@@ -168,13 +182,16 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["3a"]
+        "cards": ["3a"],
+        "category": "participation"
       },
       {
-        "cards": ["12b"]
+        "cards": ["12b"],
+        "category": "participation"
       },
       {
-        "cards": ["9a"]
+        "cards": ["9a"],
+        "category": "safety"
       }
     ]
   },
@@ -193,10 +210,12 @@
     "environment": "school",
     "statements": [
       {
-        "cards": ["3b"]
+        "cards": ["3b"],
+        "category": "protection"
       },
       {
-        "cards": ["28b"]
+        "cards": ["28b"],
+        "category": "safety"
       }
     ]
   },
@@ -215,10 +234,12 @@
     "environment": "school",
     "statements": [
       {
-        "cards": ["29c"]
+        "cards": ["29c"],
+        "category": "development"
       },
       {
-        "cards": ["3a"]
+        "cards": ["3a"],
+        "category": "participation"
       }
     ]
   },
@@ -237,10 +258,12 @@
     "environment": "school",
     "statements": [
       {
-        "cards": ["29a"]
+        "cards": ["29a"],
+        "category": "development"
       },
       {
-        "cards": ["29b"]
+        "cards": ["29b"],
+        "category": "equality"
       }
     ]
   },
@@ -259,10 +282,12 @@
     "environment": "school",
     "statements": [
       {
-        "cards": ["2b"]
+        "cards": ["2b"],
+        "category": "equality"
       },
       {
-        "cards": ["28b"]
+        "cards": ["28b"],
+        "category": "safety"
       }
     ]
   },
@@ -281,10 +306,12 @@
     "environment": "school",
     "statements": [
       {
-        "cards": ["14a"]
+        "cards": ["14a"],
+        "category": "expression"
       },
       {
-        "cards": ["3b"]
+        "cards": ["3b"],
+        "category": "protection"
       }
     ]
   },
@@ -303,7 +330,8 @@
     "environment": "activities",
     "statements": [
       {
-        "cards": ["2c"]
+        "cards": ["2c"],
+        "category": "equality"
       }
     ]
   },
@@ -322,10 +350,12 @@
     "environment": "activities",
     "statements": [
       {
-        "cards": ["6a"]
+        "cards": ["6a"],
+        "category": "development"
       },
       {
-        "cards": ["16b"]
+        "cards": ["16b"],
+        "category": "expression"
       }
     ]
   },
@@ -344,10 +374,12 @@
     "environment": "activities",
     "statements": [
       {
-        "cards": ["12b"]
+        "cards": ["12b"],
+        "category": "participation"
       },
       {
-        "cards": ["13a"]
+        "cards": ["13a"],
+        "category": "expression"
       }
     ]
   },
@@ -366,10 +398,12 @@
     "environment": "afterSchool",
     "statements": [
       {
-        "cards": ["19b"]
+        "cards": ["19b"],
+        "category": "safety" 
       },
       {
-        "cards": ["36"]
+        "cards": ["36"],
+        "category": "protection"
       }
     ]
   },
@@ -388,10 +422,12 @@
     "environment": "afterSchool",
     "statements": [
       {
-        "cards": ["2d"]
+        "cards": ["2d"],
+        "category": "equality"
       },
       {
-        "cards": ["42"]
+        "cards": ["42"],
+        "category": "safety"
       }
     ]
   },
@@ -410,10 +446,12 @@
     "environment": "afterSchool",
     "statements": [
       {
-        "cards": ["16b"]
+        "cards": ["16b"],
+        "category": "expression"
       },
       {
-        "cards": ["31a"]
+        "cards": ["31a"],
+        "category": "development"
       }
     ]
   },
@@ -432,10 +470,12 @@
     "environment": "afterSchool",
     "statements": [
       {
-        "cards": ["34"]
+        "cards": ["34"],
+        "category": "protection"
       },
       {
-        "cards": ["36"]
+        "cards": ["36"],
+        "category": "protection"
       }
     ]
   },
@@ -454,10 +494,12 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["2c"]
+        "cards": ["2c"],
+        "category": "equality"
       },
       {
-        "cards": ["12b"]
+        "cards": ["12b"],
+        "category": "participation"
       }
     ]
   },
@@ -476,10 +518,12 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["33a"]
+        "cards": ["33a"],
+        "category": "protection"
       },
       {
-        "cards": ["4a"]
+        "cards": ["4a"],
+        "category": "protection"
       }
     ]
   },
@@ -498,7 +542,8 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["22a"]
+        "cards": ["22a"],
+        "category": "safety"
       }
     ]
   },
@@ -517,10 +562,12 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["23a"]
+        "cards": ["23a"],
+        "category": "equality"
       },
       {
-        "cards": ["3a"]
+        "cards": ["3a"],
+        "category": "participation"
       }
     ]
   },
@@ -539,7 +586,8 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["11a"]
+        "cards": ["11a"],
+        "category": "safety"
       }
     ]
   },
@@ -558,10 +606,12 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["2e"]
+        "cards": ["2e"],
+        "category": "equality"
       },
       {
-        "cards": ["23a"]
+        "cards": ["23a"],
+        "category": "equality"
       }
     ]
   },
@@ -580,13 +630,16 @@
     "environment": "activities",
     "statements": [
       {
-        "cards": ["2a"]
+        "cards": ["2a"],
+        "category": "equality"
       },
       {
-        "cards": ["16c"]
+        "cards": ["16c"],
+        "category": "equality"
       },
       {
-        "cards": ["4a"]
+        "cards": ["4a"],
+        "category": "protection"
       }
     ]
   },
@@ -605,7 +658,8 @@
     "environment": "world",
     "statements": [
       {
-        "cards": ["2b"]
+        "cards": ["2b"],
+        "category": "equality"
       }
     ]
   },
@@ -624,7 +678,8 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["7a"]
+        "cards": ["7a"],
+        "category": "safety"
       }
     ]
   },
@@ -643,13 +698,16 @@
     "environment": "home",
     "statements": [
       {
-        "cards": ["17"]
+        "cards": ["17"],
+        "category": "expression"
       },
       {
-        "cards": ["13c"]
+        "cards": ["13c"],
+        "category": "expression"
       },
       {
-        "cards": ["14b"]
+        "cards": ["14b"],
+        "category": "expression"
       }
     ]
   }

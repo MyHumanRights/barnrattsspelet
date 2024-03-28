@@ -119,6 +119,7 @@ type Component = {
 
 type Statement = {
   cards: string[]
+  category: string
 }
 
 export type IGameAntagonist = {
@@ -128,7 +129,7 @@ export type IGameAntagonist = {
   scenarioImage: string
   chatBubblePosition: string
   antagonistPosition: string
-  theme: string
+  theme: string[]
   environment: string
   statements: Statement[]
 }
