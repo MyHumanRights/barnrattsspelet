@@ -78,6 +78,14 @@ $newCardGlow: 0 0 0 5px $cavendish !important;
 // Focusable elements
 $tabFocusOutline: 2px dashed $primaryColor;
 
+// Colors for categories
+$safety: #123d46;
+$equality: #f8a479;
+$participation: #c85b8a;
+$protection: #fbd773;
+$development: #3270b0;
+$expression: #4daa83;
+
 /* MIXINS */
 
 @mixin box-shadow($elevation) {

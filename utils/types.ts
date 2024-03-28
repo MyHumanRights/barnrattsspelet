@@ -40,6 +40,7 @@ export interface ICard {
   article: string
   isDisabled: boolean
   category: string[]
+  categoryColor: string
   theme: string
   color: string
   textColor: string

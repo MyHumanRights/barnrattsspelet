@@ -80,7 +80,7 @@ export const Card: React.FC<Props> = ({
         stiffness: 40,
       }
 
-  function renderAnimation() {
+  const renderAnimation = () => {
     if (!animation) return
     if (animation && isFocused && cardIndex !== id) {
       return animation.animate
@@ -88,14 +88,14 @@ export const Card: React.FC<Props> = ({
     return animation.initial
   }
 
-  function handleClickOnCard(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+  const handleClickOnCard = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if ((e.target as Element).getAttribute('data-button') === null) {
       // Don't trigger click if info button is clicked
       ref.current?.click()
     }
   }
 
-  function flipCard() {
+  const flipCard = () => {
     soundEffectsOn && playActive()
     setIsFlipped(!isFlipped)
   }
@@ -191,6 +191,9 @@ export const Card: React.FC<Props> = ({
             initial={{ rotateY: '0deg' }}
             animate={{ rotateY: isFlipped ? '180deg' : '0deg' }}
             transition={transition}
+            style={{
+              backgroundColor: `${which.categoryColor}`,
+            }}
           >
             <div
               className={styles.frontInner}
@@ -238,6 +241,9 @@ export const Card: React.FC<Props> = ({
             animate={{ rotateY: isFlipped ? '0deg' : '-180deg' }}
             transition={transition}
             ref={cardBackRef}
+            style={{
+              border: `.2rem solid ${which.categoryColor}`,
+            }}
           >
             <div
               className={styles.headerBack}
