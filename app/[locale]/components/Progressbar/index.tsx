@@ -4,15 +4,13 @@ import { motion, useAnimation } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-import { getCardCollection } from '@/api/storage'
+import { getCurrentLevel, getProgress } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import playableCards from '@/data/cards.json'
 
 import styles from './Progressbar.module.scss'
 
-const cardsInTotal = playableCards.length
-
 export const Progressbar = () => {
+  const [level, setLevel] = useState(1)
   const [progressAnimation, setProgressAnimation] = useState('')
   const [progress, setProgress] = useState(0)
   const t = useTranslations('progressbar')
@@ -40,11 +38,11 @@ export const Progressbar = () => {
 
   useEffect(() => {
     const updateProgress = async () => {
-      const cardCollection = (await getCardCollection()) || []
-      const gameProgress = Math.round(
-        (cardCollection.length / cardsInTotal) * 100
-      )
-      setProgress(gameProgress)
+      const progress = (await getProgress()) || { level: 1, part: 0 }
+      const level = getCurrentLevel(progress)
+      const progressInLevel = (progress.part / (level?.parts.length ?? 1)) * 100
+      setLevel(progress.level)
+      setProgress(progressInLevel)
     }
 
     updateProgress()
@@ -52,6 +50,7 @@ export const Progressbar = () => {
 
   return (
     <section className={styles.progressbar}>
+      <h2 className={styles.level}>Nivå {level}</h2>
       <label htmlFor='progress'>{t('progress')}</label>
       {progress >= 9 && (
         <span className={styles.percentage}>{`${progress}%`}</span>

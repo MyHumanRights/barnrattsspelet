@@ -6,6 +6,8 @@ import {
   ICard,
   IGameAntagonist,
   IGameState,
+  Level,
+  Progress,
 } from '@/utils/types'
 
 const MAX_PROGRESS = 100
@@ -471,4 +473,23 @@ export function resetNewAvatarParts(collectedParts) {
   })
 
   return avatarPartsObject
+}
+
+export const hasWonLevel = (progress: Progress, level: Level): boolean => {
+  return (
+    progress.level === level.levelNumber && progress.part === level.parts.length
+  )
+}
+
+export const getNextLevel = (
+  currentProgress: Progress,
+  levels: Level[]
+): Level | null => {
+  const currentLevelIndex = levels.findIndex(
+    (level) => level.levelNumber === currentProgress.level
+  )
+  if (currentLevelIndex === -1 || currentLevelIndex === levels.length - 1) {
+    return null // No next level or current level not found
+  }
+  return levels[currentLevelIndex + 1]
 }

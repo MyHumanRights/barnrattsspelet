@@ -22,6 +22,7 @@ import {
   readDefeatedAntagonists,
   readGameStateValue,
   readWrongAnswers,
+  saveProgress,
   setDefeatedAntagonists,
   setFirstTimePlaying,
   setGameStateValue,
@@ -306,6 +307,7 @@ export const PersuadeClient = () => {
   }
 
   const onPlayCard = () => {
+    console.log('Playing card')
     if (!currentCard) {
       console.error('No current card')
       return
@@ -314,6 +316,11 @@ export const PersuadeClient = () => {
 
     const state = getGameState()
     const { statement, antagonist } = state
+
+    if (result === ANSWER_TYPES.WIN) {
+      console.log('Antagonist defeated')
+      saveProgress()
+    }
 
     if (!antagonist) {
       console.error('No antagonist found')
@@ -421,7 +428,7 @@ export const PersuadeClient = () => {
           ])
         }, ANSWER_DELAY * 2)
 
-        setTimeout(() => {
+        setTimeout(async () => {
           setCurrentState(state)
           setLines([
             {

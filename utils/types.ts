@@ -184,7 +184,72 @@ export interface IGameStateObject {
   activeAntagonist: null | string
   gameEnvironment: null | Environments
   isSlimPlay: boolean
+  progress: Progress
 }
 
 export type Environments = keyof typeof environments
 export type AntagonistComps = keyof typeof antagonists
+
+export type Progress = {
+  level: number
+  part: number
+}
+
+export type Level = {
+  levelNumber: number
+  parts: string[]
+}
+
+export const levels = [
+  {
+    levelNumber: 1,
+    parts: ['Accessory17', 'Hair09', 'Body15', 'Body12', 'Accessory10'],
+  },
+  {
+    levelNumber: 2,
+    parts: [
+      'Hair11',
+      'Accessory13',
+      'Accessory15',
+      'Accessory08',
+      'Accessory12',
+    ],
+  },
+  {
+    levelNumber: 3,
+    parts: ['Body09', 'Accessory11', 'Body08', 'Hair18', 'Accessory16'],
+  },
+  { levelNumber: 4, parts: ['Body07', 'Hair16', 'Body16', 'Body18', 'Hair13'] },
+  {
+    levelNumber: 5,
+    parts: ['Hair10', 'Accessory18', 'Hair12', 'Accessory07', 'Body11'],
+  },
+  {
+    levelNumber: 6,
+    parts: ['Accessory09', 'Accessory14', 'Body14', 'Body10', 'Body13'],
+  },
+  {
+    levelNumber: 7,
+    parts: ['Accessory18', 'Hair07', 'Accessory07', 'Accessory15', 'Body17'],
+  },
+  {
+    levelNumber: 8,
+    parts: ['Body07', 'Accessory17', 'Accessory09', 'Body15', 'Accessory16'],
+  },
+  {
+    levelNumber: 9,
+    parts: ['Hair14', 'Body13', 'Accessory08', 'Hair15', 'Body12'],
+  },
+  {
+    levelNumber: 10,
+    parts: ['Hair08', 'Body10', 'Body09', 'Accessory12', 'Accessory11'],
+  },
+  {
+    levelNumber: 11,
+    parts: ['Hair07', 'Body14', 'Accessory13', 'Body17', 'Accessory10'],
+  },
+  {
+    levelNumber: 12,
+    parts: ['Accessory18', 'Hair15', 'Accessory14', 'Accessory11', 'Hair17'],
+  },
+]
