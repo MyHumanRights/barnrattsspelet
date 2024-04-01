@@ -131,7 +131,7 @@
       },
       {
         "id": "Body03",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -143,7 +143,7 @@
       },
       {
         "id": "Body05",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -161,7 +161,7 @@
       },
       {
         "id": "Body08",
-        "isDefault": true,
+        "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -223,13 +223,13 @@
         "id": "Body18",
         "isDefault": false,
         "isNewPart": false,
-        "isSuperHero": true
+        "isSuperHero": false
       },
       {
         "id": "Body19",
         "isDefault": false,
         "isNewPart": false,
-        "isSuperHero": false
+        "isSuperHero": true
       }
     ],
     "hair": [
@@ -259,13 +259,13 @@
       },
       {
         "id": "Hair05",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Hair06",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -319,7 +319,7 @@
       },
       {
         "id": "Hair15",
-        "isDefault": true,
+        "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -339,13 +339,13 @@
         "id": "Hair18",
         "isDefault": false,
         "isNewPart": false,
-        "isSuperHero": true
+        "isSuperHero": false
       },
       {
         "id": "Hair19",
         "isDefault": false,
         "isNewPart": false,
-        "isSuperHero": false
+        "isSuperHero": true
       }
     ],
     "accessory": [
@@ -363,13 +363,13 @@
       },
       {
         "id": "Accessory02",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Accessory03",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -411,7 +411,7 @@
       },
       {
         "id": "Accessory10",
-        "isDefault": true,
+        "isDefault": false,
         "isNewPart": false,
         "isSuperHero": false
       },

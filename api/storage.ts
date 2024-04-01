@@ -1,4 +1,14 @@
-import { IAvatar, IAvatarParts, ICard, IGameStateObject } from '@/utils/types'
+import {
+  IAvatar,
+  IAvatarParts,
+  ICard,
+  IGameStateObject,
+  Level,
+  levels,
+  Progress,
+} from '@/utils/types'
+
+import { getNextLevel, hasWonLevel } from './engine'
 
 let activeUser: null | { name: string } = null
 
@@ -346,4 +356,40 @@ export async function readGameStateValue<T extends keyof IGameStateObject>(
 
 export async function resetGameState(): Promise<void | Error> {
   return await save('gameState', null)
+}
+
+export const getProgress = async (): Promise<Progress | null> => {
+  return readGameStateValue('progress')
+}
+
+export const getCurrentLevel = (progress: Progress): Level | undefined => {
+  return levels.find((level) => level.levelNumber === progress.level)
+}
+
+export const saveProgress = async (): Promise<void> => {
+  const progress = (await getProgress()) || { level: 1, part: 0 }
+
+  const currentLevel = getCurrentLevel(progress)
+
+  if (!currentLevel) {
+    console.error('Invalid progress: Level not found.')
+    return
+  }
+
+  if (hasWonLevel(progress, currentLevel)) {
+    const nextLevel = getNextLevel(progress, levels)
+    if (nextLevel) {
+      progress.level = nextLevel.levelNumber
+      progress.part = 1
+    } else {
+      console.log('Congratulations! You have completed all levels!')
+      return
+    }
+  } else {
+    progress.part++
+  }
+
+  console.log('Saving progress:', progress)
+
+  setGameStateValue({ progress })
 }

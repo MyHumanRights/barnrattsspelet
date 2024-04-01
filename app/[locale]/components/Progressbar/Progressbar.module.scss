@@ -116,3 +116,9 @@
     background-color: $primaryColor;
   }
 }
+
+.level {
+  position: absolute;
+  transform: translateX(-100%);
+  padding-right: 1rem;
+}
