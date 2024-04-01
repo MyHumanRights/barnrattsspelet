@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/jennieandersson/childrens-rights/compare/v1.10.1...v1.11.0) (2024-04-01)
+
+
+### Features
+
+* change game progress logic ([336735f](https://github.com/jennieandersson/childrens-rights/commit/336735f5405dd23d8e7ec472f2b5ef692bebe5b4))
+
 ## [1.10.1](https://github.com/jennieandersson/childrens-rights/compare/v1.10.0...v1.10.1) (2024-03-28)
 
 
