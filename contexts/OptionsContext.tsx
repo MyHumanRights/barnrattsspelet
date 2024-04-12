@@ -26,7 +26,6 @@ interface OptionsContextProps {
   clientHeight: number
   clientWidth: number
   isMobile: boolean
-  hasVoiceover: (path: string) => Promise<boolean>
   options: Options
   playSoundEffect: (playSound: () => void, delay?: number) => void
   playVoiceover: (path: string) => Promise<HTMLAudioElement | undefined>
@@ -76,19 +75,6 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
     setTimeout(() => {
       options.soundEffectsOn && playSound()
     }, delay)
-  }
-
-  const hasVoiceover = async (path: string): Promise<boolean> => {
-    try {
-      const imported = (
-        await import(
-          '/assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
-        )
-      ).default
-      return imported
-    } catch (error) {
-      return false
-    }
   }
 
   const playVoiceover = async (path: string) => {
@@ -145,7 +131,6 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
         setOptions,
         toggleThemeSound,
         playSoundEffect,
-        hasVoiceover,
         playVoiceover,
         clientHeight,
         clientWidth,
