@@ -1,3 +1,16 @@
+# [1.12.0](https://github.com/jennieandersson/childrens-rights/compare/v1.11.0...v1.12.0) (2024-04-12)
+
+
+### Bug Fixes
+
+* add copy ([6ba4c38](https://github.com/jennieandersson/childrens-rights/commit/6ba4c38e563705339fd5b044f48575f3fe8e52ed))
+
+
+### Features
+
+* add TextWithVoiceover component to GameIntro ([b2805e7](https://github.com/jennieandersson/childrens-rights/commit/b2805e7e5e953f800bacb46c9e2deba33d0d63bb))
+* useHasVoiceover hook ([bfe1aec](https://github.com/jennieandersson/childrens-rights/commit/bfe1aeca2542505ce43bf3a3442cea4114e63811))
+
 # [1.11.0](https://github.com/jennieandersson/childrens-rights/compare/v1.10.1...v1.11.0) (2024-04-01)
 
 
