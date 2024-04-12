@@ -4,6 +4,7 @@ import { Antagonist } from '@/utils/antagonistType'
 
 import { Button } from '../Button'
 import Modal from '../Modal'
+import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './GameIntro.module.scss'
 
 type Props = {
@@ -22,9 +23,11 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
   return (
     <Modal onModalClose={handleIntro}>
       <div className={styles.wrapper}>
-        <h1>{t(`antagonists.${antagonist}.intro.title`)}</h1>
-        <p>{t(`antagonists.${antagonist}.intro.body1`)}</p>
-        <p>{t(`antagonists.${antagonist}.intro.body2`)}</p>
+        <p>
+          <TextWithVoiceover
+            textKey={`antagonists.${antagonist}.intro.body1`}
+          />
+        </p>
         <Button onClick={handleIntro}>{t('play')}</Button>
       </div>
     </Modal>
