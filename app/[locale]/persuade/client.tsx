@@ -307,7 +307,6 @@ export const PersuadeClient = () => {
   }
 
   const onPlayCard = () => {
-    console.log('Playing card')
     if (!currentCard) {
       console.error('No current card')
       return
