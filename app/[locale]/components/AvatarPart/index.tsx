@@ -1,6 +1,6 @@
 import * as avatarPartComponents from './avatarParts'
 
-type AvatarPartKeys = keyof typeof avatarPartComponents
+export type AvatarPartKeys = keyof typeof avatarPartComponents
 
 const avatarParts: Record<
   AvatarPartKeys,
