@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/jennieandersson/childrens-rights/compare/v1.12.0...v1.13.0) (2024-04-13)
+
+
+### Features
+
+* add avatar p ([9e72478](https://github.com/jennieandersson/childrens-rights/commit/9e724785b7908721d30921f51f87c76f1bff9526))
+
 # [1.12.0](https://github.com/jennieandersson/childrens-rights/compare/v1.11.0...v1.12.0) (2024-04-12)
 
 
