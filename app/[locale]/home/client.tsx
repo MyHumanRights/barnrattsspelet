@@ -309,11 +309,11 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       />
       <motion.div
         className={styles.progressbarWrapper}
-        initial={{ left: 0 }}
-        animate={{
-          left: getLeftPosition(),
-        }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
+        // initial={{ left: 0 }}
+        // animate={{
+        //   left: getLeftPosition(),
+        // }}
+        // transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
       >
         <div className={styles.progressbar}>
           <Progressbar />

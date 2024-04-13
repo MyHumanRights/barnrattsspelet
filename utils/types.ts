@@ -2,7 +2,10 @@ import { antagonists } from '@/app/[locale]/components/Antagonist'
 import { environments } from '@/app/[locale]/components/Environment'
 import { AppPathnames } from '@/config'
 
-import { AvatarPart } from '../app/[locale]/components/AvatarPart'
+import {
+  AvatarPart,
+  AvatarPartKeys,
+} from '../app/[locale]/components/AvatarPart'
 import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
@@ -197,10 +200,10 @@ export type Progress = {
 
 export type Level = {
   levelNumber: number
-  parts: string[]
+  parts: AvatarPartKeys[]
 }
 
-export const levels = [
+export const levels: Level[] = [
   {
     levelNumber: 1,
     parts: ['Accessory17', 'Hair09', 'Body15', 'Body12', 'Accessory10'],

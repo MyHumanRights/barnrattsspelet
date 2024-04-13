@@ -7,6 +7,7 @@ import {
   IGameAntagonist,
   IGameState,
   Level,
+  levels,
   Progress,
 } from '@/utils/types'
 
@@ -492,4 +493,9 @@ export const getNextLevel = (
     return null // No next level or current level not found
   }
   return levels[currentLevelIndex + 1]
+}
+
+export const getPartsForLevel = (currentLevel: number) => {
+  const levelIndex = currentLevel - 1 // Adjust for zero-based index
+  return levels[levelIndex].parts
 }
