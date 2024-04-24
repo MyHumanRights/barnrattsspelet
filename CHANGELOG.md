@@ -1,3 +1,11 @@
+# [1.14.0](https://github.com/jennieandersson/childrens-rights/compare/v1.13.0...v1.14.0) (2024-04-24)
+
+
+### Features
+
+* make parts bigger ([e01b94c](https://github.com/jennieandersson/childrens-rights/commit/e01b94c5aeb6449b57f4d1862803b9f705fa6fa7))
+* revert category color ([6e432bf](https://github.com/jennieandersson/childrens-rights/commit/6e432bf79c9e870de7310621c78f4be33091fbe3))
+
 # [1.13.0](https://github.com/jennieandersson/childrens-rights/compare/v1.12.0...v1.13.0) (2024-04-13)
 
 
