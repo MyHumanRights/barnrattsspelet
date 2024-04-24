@@ -58,7 +58,7 @@ export const Progressbar = () => {
   const getPositionOfPart = (index: number) => {
     const precentage = (100 / levelParts.length) * (index + 1)
     if (index === levelParts.length - 1) {
-      return { right: '0', transform: 'translateX(0)' }
+      return { left: '99%' }
     }
     return { left: `${precentage}%` }
   }

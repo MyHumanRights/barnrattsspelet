@@ -125,14 +125,10 @@
 }
 
 .levelParts {
-  display: flex;
-  justify-content: space-between;
   position: absolute;
   width: 100%;
-  height: 5rem;
   margin: 0;
   padding: 0;
-  list-style: none;
   top: 2px;
   z-index: 2;
 
@@ -156,12 +152,12 @@
 .star {
   position: relative;
 
-  display: inline-block;
+  display: block;
   width: 0;
   height: 0;
 
-  margin-left: 0.9em;
-  margin-right: 0.9em;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 1.2em;
 
   border-right: 0.3em solid transparent;
@@ -204,9 +200,10 @@
 }
 
 .avatarCard {
-  width: 2.5rem;
+  width: 4.5rem;
   background: #fff;
   position: relative;
   padding-bottom: 118%;
   border-radius: 4px;
+  margin-top: 1.5rem;
 }
