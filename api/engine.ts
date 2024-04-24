@@ -131,7 +131,7 @@ function loss(card: ICard) {
 
 export function answer(card: ICard) {
   const { antagonist, statement } = currentGameState
-  if (card.theme.includes(antagonist.statements[statement].category)) {
+  if (antagonist!.statements[statement].cards.includes(card.id)) {
     return moveForward(card)
   } else {
     return loss(card)
