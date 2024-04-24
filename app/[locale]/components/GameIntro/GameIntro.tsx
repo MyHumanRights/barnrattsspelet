@@ -20,6 +20,13 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
     return null
   }
 
+  const key = `antagonists.${antagonist}.intro.body1`
+  const message = t(key)
+
+  if (message === key) {
+    return null
+  }
+
   return (
     <Modal onModalClose={handleIntro}>
       <div className={styles.wrapper}>
