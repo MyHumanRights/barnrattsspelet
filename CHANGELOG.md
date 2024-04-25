@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/jennieandersson/childrens-rights/compare/v1.15.0...v1.16.0) (2024-04-25)
+
+
+### Features
+
+* win correct avatar part ([83e7c81](https://github.com/jennieandersson/childrens-rights/commit/83e7c81fdbf538921e82da90278b24829039131c))
+
 # [1.15.0](https://github.com/jennieandersson/childrens-rights/compare/v1.14.0...v1.15.0) (2024-04-25)
 
 
