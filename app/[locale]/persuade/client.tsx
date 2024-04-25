@@ -100,6 +100,7 @@ type Line = {
   text: string
   player: boolean
   wrongAnswer?: boolean
+  miniCard?: string | null
 }
 
 export const PersuadeClient = () => {
@@ -295,7 +296,17 @@ export const PersuadeClient = () => {
         player: false,
         miniCard: null,
       }
-      setLines((prev) => [...prev, firstAntagonistLine])
+      setLines((prev) => {
+        // Check if an object with the same properties as firstAntagonistLine already exists in the array
+        const exists = prev.some(
+          (line) => line.text === firstAntagonistLine.text
+        )
+        if (exists) {
+          return prev
+        } else {
+          return [...prev, firstAntagonistLine]
+        }
+      })
     }, 1200)
 
     const defeatedAntagonists = await readDefeatedAntagonists()
@@ -317,7 +328,6 @@ export const PersuadeClient = () => {
     const { statement, antagonist } = state
 
     if (result === ANSWER_TYPES.WIN) {
-      console.log('Antagonist defeated')
       saveProgress()
     }
 

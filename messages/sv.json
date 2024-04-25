@@ -1787,11 +1787,6 @@
         "Det är min sak hur jag dricker, ingenting du ska lägga dig i",
         "Vadå trygg? Det kände jag mig aldrig när jag var liten."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Var du full igen igår kväll?",
         "b": "Jag får ont i magen när du är så där."
@@ -1809,11 +1804,6 @@
       "statements": [
         "OMG! Fy fan! Skulle aldrig ta en selfie om jag såg ut som du."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Fick nya jeans och skjorta i helgen.",
         "b": "Här är jag i mina nya kläder. Snyggt va?"
@@ -1832,11 +1822,6 @@
         "Du gör som jag säger, familjen har bestämt att du ska gifta dig med din kusin till hösten",
         "Lägg dig inte i. Det blir som vi bestämt."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Jag vill gå klart skolan",
         "b": "Jag vill också ha en utbildning"
@@ -1856,11 +1841,6 @@
         "Det är vi vuxna som bestämmer hur vi vill ha det först och främst.",
         "Vi får se hur det blir med det. Men du ska veta att jag tänker kämpa för att du ska bo hos mig nu när pappa flyttar så långt bort"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Ska ni skiljas? Men vart ska jag bo då?",
         "b": "Ska ni skiljas? Men hur blir det för mig då?"
@@ -1879,11 +1859,6 @@
         "Men sluta nu. Så farligt är det väl inte",
         "Det är ingen idé att berätta för nån vuxen. Det är ändå ingen som bryr sig."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Det känns som jag blir mobbad. Kan du följa mig till kuratorn?",
         "b": "Jag mår inte så bra av det som händer på rasterna..."
@@ -1902,11 +1877,6 @@
         "Du menar alltså att du inte kan lära dig något här i klassrummet? Den enda som klagar på ljudnivån är du.",
         "Jag blir så trött på dig ibland. Här är det jag som är lärare och jag som bestämmer."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Fröken! Jag kan inte tänka när alla pratar!",
         "b": "Fröken! Kan du säga till att alla ska vara lite tystare?"
@@ -1925,11 +1895,6 @@
         "Vi har inte riktigt tid med det nu, vi är sena.",
         "Jaja, jag vet att du är klassens lilla jobbiga ordningspolis. Men vi har inte tid."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Ska vi verkligen lämna alla burkar och plast kvar här?",
         "b": "Ska vi bara gå nu? Och lämna allt skräp?"
@@ -1948,11 +1913,6 @@
         "Då skulle ingen annan komma. Du är så konstig.",
         "Men sluta gnälla. Och berätta inte för någon i skolan, för då du..."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Va? Var alla utom jag bjudna på din födelsedagsfest?",
         "b": "Va? Varför blev inte jag bjuden?"
@@ -1971,11 +1931,6 @@
         "Jävla musse. Vad gör ni här då? Åk hem!!",
         "Ska du va svensk får du fira jul som vi gör. Klä julgran och äta skinka, dumjävel"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Vi firar inte jul hemma hos oss",
         "b": "Vi äter inte julskinka hemma"
@@ -1993,11 +1948,6 @@
       "statements": [
         "Då får ni sluta spela som tjejer"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Synd att vi förlorade",
         "b": "Nästa gång vinner vi!"
@@ -2016,11 +1966,6 @@
         "Tyvärr, idag är det viktigt att vi toppar laget med de bästa spelarna.",
         "Du verkar inte fatta! Du platsar ju inte."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Varför får inte jag spela?",
         "b": "Måste jag sitta på bänken idag också?"
@@ -2039,11 +1984,6 @@
         "Men vi ska bara ha lite peptalk.",
         "Men sluta gnälla. Jag har väl sett nakna ungar förr."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Ursäkta, vi byter om här, gå ut!",
         "b": "Jag vill vara ifred när jag byter om."
@@ -2062,11 +2002,6 @@
         "Skiter väl jag i!",
         "Vadå respekt? Tjallar du, får du stryk."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Lägg av, håll dina snuskiga bilder för dig själv!",
         "b": "Sluta, jag vill inte se din snopp i min mobil!"
@@ -2085,11 +2020,6 @@
         "Jag har bråttom. Du har väl ändå inget viktigt för dig.",
         "Nä du, barn ska veta sin plats."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Ursäkta, men jag var före.",
         "b": "Men hallå, det var min tur nu."
@@ -2108,11 +2038,6 @@
         "Vafan? Hörde ni! Fetknoppen kan prata.",
         "Värdighet? Gillar du verkligen att åka skateboard och kan du det?"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Hej!",
         "b": "Hallå!"
@@ -2131,11 +2056,6 @@
         "Vad fint! Hur går det med vår hemlighet? Nakenbilderna du lovade att skicka mig?",
         "Sluta krångla. Du har ju lovat. Och du har väl inte berättat för någon vuxen?"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Tänkte lite på det du skrev i chatten igår.",
         "b": "Det gick jättebra på provet igår, tack för tipsen!"
@@ -2154,11 +2074,6 @@
         "Killarnas träningstider går först.",
         "Ni tjejer får väl också börja spela hockey då, om tiderna inte passar!"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Varför finns det bara sena tider i ishallen för oss som vill åka skridskor?",
         "b": "Varför finns det så lite tider i ishallen för oss som inte spelar hockey?"
@@ -2177,11 +2092,6 @@
         "Det är ingen idé. Tar de en så dyker det bara upp nya.",
         "Men hör du inte vad jag säger. Polisen gör ändå ingenting."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "De säljer droger här utanför affären. Det är läskigt!",
         "b": "Kan du ringa polisen. Jag har sett några som säljer droger?"
@@ -2199,11 +2109,6 @@
       "statements": [
         "Då får du söka asyl. Men det är inte säkert att du får stanna."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Jag kan inte åka tillbaka. Om jag inte får stanna i Sverige kan jag bli dödad.",
         "b": "Jag kan bli dödad om jag tvingas tillbaka till mitt hemland."
@@ -2222,11 +2127,6 @@
         "Ja. Och jag har verkligen försökt på alla sätt och sagt att du sitter i rullstol. Men de sa nej tyvärr.",
         "Ja vet, men jag har egentligen inte tid med det här trasslet."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Mamma, du skulle ju ringa och fråga om jag kan få färdtjänst till teckningskursen",
         "b": "Har du ringt och frågat efter färdtjänst?"
@@ -2244,11 +2144,6 @@
       "statements": [
         "Nu är det jag som bestämmer. Du följer med!"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Men jag vill bo kvar i Sverige! Jag är ju född här.",
         "b": "Jag vill inte följa med till släkten, tänk om de tvingar mig att stanna. Jag vill bo kvar här, där jag är född."
@@ -2267,11 +2162,6 @@
         "Behöver du som sitter i rullstol verkligen så här bra skor? Och borde inte du ha med dig en normal person som hjälper dig att handla?",
         "Jag vill bara hjälpa till. Det spelar väl ingen roll vad en sån som du har på fötterna."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Hej, jag skulle vilja köpa de här skorna.",
         "b": "Hej, hur mycket kostar de här skorna?"
@@ -2291,11 +2181,6 @@
         "Men herregud, jag kan väl inte hjälpa att de flesta med din hudfärg brukar spela basket eller vinna OS i löpning?",
         "Jaja, det är bra att du försvarar dig. Men det skulle nog vara bättre om du inte var så känslig. Jag skämtar ju bara lite."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Hej, det är första träningen för mig idag.",
         "b": "Hej, jag ska träffa mitt nya lag idag."
@@ -2313,11 +2198,6 @@
       "statements": [
         "Tjejer! Hallå där! Inte kan ni väl gå runt och visa upp er på stan. Sånt får ni göra hemma."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Jag vill hålla dig i handen och visa att vi är kära.",
         "b": "Visst måste två tjejer som är kära kunna hålla varandra i handen?"
@@ -2335,11 +2215,6 @@
       "statements": [
         "Det där är ingenting att prata om. Vi glömmer det och fixar lite fika istället?"
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Varför har jag ett svenskt namn? Jag kommer ju från Korea?",
         "b": "Varför kommer jag från Korea och du och mamma från Sverige?"
@@ -2359,11 +2234,6 @@
         "Ja men, du kanske ska fråga mig och mamma vilka tidningar och program som du borde undvika.",
         "Jaha du, men vänta åtminstone med att tänka en massa strunt tills du förstår mer."
       ],
-      "intro": {
-        "title": "Lorem ipsum",
-        "body1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis neque justo, auctor eget tempor sed, egestas non elit. Duis suscipit, mi in sollicitudin sollicitudin, magna risus semper purus, egestas porttitor nisi ipsum id augue.",
-        "body2": "In porttitor, odio ac congue mollis, velit diam sodales metus, ac fringilla enim dolor vitae velit"
-      },
       "conversationEntries": {
         "a": "Om jag fick rösta skulle jag rösta på ett parti som brydde sig om miljön.",
         "b": "Alla vuxna som bryr sig om sina barn borde rösta för miljön."
