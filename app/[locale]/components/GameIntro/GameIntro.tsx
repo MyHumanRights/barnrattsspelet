@@ -1,4 +1,6 @@
 import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
+import { start } from 'repl'
 
 import { Antagonist } from '@/utils/antagonistType'
 
@@ -15,6 +17,7 @@ type Props = {
 
 export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
   const t = useTranslations()
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   if (!showModal) {
     return null
@@ -24,7 +27,7 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
   const message = t(key)
 
   if (message === key) {
-    return null
+    buttonRef.current?.click()
   }
 
   return (
@@ -35,7 +38,9 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
             textKey={`antagonists.${antagonist}.intro.body1`}
           />
         </p>
-        <Button onClick={handleIntro}>{t('play')}</Button>
+        <Button ref={buttonRef} onClick={handleIntro}>
+          {t('play')}
+        </Button>
       </div>
     </Modal>
   )
