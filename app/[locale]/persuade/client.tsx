@@ -302,7 +302,6 @@ export const PersuadeClient = () => {
           (line) => line.text === firstAntagonistLine.text
         )
         if (exists) {
-          console.log('Already exists')
           return prev
         } else {
           return [...prev, firstAntagonistLine]
