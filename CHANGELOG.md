@@ -1,3 +1,15 @@
+# [1.15.0](https://github.com/jennieandersson/childrens-rights/compare/v1.14.0...v1.15.0) (2024-04-25)
+
+
+### Bug Fixes
+
+* useRef hook and button reference to GameIntro component ([26ad6d5](https://github.com/jennieandersson/childrens-rights/commit/26ad6d51ae65e46be762478157b3e0e45a3fc2c0))
+
+
+### Features
+
+* only show modal if there is an intro ([96f4c26](https://github.com/jennieandersson/childrens-rights/commit/96f4c26f060c5c2fde172caae3d64a69de504780))
+
 # [1.14.0](https://github.com/jennieandersson/childrens-rights/compare/v1.13.0...v1.14.0) (2024-04-24)
 
 
