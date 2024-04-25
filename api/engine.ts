@@ -1,5 +1,6 @@
 // @ts-nocheck
 import {
+  AvatarId,
   GAME_STATES,
   IAvatarColors,
   IAvatarParts,
@@ -375,6 +376,51 @@ export const getRandomAvatar = (parts: IAvatar, colors: IAvatarColors) => {
     }
     return avatar
   }, {} as IAvatar)
+}
+
+export const getPartId = (progress: Progress): AvatarId => {
+  const level = levels.find((level) => level.levelNumber === progress.level)
+
+  if (!level) {
+    console.error('Level not found')
+  }
+
+  // Adjust for zero-based index
+  const partIndex = progress.part - 1
+  const part = level.parts[partIndex]
+
+  return part
+}
+
+const findCategoryById = (
+  id: AvatarId,
+  parts: IAvatarParts
+): AvatarId | null => {
+  for (const category in parts) {
+    if (parts.hasOwnProperty(category)) {
+      const part = parts[category].find((part) => part.id === id)
+      if (part) {
+        return category
+      }
+    }
+  }
+  return null // Category not found for the given ID
+}
+
+export const getAvatarPartById = (
+  id: AvatarId,
+  parts: IAvatarParts,
+  storedAvatar: IAvatar
+) => {
+  const key = findCategoryById(id, parts)
+
+  const avatarPart = {
+    category: key,
+    id: id,
+    color: storedAvatar[key].color,
+  }
+
+  return [avatarPart]
 }
 
 export const getItemToLootBox = (

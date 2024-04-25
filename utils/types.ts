@@ -9,7 +9,7 @@ import {
 import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
-type AvatarId = keyof typeof AvatarPart
+export type AvatarId = keyof typeof AvatarPart
 
 export interface LocaleParams {
   params: {

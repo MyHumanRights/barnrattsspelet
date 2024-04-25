@@ -7,8 +7,9 @@ import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
 import {
+  getAvatarPartById,
   getCardsToLootBox,
-  getItemToLootBox,
+  getPartId,
   getStartingCards,
   getSuperHeroToLootBox,
 } from '@/api/engine'
@@ -138,15 +139,23 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
       const allowedLootbox = await readGameStateValue('allowedLootbox')
       const avatarPartCollection = await getAvatarPartCollection()
       const storedAvatar = await getAvatar()
+      const progress = await readGameStateValue('progress')
+
+      if (!progress) {
+        console.error('No progress found')
+        return
+      }
 
       setIsAllowedLootbox(allowedLootbox)
       setGameEnvironment(environment)
       setIsBuyingLootbox(buyingLootbox)
       setLocalCollection(cardCollection)
 
+      const partId = getPartId(progress)
+
       const item =
         !hasWonAllCards || isBuyingLootbox
-          ? getItemToLootBox(avatarPartCollection, avatarParts, storedAvatar)
+          ? getAvatarPartById(partId, avatarParts, storedAvatar)
           : getSuperHeroToLootBox(
               avatarPartCollection,
               avatarParts,
