@@ -1,3 +1,15 @@
+# [1.17.0](https://github.com/jennieandersson/childrens-rights/compare/v1.16.0...v1.17.0) (2024-05-10)
+
+
+### Bug Fixes
+
+* add heading ([a304cbb](https://github.com/jennieandersson/childrens-rights/commit/a304cbba7f6ed62d6aab0234dc8f6fcbc6f0f5b2))
+
+
+### Features
+
+* css for super hero part ([a3585c0](https://github.com/jennieandersson/childrens-rights/commit/a3585c01e0870f04b14711bbe6f365ca2c248ad7))
+
 # [1.16.0](https://github.com/jennieandersson/childrens-rights/compare/v1.15.0...v1.16.0) (2024-04-25)
 
 
