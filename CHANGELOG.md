@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/jennieandersson/childrens-rights/compare/v1.17.0...v1.18.0) (2024-05-10)
+
+
+### Features
+
+* remove sidebar ([edf3b09](https://github.com/jennieandersson/childrens-rights/commit/edf3b09a5322eb68c91a91bf5d96b59fb5fd2d1c))
+
 # [1.17.0](https://github.com/jennieandersson/childrens-rights/compare/v1.16.0...v1.17.0) (2024-05-10)
 
 
