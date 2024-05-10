@@ -1,11 +1,19 @@
 @import '../../../global.scss';
 
 .box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   background-color: #fff;
-  margin-inline: -24px;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  width: 225px;
+  @include drop-shadow(medium);
 
   h2 {
     @include fontBangers;
+  }
+
+  @media (min-width: 768px) {
+    width: 300px;
   }
 }

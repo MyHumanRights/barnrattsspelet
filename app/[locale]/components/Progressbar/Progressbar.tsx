@@ -4,23 +4,27 @@ import { motion, useAnimation } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-import { getPartsForLevel } from '@/api/engine'
-import { getCurrentLevel, getProgress } from '@/api/storage'
+import { getColorForPart, getPartsForLevel } from '@/api/engine'
+import { getAvatar, getCurrentLevel, getProgress } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { getRandomColor } from '@/utils/getRandomColor'
+import { IAvatar } from '@/utils/types'
 
 import { AvatarPart } from '../AvatarPart'
+import { Loader } from '../Loader'
 import styles from './Progressbar.module.scss'
 
 export const Progressbar = () => {
+  const t = useTranslations('progressbar')
   const [level, setLevel] = useState(1)
+  const [storedAvatar, setStoredAvatar] = useState<IAvatar | null>()
   const [currentPartIndex, setCurrentPartIndex] = useState(0)
   const [progressAnimation, setProgressAnimation] = useState('')
   const [progressInPercentage, setProgressInPercentage] = useState(0)
   const [progress, setProgress] = useState({ level: 1, part: 0 })
-  const t = useTranslations('progressbar')
   const heartAnimation = useAnimation()
-  const { shouldReduceMotion } = useOptionsContext().options
+  const {
+    options: { shouldReduceMotion },
+  } = useOptionsContext()
   const uuid = crypto.randomUUID()
   const levelParts = getPartsForLevel(level)
 
@@ -52,6 +56,7 @@ export const Progressbar = () => {
       setLevel(progress.level)
       setCurrentPartIndex(progress.part - 1)
       setProgressInPercentage(progressInLevel)
+      setStoredAvatar(await getAvatar())
     }
 
     updateProgress()
@@ -63,6 +68,10 @@ export const Progressbar = () => {
       return { left: '99%' }
     }
     return { left: `${precentage}%` }
+  }
+
+  if (!storedAvatar) {
+    return <Loader />
   }
 
   return (
@@ -100,7 +109,10 @@ export const Progressbar = () => {
               ></span>
               <div className={`${styles.avatarCard} ${part}`}>
                 <AvatarPart avatarPart='Base01' fill='gray' />
-                <AvatarPart avatarPart={part} fill={getRandomColor()} />
+                <AvatarPart
+                  avatarPart={part}
+                  fill={getColorForPart(part, storedAvatar)}
+                />
               </div>
             </div>
           ))}

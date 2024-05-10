@@ -1,0 +1,1 @@
+export { CardCollectionLink } from './CardCollectionLink'
