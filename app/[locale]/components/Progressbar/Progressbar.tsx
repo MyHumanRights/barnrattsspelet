@@ -67,7 +67,10 @@ export const Progressbar = () => {
 
   return (
     <section className={styles.progressbar}>
-      <h2 className={styles.level}>{progress.level}</h2>
+      <h2 className={styles.level}>
+        <span className='sr-only'>{t('level')}</span>
+        {progress.level}
+      </h2>
       <div className={styles.innerBar}>
         <label htmlFor='progress'>{t('progress')}</label>
         {progressInPercentage >= 9 && (

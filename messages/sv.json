@@ -419,7 +419,8 @@
     "persuation": "Övertalning"
   },
   "progressbar": {
-    "progress": "Spelprogress"
+    "progress": "Spelprogress",
+    "level": "Nivå"
   },
   "boost": {
     "winMessage": "Du svarade rätt!",
