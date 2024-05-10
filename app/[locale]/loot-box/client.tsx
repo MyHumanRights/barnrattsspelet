@@ -153,14 +153,16 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
       const partId = getPartId(progress)
 
-      const item =
-        !hasWonAllCards || isBuyingLootbox
-          ? getAvatarPartById(partId, avatarParts, storedAvatar)
-          : getSuperHeroToLootBox(
-              avatarPartCollection,
-              avatarParts,
-              storedAvatar
-            )
+      // const item =
+      //   !hasWonAllCards || isBuyingLootbox
+      //     ? getAvatarPartById(partId, avatarParts, storedAvatar)
+      //     : getSuperHeroToLootBox(
+      //         avatarPartCollection,
+      //         avatarParts,
+      //         storedAvatar
+      //       )
+
+      const item = getAvatarPartById(partId, avatarParts, storedAvatar)
 
       setLootItem(item)
       setCollectedItems(avatarPartCollection)

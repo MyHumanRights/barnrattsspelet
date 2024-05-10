@@ -119,9 +119,19 @@
 }
 
 .level {
+  align-items: center;
+  background: $primaryColor;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  margin: -0.5rem;
   position: absolute;
+  text-align: center;
   transform: translateX(-100%);
-  padding-right: 1rem;
+  width: 3rem;
 }
 
 .levelParts {

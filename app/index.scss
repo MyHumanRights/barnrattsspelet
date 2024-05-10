@@ -148,3 +148,9 @@ code {
 .font-bangers {
   @include fontBangers;
 }
+
+.Accessory19,
+.Body19,
+.Hair19 {
+  box-shadow: $superHeroGlow;
+}
