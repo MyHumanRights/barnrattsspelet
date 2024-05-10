@@ -202,6 +202,8 @@ export type Level = {
   parts: AvatarPartKeys[]
 }
 
+export const superHeroIds = ['Accessory19', 'Body19', 'Hair19']
+
 export const levels: Level[] = [
   {
     levelNumber: 1,
@@ -219,39 +221,26 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 3,
-    parts: ['Body09', 'Accessory11', 'Body08', 'Hair18', 'Accessory16'],
+    parts: ['Body09', 'Accessory11', 'Body08', 'Hair18', 'Hair19'],
   },
-  { levelNumber: 4, parts: ['Body07', 'Hair16', 'Body16', 'Body18', 'Hair13'] },
+  {
+    levelNumber: 4,
+    parts: ['Body07', 'Hair16', 'Body16', 'Accessory16', 'Hair13'],
+  },
   {
     levelNumber: 5,
-    parts: ['Hair10', 'Accessory18', 'Hair12', 'Accessory07', 'Body11'],
+    parts: ['Hair10', 'Accessory18', 'Hair12', 'Accessory07', 'Body13'],
   },
   {
     levelNumber: 6,
-    parts: ['Accessory09', 'Accessory14', 'Body14', 'Body10', 'Body13'],
+    parts: ['Accessory09', 'Accessory14', 'Body14', 'Body10', 'Accessory19'],
   },
   {
     levelNumber: 7,
-    parts: ['Accessory18', 'Hair07', 'Accessory07', 'Accessory15', 'Body17'],
+    parts: ['Hair07', 'Body17', 'Hair14', 'Hair15', 'Body18'],
   },
   {
     levelNumber: 8,
-    parts: ['Body07', 'Accessory17', 'Accessory09', 'Body15', 'Accessory16'],
-  },
-  {
-    levelNumber: 9,
-    parts: ['Hair14', 'Body13', 'Accessory08', 'Hair15', 'Body12'],
-  },
-  {
-    levelNumber: 10,
-    parts: ['Hair08', 'Body10', 'Body09', 'Accessory12', 'Accessory11'],
-  },
-  {
-    levelNumber: 11,
-    parts: ['Hair07', 'Body14', 'Accessory13', 'Body17', 'Accessory10'],
-  },
-  {
-    levelNumber: 12,
-    parts: ['Accessory18', 'Hair15', 'Accessory14', 'Accessory11', 'Hair17'],
+    parts: ['Hair08', 'Hair17', 'Body11', 'Body19'],
   },
 ]

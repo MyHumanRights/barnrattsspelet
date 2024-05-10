@@ -411,7 +411,7 @@ export const getAvatarPartById = (
   id: AvatarId,
   parts: IAvatarParts,
   storedAvatar: IAvatar
-) => {
+): AvatarPart[] => {
   const key = findCategoryById(id, parts)
 
   const avatarPart = {

@@ -16,7 +16,8 @@ export const Progressbar = () => {
   const [level, setLevel] = useState(1)
   const [currentPartIndex, setCurrentPartIndex] = useState(0)
   const [progressAnimation, setProgressAnimation] = useState('')
-  const [progress, setProgress] = useState(0)
+  const [progressInPercentage, setProgressInPercentage] = useState(0)
+  const [progress, setProgress] = useState({ level: 1, part: 0 })
   const t = useTranslations('progressbar')
   const heartAnimation = useAnimation()
   const { shouldReduceMotion } = useOptionsContext().options
@@ -40,16 +41,17 @@ export const Progressbar = () => {
     }
 
     heartAnimation.start(() => progressbarAnimation)
-  }, [progress, heartAnimation, shouldReduceMotion])
+  }, [progressInPercentage, heartAnimation, shouldReduceMotion])
 
   useEffect(() => {
     const updateProgress = async () => {
       const progress = (await getProgress()) || { level: 1, part: 0 }
+      setProgress(progress)
       const level = getCurrentLevel(progress)
       const progressInLevel = (progress.part / (level?.parts.length ?? 1)) * 100
       setLevel(progress.level)
       setCurrentPartIndex(progress.part - 1)
-      setProgress(progressInLevel)
+      setProgressInPercentage(progressInLevel)
     }
 
     updateProgress()
@@ -65,18 +67,21 @@ export const Progressbar = () => {
 
   return (
     <section className={styles.progressbar}>
+      <h2 className={styles.level}>{progress.level}</h2>
       <div className={styles.innerBar}>
         <label htmlFor='progress'>{t('progress')}</label>
-        {progress >= 9 && (
-          <span className={styles.percentage}>{`${progress}%`}</span>
+        {progressInPercentage >= 9 && (
+          <span
+            className={styles.percentage}
+          >{`${progressInPercentage}%`}</span>
         )}
         <progress
           className={progressAnimation}
           id='progress'
           max='100'
-          value={progress}
+          value={progressInPercentage}
         >
-          {`${progress}%`}
+          {`${progressInPercentage}%`}
         </progress>
         <div className={styles.levelParts}>
           {levelParts.map((part, index) => (
@@ -90,7 +95,7 @@ export const Progressbar = () => {
                   index <= currentPartIndex ? styles.active : ''
                 }`}
               ></span>
-              <div className={styles.avatarCard}>
+              <div className={`${styles.avatarCard} ${part}`}>
                 <AvatarPart avatarPart='Base01' fill='gray' />
                 <AvatarPart avatarPart={part} fill={getRandomColor()} />
               </div>
@@ -98,7 +103,11 @@ export const Progressbar = () => {
           ))}
         </div>
       </div>
-      <div className={`${styles.heart} ${progress >= 100 && styles.filled}`}>
+      <div
+        className={`${styles.heart} ${
+          progressInPercentage >= 100 && styles.filled
+        }`}
+      >
         <motion.div animate={heartAnimation}>
           <svg
             viewBox='0 0 44 42'

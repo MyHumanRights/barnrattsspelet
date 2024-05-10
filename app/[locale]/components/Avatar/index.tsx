@@ -34,7 +34,7 @@ export const Avatar = ({ choices, link }: Props) => {
             {avatar.accessory.id && (
               <AvatarPart
                 avatarPart={avatar.accessory.id}
-                fill={avatar.accessory.color}
+                fill={avatar.face.color}
               />
             )}
           </>
