@@ -9,8 +9,6 @@ import {
 import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
-export type AvatarId = keyof typeof AvatarPart
-
 export interface LocaleParams {
   params: {
     locale: string
@@ -87,10 +85,10 @@ export interface IAvatarColors {
 }
 
 export interface IAvatar {
-  face: { id: AvatarId; color: string }
-  body: { id: AvatarId; color: string }
-  hair: { id: AvatarId; color: string }
-  accessory: { id: AvatarId; color?: string }
+  face: { id: AvatarPartKeys; color: string }
+  body: { id: AvatarPartKeys; color: string }
+  hair: { id: AvatarPartKeys; color: string }
+  accessory: { id: AvatarPartKeys; color?: string }
 }
 
 export interface IAvatarNew {
@@ -167,14 +165,14 @@ export interface IScenario {
 
 export interface ILootItem {
   category: string
-  id: AvatarId
+  id: AvatarPartKeys
   color: string
   isNewPart?: boolean
 }
 
 export type AvatarPart = {
   isNewPart?: true
-  id: AvatarId
+  id: AvatarPartKeys
   isDefault?: boolean | undefined
   isSuperHero?: boolean | undefined
   color?: string | undefined

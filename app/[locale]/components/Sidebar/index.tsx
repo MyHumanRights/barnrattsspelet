@@ -32,7 +32,7 @@ export const Sidebar: React.FC<Props> = ({
   hasNewParts,
 }) => {
   const t = useTranslations()
-  const router = useRouter()
+  // const router = useRouter()
 
   // const [animateToken, triggerToken] = useAnimation(animationConfig)
   // const tokensRef = useRef<HTMLAnchorElement>(null)
@@ -68,15 +68,6 @@ export const Sidebar: React.FC<Props> = ({
           </Link>
         </nav>
         <nav className={styles.menu} aria-label={t('Start.primaryMenu')}>
-          <CardCollectionLink
-            numberOfNewCards={numberOfNewCards}
-            numberOfCards={numberOfCards}
-          />
-
-          <AvatarLink hasNewParts={hasNewParts} />
-
-          <HelpBox />
-
           {/* <motion.div
             className={`${styles.linkWrapper} ${
               currentTokens < 5 ? styles.disabled : ''

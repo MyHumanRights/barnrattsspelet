@@ -1,12 +1,11 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { readGameStateValue, setGameStateValue } from '@/api/storage'
-import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import { Button } from '../Button'
@@ -16,12 +15,9 @@ const PlayModal = dynamic(() =>
   import('./PlayModal').then((mod) => mod.PlayModal)
 )
 
-export const SlimPlay = ({ left }: { left: string }) => {
+export const SlimPlay = () => {
   const t = useTranslations()
   const [isSlim, setIsSlim] = useState<boolean | null>(false)
-  const {
-    options: { shouldReduceMotion },
-  } = useOptionsContext()
 
   useEffect(() => {
     const getPlayMode = async () => {
@@ -39,14 +35,7 @@ export const SlimPlay = ({ left }: { left: string }) => {
 
   return (
     <>
-      <motion.div
-        className={styles.playButtonWrapper}
-        initial={{ left: 0 }}
-        animate={{
-          left,
-        }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
-      >
+      <div className={styles.playButtonWrapper}>
         <Button
           variant={ButtonVariant.PRIMARY}
           size={ButtonSize.XXLARGE}
@@ -54,7 +43,7 @@ export const SlimPlay = ({ left }: { left: string }) => {
         >
           {t('home.play')}
         </Button>
-      </motion.div>
+      </div>
       <AnimatePresence>
         {isSlim && <PlayModal handleModal={handleModal} />}
       </AnimatePresence>

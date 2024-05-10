@@ -1,0 +1,73 @@
+@import '../../../global.scss';
+
+.cardCollectionLink {
+  position: absolute;
+  top: 13rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media (min-width: 768px) {
+    top: 12rem;
+    left: 2rem;
+    transform: translateX(0);
+  }
+
+  @media (min-width: 1440px) {
+    top: 2rem;
+  }
+}
+
+.linkWrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include fontBangers;
+
+  &:hover,
+  &:focus-within {
+    a {
+      text-decoration: none;
+      color: scale-color($primaryColor, $lightness: 15%);
+    }
+  }
+
+  &:focus-within:not(:hover) {
+    outline: $tabFocusOutline;
+    outline-offset: 0.2rem;
+  }
+
+  a:focus-visible {
+    outline: none; // We have a clear border around the element on focus-within. No need for an outline.
+  }
+
+  a {
+    background-color: #fff;
+    @include drop-shadow(medium);
+  }
+}
+
+.cardCollectionWrapper {
+  position: relative;
+  width: 200px;
+
+  @media (min-width: 768px) {
+    width: 250px;
+  }
+}
+
+.cardCollectionIcon {
+  svg {
+    @include drop-shadow(medium);
+  }
+}
+
+.newCards {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 56px;
+  height: 54px;
+  transform: translate(50%, -10%);
+}

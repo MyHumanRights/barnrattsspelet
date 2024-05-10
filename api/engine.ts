@@ -1,6 +1,5 @@
 // @ts-nocheck
 import {
-  AvatarId,
   GAME_STATES,
   IAvatarColors,
   IAvatarParts,
@@ -378,7 +377,7 @@ export const getRandomAvatar = (parts: IAvatar, colors: IAvatarColors) => {
   }, {} as IAvatar)
 }
 
-export const getPartId = (progress: Progress): AvatarId => {
+export const getPartId = (progress: Progress): AvatarPartKeys => {
   const level = levels.find((level) => level.levelNumber === progress.level)
 
   if (!level) {
@@ -393,9 +392,9 @@ export const getPartId = (progress: Progress): AvatarId => {
 }
 
 const findCategoryById = (
-  id: AvatarId,
+  id: AvatarPartKeys,
   parts: IAvatarParts
-): AvatarId | null => {
+): AvatarPartKeys | null => {
   for (const category in parts) {
     if (parts.hasOwnProperty(category)) {
       const part = parts[category].find((part) => part.id === id)
@@ -408,7 +407,7 @@ const findCategoryById = (
 }
 
 export const getAvatarPartById = (
-  id: AvatarId,
+  id: AvatarPartKeys,
   parts: IAvatarParts,
   storedAvatar: IAvatar
 ): AvatarPart[] => {
@@ -421,6 +420,16 @@ export const getAvatarPartById = (
   }
 
   return [avatarPart]
+}
+
+export const getColorForPart = (
+  id: AvatarPartKeys,
+  storedAvatar: IAvatar
+): string => {
+  // remove digits and convert to lowercase to match the storedAvatar key
+  const key = id.replace(/\d+/g, '').toLowerCase()
+
+  return storedAvatar[key].color
 }
 
 export const getItemToLootBox = (

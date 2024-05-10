@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
 import { getNewAvatarParts, getNumberOfNewCards } from '@/api/engine'
@@ -30,9 +30,11 @@ import {
   IScenario,
 } from '@/utils/types'
 
+import { AvatarLink } from '../components/AvatarLink'
+import { CardCollectionLink } from '../components/CardCollectionLink'
+import { HelpBox } from '../components/HelpBox'
 import { Map } from '../components/Map'
 import { Progressbar } from '../components/Progressbar'
-import { Sidebar } from '../components/Sidebar'
 import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
 
@@ -73,8 +75,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
-  const sideBarWidth = 310
-
   const getUnbeaten = useCallback(
     (place: string) => {
       const currentPlace = places.filter((obj) => obj.place === place)
@@ -91,40 +91,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       return unbeaten?.length > 0
     })
   }, [getUnbeaten, unlockedPlaces])
-
-  const getMapOffset = () => {
-    let offset = 0
-
-    // current aspect ratio except sidebar
-    const aspectRatio = (width - sideBarWidth) / height
-
-    // map fits in space outside sidebar
-    const wideScreen = (height + sideBarWidth) / height
-    const smallScreen = 1
-
-    const isPortrait = width < height
-    const isSmallSize = width < sideBarWidth * 3
-
-    const isMediumScreen = aspectRatio < wideScreen && aspectRatio > smallScreen
-    const isSmallScreen = aspectRatio < smallScreen
-
-    if (isPortrait) {
-      return offset
-    }
-
-    if (isMediumScreen || isSmallSize) {
-      // distance between sidebar and interactive map square
-      const offsetVal = (width - height) / 2 - sideBarWidth
-      // convert sign before checking left/right
-      const signedVal = offsetVal * -1
-      offset = signedVal
-    }
-
-    if (isSmallScreen) {
-      offset = (width - height) / 2
-    }
-    return offset
-  }
 
   const getOwlTip = useCallback(async () => {
     if (!cardHand.length) {
@@ -174,7 +140,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     return false
   }, [cardHand, getAnyUnbeaten, unlockedPlaces])
 
-  function handleOwlClick() {
+  const handleOwlClick = () => {
     if (multipleOwlMessages) {
       const welcomeTextsArr = [
         {
@@ -292,51 +258,33 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const leftPosOfProgressbar = useMemo(() => {
-    return isMobile ? sideBarWidth : sideBarWidth / 2
-  }, [sideBarWidth, isMobile])
-
-  const getLeftPosition = () => (isMobile ? '0' : `${leftPosOfProgressbar}px`)
-
   return (
     <>
       {isMobile && <MapBackground />}
-      <Sidebar
-        cardHand={cardHand}
-        numberOfCards={numberOfCards}
-        numberOfNewCards={numberOfNewCards}
-        hasNewParts={hasNewParts}
-      />
-      <motion.div
-        className={styles.progressbarWrapper}
-        // initial={{ left: 0 }}
-        // animate={{
-        //   left: getLeftPosition(),
-        // }}
-        // transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
-      >
+      <div className={styles.progressbarWrapper}>
         <div className={styles.progressbar}>
           <Progressbar />
         </div>
-      </motion.div>
+      </div>
 
-      <SlimPlay left={getLeftPosition()} />
+      <SlimPlay />
 
       {!isMobile && (
         <section className={styles.map}>
-          <motion.div
-            className={`${styles.largerImageWrapper}`}
-            initial={{ x: 0 }}
-            animate={{ x: getMapOffset() }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
-          >
+          <div className={`${styles.largerImageWrapper}`}>
             <Map
               progress={progress}
               // highlightEnv={environment} TODO: use to highligt environments
             />
-          </motion.div>
+          </div>
         </section>
       )}
+      <CardCollectionLink
+        numberOfCards={numberOfCards}
+        numberOfNewCards={numberOfNewCards}
+      />
+      <AvatarLink hasNewParts={hasNewParts} />
+      <HelpBox />
       <AnimatePresence>
         {showOwlTip && (
           <motion.div

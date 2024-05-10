@@ -1,0 +1,48 @@
+@import '../../../global.scss';
+
+.avatarLink {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+}
+
+.linkWrapper {
+  cursor: pointer;
+  @include fontBangers;
+
+  &:hover,
+  &:focus-within {
+    a {
+      text-decoration: none;
+      color: scale-color($primaryColor, $lightness: 15%);
+    }
+  }
+
+  &:focus-within:not(:hover) {
+    outline: $tabFocusOutline;
+    outline-offset: 0.2rem;
+  }
+
+  a:focus-visible {
+    outline: none; // We have a clear border around the element on focus-within. No need for an outline.
+  }
+}
+
+.avatarWrapper {
+  @include drop-shadow(medium);
+  width: 100px;
+
+  @media (min-width: 768px) {
+    width: 200px;
+  }
+}
+
+.newPart {
+  position: absolute;
+  top: 0;
+  right: 20%;
+  width: 56px;
+  height: 54px;
+  z-index: 1;
+  transform: translate(50%, -50%);
+}
