@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-05-26)
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/jennieandersson/childrens-rights/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+
 # [1.18.0](https://github.com/jennieandersson/childrens-rights/compare/v1.17.0...v1.18.0) (2024-05-10)
 
 
