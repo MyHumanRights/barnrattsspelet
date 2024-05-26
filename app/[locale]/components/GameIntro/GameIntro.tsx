@@ -1,6 +1,5 @@
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
-import { start } from 'repl'
 
 import { Antagonist } from '@/utils/antagonistType'
 
@@ -30,6 +29,9 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
     buttonRef.current?.click()
   }
 
+  const key2 = `antagonists.${antagonist}.intro.body2`
+  const body2 = t(key2)
+
   return (
     <Modal onModalClose={handleIntro}>
       <div className={styles.wrapper}>
@@ -38,6 +40,13 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
             textKey={`antagonists.${antagonist}.intro.body1`}
           />
         </p>
+        {body2 !== key2 ? (
+          <p>
+            <TextWithVoiceover
+              textKey={`antagonists.${antagonist}.intro.body2`}
+            />
+          </p>
+        ) : null}
         <Button ref={buttonRef} onClick={handleIntro}>
           {t('play')}
         </Button>

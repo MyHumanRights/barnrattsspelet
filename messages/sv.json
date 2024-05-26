@@ -1705,7 +1705,7 @@
         "Nä, nu får du sluta. Barn har väl inga rättigheter."
       ],
       "intro": {
-        "body1": "Ibland kan skolan vara extra jobbig och du behöver stöd av en förälder. Här handlar det om att spela rätt artikel så att föräldern förstår att hen ska lyssna. Svårt att välja rätt artikelkort? Vänd på korten och läs mer."
+        "body1": "När skolan känns extra jobbig och du behöver hjälp. Svårt att välja rättighetskort? Vänd på korten och läs mer."
       },
       "conversationEntries": {
         "a": "Pappa, jag mår inte så bra och det känns inte som jag fattar nånting på lektionerna.",
@@ -1726,7 +1726,7 @@
         "Men vad ska göra då? Du berättar ju aldrig nåt."
       ],
       "intro": {
-        "body1": "Här är en situation med en nyfiken mamma. Ja, hur är det egentligen - har vuxna rätt att till exempel läsa din dagbok?"
+        "body1": "Tänk dig en nyfiken vuxen som gärna vill veta allt... Men har föräldrar och andra vuxna verkligen rätt att kolla din mobil eller dagbok?"
       },
       "conversationEntries": {
         "a": "Va? Har du läst mina sms?",
@@ -1747,7 +1747,7 @@
         "Lägg av, måste du alltid tycka så mycket?"
       ],
       "intro": {
-        "body1": "Alla barn och människor har samma rättigheter och lika värde. Här får du hjälpa till att svara en storasyster som verkar vara på riktigt dåligt humör."
+        "body1": "Alla barn har samma rättigheter och lika värde. Här ska du svara en sur storasyster. Känner du dig osäker på vilken rättighet som gäller? Vänd på korten och ta reda på mer!"
       },
       "conversationEntries": {
         "a": "Får jag också hänga med och spela?",
@@ -1768,7 +1768,7 @@
         "Men herregud, känner du dig illa behandlad av en sån struntsak?"
       ],
       "intro": {
-        "body1": "Ibland kan äldre släktingar vara riktigt klumpiga och säga saker som sårar en. Det är aldrig OK! För kom ihåg: Barnkonventionen gäller var du än är, hemma, i skolan och på fritiden."
+        "body1": "Ibland säger vuxna saker om din kropp som du inte gillar... Men det är aldrig okej! Kom ihåg: Barnkonventionen skyddar dig, alltid."
       },
       "conversationEntries": {
         "a": "Hej!",
@@ -1783,6 +1783,9 @@
         "start": "En mamma, en kvinna i fyrtioårsåldern, med kortklippt ljusblont hår, vinröda byxor och grön tröja ser skuldmedveten ut",
         "end": "En mamma, en kvinna i fyrtioårsåldern, med kortklippt ljusblont hår, vinröda byxor och grön tröja ser skuldmedveten ut",
         "background": "Ett vardagsrum med blå soffa och ett sidobord. På bordet står en grön växt."
+      },
+      "intro": {
+        "body1": "Ibland hamnar vuxna i knepiga situationer. Här kan du hjälpa en vuxen som druckit för mycket. Försök att välja de rätta korten. Vänd dem och läs mer."
       },
       "statements": [
         "Det är min sak hur jag dricker, ingenting du ska lägga dig i",
@@ -1802,6 +1805,9 @@
         "end": "Ett internettroll som chattar",
         "background": "Ett skrivbord, där det står en dator, en läskburk, några papper och en penna"
       },
+      "intro": {
+        "body1": "Mobbing är aldrig okej. Alla har rätt att vara sig själva utan att bli mobbade. Vilket kort skulle du välja för att svara i chatten?"
+      },
       "statements": [
         "OMG! Fy fan! Skulle aldrig ta en selfie om jag såg ut som du."
       ],
@@ -1818,6 +1824,9 @@
         "start": "En storebror, en kille i tjugoårsåldern, med mörkt hår, blå jeans, gul hoodietröja, som ser upprörd ut",
         "end": "En storebror, en kille i tjugoårsåldern, med mörkt hår, blå jeans, gul hoodietröja, som ser upprörd ut",
         "background": "Ett vardagsrum med TV och TV-bänk. På bänken står även en gul lampa och bredvid bänken finns en blå stol"
+      },
+      "intro": {
+        "body1": "Alla barn har rätt till utbildning och att få utvecklas. Det står i Barnkonventionen och gäller alla barn, överallt. Vilka kort skulle du svara med här?"
       },
       "statements": [
         "Du gör som jag säger, familjen har bestämt att du ska gifta dig med din kusin till hösten",
@@ -1836,6 +1845,9 @@
         "start": "En mamma, en kvinna i fyrtioårsåldern, med rågblont hår, röda glasögon, gröna byxor, grön tröja står med händerna i midjan och ser mycket sammanbiten ut",
         "end": "En mamma, en kvinna i fyrtioårsåldern, med rågblont hår, röda glasögon, gröna byxor, grön tröja står med händerna i midjan och ser mycket sammanbiten ut",
         "background": "Ett kök med köksluckor i grönt och ett köksfönster med gula gardiner"
+      },
+      "intro": {
+        "body1": "Hjälp en mamma att förstå att barn har rätt att vara med och bestämma över sina liv. Om du har svårt att välja rätt kort, vänd dem och läs mer."
       },
       "statements": [
         "Det ska jag och pappa försöka komma överens om.",
@@ -1856,6 +1868,9 @@
         "end": "En tonårig kille med mörkt hår, lila tröja, gröna byxor, sitter i en rullstol",
         "background": "En gul skolbyggnad, ingång till skolan, en klocka, en basketbollkorg."
       },
+      "intro": {
+        "body1": "En kompis ber dig om hjälp. Vilka kort skulle du använda för att svara? Vänd på korten och läs mer om det är svårt att välja."
+      },
       "statements": [
         "Men sluta nu. Så farligt är det väl inte",
         "Det är ingen idé att berätta för nån vuxen. Det är ändå ingen som bryr sig."
@@ -1873,6 +1888,9 @@
         "start": "En lärare, en kvinna i trettioårsåldern, med långt brunt hår, orange klänning, ser sträng ut och hytter med ett finger",
         "end": "En lärare, en kvinna i trettioårsåldern, med långt brunt hår, orange klänning, ser sträng ut och hytter med ett finger",
         "background": "Ett klassrum, med whiteboardtavla, en klocka och ett skåp, på skåpets dörrar är barnteckningar uppsatta"
+      },
+      "intro": {
+        "body1": "Nu hamnar du i en situation i klassrummet. Välj rätt kort och hjälp den stressade läraren."
       },
       "statements": [
         "Du menar alltså att du inte kan lära dig något här i klassrummet? Den enda som klagar på ljudnivån är du.",
@@ -1892,6 +1910,9 @@
         "end": "En lärare, en man i trettioårsåldern, med glasögon, brunt lockigt hår och skägg, grå byxor, ljusgrön T-shirt och mörkgrön jacka, som ser oengagerad ut",
         "background": "En park med grön gräsmatta, träd, en gångväg, en sopkorg där det ligger skräp på gräsmattan"
       },
+      "intro": {
+        "body1": "Under en klassutflykt i en vacker park blir det fel. Vilka kort skulle du välja här? Om det är svårt, vänd på korten och läs mer för att göra det enklare."
+      },
       "statements": [
         "Vi har inte riktigt tid med det nu, vi är sena.",
         "Jaja, jag vet att du är klassens lilla jobbiga ordningspolis. Men vi har inte tid."
@@ -1909,6 +1930,9 @@
         "start": "En flicka i tolvårsåldern, med mörkt hår i flätor, vita byxor och lila tröja som gör en gest med ena handen och ser lite bister ut",
         "end": "En flicka i tolvårsåldern, med mörkt hår i flätor, vita byxor och lila tröja som gör en gest med ena handen och ser lite bister ut",
         "background": "En skolkorridor, med elevskåp och klädhängare på väggen"
+      },
+      "intro": {
+        "body1": "En kompis blir inte bjuden på födelsedagsfesten. Vilka kort skulle du använda för att svara klasskompisen?"
       },
       "statements": [
         "Då skulle ingen annan komma. Du är så konstig.",
@@ -1928,6 +1952,9 @@
         "end": "En kille i femtonårsåldern, med blå jeans, vit T-shirt, står med båda händerna i byxfickorna och ser överlägsen ut",
         "background": "En gul skolbyggnad, ingång till skolan, en klocka, en basketbollkorg"
       },
+      "intro": {
+        "body1": "Att bli mobbad för sin familjs traditioner är inte OK. Med vilka kort skulle du svara här? Vänd på korten och läs mer om det är svårt."
+      },
       "statements": [
         "Jävla musse. Vad gör ni här då? Åk hem!!",
         "Ska du va svensk får du fira jul som vi gör. Klä julgran och äta skinka, dumjävel"
@@ -1946,6 +1973,9 @@
         "end": "En man i fyrtioårsåldern, med lila byxor, ljusblå skjorta, blå jacka, pekar med ett finger och ser upprörd ut",
         "background": "En fotbollsplan, ett fotbollmål, där det ligger två fotbollar, en gul och en blå"
       },
+      "intro": {
+        "body1": "Efter en fotbollsmatch kan vuxna ibland säga dumma saker som sårar. Vilket kort skulle du använda för att svara?"
+      },
       "statements": [
         "Då får ni sluta spela som tjejer"
       ],
@@ -1962,6 +1992,9 @@
         "start": "En fotbollstränare, en kvinna i trettioårsåldern, med blont hår, klädd i lila och rosa träningskläder som ser bestämd ut",
         "end": "En fotbollstränare, en kvinna i trettioårsåldern, med blont hår, klädd i lila och rosa träningskläder som ser bestämd ut",
         "background": "En fotbollsplan, ett fotbollmål, där det ligger två fotbollar, en gul och en blå"
+      },
+      "intro": {
+        "body1": "Måste man alltid vara bäst och duktig? Här får du svara en tränare som inte verkar kunna något alls om barns rättigheter. Svårt att välja kort? Vänd på korten och läs mer."
       },
       "statements": [
         "Tyvärr, idag är det viktigt att vi toppar laget med de bästa spelarna.",
@@ -1981,6 +2014,9 @@
         "end": "En tränare, en man i fyrtioårsåldern, med kort mörkt hår, klädd i svarta, korta träningsbyxor och en gul T-shirt, visselpipa runt halsen",
         "background": "Ett omklädningsrum i en idrottshall, med skåp och en bänk. På bänken ligger en innebandyklubba och en boll. På golvet en grön bag och ett par gymnastikskor"
       },
+      "intro": {
+        "body1": "Det här kan hända i ett omklädningsrum efter idrottspasset. Med vilka kort skulle du svara här?"
+      },
       "statements": [
         "Men vi ska bara ha lite peptalk.",
         "Men sluta gnälla. Jag har väl sett nakna ungar förr."
@@ -1998,6 +2034,9 @@
         "start": "En kompis som skickar en kränkande kommentar i mobilchatten",
         "end": "En kompis som skickar en kränkande kommentar i mobilchatten",
         "background": "En hand som håller i en mobiltelefon"
+      },
+      "intro": {
+        "body1": "På nätet kan det hända saker som du inte alls tycker om. Vilka kort skulle du använda för att svara i chatten?"
       },
       "statements": [
         "Skiter väl jag i!",
@@ -2017,6 +2056,9 @@
         "end": "En kvinna i femtioårsåldern, med rött hår, glasögon, gula byxor och grå tröja står med armarna i kors och ser sur ut",
         "background": "En kassadisk i en närbutik, bredvid kassadisken hyllor med frukt och med cupcakes"
       },
+      "intro": {
+        "body1": "I affären tränger sig en vuxen förbi dig i kön. Många vuxna känner faktiskt inte till barns rättigheter. Vilka kort skulle du använda för att svara?"
+      },
       "statements": [
         "Jag har bråttom. Du har väl ändå inget viktigt för dig.",
         "Nä du, barn ska veta sin plats."
@@ -2034,6 +2076,9 @@
         "start": "Två tonårsflickor som ser tuffa och oberörda ut",
         "end": "Två tonårsflickor som ser tuffa och oberörda ut",
         "background": "En skateboardbana I en skateboardpark, på banan ligger en skateboard, runt om finns fyra grönskande träd"
+      },
+      "intro": {
+        "body1": "Mobbing är aldrig OK – du har alltid rätt till din värdighet. Vilka kort skulle du använda för att svara de här taskiga ungdomarna? Vänd dem och läs mer."
       },
       "statements": [
         "Vafan? Hörde ni! Fetknoppen kan prata.",
@@ -2053,6 +2098,10 @@
         "end": "En groomer som pressar och vill ha nakenbilder",
         "background": "En hand som håller i en mobiltelefon"
       },
+      "intro": {
+        "body1": "Vet du att det finns något som heter grooming? Det är när en vuxen på nätet vill att du gör saker som du inte alls vill. Hur skulle du svara här?",
+        "body2": "Och kom ihåg - om du själv eller någon du känner blir utsatt för grooming på nätet så prata med en vuxen du litar på och anmäl till polisen."
+      },
       "statements": [
         "Vad fint! Hur går det med vår hemlighet? Nakenbilderna du lovade att skicka mig?",
         "Sluta krångla. Du har ju lovat. Och du har väl inte berättat för någon vuxen?"
@@ -2070,6 +2119,9 @@
         "start": "En politiker, en man i sextioårsåldern, med grått hår, glasögon, mörka byxor, vit skjorta, blå kavaj som ser sammanbiten ut",
         "end": "En politiker, en man i sextioårsåldern, med grått hår, glasögon, mörka byxor, vit skjorta, blå kavaj som ser sammanbiten ut",
         "background": "Ett kontorsrum i ett kommunhus, i rummet ett arkivskåp med pärmar och ett skrivbord med en dator på"
+      },
+      "intro": {
+        "body1": "Alla barn är lika mycket värda. Alla barn har också rätt till en aktiv fritid. Med vilka kort skulle du svara den här politikern? Svårt – vänd på kortet och läs mer."
       },
       "statements": [
         "Killarnas träningstider går först.",
@@ -2089,6 +2141,9 @@
         "end": "En butikssäljare, med grått hår och skägg, röd skjorta och blå byxor, som gör en uppgiven gest med handen",
         "background": "En kassadisk i en närbutik, bredvid kassadisken hyllor med frukt och med cupcakes"
       },
+      "intro": {
+        "body1": "Vuxna ska alltid göra det som är bäst för dig som barn. Det verkar inte den vuxne i den här situationen förstå. Vilka kort skulle du använda här?"
+      },
       "statements": [
         "Det är ingen idé. Tar de en så dyker det bara upp nya.",
         "Men hör du inte vad jag säger. Polisen gör ändå ingenting."
@@ -2107,6 +2162,9 @@
         "end": "En gränspolis, en kvinna, med mörkt kort hår klädd i polisuniform",
         "background": "En stationsbyggnad i rött tegel, två fönster och en klocka på väggen"
       },
+      "intro": {
+        "body1": "Har barn rätt till skydd om de måste fly från krig och våld? I den här situationen får du svara en polis med rätt rättighetskort."
+      },
       "statements": [
         "Då får du söka asyl. Men det är inte säkert att du får stanna."
       ],
@@ -2123,6 +2181,9 @@
         "start": "En mamma i trettiofemårsåldern, med brunt hår, vita byxor, ljusblå tröja som slår ut armarna och ser uppgiven",
         "end": "En mamma i trettiofemårsåldern, med brunt hår, vita byxor, ljusblå tröja som slår ut armarna och ser uppgiven",
         "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
+      },
+      "intro": {
+        "body1": "Alla barn har rätt till en aktiv fritid så nu får du hjälpa en stressad vuxen att göra rätt. Om du har svårt att välja kort, vänd dem och läs mer."
       },
       "statements": [
         "Ja. Och jag har verkligen försökt på alla sätt och sagt att du sitter i rullstol. Men de sa nej tyvärr.",
@@ -2142,6 +2203,9 @@
         "end": "En pappa, med mörkt hår och skägg, svarta byxor, vit skjorta som ser sträng ut",
         "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
       },
+      "intro": {
+        "body1": "Kan en vuxen bestämma över ditt liv och var du ska bo utan att du får säga vad du tycker? Svara den vuxne med rätt kort. Vänd på korten och läs mer om det är svårt."
+      },
       "statements": [
         "Nu är det jag som bestämmer. Du följer med!"
       ],
@@ -2158,6 +2222,9 @@
         "start": "En butikssäljare, en kvinna i tjugoårsåldern med långt mellanblont hår, svart klänning, rosa pumps som ser överlägsen ut",
         "end": "En butikssäljare, en kvinna i tjugoårsåldern med långt mellanblont hår, svart klänning, rosa pumps som ser överlägsen ut",
         "background": "En interiör från en skobutik med hyllor som visar träningsskor i olika färger"
+      },
+      "intro": {
+        "body1": "Ibland har vuxna fördomar om barn som de tycker är annorlunda. Med vilka kort skulle du svara här? Svårt? Vänd dem och läs mer."
       },
       "statements": [
         "Behöver du som sitter i rullstol verkligen så här bra skor? Och borde inte du ha med dig en normal person som hjälper dig att handla?",
@@ -2176,6 +2243,9 @@
         "start": "En ishockeytränare, en man i trettioårsåldern, klädd i blå träningsoverall, keps på huvudet, som håller i en ishockeyklubba och småler",
         "end": "En ishockeytränare, en man i trettioårsåldern, klädd i blå träningsoverall, keps på huvudet, som håller i en ishockeyklubba och småler",
         "background": "Ett omklädningsrum i en ishockeyhall, med blå skåp och en bänk. På bänken en ishockeyhjälm, under bänken ett par skridskor och en stor bag"
+      },
+      "intro": {
+        "body1": "Här får du möta en idrottstränare som har fördomar och försöker skämta. Vilka kort skulle du använda för att svara?"
       },
       "statements": [
         "Jaså, finns det is i Afrika? Haha! Skämt åsido, har du spelat hockey förut då?",
@@ -2196,6 +2266,9 @@
         "end": "En äldre kvinna med grått hår, glasögon, grön klänning, grön kofta, hytter med ett finger och ser besvärad ut",
         "background": "Ett ljusgult hyreshus med portuppgång nummer 12, bredvid ligger en optikerbutik som visar glasögon i ett skyltfönster"
       },
+      "intro": {
+        "body1": "Spelar det någon roll vem man är kär i? Och får jag alltid vara den jag är? Svara den vuxne med rätt kort."
+      },
       "statements": [
         "Tjejer! Hallå där! Inte kan ni väl gå runt och visa upp er på stan. Sånt får ni göra hemma."
       ],
@@ -2213,6 +2286,9 @@
         "end": "En pappa i fyrtioårsåldern, med ljusbrunt hår och glasögon, bär jeans och ljusblå tröja, som ser snäll och lite skuldmedveten ut",
         "background": "Ett gult kök med en mikrovågsugn på köksbänken och en klocka på väggen"
       },
+      "intro": {
+        "body1": "Ibland försöker vuxna vara snälla och inte ta upp saker om är lite jobbiga. Nu får du hjälpa till och spela rätt kort."
+      },
       "statements": [
         "Det där är ingenting att prata om. Vi glömmer det och fixar lite fika istället?"
       ],
@@ -2229,6 +2305,9 @@
         "start": "En pappa, med grått hår och skägg, beige byxor, grön tröja, står med armarna i kors och ser bister ut",
         "end": "En pappa, med grått hår och skägg, beige byxor, grön tröja, står med armarna i kors och ser bister ut",
         "background": "Ett vardagsrum med en grön fåtölj, gul golvlampa och en vägghylla med böcker"
+      },
+      "intro": {
+        "body1": "Har vuxna rätt att bestämma vad du ska läsa, tycka och tänka? Svara med rätt kort. Om det är svårt, vänd på korten och läs mer för att göra det enklare."
       },
       "statements": [
         "Men vad har du läst för skit nu då?",

@@ -601,7 +601,7 @@
     "scenarioImage": "scenario-homophobicadult.svg",
     "chatBubblePosition": "center",
     "antagonistPosition": "right",
-    "theme": "expression",
+    "theme": "equality",
     "environment": "world",
     "statements": [
       {

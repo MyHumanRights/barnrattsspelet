@@ -1,4 +1,10 @@
+@import '../../../global.scss';
+
 .wrapper {
-  background-color: #fff;
+  background-color: #efefed;
+  border: 2px solid $primaryColor;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1rem;
 }
