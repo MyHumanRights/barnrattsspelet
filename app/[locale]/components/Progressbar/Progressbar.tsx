@@ -2,11 +2,17 @@ import '../../../global.scss'
 
 import { motion, useAnimation } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { getColorForPart, getPartsForLevel } from '@/api/engine'
-import { getAvatar, getCurrentLevel, getProgress } from '@/api/storage'
+import { getColorForPart, getPartsForLevel, hasWonLevel } from '@/api/engine'
+import {
+  getAvatar,
+  getCurrentLevel,
+  getProgress,
+  setProgress,
+} from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { delay } from '@/utils/delay'
 import { IAvatar } from '@/utils/types'
 
 import { AvatarPart } from '../AvatarPart'
@@ -15,13 +21,15 @@ import styles from './Progressbar.module.scss'
 
 export const Progressbar = () => {
   const t = useTranslations('progressbar')
+  const [hasAnimated, setHasAnimated] = useState(false)
   const [level, setLevel] = useState(1)
   const [storedAvatar, setStoredAvatar] = useState<IAvatar | null>()
   const [currentPartIndex, setCurrentPartIndex] = useState(0)
-  const [progressAnimation, setProgressAnimation] = useState('')
   const [progressInPercentage, setProgressInPercentage] = useState(0)
-  const [progress, setProgress] = useState({ level: 1, part: 0 })
+  const [progress, setStateProgress] = useState({ level: 1, part: 0 })
   const heartAnimation = useAnimation()
+  const levelControls = useAnimation()
+  const partControls = useAnimation()
   const {
     options: { shouldReduceMotion },
   } = useOptionsContext()
@@ -29,38 +37,79 @@ export const Progressbar = () => {
   const levelParts = getPartsForLevel(level)
 
   useEffect(() => {
+    // Animation for the heart
     let progressbarAnimation = {
       scale: [1, 1.1, 0.85, 1],
       transition: { times: [0, 0.1, 0.9, 1], delay: 1 },
     }
-
-    setProgressAnimation(styles.progressAnimation)
 
     if (shouldReduceMotion) {
       progressbarAnimation = {
         scale: [1, 1],
         transition: { times: [0, 0.01], delay: 1 },
       }
-      setProgressAnimation('')
     }
 
     heartAnimation.start(() => progressbarAnimation)
   }, [progressInPercentage, heartAnimation, shouldReduceMotion])
 
+  const updateProgress = useCallback(async () => {
+    const progress = (await getProgress()) || { level: 1, part: 0 }
+    setStateProgress(progress)
+    setLevel(progress.level)
+    setCurrentPartIndex(progress.part - 1)
+  }, [])
+
   useEffect(() => {
-    const updateProgress = async () => {
-      const progress = (await getProgress()) || { level: 1, part: 0 }
-      setProgress(progress)
-      const level = getCurrentLevel(progress)
-      const progressInLevel = (progress.part / (level?.parts.length ?? 1)) * 100
-      setLevel(progress.level)
-      setCurrentPartIndex(progress.part - 1)
-      setProgressInPercentage(progressInLevel)
+    const setAvatar = async () => {
       setStoredAvatar(await getAvatar())
     }
 
+    setAvatar()
     updateProgress()
-  }, [])
+  }, [updateProgress])
+
+  const saveAndupdateProgress = useCallback(async () => {
+    await delay(1000)
+    await setProgress(progress.level + 1, 0)
+    updateProgress()
+    await delay(100)
+    if (!hasAnimated) {
+      partControls.start({
+        scale: [1, 1.1, 0.9, 1],
+        transition: {
+          duration: 1,
+          ease: 'easeInOut',
+          times: [0, 0.33, 0.66, 1],
+        },
+      })
+    }
+    setHasAnimated(true)
+    await delay(2000)
+    levelControls.start({
+      scale: [1, 1.8, 0.8, 1.5, 0.9, 1.2, 0.95, 1],
+      transition: {
+        duration: 2,
+        ease: 'easeInOut',
+        times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+      },
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateProgress, progress, levelControls, partControls])
+
+  useEffect(() => {
+    // For animating the progress bar
+    const level = getCurrentLevel(progress)
+    const progressInLevel = (progress.part / (level?.parts.length ?? 1)) * 100
+    setProgressInPercentage(progressInLevel)
+
+    // Check if the user has won the level
+    // If so, we want to update the progres bar to the next level
+    if (level && hasWonLevel(progress, level)) {
+      saveAndupdateProgress()
+    }
+  }, [progress, levelParts, saveAndupdateProgress])
 
   const getPositionOfPart = (index: number) => {
     const precentage = (100 / levelParts.length) * (index + 1)
@@ -74,11 +123,13 @@ export const Progressbar = () => {
     return <Loader />
   }
 
+  const MotionAvatarPart = motion(AvatarPart)
+
   return (
     <section className={styles.progressbar}>
       <h2 className={styles.level}>
         <span className='sr-only'>{t('level')}</span>
-        {progress.level}
+        <motion.span animate={levelControls}>{progress.level}</motion.span>
       </h2>
       <div className={styles.innerBar}>
         <label htmlFor='progress'>{t('progress')}</label>
@@ -88,7 +139,7 @@ export const Progressbar = () => {
           >{`${progressInPercentage}%`}</span>
         )}
         <progress
-          className={progressAnimation}
+          className={shouldReduceMotion ? '' : styles.progressAnimation}
           id='progress'
           max='100'
           value={progressInPercentage}
@@ -107,13 +158,16 @@ export const Progressbar = () => {
                   index <= currentPartIndex ? styles.active : ''
                 }`}
               ></span>
-              <div className={`${styles.avatarCard} ${part}`}>
+              <motion.div
+                className={`${styles.avatarCard} ${part}`}
+                animate={partControls}
+              >
                 <AvatarPart avatarPart='Base01' fill='gray' />
-                <AvatarPart
+                <MotionAvatarPart
                   avatarPart={part}
                   fill={getColorForPart(part, storedAvatar)}
                 />
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>

@@ -380,7 +380,7 @@ export const saveProgress = async (): Promise<void> => {
     const nextLevel = getNextLevel(progress, levels)
     if (nextLevel) {
       progress.level = nextLevel.levelNumber
-      progress.part = 1
+      progress.part = 0
     } else {
       console.log('Congratulations! You have completed all levels!')
       return
@@ -392,4 +392,11 @@ export const saveProgress = async (): Promise<void> => {
   console.log('Saving progress:', progress)
 
   setGameStateValue({ progress })
+}
+
+export const setProgress = async (
+  level: number,
+  part: number
+): Promise<void> => {
+  setGameStateValue({ progress: { level, part } })
 }

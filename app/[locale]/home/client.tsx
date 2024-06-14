@@ -51,8 +51,6 @@ interface Props {
 
 export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const {
-    clientHeight: height,
-    clientWidth: width,
     isMobile,
     toggleThemeSound,
     options: { shouldReduceMotion, themeMusicOn, themeVolume },

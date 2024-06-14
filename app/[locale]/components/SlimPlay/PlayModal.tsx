@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { mapAntagonistsToArray } from '@/api/engine'
@@ -20,6 +21,8 @@ export const PlayModal = ({ handleModal }: Props) => {
 
   const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])
 
+  const t = useTranslations()
+
   useEffect(() => {
     const antagonists = mapAntagonistsToArray(antagonistsObj)
     setAllScenarios(antagonists)
@@ -28,11 +31,9 @@ export const PlayModal = ({ handleModal }: Props) => {
   return (
     <div className={styles.wrapper}>
       <CloseButton onClick={handleModal} />
-      {allAreDefeated ? (
-        <h2 style={{ textAlign: 'center' }}>Du har klarat alla!</h2>
-      ) : (
-        <h2 style={{ textAlign: 'center' }}>Välj ett scenario</h2>
-      )}
+      <h2 style={{ textAlign: 'center' }}>
+        {allAreDefeated ? t('home.allClear') : t('home.selectChallenge')}
+      </h2>
       <ScenarioList
         allScenarios={allScenarios}
         cards={cards as ICard[]}

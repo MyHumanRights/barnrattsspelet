@@ -169,7 +169,9 @@
     "tokensbody": "mot fler rättighetskort",
     "buylootbox": "Köp rättighetskort",
     "moreinfoheading": "Behöver du prata?",
-    "moreinfotext": "Här får du veta var du kan vända dig för att få stöd och hjälp om du är orolig för något."
+    "moreinfotext": "Här får du veta var du kan vända dig för att få stöd och hjälp om du är orolig för något.",
+    "allClear": "Du har vunnit alla utmaningar!",
+    "selectChallenge": "Välj en utmaning"
   },
   "help": {
     "heading": "Behöver du prata med någon?",
