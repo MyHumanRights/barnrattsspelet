@@ -1,3 +1,11 @@
+# [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-06-14)
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/jennieandersson/childrens-rights/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+* fix animation on progress bar ([0685af5](https://github.com/jennieandersson/childrens-rights/commit/0685af5f2129812b041281c4b0dfc4fa8544a393))
+
 # [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-05-26)
 
 
