@@ -1,3 +1,18 @@
+# [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-06-23)
+
+
+### Bug Fixes
+
+* meta title and desc ([1d410b0](https://github.com/jennieandersson/childrens-rights/commit/1d410b0bdd9fe565a17eb4c86be4265d846c6d15))
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/jennieandersson/childrens-rights/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+* animation on close button ([56c3151](https://github.com/jennieandersson/childrens-rights/commit/56c3151b0524744ddea27474bc6312e0d1935d04))
+* fix animation on progress bar ([0685af5](https://github.com/jennieandersson/childrens-rights/commit/0685af5f2129812b041281c4b0dfc4fa8544a393))
+* update antagonist name type to Antagonist ([9b933de](https://github.com/jennieandersson/childrens-rights/commit/9b933dec63b3879cd9c8909a02d119bfe830a680))
+
 # [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-06-14)
 
 
