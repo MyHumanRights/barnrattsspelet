@@ -124,7 +124,7 @@ type Statement = {
 
 export type IGameAntagonist = {
   health: number
-  name: string
+  name: Antagonist
   components: Component
   scenarioImage: string
   chatBubblePosition: string
