@@ -183,9 +183,8 @@ export const PersuadeClient = () => {
   }
 
   const init = useCallback(async () => {
-    const gameStateAntagonist = (await readGameStateValue(
-      'activeAntagonist'
-    )) as keyof typeof antagonists
+    const gameStateAntagonist = await readGameStateValue('activeAntagonist')
+
     if (!gameStateAntagonist) {
       return
     }
