@@ -1,20 +1,22 @@
+@import '../../../global.scss';
+
 .closeButton {
-  $heightWidth: 1.8rem;
-  width: $heightWidth;
-  height: $heightWidth;
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background-color: transparent;
-  border: none;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid $primaryColor;
   cursor: pointer;
+  display: flex;
+  height: 2.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(30%, -30%);
+  width: 2.5rem;
 
   svg {
-    color: black;
-  }
-
-  @media (max-width: 600px) {
-    height: 45px;
-    width: 45px;
+    color: $primaryColor;
+    width: 24px;
+    height: 24px;
   }
 }

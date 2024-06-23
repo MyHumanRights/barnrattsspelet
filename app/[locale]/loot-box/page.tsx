@@ -13,8 +13,8 @@ export async function generateMetadata({
   const t = await getTranslations('meta')
 
   return {
-    title: t('title.stats'),
-    description: t('description.stats'),
+    title: t('title.lootbox'),
+    description: t('description.lootbox'),
     robots: {
       index: false,
       follow: false,

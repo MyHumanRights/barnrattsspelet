@@ -137,7 +137,7 @@ export const Settings: React.FC<Props> = ({
           onMouseEnter={trigger}
           aria-label={t('open')}
         >
-          <motion.span className={styles.config} animate={animate}>
+          <motion.span animate={animate}>
             <ConfigIcon />
           </motion.span>
         </Button>

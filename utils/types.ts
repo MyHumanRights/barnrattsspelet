@@ -181,7 +181,7 @@ export type AvatarPart = {
 export interface IGameStateObject {
   isBuyingLootbox: boolean
   allowedLootbox: boolean
-  activeAntagonist: null | string
+  activeAntagonist: null | Antagonist
   gameEnvironment: null | Environments
   isSlimPlay: boolean
   progress: Progress

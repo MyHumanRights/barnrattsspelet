@@ -1,4 +1,7 @@
+import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+
+import { useAnimation } from '@/utils/hooks/useAnimation'
 
 import { Close } from '../Icons/Close'
 import styles from './CloseButton.module.scss'
@@ -9,6 +12,7 @@ type Props = {
 
 export const CloseButton = ({ onClick }: Props) => {
   const t = useTranslations()
+  const [animate, trigger] = useAnimation({ rotation: 20 })
 
   return (
     <button
@@ -16,8 +20,11 @@ export const CloseButton = ({ onClick }: Props) => {
       className={styles.closeButton}
       autoFocus
       aria-label={t('close')}
+      onMouseEnter={trigger}
     >
-      <Close />
+      <motion.span animate={animate}>
+        <Close />
+      </motion.span>
     </button>
   )
 }
