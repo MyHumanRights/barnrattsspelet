@@ -124,7 +124,7 @@ type Statement = {
 
 export type IGameAntagonist = {
   health: number
-  name: string
+  name: Antagonist
   components: Component
   scenarioImage: string
   chatBubblePosition: string
@@ -181,7 +181,7 @@ export type AvatarPart = {
 export interface IGameStateObject {
   isBuyingLootbox: boolean
   allowedLootbox: boolean
-  activeAntagonist: null | string
+  activeAntagonist: null | Antagonist
   gameEnvironment: null | Environments
   isSlimPlay: boolean
   progress: Progress
