@@ -47,9 +47,11 @@ export const StatsClient: React.FC = () => {
     setIsLoading(true)
     const newData: StatsData = {}
 
+    const dbName = year + '-beta'
+
     try {
       for (const docName of Object.values(STAT_COLLECTION_NAMES)) {
-        const docRef = doc(db, year, docName)
+        const docRef = doc(db, dbName, docName)
         const docSnap = await getDoc(docRef)
 
         if (docSnap.exists()) {
