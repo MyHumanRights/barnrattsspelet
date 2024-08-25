@@ -3,7 +3,7 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore/lite'
 import { useStatsContext } from '@/contexts/StatsContext'
 import { db } from '@/utils/firebase'
 
-const YEAR = new Date().getFullYear().toString()
+const YEAR = new Date().getFullYear().toString() + '-beta'
 
 export const useAddToStatistics = (docName, flagName) => {
   const { statFlags, setStatFlags } = useStatsContext()
