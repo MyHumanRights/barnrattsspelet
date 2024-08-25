@@ -28,7 +28,7 @@ export const StatsClient: React.FC = () => {
 
   const t = useTranslations()
 
-  const years = Array.from({ length: currentYear - 2022 }, (_, i) => 2023 + i)
+  const years = Array.from({ length: currentYear - 2023 }, (_, i) => 2024 + i)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
