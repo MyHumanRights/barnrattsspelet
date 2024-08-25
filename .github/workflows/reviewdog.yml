@@ -1,5 +1,7 @@
 name: reviewdog
 on: [pull_request]
+permissions:
+  pull-requests: read
 jobs:
   eslint:
     name: Sniffing Code
