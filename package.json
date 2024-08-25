@@ -47,7 +47,8 @@
   ],
   "release": {
     "branches": [
-      "main"
+      "main",
+      { "name": "develop", "prerelease": true }
     ],
     "prepare": [
       "@semantic-release/changelog",
