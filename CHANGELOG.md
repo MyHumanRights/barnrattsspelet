@@ -1,3 +1,20 @@
+# [1.19.0-develop.1](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.18.0...v1.19.0-develop.1) (2024-08-25)
+
+
+### Bug Fixes
+
+* meta title and desc ([1d410b0](https://github.com/MyHumanRights/barnrattsspelet/commit/1d410b0bdd9fe565a17eb4c86be4265d846c6d15))
+* update years array in stats client ([8e19cd6](https://github.com/MyHumanRights/barnrattsspelet/commit/8e19cd6680bf69b81faf3610907fc9add99498f3))
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/MyHumanRights/barnrattsspelet/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+* animation on close button ([56c3151](https://github.com/MyHumanRights/barnrattsspelet/commit/56c3151b0524744ddea27474bc6312e0d1935d04))
+* fix animation on progress bar ([0685af5](https://github.com/MyHumanRights/barnrattsspelet/commit/0685af5f2129812b041281c4b0dfc4fa8544a393))
+* update antagonist name type to Antagonist ([9b933de](https://github.com/MyHumanRights/barnrattsspelet/commit/9b933dec63b3879cd9c8909a02d119bfe830a680))
+* update database name ([79dcdff](https://github.com/MyHumanRights/barnrattsspelet/commit/79dcdff514cbce05f54a18c98eebe0853650cbe1))
+
 # [1.19.0](https://github.com/jennieandersson/childrens-rights/compare/v1.18.0...v1.19.0) (2024-06-23)
 
 
