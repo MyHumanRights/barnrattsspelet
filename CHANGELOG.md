@@ -1,3 +1,10 @@
+# [1.19.0-develop.3](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.19.0-develop.2...v1.19.0-develop.3) (2024-08-26)
+
+
+### Features
+
+* logging statements for non-production environments ([5e3b28e](https://github.com/MyHumanRights/barnrattsspelet/commit/5e3b28e797ce941d1c933684b62771d96687c9b0))
+
 # [1.19.0-develop.2](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.19.0-develop.1...v1.19.0-develop.2) (2024-08-26)
 
 
