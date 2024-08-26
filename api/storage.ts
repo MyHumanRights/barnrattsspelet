@@ -389,7 +389,8 @@ export const saveProgress = async (): Promise<void> => {
     progress.part++
   }
 
-  console.log('Saving progress:', progress)
+  process.env.APP_ENV !== 'production' &&
+    console.log('Saving progress:', progress)
 
   setGameStateValue({ progress })
 }
