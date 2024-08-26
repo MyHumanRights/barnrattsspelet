@@ -1,6 +1,6 @@
 {
   "name": "childrensrightsgame-next",
-  "version": "1.19.0-develop.1",
+  "version": "1.19.0-develop.2",
   "private": true,
   "scripts": {
     "dev": "next dev",

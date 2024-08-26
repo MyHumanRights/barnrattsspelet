@@ -1,3 +1,10 @@
+# [1.19.0-develop.2](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.19.0-develop.1...v1.19.0-develop.2) (2024-08-26)
+
+
+### Features
+
+* update Confetti component ([daa88ec](https://github.com/MyHumanRights/barnrattsspelet/commit/daa88ecaf776175afaef2b13c4b81fbbbf5a67e1))
+
 # [1.19.0-develop.1](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.18.0...v1.19.0-develop.1) (2024-08-25)
 
 
