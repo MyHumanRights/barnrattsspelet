@@ -3,7 +3,7 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore/lite'
 import { useStatsContext } from '@/contexts/StatsContext'
 import { db } from '@/utils/firebase'
 
-const YEAR = new Date().getFullYear().toString()
+const YEAR = new Date().getFullYear().toString() + '-beta'
 
 export const useAddToStatistics = (docName, flagName) => {
   const { statFlags, setStatFlags } = useStatsContext()
@@ -12,7 +12,8 @@ export const useAddToStatistics = (docName, flagName) => {
     if (!statFlags[flagName]) return
 
     try {
-      console.log('Adding to statistics', flagName)
+      process.env.APP_ENV !== 'production' &&
+        console.log('Adding to statistics', flagName)
       const docRef = doc(db, YEAR, docName)
       const docSnap = await getDoc(docRef)
 

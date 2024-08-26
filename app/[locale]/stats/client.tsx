@@ -28,7 +28,7 @@ export const StatsClient: React.FC = () => {
 
   const t = useTranslations()
 
-  const years = Array.from({ length: currentYear - 2022 }, (_, i) => 2023 + i)
+  const years = Array.from({ length: currentYear - 2023 }, (_, i) => 2024 + i)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
@@ -47,9 +47,11 @@ export const StatsClient: React.FC = () => {
     setIsLoading(true)
     const newData: StatsData = {}
 
+    const dbName = year + '-beta'
+
     try {
       for (const docName of Object.values(STAT_COLLECTION_NAMES)) {
-        const docRef = doc(db, year, docName)
+        const docRef = doc(db, dbName, docName)
         const docSnap = await getDoc(docRef)
 
         if (docSnap.exists()) {

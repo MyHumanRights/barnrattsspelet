@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - main
+      - develop
+
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
