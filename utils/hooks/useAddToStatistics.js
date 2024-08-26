@@ -12,7 +12,8 @@ export const useAddToStatistics = (docName, flagName) => {
     if (!statFlags[flagName]) return
 
     try {
-      console.log('Adding to statistics', flagName)
+      process.env.APP_ENV !== 'production' &&
+        console.log('Adding to statistics', flagName)
       const docRef = doc(db, YEAR, docName)
       const docSnap = await getDoc(docRef)
 
