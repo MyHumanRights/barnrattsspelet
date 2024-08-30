@@ -79,6 +79,18 @@
         }
       }
 
+      .correct {
+        background-color: #b9feb9;
+        border: 2px solid $southernFrance;
+        color: #000;
+      }
+
+      .incorrect {
+        background-color: #feb9b9;
+        border: 2px solid #fb2929;
+        color: #000;
+      }
+
       p.disabled {
         cursor: default;
       }
