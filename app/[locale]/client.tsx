@@ -10,7 +10,11 @@ import {
   setPlayFromScenario,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
+import {
+  ButtonSize,
+  STAT_COLLECTION_NAMES,
+  STAT_FLAGS,
+} from '@/utils/constants'
 import { ButtonVariant } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAnimation } from '@/utils/hooks/useAnimation'
@@ -124,6 +128,7 @@ export const Client = () => {
               <Link
                 to={firstTimer ? '/avatar-builder' : '/home'}
                 variant={ButtonVariant.HUGE}
+                size={ButtonSize.XLARGE}
                 onMouseEnter={triggerArrow}
               >
                 {t('play')}

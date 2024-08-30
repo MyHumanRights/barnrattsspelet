@@ -37,7 +37,7 @@ export const SlimPlay = () => {
     <>
       <div className={styles.playButtonWrapper}>
         <Button
-          variant={ButtonVariant.PRIMARY}
+          variant={ButtonVariant.HUGE}
           size={ButtonSize.XXLARGE}
           onClick={handleModal}
         >
