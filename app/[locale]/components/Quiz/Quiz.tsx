@@ -144,7 +144,7 @@ export const Quiz = ({ onAnswer, card, onModalClose }: Props) => {
                       },
                     }}
                   >
-                    {correctAnswer?.text}
+                    {selectedAnswer?.text}
                   </motion.p>
                   <motion.div
                     className={styles.result}
