@@ -44,14 +44,6 @@ export const Button: React.FC<PropsWithChildren<Props>> = forwardRef(
       variant === ButtonVariant.HUGE ? effectsVolume - 0.1 : effectsVolume
     const [playSound] = useSound(sound, { volume: volume })
 
-    const renderSize = () => {
-      let cssSize = size
-      variant === ButtonVariant.HUGE
-        ? (cssSize = ButtonSize.XLARGE)
-        : (cssSize = size)
-      return cssSize
-    }
-
     const handleClick = () => {
       !hasOwnSound && playSoundEffect(playSound)
       onClick && onClick()
@@ -61,9 +53,9 @@ export const Button: React.FC<PropsWithChildren<Props>> = forwardRef(
       <Component
         {...(ref ? { ref } : {})}
         onClick={handleClick}
-        className={`${styles.button} ${styles[variant]} ${
-          styles[renderSize()]
-        } ${uppercase && styles.uppercase} ${styles.ripple}`}
+        className={`${styles.button} ${styles[variant]} ${styles[size]} ${
+          uppercase && styles.uppercase
+        } ${styles.ripple}`}
         {...otherProps}
       >
         {children}

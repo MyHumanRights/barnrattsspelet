@@ -1,7 +1,6 @@
-import { set } from 'firebase/database'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { FormEvent, ReactNode, useEffect, useState } from 'react'
+import { FormEvent, ReactNode, useState } from 'react'
 import useSound from 'use-sound'
 
 import winSound from '@/assets/sounds/fx/10-correct-quiz-answer.mp3'
@@ -58,6 +57,9 @@ export const Quiz = ({ onAnswer, card, onModalClose }: Props) => {
     }
     if (result) {
       style += ` ${styles.disabled}`
+      answer.isCorrect
+        ? (style += ` ${styles.correct}`)
+        : (style += ` ${styles.incorrect}`)
     }
     return style
   }
@@ -125,7 +127,7 @@ export const Quiz = ({ onAnswer, card, onModalClose }: Props) => {
               ) : (
                 <div className={styles.answers}>
                   <motion.p
-                    className={renderStyle(correctAnswer as IBoostAnswer)}
+                    className={renderStyle(selectedAnswer as IBoostAnswer)}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{
                       opacity: 1,

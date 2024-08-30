@@ -282,7 +282,11 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
             />
           </div>
           <div className={styles.primaryButton}>
-            <Button variant={ButtonVariant.HUGE} onClick={handleSubmit}>
+            <Button
+              variant={ButtonVariant.HUGE}
+              onClick={handleSubmit}
+              size={ButtonSize.XLARGE}
+            >
               {t('avatarbuilder.save')}
             </Button>
           </div>
