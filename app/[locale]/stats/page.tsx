@@ -3,8 +3,8 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
 import { LocaleParams } from '@/utils/types'
 
-import { StatsClient } from './client'
 import styles from './Stats.module.scss'
+import { StatsClient } from './StatsClient'
 
 export async function generateMetadata({
   params: { locale },
@@ -22,7 +22,7 @@ export async function generateMetadata({
   }
 }
 
-const Stats: React.FC = () => {
+const Stats = () => {
   return (
     <>
       <main className={styles.wrapper}>

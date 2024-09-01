@@ -1,11 +1,17 @@
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore/lite'
 
 import { useStatsContext } from '@/contexts/StatsContext'
+import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { db } from '@/utils/firebase'
 
-const YEAR = new Date().getFullYear().toString() + '-beta'
+import { createYearlyCollections } from '../createYearlyCollection'
 
-export const useAddToStatistics = (docName, flagName) => {
+const YEAR = new Date().getFullYear().toString() + '-next'
+
+export const useAddToStatistics = (
+  docName: STAT_COLLECTION_NAMES,
+  flagName: STAT_FLAGS
+) => {
   const { statFlags, setStatFlags } = useStatsContext()
 
   const addToStatistics = async () => {
@@ -14,6 +20,11 @@ export const useAddToStatistics = (docName, flagName) => {
     try {
       process.env.APP_ENV !== 'production' &&
         console.log('Adding to statistics', flagName)
+
+      // Ensure the yearly collections and monthly documents are created
+      await createYearlyCollections(YEAR)
+
+      // Proceed with adding statistics
       const docRef = doc(db, YEAR, docName)
       const docSnap = await getDoc(docRef)
 
@@ -27,6 +38,8 @@ export const useAddToStatistics = (docName, flagName) => {
             (monthly_visits[currentMonth] || 0) + 1,
         })
       } else {
+        // This case should not occur if createYearlyCollections works correctly,
+        // but we handle it just in case.
         await setDoc(docRef, {
           total_visits: 1,
           monthly_visits: {
@@ -34,6 +47,7 @@ export const useAddToStatistics = (docName, flagName) => {
           },
         })
       }
+      // Update the context flag to prevent multiple increments
       setStatFlags({ ...statFlags, [flagName]: false })
     } catch (err) {
       console.error('Error adding to statistics', err)
@@ -47,5 +61,5 @@ const getCurrentMonth = () => {
   const now = new Date()
   const year = now.getFullYear()
   const month = `${now.getMonth() + 1}`.padStart(2, '0')
-  return `${year}-${month}`
+  return `${year}-${month}` // e.g. 2024-01
 }

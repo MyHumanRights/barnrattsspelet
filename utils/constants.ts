@@ -14,17 +14,17 @@ export enum OWLS {
   TOKEN = 'token',
 }
 
-export const STAT_COLLECTION_NAMES = {
+export enum STAT_COLLECTION_NAMES {
   // what collection to write a time-stamp to (if its the first time)
-  FIRST_TIME_START: 'firstTimeStart',
-  FIRST_TIME_HOME: 'firstTimeHome',
-  FIRST_TIME_PERSUATION: 'firstTimePersuation',
-  FIRST_TIME_WIN: 'firstTimeWin',
-  FIRST_TIME_WIN_THREE: 'firstTimeWinThree',
-  FIRST_TIME_WIN_TEN: 'firstTimeWinTen',
-  FIRST_TIME_WIN_GAME_COMPLETE: 'firstTimeGameComplete',
-  FIRST_TIME_COLLECTION_VIEWER: 'firstTimeCollectionViewer',
-  FIRST_TIME_COLLECTION_VIEW_APP: 'firstTimeCollectionViewerApp',
+  FIRST_TIME_START = 'firstTimeStart',
+  FIRST_TIME_HOME = 'firstTimeHome',
+  FIRST_TIME_PERSUATION = 'firstTimePersuation',
+  FIRST_TIME_WIN = 'firstTimeWin',
+  FIRST_TIME_WIN_THREE = 'firstTimeWinThree',
+  FIRST_TIME_WIN_TEN = 'firstTimeWinTen',
+  FIRST_TIME_WIN_GAME_COMPLETE = 'firstTimeGameComplete',
+  FIRST_TIME_COLLECTION_VIEWER = 'firstTimeCollectionViewer',
+  FIRST_TIME_COLLECTION_VIEW_APP = 'firstTimeCollectionViewerApp',
 }
 
 export enum STAT_FLAGS {
