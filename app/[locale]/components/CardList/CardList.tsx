@@ -13,7 +13,7 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
 import { useRouter } from '@/navigation'
-import { ICard } from '@/utils/types'
+import { IAntagonistObject, ICard } from '@/utils/types'
 
 import { OwlDialogue } from '../OwlDialogue'
 import { CardItem } from './CardItem'
@@ -94,14 +94,14 @@ export const CardList: React.FC<Props> = ({
 
   function playCardScenario(currentCard: ICard) {
     const antagonist = getAntagonistFromCard(
-      antagonistsJson as any,
+      antagonistsJson as IAntagonistObject,
       currentCard
     )
     if (!antagonist) {
       setActiveCardId(null)
       return
     }
-    const cardHand = getScenarioCards(antagonist, cardsJson as any)
+    const cardHand = getScenarioCards(antagonist, cardsJson as ICard[])
     setPlayFromScenario(true)
     setCardHand(cardHand)
     setGameStateValue({ activeAntagonist: antagonist.name })
@@ -136,7 +136,7 @@ export const CardList: React.FC<Props> = ({
     ? cards
     : isApp
     ? cards
-    : (cardsJson as any as ICard[])
+    : (cardsJson as ICard[])
 
   // sort cardsinList by id
   cardsInList.sort((a, b) =>
