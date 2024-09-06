@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 import { Button } from '../components/Button'
 import styles from './Stats.module.scss'

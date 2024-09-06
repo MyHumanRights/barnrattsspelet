@@ -242,3 +242,12 @@ export const levels: Level[] = [
     parts: ['Hair08', 'Hair17', 'Body11', 'Body19'],
   },
 ]
+
+export type StatsData = {
+  [key: string]: {
+    totalVisits: number
+    monthlyVisits: {
+      [month: string]: number
+    }
+  }
+}
