@@ -50,7 +50,6 @@ export const CardItem: React.FC<Props> = memo(
       isMobile,
       options: { shouldReduceMotion },
     } = useOptionsContext()
-    const [animateAdd, triggerAdd] = useAnimation({ scale: 1.3 })
     const [animatePlay, triggerPlay] = useAnimation({ x: 4 })
     const [animateStar, triggerStar] = useAnimation({ scale: 1.2 })
 
@@ -89,10 +88,7 @@ export const CardItem: React.FC<Props> = memo(
     const cardClassName = !isApp ? `${active && styles.activeCard}` : ''
 
     function checkIsPlayable(card: ICard) {
-      return getAntagonistFromCard(
-        antagonistsJson as any as IAntagonistObject,
-        card
-      )
+      return getAntagonistFromCard(antagonistsJson as IAntagonistObject, card)
     }
 
     return (
