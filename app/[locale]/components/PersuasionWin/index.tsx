@@ -147,13 +147,13 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
               <Button
                 ref={ref}
                 variant={ButtonVariant.TEXT}
-                //TODO: If user has won everything, go to home
+                //TODO: If user has won all cards and all avatarparts, go to home
                 onClick={isScenarioMode ? goToScenarios : onLootBox}
                 data-click='button'
               >
                 {isScenarioMode
                   ? t('toscenarios')
-                  : hasSuperhero
+                  : hasSuperhero // TODO: check if user has won all cards and all avatarparts
                   ? t('tohome')
                   : t('getlootbox')}
               </Button>

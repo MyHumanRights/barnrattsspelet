@@ -4,7 +4,12 @@ import { motion, useAnimation } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 
-import { getColorForPart, getPartsForLevel, hasWonLevel } from '@/api/engine'
+import {
+  getColorForPart,
+  getNextLevel,
+  getPartsForLevel,
+  hasWonLevel,
+} from '@/api/engine'
 import {
   getAvatar,
   getCurrentLevel,
@@ -13,7 +18,7 @@ import {
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { delay } from '@/utils/delay'
-import { IAvatar } from '@/utils/types'
+import { IAvatar, levels } from '@/utils/types'
 
 import { AvatarPart } from '../AvatarPart'
 import { Loader } from '../Loader'
@@ -103,10 +108,11 @@ export const Progressbar = () => {
     const level = getCurrentLevel(progress)
     const progressInLevel = (progress.part / (level?.parts.length ?? 1)) * 100
     setProgressInPercentage(progressInLevel)
+    const nextLevel = getNextLevel(progress, levels)
 
     // Check if the user has won the level
     // If so, we want to update the progres bar to the next level
-    if (level && hasWonLevel(progress, level)) {
+    if (level && hasWonLevel(progress, level) && nextLevel) {
       saveAndupdateProgress()
     }
   }, [progress, levelParts, saveAndupdateProgress])
