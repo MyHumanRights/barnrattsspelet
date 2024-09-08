@@ -47,6 +47,8 @@ import {
   STAT_FLAGS,
 } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useHasWonAllAvatarParts } from '@/utils/hooks/useHasWonAllAvatarParts'
+import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
 import { useTokens } from '@/utils/hooks/useTokens'
 import {
   AntagonistComps,
@@ -153,6 +155,10 @@ export const PersuadeClient = () => {
 
   const randomWrongAnswer = Math.floor(Math.random() * 6) + 1
   const [updateTokens, removeTokens, ownedTokens] = useTokens()
+  const hasWonAllParts = useHasWonAllAvatarParts()
+  const hasWonAllCards = useHasWonAllCards()
+
+  const hasWonAllPartsAndCards = hasWonAllParts && hasWonAllCards
 
   const addFirstTimePersuation = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_PERSUATION,
@@ -495,6 +501,11 @@ export const PersuadeClient = () => {
   }
 
   const handleGotoLootBox = () => {
+    if (hasWonAllPartsAndCards) {
+      router.push('/home')
+      return
+    }
+
     setGameStateValue({ allowedLootbox: true, gameEnvironment: environment })
     router.push('/loot-box')
   }
@@ -656,6 +667,7 @@ export const PersuadeClient = () => {
         <PersuasionWin
           onLootBox={handleGotoLootBox}
           isScenarioMode={isScenarioMode}
+          hasWonAllPartsAndCards={hasWonAllPartsAndCards}
         />
       )}
 

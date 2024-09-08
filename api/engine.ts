@@ -66,17 +66,6 @@ function checkIfAntagonistBeaten() {
   return ((statement + 1) / antagonist!.statements.length) * 100 >= MAX_PROGRESS
 }
 
-export function checkIfAllAntagonistsDefeated(
-  antagonists: IAntagonistObject,
-  defeated: string[]
-) {
-  const defeatedSet = new Set(defeated)
-  const allDefeated = Object.values(antagonists).every((antagonist) => {
-    return defeatedSet.has(antagonist.name)
-  })
-  return allDefeated
-}
-
 function removeCardFromHand(card: ICard) {
   setGameState({
     cardHand: currentGameState.cardHand.filter((c) => c.id !== card.id),

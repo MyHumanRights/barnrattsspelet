@@ -11,7 +11,6 @@ import {
   getCardsToLootBox,
   getPartId,
   getStartingCards,
-  getSuperHeroToLootBox,
 } from '@/api/engine'
 import {
   getAvatar,
@@ -23,8 +22,6 @@ import {
   setAvatarPartCollection,
   setCardCollection,
   setCardHand,
-  setShownChangeHandTip,
-  setShownNoUndefeatedTip,
   setTokens,
 } from '@/api/storage'
 import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
@@ -76,7 +73,7 @@ interface Props {
   avatarParts: IAvatarParts
 }
 
-export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
+export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
   const t = useTranslations()
   const router = useRouter()
   const {
@@ -140,6 +137,7 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
       const avatarPartCollection = await getAvatarPartCollection()
       const storedAvatar = await getAvatar()
       const progress = await readGameStateValue('progress')
+      const hasWonAllParts = await readGameStateValue('hasWonAllParts')
 
       if (!progress) {
         console.error('No progress found')
@@ -153,16 +151,9 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
 
       const partId = getPartId(progress)
 
-      // const item =
-      //   !hasWonAllCards || isBuyingLootbox
-      //     ? getAvatarPartById(partId, avatarParts, storedAvatar)
-      //     : getSuperHeroToLootBox(
-      //         avatarPartCollection,
-      //         avatarParts,
-      //         storedAvatar
-      //       )
-
-      const item = getAvatarPartById(partId, avatarParts, storedAvatar)
+      const item = hasWonAllParts
+        ? [] // if user has won all parts, don't give them any more
+        : getAvatarPartById(partId, avatarParts, storedAvatar)
 
       setLootItem(item)
       setCollectedItems(avatarPartCollection)
@@ -292,10 +283,8 @@ export const LootBoxClient: React.FC<Props> = ({ cardData, avatarParts }) => {
     ])
 
     isBuyingLootbox && setTokens(-5)
-    setShownNoUndefeatedTip(false)
-    setShownChangeHandTip(0)
 
-    if (isFirstLoot || !lootItem.length || isBuyingLootbox) {
+    if (isFirstLoot || lootItem.length === 0 || isBuyingLootbox) {
       // If playing for the first time or player has won all loot items already, send user to home
       router.push('/home')
     } else {

@@ -10,25 +10,15 @@ import {
   getAvatarPartCollection,
   getCardCollection,
   getCardHand,
-  getShownNoUndefeatedTip,
-  getShownPlayTip,
   getShownWelcomeTip,
   readDefeatedAntagonists,
   setGameStateValue,
-  setShownChangeHandTip,
-  setShownPlayTip,
   setShownWelcomeTip,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
-import {
-  IAntagonistObject,
-  ICard,
-  IGameProgress,
-  IOwlContent,
-  IScenario,
-} from '@/utils/types'
+import { IAntagonistObject, IGameProgress, IOwlContent } from '@/utils/types'
 
 import { AvatarLink } from '../components/AvatarLink'
 import { CardCollectionLink } from '../components/CardCollectionLink'
@@ -67,76 +57,23 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [owlTip, setOwlTip] = useState<IOwlContent | null>(null)
   const [multipleOwlMessages, setMultipleOwlMessages] = useState(false)
   const [owlMessageIndex, setOwlMessageIndex] = useState(0)
-  const [unlockedPlaces, setUnlockedPlaces] = useState<string[]>([])
-  const [cardHand, setCardHand] = useState<ICard[]>([])
-  const [places, setPlaces] = useState<IScenario[]>([])
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
-  const getUnbeaten = useCallback(
-    (place: string) => {
-      const currentPlace = places.filter((obj) => obj.place === place)
-
-      return currentPlace[0]?.unbeaten
-    },
-    [places]
-  )
-
-  const getAnyUnbeaten = useCallback(() => {
-    // check if any unbeaten antagonists, all places
-    return unlockedPlaces.some((place) => {
-      const unbeaten = getUnbeaten(place)
-      return unbeaten?.length > 0
-    })
-  }, [getUnbeaten, unlockedPlaces])
-
   const getOwlTip = useCallback(async () => {
-    if (!cardHand.length) {
-      // show welcome tip
-      const shownWelcomeTip = await getShownWelcomeTip()
-      if (!shownWelcomeTip) {
-        setShownWelcomeTip(true)
-        setMultipleOwlMessages(true)
-        return {
-          heading: 'Owl.homewelcome.text_1.heading',
-          body: 'Owl.homewelcome.text_1.body',
-        }
-      }
-    } else {
-      // check if no playable or no unplayed available, set owl tip
-      // Skip if player has already been notified that
-      // their card deck has no new scenarios in it (deckbuilder)
-      const shownNoUndefeatedTip = await getShownNoUndefeatedTip()
-      if (!shownNoUndefeatedTip) {
-        setShownChangeHandTip(1)
-        const anyUnbeaten = getAnyUnbeaten()
-        const anyUnlocked = unlockedPlaces?.length > 0
-        if (!anyUnbeaten || !anyUnlocked) {
-          const heading = `Owl.${
-            !anyUnlocked
-              ? 'noplayablescenarios.heading'
-              : 'nounplayedscenarios.heading'
-          }`
-          const body = `Owl.${
-            !anyUnlocked
-              ? 'noplayablescenarios.body'
-              : 'nounplayedscenarios.body'
-          }`
-          return { heading, body }
-        }
-      }
-      // first time play tip
-      const shownPlayTip = await getShownPlayTip()
-      if (!shownPlayTip) {
-        setShownPlayTip(true)
-        return {
-          heading: 'Owl.play.heading',
-          body: 'Owl.play.body',
-        }
+    // show welcome tip
+    const shownWelcomeTip = await getShownWelcomeTip()
+    if (!shownWelcomeTip) {
+      setShownWelcomeTip(true)
+      setMultipleOwlMessages(true)
+      return {
+        heading: 'Owl.homewelcome.text_1.heading',
+        body: 'Owl.homewelcome.text_1.body',
       }
     }
+
     return false
-  }, [cardHand, getAnyUnbeaten, unlockedPlaces])
+  }, [])
 
   const handleOwlClick = () => {
     if (multipleOwlMessages) {
@@ -185,8 +122,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       const defeated = await readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
 
-      setCardHand(cards)
-
       // make progress object
       const tempProgress: IGameProgress = {}
       Object.values(antagonists).map((a) => {
@@ -210,8 +145,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       antagonistsByHand.map((a) => tempUnlockedPlaces.push(a.environment))
       tempUnlockedPlaces = [...new Set(tempUnlockedPlaces)]
 
-      setUnlockedPlaces(tempUnlockedPlaces)
-
       tempUnlockedPlaces.map((place) => {
         let allAntagonists = getAntagonistsByPlace(place, antagonists)
         let playable: string[] = []
@@ -223,10 +156,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
           return null
         })
 
-        let unbeaten = playable.filter((x) => !defeated.includes(x))
-        let scenario = { place: place, playable: playable, unbeaten: unbeaten }
-
-        setPlaces((prevArray) => [...prevArray, scenario])
         return null
       })
       setInitialized(true)

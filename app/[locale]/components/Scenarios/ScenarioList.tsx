@@ -114,7 +114,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
         {scenarios?.map((scenario) => {
           // In order to know the number of winable cards, we need to get the card hand here
           // we can't create the card hand when clicking on the scenario
-          const cardHand = getScenarioCards(scenario, cards as ICard[])
+          const cardHand = getScenarioCards(scenario, cards)
           return (
             <motion.div
               layout={!shouldReduceMotion}

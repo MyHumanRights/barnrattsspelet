@@ -12,13 +12,17 @@ import { getNextLevel, hasWonLevel } from './engine'
 
 let activeUser: null | { name: string } = null
 
-async function save(collection: string, value: any) {
+const save = async (collection: string, value: any): Promise<void | Error> => {
   if (!activeUser) return new Error('No User Set')
 
-  return window.localStorage.setItem(
-    `${activeUser.name}:${collection}`,
-    JSON.stringify(value)
-  )
+  try {
+    window.localStorage.setItem(
+      `${activeUser.name}:${collection}`,
+      JSON.stringify(value)
+    )
+  } catch (error) {
+    throw new Error(`Failed to save ${collection}: ${error}`)
+  }
 }
 
 async function read(collection: string): Promise<any> {
@@ -139,28 +143,6 @@ export async function getAvatarPartCollection(): Promise<IAvatarParts> {
   return read('avatarPartCollection')
 }
 
-export async function getShownChangeHandTip(): Promise<number> {
-  return read('shownChangeHandTip')
-}
-
-export async function setShownChangeHandTip(
-  number: number
-): Promise<void | Error> {
-  const stored = await getShownChangeHandTip()
-  const newNumber = number > 0 ? stored + number : 0
-  return save('shownChangeHandTip', newNumber)
-}
-
-export async function setShownNoUndefeatedTip(
-  boolean: boolean
-): Promise<void | Error> {
-  return save('shownNoUndefeatedTip', boolean)
-}
-
-export async function getShownNoUndefeatedTip(): Promise<boolean> {
-  return read('shownNoUndefeatedTip')
-}
-
 export async function setShownWelcomeTip(
   boolean: boolean
 ): Promise<void | Error> {
@@ -210,13 +192,19 @@ export async function getShownFlipCardTip(): Promise<boolean> {
 }
 
 export async function resetShownTips(): Promise<void | Error> {
-  save('shownChangeHandTip', 0)
-  save('shownWelcomeTip', false)
-  save('shownPlayTip', false)
-  save('shownEnableCardTip', false)
-  save('shownTokenTip', false)
-  save('shownFlipCardTip', false)
-  return save('shownNoUndefeatedTip', false)
+  try {
+    await save('shownWelcomeTip', false)
+    await save('shownPlayTip', false)
+    await save('shownEnableCardTip', false)
+    await save('shownTokenTip', false)
+    await save('shownFlipCardTip', false)
+  } catch (error) {
+    if (error instanceof Error) {
+      return error
+    } else {
+      return new Error('Failed to reset shown tips')
+    }
+  }
 }
 
 export async function setReducedMotion(
@@ -325,7 +313,6 @@ export async function readSettings(reducedMotion: boolean): Promise<ISettings> {
 }
 
 async function readGameState(): Promise<IGameStateObject> {
-  // @ts-ignore
   return read('gameState')
 }
 
@@ -383,6 +370,7 @@ export const saveProgress = async (): Promise<void> => {
       progress.part = 0
     } else {
       console.log('Congratulations! You have completed all levels!')
+      // setGameStateValue({ hasWonAllParts: true })
       return
     }
   } else {

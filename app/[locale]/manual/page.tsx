@@ -32,8 +32,18 @@ const Manual = ({ params: { locale } }: LocaleParams) => {
         heading={t('title')}
       />
       <main className={styles.wrapper}>
-        <p className={styles.preamble}>{t('preamble')}</p>
+        {t.rich('preamble', {
+          p: (chunks) => <p className={styles.preamble}>{chunks}</p>,
+        })}
         <article className={styles.articleWrapper}>
+          <div className={styles.text}>
+            <h2>{t('howToPlay')}</h2>
+            <ol>
+              <li>{t('howToPlayText1')}</li>
+              <li>{t('howToPlayText2')}</li>
+            </ol>
+          </div>
+
           <div className={styles.text}>
             <h2>{t('avatar')}</h2>
             <p>{t('avatartext')}</p>
@@ -55,11 +65,15 @@ const Manual = ({ params: { locale } }: LocaleParams) => {
 
           <div className={styles.text}>
             <h2>{t('challenges')}</h2>
-            <p>{t('challengestext1')}</p>
-            <p>{t('challengestext2')}</p>
-            <p>{t('challengestext3')}</p>
             <p>
-              <strong>{t('tip')}</strong> {t('challengestext4')}
+              {t.rich('challengestext', {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </p>
+            <p>
+              {t.rich('tip', {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
           </div>
 
@@ -77,48 +91,16 @@ const Manual = ({ params: { locale } }: LocaleParams) => {
           </div>
 
           <div className={styles.text}>
-            <h2>{t('quiz')}</h2>
-            <p>
-              {t('quiztext1')} <strong>{t('quiztextplay')}</strong>{' '}
-              {t('quiztext2')} <strong>{t('quiztexttoken')}</strong>{' '}
-              {t('quiztext3')}
-            </p>
-          </div>
-
-          <div className={styles.text}>
-            <h2>{t('cards')}</h2>
-            <p>{t('cardstext')}</p>
-          </div>
-
-          <div className={styles.text}>
             <h2>{t('settings')}</h2>
-            <p>{t('settingstext1')}</p>
             <div className={styles.textWithImage}>
-              <ul>
-                <li>
-                  <p>{t('settingsli1')}</p>
-                </li>
-                <li>
-                  <p>{t('settingsli2')}</p>
-                </li>
-                <li>
-                  <p>{t('settingsli3')}</p>
-                </li>
-                <li>
-                  <p>{t('settingsli4')}</p>
-                </li>
-                <li>
-                  <p>{t('settingsli5')}</p>
-                </li>
-              </ul>
+              <p>{t('settingstext')}</p>
               <Image
                 src='/images/manual/settings-dialog.png'
                 alt={t('settingsimagealt')}
-                width='400'
-                height='262'
+                width='300'
+                height='196'
               />
             </div>
-            <p>{t('settingstext2')}</p>
           </div>
         </article>
       </main>
