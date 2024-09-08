@@ -156,6 +156,7 @@ export const SettingsModal: React.FC<Props> = ({
   }
 
   const handleGetAllCards = () => {
+    //@ts-ignore
     setCardCollection(cards)
     window.location.href = '/sv/home'
   }
