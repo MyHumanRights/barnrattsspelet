@@ -18,7 +18,7 @@ export const Confetti = () => {
   }, [])
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    process.env.APP_ENV === 'development' && console.log(container)
+    process.env.NEXT_PUBLIC_APP_ENV === 'development' && console.log(container)
   }
 
   if (init) {

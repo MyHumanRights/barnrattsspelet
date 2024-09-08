@@ -20,7 +20,7 @@ export const useAddToStatistics = (
     if (!statFlags[flagName]) return
 
     try {
-      process.env.APP_ENV !== 'production' &&
+      process.env.NEXT_PUBLIC_APP_ENV !== 'production' &&
         console.log('Adding to statistics', flagName)
 
       // Ensure the yearly collections and monthly documents are created
