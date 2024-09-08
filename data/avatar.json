@@ -130,18 +130,6 @@
         "isSuperHero": false
       },
       {
-        "id": "Body03",
-        "isDefault": true,
-        "isNewPart": false,
-        "isSuperHero": false
-      },
-      {
-        "id": "Body04",
-        "isDefault": true,
-        "isNewPart": false,
-        "isSuperHero": false
-      },
-      {
         "id": "Body05",
         "isDefault": true,
         "isNewPart": false,
@@ -155,19 +143,19 @@
       },
       {
         "id": "Body07",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Body08",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Body09",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -271,19 +259,19 @@
       },
       {
         "id": "Hair07",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Hair08",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Hair09",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
@@ -393,13 +381,13 @@
       },
       {
         "id": "Accessory07",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },
       {
         "id": "Accessory08",
-        "isDefault": false,
+        "isDefault": true,
         "isNewPart": false,
         "isSuperHero": false
       },

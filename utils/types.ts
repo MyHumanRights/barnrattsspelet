@@ -47,7 +47,7 @@ export interface ICard {
   linkPath: AppPathnames
   image: string
   quiz: IQuiz
-  iconColor: string
+  iconColor?: string
 }
 
 export interface IAnimation {
@@ -171,8 +171,8 @@ export interface ILootItem {
 }
 
 export type AvatarPart = {
-  isNewPart?: true
-  id: AvatarPartKeys
+  isNewPart?: boolean
+  id: AvatarPartKeys | null
   isDefault?: boolean | undefined
   isSuperHero?: boolean | undefined
   color?: string | undefined
@@ -185,6 +185,7 @@ export interface IGameStateObject {
   gameEnvironment: null | Environments
   isSlimPlay: boolean
   progress: Progress
+  hasWonAllParts: boolean
 }
 
 export type Environments = keyof typeof environments
@@ -205,41 +206,27 @@ export const superHeroIds = ['Accessory19', 'Body19', 'Hair19']
 export const levels: Level[] = [
   {
     levelNumber: 1,
-    parts: ['Accessory17', 'Hair09', 'Body15', 'Body12', 'Accessory10'],
+    parts: ['Accessory17', 'Body15', 'Hair15', 'Body12', 'Accessory10'],
   },
   {
     levelNumber: 2,
-    parts: [
-      'Hair11',
-      'Accessory13',
-      'Accessory15',
-      'Accessory08',
-      'Accessory12',
-    ],
+    parts: ['Hair11', 'Accessory13', 'Body10', 'Body17', 'Hair19'],
   },
   {
     levelNumber: 3,
-    parts: ['Body09', 'Accessory11', 'Body08', 'Hair18', 'Hair19'],
+    parts: ['Body18', 'Accessory11', 'Hair18', 'Hair16', 'Accessory18'],
   },
   {
     levelNumber: 4,
-    parts: ['Body07', 'Hair16', 'Body16', 'Accessory16', 'Hair13'],
+    parts: ['Body16', 'Accessory16', 'Hair13', 'Hair10', 'Accessory19'],
   },
   {
     levelNumber: 5,
-    parts: ['Hair10', 'Accessory18', 'Hair12', 'Accessory07', 'Body13'],
+    parts: ['Hair12', 'Body13', 'Accessory09', 'Accessory14', 'Hair17'],
   },
   {
     levelNumber: 6,
-    parts: ['Accessory09', 'Accessory14', 'Body14', 'Body10', 'Accessory19'],
-  },
-  {
-    levelNumber: 7,
-    parts: ['Hair07', 'Body17', 'Hair14', 'Hair15', 'Body18'],
-  },
-  {
-    levelNumber: 8,
-    parts: ['Hair08', 'Hair17', 'Body11', 'Body19'],
+    parts: ['Body14', 'Accessory15', 'Hair14', 'Accessory12', 'Body19'],
   },
 ]
 
@@ -251,3 +238,501 @@ export type StatsData = {
     }
   }
 }
+
+export const cheatListAvatar: IAvatarParts = {
+  face: [
+    {
+      id: 'Face01',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face02',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face03',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face04',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face05',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face06',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face07',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face08',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face09',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face10',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face11',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face12',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face13',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face14',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face15',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face16',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face17',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Face18',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: true,
+    },
+    {
+      id: 'Face19',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+  ],
+  body: [
+    {
+      id: 'Body01',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body02',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body03',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body04',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body05',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body06',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body07',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body08',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body09',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body10',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body11',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body12',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body13',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body14',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body15',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body16',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body17',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Body18',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+  ],
+  hair: [
+    {
+      id: 'Hair01',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair02',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair03',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair04',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair05',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair06',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair07',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair08',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair09',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair10',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair11',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair12',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair13',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair14',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair15',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair16',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair17',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair18',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Hair19',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: true,
+    },
+  ],
+  accessory: [
+    {
+      id: null,
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory01',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory02',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory03',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory04',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory05',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory06',
+      isDefault: true,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory07',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory08',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory09',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory10',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory11',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory12',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory13',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory14',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory15',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory16',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory17',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory18',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: false,
+    },
+    {
+      id: 'Accessory19',
+      isDefault: false,
+      isNewPart: false,
+      isSuperHero: true,
+    },
+  ],
+}
+export const cheatListAntagonists: Antagonist[] = [
+  'mum',
+  'sibling',
+  'relative',
+  'drunkparent',
+  'troll',
+  'bigsister',
+  'parentsdivorcing',
+  'classmate1',
+  'teacher',
+  'teacherEnvironment',
+  'classmate2',
+  'gang',
+  'adult',
+  'coach',
+  'gymteacher',
+  'friend',
+  'grownup',
+  'league',
+  'groomer',
+  'politician',
+  'cashier',
+  'borderpolice',
+  'mumtodisabledchild',
+  'foreigndad',
+  'salesPerson',
+  'racistTeacher',
+  'homophobicAdult',
+  'adoptiveDad',
+  'noOpinionsDad',
+]

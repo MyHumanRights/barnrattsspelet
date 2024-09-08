@@ -18,7 +18,6 @@ import {
 } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
-import useHaveWonSuperHero from '@/utils/hooks/useHaveWonSuperHero'
 
 import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
@@ -30,9 +29,14 @@ const WIN_AMOUNT = 3
 type Props = {
   onLootBox: () => void
   isScenarioMode: boolean
+  hasWonAllPartsAndCards: boolean | null
 }
 
-export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
+export const PersuasionWin = ({
+  onLootBox,
+  isScenarioMode,
+  hasWonAllPartsAndCards,
+}: Props) => {
   const t = useTranslations('Owl.persuasiondone')
   const router = useRouter()
   const { clientWidth } = useOptionsContext()
@@ -59,10 +63,7 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
     options: { shouldReduceMotion },
   } = useOptionsContext()
 
-  // TODO: set flag in local storage when all are defeated
-  // only do this hook if flag is false
   const allAreDefeated = useAllAreDefeated()
-  const hasSuperhero = useHaveWonSuperHero()
 
   useEffect(() => {
     setTokens(WIN_AMOUNT)
@@ -89,14 +90,14 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function goToScenarios() {
+  const goToScenarios = () => {
     // reset game mode in case user goes to play standard game
     setPlayFromScenario(false)
     setCardHand([])
     router.back()
   }
 
-  function goToNextPage(e: React.MouseEvent) {
+  const goToNextPage = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).getAttribute('data-click') === null) {
       ref.current?.click()
     }
@@ -147,13 +148,13 @@ export const PersuasionWin = ({ onLootBox, isScenarioMode }: Props) => {
               <Button
                 ref={ref}
                 variant={ButtonVariant.TEXT}
-                //TODO: If user has won everything, go to home
+                //TODO: If user has won all cards and all avatarparts, go to home
                 onClick={isScenarioMode ? goToScenarios : onLootBox}
                 data-click='button'
               >
                 {isScenarioMode
                   ? t('toscenarios')
-                  : hasSuperhero
+                  : hasWonAllPartsAndCards // Nothing more to win, skip loot box
                   ? t('tohome')
                   : t('getlootbox')}
               </Button>
