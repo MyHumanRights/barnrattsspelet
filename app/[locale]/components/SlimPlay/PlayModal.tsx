@@ -16,7 +16,6 @@ interface Props {
 }
 
 export const PlayModal = ({ handleModal }: Props) => {
-  // TODO: read allaredefeated flag from localstorage
   const allAreDefeated = useAllAreDefeated()
 
   const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])

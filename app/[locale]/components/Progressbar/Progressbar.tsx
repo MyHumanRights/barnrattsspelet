@@ -1,6 +1,7 @@
 import '../../../global.scss'
 
 import { motion, useAnimation } from 'framer-motion'
+import next from 'next'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -14,6 +15,7 @@ import {
   getAvatar,
   getCurrentLevel,
   getProgress,
+  setGameStateValue,
   setProgress,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -110,8 +112,13 @@ export const Progressbar = () => {
     setProgressInPercentage(progressInLevel)
     const nextLevel = getNextLevel(progress, levels)
 
+    // Check if the user has won all parts
+    if (!nextLevel && progressInLevel >= 100) {
+      setGameStateValue({ hasWonAllParts: true })
+    }
+
     // Check if the user has won the level
-    // If so, we want to update the progres bar to the next level
+    // If so, we want to update the progress bar to the next level
     if (level && hasWonLevel(progress, level) && nextLevel) {
       saveAndupdateProgress()
     }

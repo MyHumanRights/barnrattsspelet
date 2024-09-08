@@ -1,12 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import cards from '@/data/cards.json'
 import { useRouter } from '@/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
-import { IAvatarColors, IAvatarParts } from '@/utils/types'
+import {
+  cheatListAntagonists,
+  cheatListAvatar,
+  IAvatarColors,
+  IAvatarParts,
+} from '@/utils/types'
 
 import { getDefaultAvatorParts, getRandomAvatar } from '../../../../api/engine'
 import {
@@ -21,6 +27,7 @@ import {
   setDefeatedAntagonists,
   setFirstTimeLootBox,
   setFirstTimePlaying,
+  setGameStateValue,
   setHighContrast,
   setPlayFromScenario,
   setReducedMotion,
@@ -138,6 +145,21 @@ export const SettingsModal: React.FC<Props> = ({
   //   })
   // }
 
+  const handleCheat = () => {
+    setGameStateValue({
+      progress: { level: 6, part: 4 },
+      hasWonAllParts: false,
+    })
+    setDefeatedAntagonists(cheatListAntagonists)
+    setAvatarPartCollection(cheatListAvatar)
+    window.location.href = '/sv/home'
+  }
+
+  const handleGetAllCards = () => {
+    setCardCollection(cards)
+    window.location.href = '/sv/home'
+  }
+
   return (
     <section className={styles.wrapper}>
       <ul className={`${styles.list} ${rtl ? styles.rightToLeft : ''}`}>
@@ -206,6 +228,24 @@ export const SettingsModal: React.FC<Props> = ({
             switchType='contrast'
           />
         </li>
+        {process.env.NODE_ENV !== 'production' && (
+          <>
+            <Button
+              size={ButtonSize.SMALL}
+              onClick={handleCheat}
+              style={{ marginBottom: '1rem' }}
+            >
+              Fuska
+            </Button>
+            <Button
+              size={ButtonSize.SMALL}
+              onClick={handleGetAllCards}
+              style={{ marginBottom: '1rem' }}
+            >
+              Få alla kort
+            </Button>
+          </>
+        )}
         {/* <li>
           <h1 className={styles.settingHeader}>
             {t('language')}
