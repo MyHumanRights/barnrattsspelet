@@ -5,9 +5,8 @@ import useSound from 'use-sound'
 
 import btnSound from '@/assets/sounds/fx/14-button.mp3'
 import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
-import { AppPathnames } from '@/config'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { Link as NavLink } from '@/navigation'
+import { AppPathnames, Link as NavLink } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import styles from './Link.module.scss'
@@ -20,10 +19,12 @@ interface Props {
   disabled?: boolean
   hasOwnSound?: boolean
   uppercase?: boolean
-  [key: string]: any
+  children?: React.ReactNode
+  onMouseEnter?: () => void
+  target?: string
 }
 
-export const Link: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+export const Link = forwardRef<HTMLAnchorElement, Props>(
   (
     {
       children,
@@ -53,7 +54,7 @@ export const Link: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
       <NavLink
         href={to}
         onClick={handleClick}
-        {...(ref ? { ref } : {})}
+        ref={ref}
         className={`
       ${styles.link} 
       ${styles[variant]} 
