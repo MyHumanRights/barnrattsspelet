@@ -6,7 +6,7 @@ export const routing = defineRouting({
   defaultLocale: 'sv',
   pathnames: {
     '/': '/',
-    '/avatar-builder': { sv: '/avatar-byggare' },
+    '/avatar-builder': { sv: '/min-avatar' },
     '/collection-viewer': { sv: '/alla-rattigheter' },
     '/cookie-policy': {
       sv: '/integritetspolicy',
