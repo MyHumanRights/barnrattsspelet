@@ -4,7 +4,7 @@ import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { db } from '@/utils/firebase'
 
-import { createYearlyCollections } from '../createYearlyCollection'
+// import { createYearlyCollections } from '../createYearlyCollection'
 
 // import { createYearlyCollections } from '../createYearlyCollection'
 

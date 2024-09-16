@@ -11,7 +11,7 @@ export const routing = defineRouting({
     '/cookie-policy': {
       sv: '/integritetspolicy',
     },
-    '/deck-builder': '/deck-builder',
+    '/deck-builder': { sv: '/kortsamling' },
     '/guidance': {
       sv: '/handledning',
     },
