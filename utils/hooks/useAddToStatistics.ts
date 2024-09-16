@@ -24,7 +24,7 @@ export const useAddToStatistics = (
         console.log('Adding to statistics', flagName)
 
       // Ensure the yearly collections and monthly documents are created
-      await createYearlyCollections(YEAR)
+      // await createYearlyCollections(YEAR)
 
       // Proceed with adding statistics
       const docRef = doc(db, YEAR, docName)
