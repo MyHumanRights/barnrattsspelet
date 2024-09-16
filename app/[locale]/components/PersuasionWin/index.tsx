@@ -10,7 +10,7 @@ import {
   setTokens,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import {
   ButtonVariant,
   STAT_COLLECTION_NAMES,

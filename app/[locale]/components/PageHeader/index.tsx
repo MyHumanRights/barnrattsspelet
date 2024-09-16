@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-import { AppPathnames } from '@/config'
+import { AppPathnames } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 
