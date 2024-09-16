@@ -12,7 +12,7 @@ import showCardSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { IAntagonistObject, ICard } from '@/utils/types'
 
 import { OwlDialogue } from '../OwlDialogue'

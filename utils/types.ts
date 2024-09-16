@@ -1,6 +1,6 @@
 import { antagonists } from '@/app/[locale]/components/Antagonist'
 import { environments } from '@/app/[locale]/components/Environment'
-import { AppPathnames } from '@/config'
+import { AppPathnames } from '@/i18n/routing'
 
 import {
   AvatarPart,

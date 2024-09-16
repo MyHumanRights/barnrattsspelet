@@ -4,7 +4,7 @@ import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { db } from '@/utils/firebase'
 
-import { createYearlyCollections } from '../createYearlyCollection'
+// import { createYearlyCollections } from '../createYearlyCollection'
 
 // import { createYearlyCollections } from '../createYearlyCollection'
 
@@ -24,7 +24,7 @@ export const useAddToStatistics = (
         console.log('Adding to statistics', flagName)
 
       // Ensure the yearly collections and monthly documents are created
-      await createYearlyCollections(YEAR)
+      // await createYearlyCollections(YEAR)
 
       // Proceed with adding statistics
       const docRef = doc(db, YEAR, docName)

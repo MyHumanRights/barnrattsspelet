@@ -37,7 +37,7 @@ import victorySound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { Antagonist as AntagonistType } from '@/utils/antagonistType'
 import {
   ButtonSize,

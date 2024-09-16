@@ -11,7 +11,7 @@ import {
   setPlayFromScenario,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { shuffleArray } from '@/utils/shuffleArray'
 import { ICard, IGameAntagonist } from '@/utils/types'
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import cards from '@/data/cards.json'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
 import {
