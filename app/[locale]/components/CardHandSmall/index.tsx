@@ -1,5 +1,5 @@
 import { setGameStateValue } from '@/api/storage'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { ICard } from '@/utils/types'
 
 import { Card } from '../Card'

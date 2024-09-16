@@ -5,9 +5,9 @@ import useSound from 'use-sound'
 
 import btnSound from '@/assets/sounds/fx/14-button.mp3'
 import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
-import { AppPathnames } from '@/config'
+import { AppPathnames } from '@/i18n/routing'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { Link as NavLink } from '@/navigation'
+import { Link as NavLink } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import styles from './Link.module.scss'

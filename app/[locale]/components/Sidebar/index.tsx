@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard } from '@/utils/types'
 
