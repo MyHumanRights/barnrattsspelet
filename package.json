@@ -14,7 +14,7 @@
     "@tsparticles/react": "^3.0.0",
     "firebase": "^10.7.0",
     "framer-motion": "^10.16.10",
-    "next": "^14.2.6",
+    "next": "^15.0.3",
     "next-intl": "^3.20.0",
     "react": "^18",
     "react-cookie": "^6.1.1",
