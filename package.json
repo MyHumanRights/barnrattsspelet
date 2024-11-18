@@ -13,7 +13,7 @@
     "@tsparticles/preset-confetti": "^3.1.0",
     "@tsparticles/react": "^3.0.0",
     "firebase": "^10.7.0",
-    "framer-motion": "^10.16.10",
+    "framer-motion": "^11.11.17",
     "next": "^14.2.6",
     "next-intl": "^3.20.0",
     "react": "^18",
