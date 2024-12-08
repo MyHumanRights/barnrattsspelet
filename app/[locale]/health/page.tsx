@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 
 import { LocaleParams } from '@/utils/types'
 
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Health = ({ params: { locale } }: LocaleParams) => {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   return (
     <div
       style={{

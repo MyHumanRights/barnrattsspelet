@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { getAntagonists, getCards } from '@/utils/getData'
@@ -10,9 +10,7 @@ import { Link } from '../components/Link/Link'
 import styles from './Scenarios.module.scss'
 import { ScenariosClient } from './ScenariosClient'
 
-export async function generateMetadata({
-  params: { locale },
-}: LocaleParams): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
 
   return {
@@ -25,8 +23,8 @@ export async function generateMetadata({
   }
 }
 
-const Scenarios: React.FC<LocaleParams> = async ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale)
+const Scenarios = async ({ params: { locale } }: LocaleParams) => {
+  setRequestLocale(locale)
   const t = await getTranslations()
   const antagonists: IAntagonistObject = await getAntagonists()
   const cards: ICard[] = await getCards()
