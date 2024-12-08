@@ -9,9 +9,7 @@ import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Manual.module.scss'
 
-export async function generateMetadata({
-  params: { locale },
-}: LocaleParams): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
 
   return {

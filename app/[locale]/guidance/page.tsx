@@ -12,9 +12,7 @@ import { Link } from '../components/Link/Link'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Guidance.module.scss'
 
-export async function generateMetadata({
-  params: { locale },
-}: LocaleParams): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
 
   return {
