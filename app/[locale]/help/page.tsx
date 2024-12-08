@@ -9,9 +9,7 @@ import { HomeIcon } from '../components/Icons/HomeIcon'
 import { PageHeader } from '../components/PageHeader'
 import styles from './Help.module.scss'
 
-export async function generateMetadata({
-  params: { locale },
-}: LocaleParams): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
 
   return {

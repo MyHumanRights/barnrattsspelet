@@ -7,11 +7,7 @@ import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader/'
 import styles from './cookiePolicy.module.scss'
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta')
 
   return {
