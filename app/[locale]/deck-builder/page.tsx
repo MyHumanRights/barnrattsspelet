@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { DeckBuilderClient } from './client'
 import styles from './DeckBuilder.module.scss'
@@ -9,7 +9,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = await getTranslations('meta')
 
   return {

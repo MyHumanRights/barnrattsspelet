@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { getCards, getNonPlayableCards } from '@/utils/getData'
 
@@ -11,7 +11,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = await getTranslations('meta')
 
   return {

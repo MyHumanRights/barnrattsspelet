@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
@@ -24,7 +24,7 @@ export async function generateMetadata({
 }
 
 const Guidance = ({ params: { locale } }: LocaleParams) => {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = useTranslations('Guidance')
 
   return (

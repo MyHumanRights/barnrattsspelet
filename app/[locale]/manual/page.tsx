@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { LocaleParams } from '@/utils/types'
 
@@ -21,7 +21,7 @@ export async function generateMetadata({
 }
 
 const Manual = ({ params: { locale } }: LocaleParams) => {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = useTranslations('Manual')
 
   return (
