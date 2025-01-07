@@ -1,12 +1,16 @@
 import { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { getAvatarColors } from '@/utils/getData'
+import { LocaleParams } from '@/utils/types'
 
 import styles from './AvatarBuilder.module.scss'
 import { Client } from './client'
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params: { locale },
+}: LocaleParams): Promise<Metadata> {
+  setRequestLocale(locale)
   const t = await getTranslations('meta')
 
   return {
