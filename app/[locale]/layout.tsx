@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import { Bangers, Quicksand } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
 
 import { getDefaultAvatorParts } from '@/api/engine'
 import { getAvatarColors, getAvatarParts } from '@/utils/getData'
@@ -60,6 +61,8 @@ const RootLayout = async ({
   const avatarParts: IAvatarParts = await getAvatarParts()
   const defaultAvatarParts = getDefaultAvatorParts(avatarParts)
   const avatarColors: IAvatarColors = await getAvatarColors()
+
+  setRequestLocale(locale)
 
   return (
     <html lang={locale}>
