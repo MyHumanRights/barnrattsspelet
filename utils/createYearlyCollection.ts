@@ -3,15 +3,15 @@ import { doc, getDoc, setDoc } from 'firebase/firestore/lite'
 import { STAT_COLLECTION_NAMES } from './constants'
 import { db } from './firebase' // adjust the path as necessary
 
-// const checkIfYearExists = async (year: string) => {
-//   console.log(`Checking if collections for the year ${year} exist...`)
-//   // We check if a document exists for one of the stats in the given year
-//   const sampleStatName = Object.values(STAT_COLLECTION_NAMES)[0]
-//   const docRef = doc(db, year, sampleStatName)
-//   const docSnap = await getDoc(docRef)
+const checkIfYearExists = async (year: string) => {
+  console.log(`Checking if collections for the year ${year} exist...`)
+  // We check if a document exists for one of the stats in the given year
+  const sampleStatName = Object.values(STAT_COLLECTION_NAMES)[0]
+  const docRef = doc(db, year, sampleStatName)
+  const docSnap = await getDoc(docRef)
 
-//   return docSnap.exists()
-// }
+  return docSnap.exists()
+}
 
 export const createYearlyCollections = async (year: string) => {
   // Months in "year-month" format (e.g., "2024-01", "2024-02")
@@ -21,12 +21,12 @@ export const createYearlyCollections = async (year: string) => {
   )
 
   try {
-    // const yearExists = await checkIfYearExists(year)
+    const yearExists = await checkIfYearExists(year)
 
-    // if (yearExists) {
-    //   console.log(`Collections for the year ${year} already exist.`)
-    //   return
-    // }
+    if (yearExists) {
+      console.log(`Collections for the year ${year} already exist.`)
+      return
+    }
 
     for (const statName of Object.values(STAT_COLLECTION_NAMES)) {
       const statDocRef = doc(db, year, statName)
