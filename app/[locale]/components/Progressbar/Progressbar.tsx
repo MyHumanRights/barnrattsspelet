@@ -1,6 +1,6 @@
 import '../../../global.scss'
 
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation } from 'motion/react'
 import next from 'next'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'

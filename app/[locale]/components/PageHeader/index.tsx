@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 import { AppPathnames } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
