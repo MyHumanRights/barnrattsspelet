@@ -1,4 +1,4 @@
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation } from 'motion/react'
 import Image from 'next/image'
 import { useEffect } from 'react'
 
