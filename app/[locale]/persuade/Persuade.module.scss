@@ -66,7 +66,7 @@
   div:last-child {
     position: absolute;
     left: calc($avatarSize + $avatarMargin);
-    bottom: calc($avatarSize) / 2 - $avatarMargin;
+    bottom: calc($avatarSize / 2 - $avatarMargin);
   }
 }
 
