@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Dispatch, PropsWithChildren, SetStateAction, useEffect } from 'react'
 
-import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant, OWLS } from '@/utils/constants'
 
@@ -50,6 +49,8 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+
+  const owlSound = '/sounds/fx/16-owl-popup.mp3'
 
   useEffect(() => {
     const sound = new Audio(owlSound)

@@ -3,7 +3,7 @@
   "version": "1.19.0-develop.3",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,7 +14,7 @@
     "@tsparticles/react": "3.0.0",
     "firebase": "11.3.1",
     "motion": "12.4.3",
-    "next": "14.2.24",
+    "next": "15.1.7",
     "next-intl": "3.26.3",
     "react": "19.0.0",
     "react-cookie": "7.2.2",
@@ -30,8 +30,8 @@
     "@semantic-release/git": "10.0.1",
     "@svgr/webpack": "8.1.0",
     "@types/node": "22.13.4",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
+    "@types/react": "19.0.9",
+    "@types/react-dom": "19.0.3",
     "eslint": "9.20.1",
     "eslint-config-next": "15.1.7",
     "eslint-plugin-simple-import-sort": "12.1.1",
@@ -63,5 +63,9 @@
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
+  },
+  "overrides": {
+    "@types/react": "19.0.9",
+    "@types/react-dom": "19.0.3"
   }
 }

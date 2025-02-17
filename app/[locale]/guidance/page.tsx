@@ -1,3 +1,4 @@
+import { use } from "react";
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
@@ -21,7 +22,13 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Guidance = ({ params: { locale } }: LocaleParams) => {
+const Guidance = (props: LocaleParams) => {
+  const params = use(props.params);
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   const t = useTranslations('Guidance')
 

@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import useSound from 'use-sound'
 
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ICard } from '@/utils/types'
 
@@ -27,6 +26,7 @@ export const TabFilter: React.FC<Props> = ({
     clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const buttonSound = '/sounds/fx/14-button.mp3'
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
 

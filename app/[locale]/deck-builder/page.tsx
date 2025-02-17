@@ -4,11 +4,17 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { DeckBuilderClient } from './client'
 import styles from './DeckBuilder.module.scss'
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ locale: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 

@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use '../../../global' as *;
+@use 'sass:color';
 
 .cardCollectionLink {
   position: absolute;
@@ -28,7 +29,7 @@
   &:focus-within {
     a {
       text-decoration: none;
-      color: scale-color($primaryColor, $lightness: 15%);
+      color: color.scale($primaryColor, $lightness: 15%);
     }
   }
 

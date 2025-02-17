@@ -23,7 +23,13 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Scenarios = async ({ params: { locale } }: LocaleParams) => {
+const Scenarios = async (props: LocaleParams) => {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   const t = await getTranslations()
   const antagonists: IAntagonistObject = await getAntagonists()

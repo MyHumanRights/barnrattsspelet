@@ -29,22 +29,23 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
     buttonRef.current?.click()
   }
 
-  const key2 = `antagonists.${antagonist}.intro.body2`
-  const body2 = t(key2)
+  const hasBody2 = t.has(`antagonists.${antagonist}.intro.body2`)
 
   return (
     <Modal onModalClose={handleIntro}>
       <div className={styles.wrapper}>
         <p>
-          <TextWithVoiceover
+          {/* <TextWithVoiceover
             textKey={`antagonists.${antagonist}.intro.body1`}
-          />
+          /> */}
+          {t(`antagonists.${antagonist}.intro.body1`)}
         </p>
-        {body2 !== key2 ? (
+        {hasBody2 ? (
           <p>
-            <TextWithVoiceover
+            {/* <TextWithVoiceover
               textKey={`antagonists.${antagonist}.intro.body2`}
-            />
+            /> */}
+            {t(`antagonists.${antagonist}.intro.body2`)}
           </p>
         ) : null}
         <Button ref={buttonRef} onClick={handleIntro}>

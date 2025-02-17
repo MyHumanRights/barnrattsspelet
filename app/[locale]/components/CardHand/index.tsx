@@ -12,7 +12,6 @@ import {
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
-import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { ICard, IGameState } from '@/utils/types'
@@ -130,6 +129,8 @@ export const CardHand = ({
   const [winSize, setWinSize] = useState(WIN_SIZES.wide)
   const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
   const [animateSelectBtn, triggerSelectBtn] = useAnimation({ rotation: 1.3 })
+
+  const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
 
   const {
     clientWidth,

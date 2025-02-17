@@ -3,8 +3,6 @@
 import React, { forwardRef, PropsWithChildren } from 'react'
 import useSound from 'use-sound'
 
-import btnSound from '@/assets/sounds/fx/14-button.mp3'
-import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
@@ -38,6 +36,9 @@ export const Button: React.FC<PropsWithChildren<Props>> = forwardRef(
       playSoundEffect,
       options: { effectsVolume },
     } = useOptionsContext()
+    const btnSound = '/sounds/fx/14-button.mp3'
+    const largeBtnSound = '/sounds/fx/15-button-large.mp3'
+
     const sound = variant === ButtonVariant.HUGE ? largeBtnSound : btnSound
     // TODO: use same volume when we have more even fx volumes
     const volume =

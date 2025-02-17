@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
-import flipSound from '@/assets/sounds/fx/09-flip-card.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import getIsBrightColor from '@/utils/getIsBrightColor'
@@ -54,6 +53,8 @@ export const Card: React.FC<Props> = ({
   const [hasTabFocus, setHasTabFocus] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
   const [animateFlip, triggerFlip] = useAnimation({ scale: 1.22 })
+
+  const flipSound = '/sounds/fx/09-flip-card.mp3'
 
   const {
     options: {

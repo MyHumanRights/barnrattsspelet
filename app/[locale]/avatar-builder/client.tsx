@@ -18,10 +18,6 @@ import {
   setAvatarPartCollection,
   setGameStateValue,
 } from '@/api/storage'
-import accessorySound from '@/assets/sounds/fx/18-avatar-accessory.mp3'
-import faceSound from '@/assets/sounds/fx/19-avatar-face.mp3'
-import hairSound from '@/assets/sounds/fx/20-avatar-hair.mp3'
-import bodySound from '@/assets/sounds/fx/21-avatar-body.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant, CATEGORIES } from '@/utils/constants'
@@ -58,6 +54,12 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
   const [firstTimer, setFirstTimer] = useState(false)
   const [index, setIndex] = useState({})
   const { toggleThemeSound, options } = useOptionsContext()
+
+  const faceSound = '/sounds/fx/19-avatar-face.mp3'
+  const hairSound = '/sounds/fx/20-avatar-hair.mp3'
+  const bodySound = '/sounds/fx/21-avatar-body.mp3'
+  const accessorySound = '/sounds/fx/18-avatar-accessory.mp3'
+
   const [playFaceSound] = useSound(faceSound, { volume: options.effectsVolume })
   const [playBodySound] = useSound(bodySound, { volume: options.effectsVolume })
   const [playHairSound] = useSound(hairSound, { volume: options.effectsVolume })

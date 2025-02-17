@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSound from 'use-sound'
 
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard, IGameAntagonist } from '@/utils/types'
@@ -36,6 +35,7 @@ export const ButtonFilter: React.FC<Props> = ({
     clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const buttonSound = '/sounds/fx/14-button.mp3'
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
   const [showFilter, setShowFilter] = useState(false)

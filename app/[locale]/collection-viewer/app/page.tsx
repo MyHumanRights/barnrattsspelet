@@ -6,11 +6,17 @@ import { getCards, getNonPlayableCards } from '@/utils/getData'
 import styles from '../CollectionViewer.module.scss'
 import { MobileCollectionViewerClient } from './client'
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ locale: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 

@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use '../../../global' as *;
+@use 'sass:color';
 
 .link {
   display: inline-flex;
@@ -41,7 +42,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($southernFrance, $lightness: 5%);
+    background-color: color.scale($southernFrance, $lightness: 5%);
     text-decoration: none;
   }
 }
@@ -52,7 +53,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($primaryColor, $lightness: 15%);
+    background-color: color.scale($primaryColor, $lightness: 15%);
     text-decoration: none;
   }
 
@@ -69,7 +70,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($primaryColor, $lightness: 90%);
+    background-color: color.scale($primaryColor, $lightness: 90%);
     text-decoration: none;
   }
 }

@@ -3,8 +3,6 @@ import { useTranslations } from 'next-intl'
 import { FormEvent, ReactNode, useState } from 'react'
 import useSound from 'use-sound'
 
-import winSound from '@/assets/sounds/fx/10-correct-quiz-answer.mp3'
-import loseSound from '@/assets/sounds/fx/11-incorrect-quiz-answer.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
@@ -35,6 +33,10 @@ export const Quiz = ({ onAnswer, card, onModalClose }: Props) => {
   const [selectedAnswer, setSelectedAnswer] = useState<IBoostAnswer | null>(
     null
   )
+
+  const winSound = '/sounds/fx/10-correct-quiz-answer.mp3'
+  const loseSound = '/sounds/fx/11-incorrect-quiz-answer.mp3'
+
   const [playWinSound] = useSound(winSound, { volume: effectsVolume })
   const [playLoseSound] = useSound(loseSound, { volume: effectsVolume })
 

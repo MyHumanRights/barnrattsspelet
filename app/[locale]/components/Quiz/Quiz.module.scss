@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use '../../../global' as *;
+@use 'sass:color';
 
 .wrapper {
   background-color: #efefed;
@@ -65,7 +66,7 @@
 
         &:hover:not(.disabled),
         &:active:not(.disabled) {
-          background-color: scale-color($primaryColor, $lightness: 90%);
+          background-color: color.scale($primaryColor, $lightness: 90%);
         }
       }
 
@@ -75,7 +76,7 @@
 
         &:hover:not(.disabled),
         &:active:not(.disabled) {
-          background-color: scale-color($primaryColor, $lightness: 15%);
+          background-color: color.scale($primaryColor, $lightness: 15%);
         }
       }
 
