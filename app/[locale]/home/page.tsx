@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { getAntagonists } from '@/utils/getData'
-import { IAntagonistObject, LocaleParams } from '@/utils/types'
+import { IAntagonistObject } from '@/utils/types'
 
 import { HomeClient } from './client'
 import styles from './Home.module.scss'
@@ -20,12 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Home = async (props: LocaleParams) => {
-  const params = await props.params;
+const Home = async (props: { params: Promise<{ locale: string }> }) => {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
   const t = await getTranslations()

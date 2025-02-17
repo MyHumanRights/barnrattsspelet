@@ -4,7 +4,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { use } from 'react'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { LocaleParams } from '@/utils/types'
 
 import { Client } from './client'
 import { ChatBubbleSimple } from './components/ChatBubble/ChatBubbleSimple'

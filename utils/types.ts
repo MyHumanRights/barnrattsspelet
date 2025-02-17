@@ -9,12 +9,6 @@ import {
 import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
-export interface LocaleParams {
-  params: {
-    locale: string
-  }
-}
-
 export interface IBoostAnswer {
   text: string
   id: string

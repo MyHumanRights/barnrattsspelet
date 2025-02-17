@@ -2,16 +2,15 @@ import { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { getAvatarParts, getCards } from '@/utils/getData'
-import { LocaleParams } from '@/utils/types'
 
 import { LootBoxClient } from './client'
 
-export async function generateMetadata(props: LocaleParams): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
   const t = await getTranslations('meta')

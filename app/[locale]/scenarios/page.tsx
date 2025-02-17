@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { getAntagonists, getCards } from '@/utils/getData'
-import { IAntagonistObject, ICard, LocaleParams } from '@/utils/types'
+import { IAntagonistObject, ICard } from '@/utils/types'
 
 import { DownloadPdf } from '../components/DownloadPdf'
 import { Link } from '../components/Link/Link'
@@ -23,12 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Scenarios = async (props: LocaleParams) => {
-  const params = await props.params;
+const Scenarios = async (props: { params: Promise<{ locale: string }> }) => {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
   const t = await getTranslations()
