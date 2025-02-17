@@ -8,7 +8,7 @@ import styles from './Avatar.module.scss'
 
 interface Props {
   choices?: IAvatar
-  link?: JSX.Element
+  link?: React.ReactNode
 }
 
 export const Avatar = ({ choices, link }: Props) => {
