@@ -1,11 +1,10 @@
-import { use } from "react";
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
+import { use } from 'react'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
-import { LocaleParams } from '@/utils/types'
 
 import { DownloadPdf } from '../components/DownloadPdf'
 import Footer from '../components/Footer'
@@ -22,12 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Guidance = (props: LocaleParams) => {
-  const params = use(props.params);
+const Guidance = (props: { params: Promise<{ locale: string }> }) => {
+  const params = use(props.params)
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
   const t = useTranslations('Guidance')

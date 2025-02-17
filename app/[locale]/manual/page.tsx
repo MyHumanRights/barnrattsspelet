@@ -1,10 +1,8 @@
-import { use } from "react";
 import { Metadata } from 'next'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-
-import { LocaleParams } from '@/utils/types'
+import { use } from 'react'
 
 import { Footer } from '../components/Footer'
 import { PageHeader } from '../components/PageHeader'
@@ -19,12 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Manual = (props: LocaleParams) => {
-  const params = use(props.params);
+const Manual = (props: { params: Promise<{ locale: string }> }) => {
+  const params = use(props.params)
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
   const t = useTranslations('Manual')
