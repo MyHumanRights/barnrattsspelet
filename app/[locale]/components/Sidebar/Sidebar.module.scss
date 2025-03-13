@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use 'sass:color';
+@use '../../../global' as *;
 
 .sidebar {
   position: absolute;
@@ -74,7 +75,7 @@
   &:focus-within {
     a {
       text-decoration: none;
-      color: scale-color($primaryColor, $lightness: 15%);
+      color: color.scale($primaryColor, $lightness: 15%);
     }
   }
 
