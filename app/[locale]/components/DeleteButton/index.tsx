@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, LazyMotion, m } from 'framer-motion'
+import { AnimatePresence, LazyMotion, m } from 'motion/react'
 import { useState } from 'react'
 import { useTranslations } from 'use-intl'
 

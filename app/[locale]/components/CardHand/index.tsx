@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, Transition } from 'framer-motion'
+import { AnimatePresence, motion, Transition } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import {
