@@ -1,7 +1,6 @@
 import '../../../global.scss'
 
-import { motion, useAnimation } from 'framer-motion'
-import next from 'next'
+import { motion, useAnimation } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -136,7 +135,7 @@ export const Progressbar = () => {
     return <Loader />
   }
 
-  const MotionAvatarPart = motion(AvatarPart)
+  const MotionAvatarPart = motion.create(AvatarPart)
 
   return (
     <section className={styles.progressbar}>

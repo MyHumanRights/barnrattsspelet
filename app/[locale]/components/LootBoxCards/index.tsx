@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -43,7 +43,7 @@ export const LootBoxCards = ({
         <motion.li
           key={card.id}
           initial={{
-            top: '60vh',
+            top: '100vh',
             rotate: `${getrotation(i, lootCards.length, 10)}deg`,
             x: '-50%',
             left: '50%',
