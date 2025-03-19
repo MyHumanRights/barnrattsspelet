@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { FormEvent, ReactNode, useState } from 'react'
 import useSound from 'use-sound'

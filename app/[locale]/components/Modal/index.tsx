@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { PropsWithChildren, useCallback, useEffect, useRef } from 'react'
 
 import Portal from '../Portal/Portal'

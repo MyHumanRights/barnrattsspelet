@@ -1,7 +1,7 @@
 //@ts-nocheck
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
