@@ -40,11 +40,6 @@ interface Props {
   avatarColors: IAvatarColors
 }
 
-const accessorySound = '/sounds/fx/18-avatar-accessory.mp3'
-const faceSound = '/sounds/fx/19-avatar-face.mp3'
-const hairSound = '/sounds/fx/20-avatar-hair.mp3'
-const bodySound = '/sounds/fx/21-avatar-body.mp3'
-
 export const Client: React.FC<Props> = ({ avatarColors }) => {
   const t = useTranslations()
   const [animate, trigger] = useAnimation({ y: -2 })
@@ -59,6 +54,12 @@ export const Client: React.FC<Props> = ({ avatarColors }) => {
   const [firstTimer, setFirstTimer] = useState(false)
   const [index, setIndex] = useState({})
   const { toggleThemeSound, options } = useOptionsContext()
+
+  const accessorySound = '/sounds/fx/18-avatar-accessory.mp3'
+  const faceSound = '/sounds/fx/19-avatar-face.mp3'
+  const hairSound = '/sounds/fx/20-avatar-hair.mp3'
+  const bodySound = '/sounds/fx/21-avatar-body.mp3'
+
   const [playFaceSound] = useSound(faceSound, { volume: options.effectsVolume })
   const [playBodySound] = useSound(bodySound, { volume: options.effectsVolume })
   const [playHairSound] = useSound(hairSound, { volume: options.effectsVolume })

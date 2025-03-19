@@ -15,9 +15,6 @@ import Modal from '../Modal'
 import { buttonVariants, divVariants } from './animations'
 import styles from './Quiz.module.scss'
 
-const winSound = '/sounds/fx/10-correct-quiz-answer.mp3'
-const loseSound = '/sounds/fx/11-incorrect-quiz-answer.mp3'
-
 type Props = {
   onAnswer: (isCorrect: boolean) => void
   card: ICard
@@ -36,6 +33,9 @@ export const Quiz = ({ onAnswer, card, onModalClose }: Props) => {
   const [selectedAnswer, setSelectedAnswer] = useState<IBoostAnswer | null>(
     null
   )
+
+  const winSound = '/sounds/fx/10-correct-quiz-answer.mp3'
+  const loseSound = '/sounds/fx/11-incorrect-quiz-answer.mp3'
   const [playWinSound] = useSound(winSound, { volume: effectsVolume })
   const [playLoseSound] = useSound(loseSound, { volume: effectsVolume })
 

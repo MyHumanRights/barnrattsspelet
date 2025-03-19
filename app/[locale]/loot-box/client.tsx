@@ -44,12 +44,6 @@ import { Environment } from '../components/Environment'
 import { NotAllowed } from '../components/NotAllowed'
 import styles from './LootBox.module.scss'
 
-const powerUpSound = '/sounds/fx/03-lootbox.mp3'
-const unlockCardSound1 = '/sounds/fx/13-card-unlocked-01.mp3'
-const unlockCardSound2 = '/sounds/fx/13-card-unlocked-02.mp3'
-const unlockCardSound3 = '/sounds/fx/13-card-unlocked-03.mp3'
-const mapSound = '/sounds/fx/22-map-added-color.mp3'
-
 const Confetti = dynamic(() =>
   import('../components/Confetti').then((mod) => mod.Confetti)
 )
@@ -100,6 +94,12 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
   const [collectedItems, setCollectedItems] = useState<IAvatarParts | null>(
     null
   )
+
+  const powerUpSound = '/sounds/fx/03-lootbox.mp3'
+  const unlockCardSound1 = '/sounds/fx/13-card-unlocked-01.mp3'
+  const unlockCardSound2 = '/sounds/fx/13-card-unlocked-02.mp3'
+  const unlockCardSound3 = '/sounds/fx/13-card-unlocked-03.mp3'
+  const mapSound = '/sounds/fx/22-map-added-color.mp3'
 
   const [playOpenBoxSound] = useSound(powerUpSound, { volume: effectsVolume })
   const [playUnlockCardSound1] = useSound(unlockCardSound1, {

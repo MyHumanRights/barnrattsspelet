@@ -60,12 +60,6 @@ import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
 import styles from './Persuade.module.scss'
 
-const rightAnswerSound = '/sounds/fx/01-correct-card-played.mp3'
-const wrongAnswerSound = '/sounds/fx/02-incorrect-card-played.mp3'
-const gameOverSound = '/sounds/fx/05-lose.mp3'
-const chatSound = '/sounds/fx/08-talk.mp3'
-const victorySound = '/sounds/fx/22-map-added-color.mp3'
-
 const Retry = dynamic(() =>
   import('../components/PersuasionWin/Retry').then((mod) => mod.Retry)
 )
@@ -119,6 +113,13 @@ export const PersuadeClient = () => {
   } = useOptionsContext()
   const [activeAntagonist, setActiveAntagonist] =
     useState<AntagonistType | null>(null)
+
+  const rightAnswerSound = '/sounds/fx/01-correct-card-played.mp3'
+  const wrongAnswerSound = '/sounds/fx/02-incorrect-card-played.mp3'
+  const gameOverSound = '/sounds/fx/05-lose.mp3'
+  const chatSound = '/sounds/fx/08-talk.mp3'
+  const victorySound = '/sounds/fx/22-map-added-color.mp3'
+
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {

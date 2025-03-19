@@ -13,8 +13,6 @@ import { ChevronRight } from '../Icons/ChevronRight'
 import FilterFunnel from '../Icons/FilterFunnel'
 import styles from './ButtonFilter.module.scss'
 
-const buttonSound = '/sounds/fx/14-button.mp3'
-
 const loadFeatures = () =>
   import('../../../../utils/features.js').then((res) => res.default)
 
@@ -37,6 +35,8 @@ export const ButtonFilter: React.FC<Props> = ({
     clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+
+  const buttonSound = '/sounds/fx/14-button.mp3'
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
   const [showFilter, setShowFilter] = useState(false)

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
-import tokenSound from '/sounds/fx/12-added-token.mp3'
 import { readTokens, resetTokens, setTokens } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 
@@ -15,6 +14,8 @@ export const useTokens = (): [
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+
+  const tokenSound = '/sounds/fx/12-added-token.mp3'
   const [playTokenSound] = useSound(tokenSound, { volume: effectsVolume })
   const [ownedTokens, setOwnedTokens] = useState<number>(0)
 

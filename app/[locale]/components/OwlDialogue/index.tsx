@@ -9,7 +9,6 @@ import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './OwlDialogue.module.scss'
 
-const owlSound = '/sounds/fx/16-owl-popup.mp3'
 interface Props {
   body?: string | null
   heading?: string | null
@@ -52,6 +51,7 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
   } = useOptionsContext()
 
   useEffect(() => {
+    const owlSound = '/sounds/fx/16-owl-popup.mp3'
     const sound = new Audio(owlSound)
     sound.volume = effectsVolume
     const timeout = setTimeout(() => {

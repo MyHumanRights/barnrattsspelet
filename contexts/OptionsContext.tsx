@@ -52,7 +52,6 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
   })
 
   const titleTrack = '/sounds/fx/00-title.mp3'
-
   const [, { sound }] = useSound(titleTrack, {
     loop: true,
     volume: 0,

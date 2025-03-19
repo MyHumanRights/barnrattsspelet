@@ -17,8 +17,6 @@ import { Link } from '../Link/Link'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './Card.module.scss'
 
-const flipSound = '/sounds/fx/09-flip-card.mp3'
-
 const Highlight = dynamic(() =>
   import('./Highlight').then((mod) => mod.Highlight)
 )
@@ -64,6 +62,8 @@ export const Card: React.FC<Props> = ({
       effectsVolume,
     },
   } = useOptionsContext()
+
+  const flipSound = '/sounds/fx/09-flip-card.mp3'
   const [playActive] = useSound(flipSound, { volume: effectsVolume })
 
   const ref = useRef<HTMLButtonElement>(null)

@@ -8,8 +8,6 @@ import { ICard } from '@/utils/types'
 
 import styles from './TabFilter.module.scss'
 
-const buttonSound = '/sounds/fx/14-button.mp3'
-
 interface Props {
   filter: string | null
   setFilter: Dispatch<SetStateAction<string | null>>
@@ -28,6 +26,8 @@ export const TabFilter: React.FC<Props> = ({
     clientWidth,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+
+  const buttonSound = '/sounds/fx/14-button.mp3'
   const [playButtonSound] = useSound(buttonSound, { volume: effectsVolume })
   const t = useTranslations()
 

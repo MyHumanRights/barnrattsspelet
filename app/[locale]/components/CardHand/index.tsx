@@ -19,8 +19,6 @@ import { ICard, IGameState } from '@/utils/types'
 import { Card } from '../Card'
 import styles from './CardHand.module.scss'
 
-const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
-
 enum WIN_SIZES {
   small = 'small',
   wide = 'wide',
@@ -136,6 +134,8 @@ export const CardHand = ({
     clientWidth,
     options: { soundEffectsOn, effectsVolume, shouldReduceMotion },
   } = useOptionsContext()
+
+  const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
   const [playUnlockCardSound] = useSound(unlockCardSound, {
     volume: effectsVolume,
   })

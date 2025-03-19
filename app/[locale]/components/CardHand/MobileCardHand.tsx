@@ -21,8 +21,6 @@ import { Card } from '../Card'
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './MobileCardHand.module.scss'
 
-const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
-
 const BOOST_COST = -1
 
 type Props = {
@@ -69,6 +67,8 @@ export const MobileCardHand = ({
   const {
     options: { soundEffectsOn, effectsVolume, shouldReduceMotion },
   } = useOptionsContext()
+
+  const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
   const [playUnlockCardSound] = useSound(unlockCardSound, {
     volume: effectsVolume,
   })

@@ -10,9 +10,6 @@ import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import styles from './Link.module.scss'
 
-const btnSound = '/sounds/fx/14-button.mp3'
-const largeBtnSound = '/sounds/fx/15-button-large.mp3'
-
 interface Props {
   to: AppPathnames
   size?: ButtonSize
@@ -43,6 +40,9 @@ export const Link: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
       playSoundEffect,
       options: { effectsVolume },
     } = useOptionsContext()
+
+    const btnSound = '/sounds/fx/14-button.mp3'
+    const largeBtnSound = '/sounds/fx/15-button-large.mp3'
     const sound = variant === 'huge' ? largeBtnSound : btnSound
     const [playSound] = useSound(sound, { volume: effectsVolume })
 
