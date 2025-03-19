@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { type JSX, useEffect, useState } from 'react'
 
 import { getAvatar } from '@/api/storage'
 import { IAvatar } from '@/utils/types'

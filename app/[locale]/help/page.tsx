@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import { LocaleParams } from '@/utils/types'
 
@@ -18,7 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Help = ({ params: { locale } }: LocaleParams) => {
+const Help = (props: LocaleParams) => {
+  const params = use(props.params)
+
+  const { locale } = params
+
   setRequestLocale(locale)
   const t = useTranslations()
 

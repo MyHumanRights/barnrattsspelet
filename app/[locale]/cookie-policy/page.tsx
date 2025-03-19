@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import { DeleteButton } from '../components/DeleteButton'
 import { Footer } from '../components/Footer'
@@ -16,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const CookiePolicy = ({
-  params: { locale },
-}: {
-  params: { locale: string }
-}) => {
+const CookiePolicy = (props: { params: Promise<{ locale: string }> }) => {
+  const params = use(props.params)
+
+  const { locale } = params
+
   setRequestLocale(locale)
   const t = useTranslations('Cookiepolicy')
 

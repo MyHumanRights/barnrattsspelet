@@ -6,9 +6,13 @@ import { LocaleParams } from '@/utils/types'
 
 import { LootBoxClient } from './client'
 
-export async function generateMetadata({
-  params: { locale },
-}: LocaleParams): Promise<Metadata> {
+export async function generateMetadata(props: LocaleParams): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 

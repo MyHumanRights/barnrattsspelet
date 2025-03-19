@@ -39,13 +39,22 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-const RootLayout = async ({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode
-  params: { locale: string }
-}) => {
+const RootLayout = async (
+  props: {
+    children: React.ReactNode
+    params: Promise<{ locale: string }>
+  }
+) => {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
+  const {
+    children
+  } = props;
+
   // Validate that the incoming `locale` parameter is valid
   const isValidLocale = locales.some((cur) => cur === locale)
   const timeZone = 'Europe/Stockholm'

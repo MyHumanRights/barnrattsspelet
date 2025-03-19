@@ -12,7 +12,13 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Health = ({ params: { locale } }: LocaleParams) => {
+const Health = async (props: LocaleParams) => {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale)
   return (
     <div
