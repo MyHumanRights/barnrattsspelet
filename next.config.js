@@ -2,26 +2,14 @@ const withNextIntl = require('next-intl/plugin')()
 
 /** @type {import('next').NextConfig} */
 module.exports = withNextIntl({
-  webpack(config, options) {
-    const { isServer } = options
-
+  webpack(config) {
     config.module.rules.push(
       {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
-        exclude: config.exclude,
-        use: [
-          {
-            loader: require.resolve('url-loader'),
-            options: {
-              limit: config.inlineImageLimit,
-              fallback: require.resolve('file-loader'),
-              publicPath: `${config.assetPrefix}/_next/static/images/`,
-              outputPath: `${isServer ? '../' : ''}static/images/`,
-              name: '[name]-[hash].[ext]',
-              esModule: config.esModule || false,
-            },
-          },
-        ],
+        type: 'asset',
+        generator: {
+          filename: 'static/media/[name].[hash][ext]',
+        },
       },
       {
         test: /\.svg$/i,

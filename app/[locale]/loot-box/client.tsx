@@ -24,11 +24,6 @@ import {
   setCardHand,
   setTokens,
 } from '@/api/storage'
-import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
-import unlockCardSound1 from '@/assets/sounds/fx/13-card-unlocked-01.mp3'
-import unlockCardSound2 from '@/assets/sounds/fx/13-card-unlocked-02.mp3'
-import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
-import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import { useRouter } from '@/i18n/routing'
@@ -48,6 +43,12 @@ import { Button } from '../components/Button'
 import { Environment } from '../components/Environment'
 import { NotAllowed } from '../components/NotAllowed'
 import styles from './LootBox.module.scss'
+
+const powerUpSound = '/sounds/fx/03-lootbox.mp3'
+const unlockCardSound1 = '/sounds/fx/13-card-unlocked-01.mp3'
+const unlockCardSound2 = '/sounds/fx/13-card-unlocked-02.mp3'
+const unlockCardSound3 = '/sounds/fx/13-card-unlocked-03.mp3'
+const mapSound = '/sounds/fx/22-map-added-color.mp3'
 
 const Confetti = dynamic(() =>
   import('../components/Confetti').then((mod) => mod.Confetti)

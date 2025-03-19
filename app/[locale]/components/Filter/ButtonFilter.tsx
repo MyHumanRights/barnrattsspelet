@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSound from 'use-sound'
 
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { ICard, IGameAntagonist } from '@/utils/types'
@@ -13,6 +12,8 @@ import { ArrowRight } from '../Icons/ArrowRight'
 import { ChevronRight } from '../Icons/ChevronRight'
 import FilterFunnel from '../Icons/FilterFunnel'
 import styles from './ButtonFilter.module.scss'
+
+const buttonSound = '/sounds/fx/14-button.mp3'
 
 const loadFeatures = () =>
   import('../../../../utils/features.js').then((res) => res.default)

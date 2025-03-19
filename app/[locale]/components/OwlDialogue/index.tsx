@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Dispatch, PropsWithChildren, SetStateAction, useEffect } from 'react'
 
-import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant, OWLS } from '@/utils/constants'
 
@@ -10,6 +9,7 @@ import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './OwlDialogue.module.scss'
 
+const owlSound = '/sounds/fx/16-owl-popup.mp3'
 interface Props {
   body?: string | null
   heading?: string | null

@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
-import flipSound from '@/assets/sounds/fx/09-flip-card.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import getIsBrightColor from '@/utils/getIsBrightColor'
@@ -17,6 +16,8 @@ import Repeat from '../Icons/Repeat'
 import { Link } from '../Link/Link'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './Card.module.scss'
+
+const flipSound = '/sounds/fx/09-flip-card.mp3'
 
 const Highlight = dynamic(() =>
   import('./Highlight').then((mod) => mod.Highlight)

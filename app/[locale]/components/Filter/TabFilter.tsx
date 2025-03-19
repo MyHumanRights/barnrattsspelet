@@ -3,11 +3,12 @@ import { Dispatch, SetStateAction } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import useSound from 'use-sound'
 
-import buttonSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ICard } from '@/utils/types'
 
 import styles from './TabFilter.module.scss'
+
+const buttonSound = '/sounds/fx/14-button.mp3'
 
 interface Props {
   filter: string | null

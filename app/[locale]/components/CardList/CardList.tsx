@@ -8,7 +8,6 @@ import {
   setGameStateValue,
   setPlayFromScenario,
 } from '@/api/storage'
-import showCardSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
@@ -21,6 +20,8 @@ import styles from './CardList.module.scss'
 
 const WINDOW_SMALL = 768
 const WINDOW_1700 = 1700
+
+const showCardSound = '/sounds/fx/14-button.mp3'
 
 /** isApp variable:  for viewing the card without any buttons at all in android/iOs, and for design variation */
 

@@ -11,7 +11,6 @@ import React, {
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
-import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
@@ -21,6 +20,8 @@ import { Button } from '../Button'
 import { Card } from '../Card'
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './MobileCardHand.module.scss'
+
+const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
 
 const BOOST_COST = -1
 

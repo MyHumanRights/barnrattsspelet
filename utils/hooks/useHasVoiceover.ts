@@ -9,20 +9,18 @@ export const useHasVoiceover = (path: string) => {
   const [hasVoiceover, setHasVoiceover] = useState<boolean | null>(null)
 
   useEffect(() => {
-    const fetchVoiceover = async () => {
+    const checkVoiceoverExists = async () => {
       try {
-        const imported = (
-          await import(
-            '/assets/sounds/voiceover/' + language + '/' + path + '.mp3'
-          )
-        ).default
-        setHasVoiceover(!!imported)
+        const audioPath = `/sounds/voiceover/${language}/${path}.mp3`
+
+        const response = await fetch(audioPath, { method: 'HEAD' })
+        setHasVoiceover(response.ok)
       } catch (error) {
         setHasVoiceover(false)
       }
     }
 
-    fetchVoiceover()
+    checkVoiceoverExists()
   }, [path, language])
 
   return hasVoiceover

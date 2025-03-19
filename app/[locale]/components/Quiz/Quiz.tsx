@@ -3,8 +3,6 @@ import { useTranslations } from 'next-intl'
 import { FormEvent, ReactNode, useState } from 'react'
 import useSound from 'use-sound'
 
-import winSound from '@/assets/sounds/fx/10-correct-quiz-answer.mp3'
-import loseSound from '@/assets/sounds/fx/11-incorrect-quiz-answer.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
@@ -16,6 +14,9 @@ import { ChevronRight } from '../Icons/ChevronRight'
 import Modal from '../Modal'
 import { buttonVariants, divVariants } from './animations'
 import styles from './Quiz.module.scss'
+
+const winSound = '/sounds/fx/10-correct-quiz-answer.mp3'
+const loseSound = '/sounds/fx/11-incorrect-quiz-answer.mp3'
 
 type Props = {
   onAnswer: (isCorrect: boolean) => void
