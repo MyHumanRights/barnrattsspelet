@@ -20,7 +20,6 @@ import {
   getShownFlipCardTip,
   getShownTokenTip,
   readDefeatedAntagonists,
-  readGameStateValue,
   readWrongAnswers,
   saveProgress,
   setDefeatedAntagonists,
@@ -38,7 +37,6 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/i18n/routing'
-import { Antagonist as AntagonistType } from '@/utils/antagonistType'
 import {
   ButtonSize,
   ButtonVariant,
@@ -47,20 +45,15 @@ import {
   STAT_FLAGS,
 } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
+import { useAntagonist } from '@/utils/hooks/useAntagonist'
 import { useHasWonAllAvatarParts } from '@/utils/hooks/useHasWonAllAvatarParts'
 import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
 import { useTokens } from '@/utils/hooks/useTokens'
-import {
-  AntagonistComps,
-  Environments,
-  GAME_STATES,
-  ICard,
-  IGameAntagonist,
-  IGameState,
-} from '@/utils/types'
+import { GAME_STATES, ICard, IGameAntagonist, IGameState } from '@/utils/types'
 
 import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
+import { Environment } from '../components/Environment'
 import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
 import styles from './Persuade.module.scss'
@@ -88,9 +81,6 @@ const ChatBubble = dynamic(() =>
 const Antagonist = dynamic(() =>
   import('../components/Antagonist').then((mod) => mod.Antagonist)
 )
-const Environment = dynamic(() =>
-  import('../components/Environment').then((mod) => mod.Environment)
-)
 const Quiz = dynamic(() => import('../components/Quiz').then((mod) => mod.Quiz))
 const Token = dynamic(() =>
   import('../components/Token').then((mod) => mod.Token)
@@ -109,6 +99,9 @@ export const PersuadeClient = () => {
   const t = useTranslations()
   const router = useRouter()
 
+  const { antagonist, antagonistType, isLoading, error } = useAntagonist()
+  console.log(antagonist, antagonistType, isLoading, error)
+
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
 
   const {
@@ -116,8 +109,6 @@ export const PersuadeClient = () => {
     toggleThemeSound,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
-  const [activeAntagonist, setActiveAntagonist] =
-    useState<AntagonistType | null>(null)
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {
@@ -131,13 +122,7 @@ export const PersuadeClient = () => {
   const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
   const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
-  const [environment, setEnvironment] = useState<Environments | null>(null)
-  const [antagonistComp, setAntagonistComp] = useState<AntagonistComps | null>(
-    null
-  )
-  const [bgColor, setBgColor] = useState('none')
-  const [chatBubblePosition, setChatBubblePosition] = useState('')
-  const [arrowPosition, setArrowPosition] = useState('')
+  const [bgColor, setBgColor] = useState('')
   const [currentCard, setCurrentCard] = useState<ICard | null>(null)
   const [showModal, setShowModal] = useState(false)
   const [boostedCards, setBoostedCards] = useState<string[]>([])
@@ -189,25 +174,16 @@ export const PersuadeClient = () => {
   }
 
   const init = useCallback(async () => {
-    const gameStateAntagonist = await readGameStateValue('activeAntagonist')
+    if (!antagonist) return null
 
-    if (!gameStateAntagonist) {
-      return
-    }
-    setActiveAntagonist(gameStateAntagonist)
     const cards = await getCardHand()
-    const useAntagonist = antagonists[gameStateAntagonist] as IGameAntagonist
 
     resetGameState()
     const currentState = setGameState({
-      antagonist: useAntagonist,
       cardHand: cards,
     })
+    console.log('INIT', currentState)
     setCurrentState(currentState)
-    setAntagonistComp(useAntagonist.components.start)
-    setEnvironment(useAntagonist.components.background)
-    setChatBubblePosition(useAntagonist.chatBubblePosition)
-    setArrowPosition(useAntagonist.antagonistPosition)
 
     const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
       await Promise.all([
@@ -220,20 +196,13 @@ export const PersuadeClient = () => {
     setAnsweredIncorrectly(wrongAnswers)
     setHasShownFlipCardTip(shownFlipCardTip || false)
     setHasShownTokenTip(shownTokenTip)
-  }, [])
+  }, [antagonist])
 
   useEffect(() => {
     addFirstTimePersuation()
     init()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeAntagonist])
-
-  useEffect(() => {
-    // find svg background (floor) color
-    const svgBgElement = document.getElementById('ENVIRONMENT_BACKGROUND')
-    const color = svgBgElement?.style?.fill
-    color && setBgColor(color)
-  }, [environment])
+  }, [init])
 
   const addDefeatedAntagonist = async (antagonist: IGameAntagonist) => {
     const isScenarioMode = await getPlayFromScenario()
@@ -280,7 +249,7 @@ export const PersuadeClient = () => {
   const startGame = async () => {
     setLines([
       {
-        text: `antagonists.${activeAntagonist}.conversationEntries.a`,
+        text: `antagonists.${antagonistType}.conversationEntries.a`,
         player: true,
       },
     ])
@@ -292,7 +261,7 @@ export const PersuadeClient = () => {
     }, 1200)
     setTimeout(() => {
       const useAntagonist = (
-        activeAntagonist !== null ? antagonists[activeAntagonist] : null
+        antagonistType !== null ? antagonists[antagonistType] : null
       ) as IGameAntagonist
       const firstAntagonistLine = {
         text: useAntagonist
@@ -323,25 +292,21 @@ export const PersuadeClient = () => {
   }
 
   const onPlayCard = () => {
-    if (!currentCard) {
+    if (!currentCard || !antagonist) {
       console.error('No current card')
       return
     }
-    const { result } = answer(currentCard)
+    const { result } = answer(currentCard, antagonist)
 
     const state = getGameState()
-    const { statement, antagonist } = state
+    console.log('STATE', state)
+    const { statement } = state
 
     if (result === ANSWER_TYPES.WIN) {
       saveProgress()
     }
 
-    if (!antagonist) {
-      console.error('No antagonist found')
-      return
-    }
-
-    const text = getAnswerLine()
+    const text = getAnswerLine(antagonist)
 
     switch (result) {
       case ANSWER_TYPES.CORRECT:
@@ -450,7 +415,6 @@ export const PersuadeClient = () => {
               player: false,
             },
           ])
-          setAntagonistComp(antagonist.components.end)
           addDefeatedAntagonist(antagonist)
         }, ANSWER_DELAY * 4)
 
@@ -462,8 +426,6 @@ export const PersuadeClient = () => {
             player: false,
           },
         ])
-        // TODO: Create specific look for antagonist here
-        // setAntagonistComp(antagonist.components.end.component)
         soundEffectsOn && playGameOverSound()
         break
       default:
@@ -506,7 +468,10 @@ export const PersuadeClient = () => {
       return
     }
 
-    setGameStateValue({ allowedLootbox: true, gameEnvironment: environment })
+    setGameStateValue({
+      allowedLootbox: true,
+      gameEnvironment: antagonist?.components.background ?? 'ClassRoom',
+    })
     router.push('/loot-box')
   }
 
@@ -533,15 +498,26 @@ export const PersuadeClient = () => {
   }
 
   // TODO: Can probably remove this when antagonist gets set at other point
-  if (!currentState?.antagonist) {
+  if (!antagonist || !currentState?.state) {
     return null
   }
+
+  console.log('currentState', currentState.state)
 
   return (
     <main className={styles.main} style={{ backgroundColor: bgColor }}>
       <div className={styles.wrapper}>
-        {environment && <Environment environment={environment} />}
-        {antagonistComp && <Antagonist antagonist={antagonistComp} />}
+        <Environment
+          environment={antagonist.components.background}
+          onBackgroundColorChange={setBgColor}
+        />
+        <Antagonist
+          antagonist={
+            currentState.state === GAME_STATES.WIN
+              ? antagonist.components.end!
+              : antagonist.components.start!
+          }
+        />
       </div>
       <Healthbar health={currentState.progress} />
       <div className={styles.tokenWrapper}>
@@ -558,9 +534,9 @@ export const PersuadeClient = () => {
         )}
         {currentState.state === GAME_STATES.INTRO && (
           <>
-            {activeAntagonist && (
+            {antagonistType && (
               <GameIntro
-                antagonist={activeAntagonist}
+                antagonist={antagonistType}
                 showModal={showIntro}
                 handleIntro={handleIntro}
               />
@@ -573,7 +549,9 @@ export const PersuadeClient = () => {
           <>
             <div
               ref={scrollableRef}
-              className={`${styles.chatBubbleWrapper} ${styles[chatBubblePosition]}`}
+              className={`${styles.chatBubbleWrapper} ${
+                styles[antagonist.chatBubblePosition]
+              }`}
             >
               {lines.map((line, index) => {
                 const selectedCard = cards.find(
@@ -586,7 +564,7 @@ export const PersuadeClient = () => {
                     statement={line.text}
                     player={line.player}
                     wrongAnswer={line.wrongAnswer || false}
-                    arrowRight={arrowPosition === 'right'}
+                    arrowRight={antagonist.antagonistPosition === 'right'}
                     miniCard={
                       !isMobile &&
                       selectedCard?.id &&
