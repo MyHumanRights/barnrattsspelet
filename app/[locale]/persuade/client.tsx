@@ -99,8 +99,7 @@ export const PersuadeClient = () => {
   const t = useTranslations()
   const router = useRouter()
 
-  const { antagonist, antagonistType, isLoading, error } = useAntagonist()
-  console.log(antagonist, antagonistType, isLoading, error)
+  const { antagonist, antagonistType } = useAntagonist()
 
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
 
@@ -182,7 +181,6 @@ export const PersuadeClient = () => {
     const currentState = setGameState({
       cardHand: cards,
     })
-    console.log('INIT', currentState)
     setCurrentState(currentState)
 
     const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
@@ -299,7 +297,7 @@ export const PersuadeClient = () => {
     const { result } = answer(currentCard, antagonist)
 
     const state = getGameState()
-    console.log('STATE', state)
+
     const { statement } = state
 
     if (result === ANSWER_TYPES.WIN) {
@@ -501,8 +499,6 @@ export const PersuadeClient = () => {
   if (!antagonist || !currentState?.state) {
     return null
   }
-
-  console.log('currentState', currentState.state)
 
   return (
     <main className={styles.main} style={{ backgroundColor: bgColor }}>
