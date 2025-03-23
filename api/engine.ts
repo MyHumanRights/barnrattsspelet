@@ -21,7 +21,6 @@ export const ANSWER_TYPES = {
 }
 
 const defaultGameState: IGameState = {
-  antagonist: null,
   statement: 0,
   progress: 0,
   cardHand: [],
@@ -61,8 +60,8 @@ function checkDisabledCards(cardHand: ICard[]) {
   }
 }
 
-function checkIfAntagonistBeaten() {
-  const { antagonist, statement } = currentGameState
+function checkIfAntagonistBeaten(antagonist: IGameAntagonist) {
+  const { statement } = currentGameState
   return ((statement + 1) / antagonist!.statements.length) * 100 >= MAX_PROGRESS
 }
 
@@ -72,11 +71,11 @@ function removeCardFromHand(card: ICard) {
   })
 }
 
-function moveForward(card: ICard) {
+function moveForward(card: ICard, antagonist: IGameAntagonist) {
   removeCardFromHand(card)
 
-  const { statement, cardHand, antagonist } = currentGameState
-  if (checkIfAntagonistBeaten()) {
+  const { statement, cardHand } = currentGameState
+  if (checkIfAntagonistBeaten(antagonist)) {
     setGameState({
       statement: statement + 1,
       progress: ((statement + 1) / antagonist.statements.length) * 100,
@@ -118,17 +117,17 @@ function loss(card: ICard) {
   return { result: ANSWER_TYPES.WRONG }
 }
 
-export function answer(card: ICard) {
-  const { antagonist, statement } = currentGameState
+export function answer(card: ICard, antagonist: IGameAntagonist) {
+  const { statement } = currentGameState
   if (antagonist!.statements[statement].cards.includes(card.id)) {
-    return moveForward(card)
+    return moveForward(card, antagonist)
   } else {
     return loss(card)
   }
 }
 
-export const getAnswerLine = () => {
-  const { antagonist, statement } = currentGameState
+export const getAnswerLine = (antagonist) => {
+  const { statement } = currentGameState
 
   // need to subtract 1 because we are moving forward after the answer
   // if statement is 0, it should be zero
