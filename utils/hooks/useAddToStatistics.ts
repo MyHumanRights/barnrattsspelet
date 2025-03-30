@@ -1,4 +1,5 @@
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore/lite'
+import { useCallback } from 'react'
 
 import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -12,7 +13,7 @@ export const useAddToStatistics = (
 ) => {
   const { statFlags, setStatFlags } = useStatsContext()
 
-  const addToStatistics = async () => {
+  const addToStatistics = useCallback(async () => {
     if (!statFlags[flagName]) return
 
     try {
@@ -50,7 +51,7 @@ export const useAddToStatistics = (
     } catch (err) {
       console.error('Error adding to statistics', err)
     }
-  }
+  }, [docName, flagName, statFlags, setStatFlags])
 
   return addToStatistics
 }

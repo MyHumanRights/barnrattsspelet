@@ -11,7 +11,7 @@ import useSound from 'use-sound'
 
 import titleTrack from '../assets/sounds/fx/00-title.mp3'
 
-interface Options {
+export type Options = {
   shouldReduceMotion: boolean
   highContrast: boolean
   themeVolume: number

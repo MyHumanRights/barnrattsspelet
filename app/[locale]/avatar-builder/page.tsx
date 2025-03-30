@@ -1,11 +1,10 @@
 import { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-import { getAvatarColors } from '@/utils/getData'
 import { LocaleParams } from '@/utils/types'
 
 import styles from './AvatarBuilder.module.scss'
-import { Client } from './client'
+import { AvatarBuilderClient } from './client'
 
 export async function generateMetadata({
   params: { locale },
@@ -24,8 +23,6 @@ export async function generateMetadata({
 }
 
 const AvatarBuilder = async () => {
-  const avatarColors = await getAvatarColors()
-
   return (
     <main
       className={styles.wrapper}
@@ -35,7 +32,7 @@ const AvatarBuilder = async () => {
     >
       <div className={styles.blurBkgd} />
       <div className={styles.opacityBkgd} />
-      <Client avatarColors={avatarColors} />
+      <AvatarBuilderClient />
     </main>
   )
 }

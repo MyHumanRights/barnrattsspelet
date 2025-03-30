@@ -12,270 +12,270 @@ import { getNextLevel, hasWonLevel } from './engine'
 
 let activeUser: null | { name: string } = null
 
-const save = async (collection: string, value: any): Promise<void | Error> => {
-  if (!activeUser) return new Error('No User Set')
+const save = <T>(key: string, value: T) => {
+  if (typeof window === 'undefined') return // Avoid running on the server
+
+  if (!activeUser) {
+    console.error('No User Set')
+    return
+  }
 
   try {
-    window.localStorage.setItem(
-      `${activeUser.name}:${collection}`,
-      JSON.stringify(value)
-    )
+    localStorage.setItem(`${activeUser.name}:${key}`, JSON.stringify(value))
   } catch (error) {
-    throw new Error(`Failed to save ${collection}: ${error}`)
+    console.error(`Error saving ${key} to localStorage`, error)
   }
 }
 
-async function read(collection: string): Promise<any> {
-  if (!activeUser) throw new Error('No User Set')
+// const save = async (collection: string, value: any) =>  => {
+//   if (!activeUser) return new Error('No User Set')
 
-  const item = window.localStorage.getItem(`${activeUser.name}:${collection}`)
-  return item ? JSON.parse(item) : null
+//   try {
+//     window.localStorage.setItem(
+//       `${activeUser.name}:${collection}`,
+//       JSON.stringify(value)
+//     )
+//   } catch (error) {
+//     throw new Error(`Failed to save ${collection}: ${error}`)
+//   }
+// }
+
+const read = <T>(key: string): T | null => {
+  if (typeof window === 'undefined') return null // Avoid running on the server
+  if (!activeUser) {
+    console.error('No User Set')
+    return null
+  }
+
+  try {
+    const item = localStorage.getItem(`${activeUser.name}:${key}`)
+    return item ? (JSON.parse(item) as T) : null
+  } catch (error) {
+    console.error(`Error getting ${key} from localStorage`, error)
+    return null
+  }
 }
 
-export async function setFirstTimePlaying(
-  boolean: boolean
-): Promise<void | Error> {
+export const setFirstTimePlaying = (boolean: boolean) => {
   return save('firstTimePlaying', boolean)
 }
 
-export async function getFirstTimePlaying(): Promise<boolean> {
+export const getFirstTimePlaying = (): boolean | null => {
   return read('firstTimePlaying')
 }
 
-export async function setFirstTimeLootBox(
-  boolean: boolean
-): Promise<void | Error> {
+export const setFirstTimeLootBox = (boolean: boolean) => {
   return save('firstTimeLootBox', boolean)
 }
 
-export async function getFirstTimeLootBox(): Promise<boolean> {
+export const getFirstTimeLootBox = (): boolean | null => {
   return read('firstTimeLootBox')
 }
 
-export async function setCardCollection(cards: ICard[]): Promise<void | Error> {
+export const setCardCollection = (cards: ICard[]) => {
   return save('cardCollection', cards)
 }
 
-export async function getCardCollection(): Promise<ICard[]> {
+export const getCardCollection = (): ICard[] | null => {
   return read('cardCollection')
 }
 
-export async function setCardHand(cards: ICard[]): Promise<void | Error> {
+export const setCardHand = (cards: ICard[]) => {
   return save('cards', cards)
 }
 
-export async function setDefeatedAntagonists(
-  antagonists: string[]
-): Promise<void | Error> {
+export const setDefeatedAntagonists = (antagonists: string[]) => {
   return save('defeatedAntagonists', antagonists)
 }
 
-export async function readDefeatedAntagonists(): Promise<string[]> {
+export const readDefeatedAntagonists = (): string[] | null => {
   return read('defeatedAntagonists')
 }
 
-export async function readTokens(): Promise<number> {
+export const readTokens = (): number | null => {
   return read('tokens')
 }
 
-export const setTokens = async (tokens: number): Promise<void | Error> => {
-  const savedTokens = await readTokens()
+export const setTokens = (tokens: number) => {
+  const savedTokens = readTokens() ?? 0
   return save('tokens', savedTokens + tokens)
 }
 
-export async function readWrongAnswers(): Promise<number> {
+export const readWrongAnswers = (): number | null => {
   return read('wrongAnswers')
 }
 
-export async function setWrongAnswers(): Promise<void | Error> {
-  let wrongAnswers = await readWrongAnswers()
+export const setWrongAnswers = () => {
+  let wrongAnswers = readWrongAnswers() ?? 0
   wrongAnswers = wrongAnswers + 1
   return save('wrongAnswers', wrongAnswers)
 }
 
-export async function resetWrongAnswers(): Promise<void | Error> {
+export const resetWrongAnswers = () => {
   return save('wrongAnswers', 0)
 }
 
-export async function resetTokens(): Promise<void | Error> {
+export const resetTokens = () => {
   return save('tokens', 0)
 }
 
-export async function getCardHand(): Promise<ICard[]> {
+export const getCardHand = (): ICard[] | null => {
   return read('cards')
 }
 
-export async function removeCardFromHand(card: ICard): Promise<void | Error> {
-  const cards: ICard[] = await read('cards')
+export const removeCardFromHand = (card: ICard) => {
+  const cards = getCardHand() ?? []
   return save(
     'cards',
     cards.filter((c) => c.id !== card.id)
   )
 }
 
-export function setActiveUser(user: { name: string }): void {
+export const setActiveUser = (user: { name: string }) => {
   activeUser = user
 }
 
-export async function setPlayFromScenario(boolean: boolean) {
+export const setPlayFromScenario = (boolean: boolean) => {
   return save('playFromScenario', boolean)
 }
 
-export async function getPlayFromScenario(): Promise<boolean> {
+export const getPlayFromScenario = (): boolean | null => {
   return read('playFromScenario')
 }
 
-export async function setAvatar(avatar: IAvatar): Promise<void | Error> {
+export const setAvatar = (avatar: IAvatar) => {
   return save('avatar', avatar)
 }
 
-export async function getAvatar(): Promise<IAvatar> {
+export const getAvatar = (): IAvatar | null => {
   return read('avatar')
 }
 
-export async function setAvatarPartCollection(
-  collection: IAvatarParts
-): Promise<void | Error> {
+export const setAvatarPartCollection = (collection: IAvatarParts) => {
   return save('avatarPartCollection', collection)
 }
 
-export async function getAvatarPartCollection(): Promise<IAvatarParts> {
+export const getAvatarPartCollection = (): IAvatarParts | null => {
   return read('avatarPartCollection')
 }
 
-export async function setShownWelcomeTip(
-  boolean: boolean
-): Promise<void | Error> {
+export const setShownWelcomeTip = (boolean: boolean) => {
   return save('shownWelcomeTip', boolean)
 }
 
-export async function getShownWelcomeTip(): Promise<boolean> {
+export const getShownWelcomeTip = (): boolean | null => {
   return read('shownWelcomeTip')
 }
 
-export async function setShownPlayTip(boolean: boolean): Promise<void | Error> {
+export const setShownPlayTip = (boolean: boolean) => {
   return save('shownPlayTip', boolean)
 }
 
-export async function getShownPlayTip(): Promise<boolean> {
+export const getShownPlayTip = (): boolean | null => {
   return read('shownPlayTip')
 }
 
-export async function setShownEnableCardTip(
-  boolean: boolean
-): Promise<void | Error> {
+export const setShownEnableCardTip = (boolean: boolean) => {
   return save('shownEnableCardTip', boolean)
 }
 
-export async function getShownEnableCardTip(): Promise<boolean> {
+export const getShownEnableCardTip = (): boolean | null => {
   return read('shownEnableCardTip')
 }
 
-export async function setShownTokenTip(
-  boolean: boolean
-): Promise<void | Error> {
+export const setShownTokenTip = (boolean: boolean) => {
   return save('shownTokenTip', boolean)
 }
 
-export async function getShownTokenTip(): Promise<boolean> {
+export const getShownTokenTip = (): boolean | null => {
   return read('shownTokenTip')
 }
 
-export async function setShownFlipCardTip(
-  boolean: boolean
-): Promise<void | Error> {
+export const setShownFlipCardTip = (boolean: boolean) => {
   return save('shownFlipCardTip', boolean)
 }
 
-export async function getShownFlipCardTip(): Promise<boolean> {
+export const getShownFlipCardTip = (): boolean | null => {
   return read('shownFlipCardTip')
 }
 
-export async function resetShownTips(): Promise<void | Error> {
+export const resetShownTips = () => {
   try {
-    await save('shownWelcomeTip', false)
-    await save('shownPlayTip', false)
-    await save('shownEnableCardTip', false)
-    await save('shownTokenTip', false)
-    await save('shownFlipCardTip', false)
+    save('shownWelcomeTip', false)
+    save('shownPlayTip', false)
+    save('shownEnableCardTip', false)
+    save('shownTokenTip', false)
+    save('shownFlipCardTip', false)
   } catch (error) {
-    if (error instanceof Error) {
-      return error
-    } else {
-      return new Error('Failed to reset shown tips')
-    }
+    console.error('Failed to reset shown tips', error)
   }
 }
 
-export async function setReducedMotion(
-  boolean: boolean
-): Promise<void | Error> {
+export const setReducedMotion = (boolean: boolean) => {
   return save('animationOff', boolean)
 }
 
-export async function readReducedMotion(): Promise<boolean> {
+export const readReducedMotion = (): boolean | null => {
   return read('animationOff')
 }
 
-export async function setHighContrast(boolean: boolean): Promise<void | Error> {
+export const setHighContrast = (boolean: boolean) => {
   return save('highContrast', boolean)
 }
 
-export async function readHighContrast(): Promise<boolean> {
+export const readHighContrast = (): boolean | null => {
   return read('highContrast')
 }
 
-export async function setThemeMusicOn(boolean: boolean): Promise<void | Error> {
+export const setThemeMusicOn = (boolean: boolean) => {
   return save('themeMusicOn', boolean)
 }
 
-export async function readThemeMusicOn(): Promise<boolean> {
+export const readThemeMusicOn = (): boolean | null => {
   return read('themeMusicOn')
 }
 
-export async function setSoundEffectsOn(
-  boolean: boolean
-): Promise<void | Error> {
+export const setSoundEffectsOn = (boolean: boolean) => {
   return save('soundEffectsOn', boolean)
 }
 
-export async function readSoundEffectsOn(): Promise<boolean> {
+export const readSoundEffectsOn = (): boolean | null => {
   return read('soundEffectsOn')
 }
 
-export async function setThemeVolume(number: number): Promise<void | Error> {
+export const setThemeVolume = (number: number) => {
   return save('themeVolume', number)
 }
 
-export async function readThemeVolume(): Promise<number> {
+export const readThemeVolume = (): number | null => {
   return read('themeVolume')
 }
 
-export async function setVoiceover(boolean: boolean): Promise<void | Error> {
+export const setVoiceover = (boolean: boolean) => {
   return save('voiceover', boolean)
 }
 
-export async function readVoiceover(): Promise<boolean> {
+export const readVoiceover = (): boolean | null => {
   return read('voiceover')
 }
 
-export async function seteffectsVolume(number: number): Promise<void | Error> {
+export const seteffectsVolume = (number: number) => {
   return save('effectsVolume', number)
 }
 
-export async function readeffectsVolume(): Promise<number> {
+export const readeffectsVolume = (): number | null => {
   return read('effectsVolume')
 }
 
-export async function setLanguage(language: string): Promise<void | Error> {
+export const setLanguage = (language: string) => {
   return save('language', language)
 }
 
-export async function readLanguage(): Promise<string> {
+export const readLanguage = (): string | null => {
   return read('language')
 }
 
-interface ISettings {
+type ISettings = {
   shouldReduceMotion: boolean
   highContrast: boolean
   themeMusicOn: boolean
@@ -286,15 +286,15 @@ interface ISettings {
   language: string
 }
 
-export async function readSettings(reducedMotion: boolean): Promise<ISettings> {
-  const shouldReduceMotion = await readReducedMotion()
-  const highContrast = (await readHighContrast()) || false
-  const themeMusicOn = await readThemeMusicOn()
-  const soundEffectsOn = await readSoundEffectsOn()
-  const themeVolume = (await readThemeVolume()) || 0.3
-  const effectsVolume = (await readeffectsVolume()) || 0.3
-  const voiceover = (await readVoiceover()) || true
-  const language = (await readLanguage()) || 'sv'
+export const readSettings = (reducedMotion: boolean): ISettings => {
+  const shouldReduceMotion = readReducedMotion()
+  const highContrast = readHighContrast() || false
+  const themeMusicOn = readThemeMusicOn() || false
+  const soundEffectsOn = readSoundEffectsOn() || false
+  const themeVolume = readThemeVolume() || 0.3
+  const effectsVolume = readeffectsVolume() || 0.3
+  const voiceover = readVoiceover() || true
+  const language = readLanguage() || 'sv'
 
   return {
     // if there is a true / false setting - keep it, otherwise use built in setting
@@ -312,14 +312,12 @@ export async function readSettings(reducedMotion: boolean): Promise<ISettings> {
   }
 }
 
-async function readGameState(): Promise<IGameStateObject> {
+const readGameState = (): IGameStateObject | null => {
   return read('gameState')
 }
 
-export async function setGameStateValue(
-  updatedValues: Partial<IGameStateObject>
-): Promise<void | Error> {
-  const currentGameState = await readGameState()
+export const setGameStateValue = (updatedValues: Partial<IGameStateObject>) => {
+  const currentGameState = readGameState()
 
   // Merge the updated values with the current state
   const newGameState = { ...currentGameState, ...updatedValues }
@@ -327,10 +325,10 @@ export async function setGameStateValue(
   return save('gameState', newGameState)
 }
 
-export async function readGameStateValue<T extends keyof IGameStateObject>(
+export const readGameStateValue = <T extends keyof IGameStateObject>(
   key: T
-): Promise<IGameStateObject[T] | null> {
-  const currentGameState = await readGameState()
+): IGameStateObject[T] | null => {
+  const currentGameState = readGameState()
 
   // Check if the key exists in the game state
   if (currentGameState && key in currentGameState) {
@@ -341,11 +339,11 @@ export async function readGameStateValue<T extends keyof IGameStateObject>(
   return null
 }
 
-export async function resetGameState(): Promise<void | Error> {
-  return await save('gameState', null)
+export const resetGameState = () => {
+  return save('gameState', null)
 }
 
-export const getProgress = async (): Promise<Progress | null> => {
+export const getProgress = (): Progress | null => {
   return readGameStateValue('progress')
 }
 
@@ -353,8 +351,8 @@ export const getCurrentLevel = (progress: Progress): Level | undefined => {
   return levels.find((level) => level.levelNumber === progress.level)
 }
 
-export const saveProgress = async (): Promise<void> => {
-  const progress = (await getProgress()) || { level: 1, part: 0 }
+export const saveProgress = () => {
+  const progress = getProgress() || { level: 1, part: 0 }
 
   const currentLevel = getCurrentLevel(progress)
 
@@ -383,9 +381,6 @@ export const saveProgress = async (): Promise<void> => {
   setGameStateValue({ progress })
 }
 
-export const setProgress = async (
-  level: number,
-  part: number
-): Promise<void> => {
+export const setProgress = (level: number, part: number) => {
   setGameStateValue({ progress: { level, part } })
 }

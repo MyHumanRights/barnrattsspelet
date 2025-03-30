@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import { getAvatar } from '@/api/storage'
 import { IAvatar } from '@/utils/types'
@@ -7,8 +7,8 @@ import { AvatarPart } from '../AvatarPart'
 import styles from './Avatar.module.scss'
 
 interface Props {
-  choices?: IAvatar
-  link?: JSX.Element
+  choices: IAvatar | null
+  link?: ReactNode
 }
 
 export const Avatar = ({ choices, link }: Props) => {
