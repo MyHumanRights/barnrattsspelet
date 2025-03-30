@@ -12,7 +12,7 @@ import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import styles from './Link.module.scss'
 
-interface Props {
+type LinkProps = {
   to: AppPathnames
   size?: ButtonSize
   variant?: ButtonVariant
@@ -23,7 +23,7 @@ interface Props {
   [key: string]: any
 }
 
-export const Link: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
       children,

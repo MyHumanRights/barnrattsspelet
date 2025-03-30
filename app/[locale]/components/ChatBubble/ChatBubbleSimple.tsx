@@ -1,15 +1,14 @@
-import React, { PropsWithChildren } from 'react'
-
 import styles from './ChatBubbleSimple.module.scss'
 
-interface Props {
+type ChatBubbleSimpleProps = {
   arrow?: boolean
+  children: React.ReactNode
 }
 
-export const ChatBubbleSimple: React.FC<PropsWithChildren<Props>> = ({
+export const ChatBubbleSimple = ({
   arrow = true,
   children,
-}) => {
+}: ChatBubbleSimpleProps) => {
   return (
     <div
       className={`

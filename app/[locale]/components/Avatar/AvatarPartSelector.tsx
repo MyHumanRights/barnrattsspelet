@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { ButtonVariant } from '@/utils/constants'
+import { ButtonVariant, CATEGORIES } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 
 import { Button } from '../Button'
@@ -14,9 +14,9 @@ import styles from './AvatarPartSelector.module.scss'
 const WINDOW_BREAKPOINT = 600
 
 type Props = {
-  category: string
+  category: CATEGORIES
   text: string
-  onClick: (category: string, direction: number) => void
+  onClick: (category: CATEGORIES, direction: number) => void
   disabled: boolean
   ariaPrev: string
   ariaNext: string
