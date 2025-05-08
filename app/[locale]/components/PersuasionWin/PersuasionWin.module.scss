@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use '../../../global.scss' as *;
+@use 'sass:color';
 
 .wrapper {
   top: 50%;
@@ -22,7 +23,7 @@
 
     &:hover {
       text-decoration: none;
-      color: scale-color($primaryColor, $lightness: 15%);
+      color: color.scale($primaryColor, $lightness: 15%);
     }
   }
 }

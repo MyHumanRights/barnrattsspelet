@@ -7,6 +7,7 @@ import { Bangers, Quicksand } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { ReactNode } from 'react'
 
 import { getDefaultAvatorParts } from '@/api/engine'
 import { getAvatarColors, getAvatarParts } from '@/utils/getData'
@@ -39,13 +40,14 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-const RootLayout = async ({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode
+const RootLayout = async (props: {
+  children: ReactNode
   params: { locale: string }
 }) => {
+  const { children } = props
+  const params = await props.params
+  const { locale } = params
+
   // Validate that the incoming `locale` parameter is valid
   const isValidLocale = locales.some((cur) => cur === locale)
   const timeZone = 'Europe/Stockholm'
