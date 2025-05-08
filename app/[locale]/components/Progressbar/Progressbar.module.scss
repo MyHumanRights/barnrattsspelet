@@ -44,16 +44,14 @@
     z-index: 2;
     @include box-shadow(medium);
 
+    color: $primaryColor;
     @media (min-width: 768px) {
       height: 35px;
     }
-
     @media (min-width: 890px) {
       clip-path: polygon(98.6% 0%, 98.8% 100%, 0% 100%, 0% 0%);
     }
-
     //for IE 11
-    color: $primaryColor;
     position: relative;
     overflow: hidden;
   }
