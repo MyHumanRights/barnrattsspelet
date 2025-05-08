@@ -9,7 +9,7 @@ import {
 import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
-export interface LocaleParams {
+export type LocaleParams = {
   params: {
     locale: string
   }
