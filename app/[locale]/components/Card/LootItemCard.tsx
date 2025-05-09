@@ -1,6 +1,6 @@
 import { ILootItem } from '@/utils/types'
 
-import { AvatarPart } from '../AvatarPart'
+import { AvatarPart, AvatarPartKeys } from '../AvatarPart'
 import styles from './LootItemCard.module.scss'
 
 interface Props {
@@ -21,7 +21,7 @@ export const LootItemCard = ({ lootItem }: Props) => {
             <AvatarPart avatarPart='Base01' fill='gray' />
             {lootItem.map((item) => (
               <AvatarPart
-                avatarPart={item.id}
+                avatarPart={item.id as AvatarPartKeys}
                 fill={item.color}
                 key={item.id}
               />

@@ -12,6 +12,7 @@ import {
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/i18n/routing'
+import { Antagonist } from '@/utils/antagonistType'
 import { shuffleArray } from '@/utils/shuffleArray'
 import { ICard, IGameAntagonist } from '@/utils/types'
 
@@ -78,7 +79,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
   ) => {
     setPlayFromScenario(!isSlimPlay)
     setCardHand(cardHand)
-    setGameStateValue({ activeAntagonist: scenario.name })
+    setGameStateValue({ activeAntagonist: scenario.name as Antagonist })
     router.push('/persuade')
   }
 

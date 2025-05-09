@@ -137,8 +137,8 @@ export type IGameAntagonist = {
 export type IAntagonistObject = {
   [key: string]: IGameAntagonist
 }
-export interface IGameState {
-  antagonist: IGameAntagonist | null
+export type IGameState = {
+  antagonist?: IGameAntagonist | null
   statement: number
   progress: number
   cardHand: ICard[]

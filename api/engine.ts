@@ -29,7 +29,6 @@ const defaultGameState: IGameState = {
   progress: 0,
   cardHand: [],
   state: GAME_STATES.INTRO,
-  antagonist: null,
 }
 
 let currentGameState: IGameState = {

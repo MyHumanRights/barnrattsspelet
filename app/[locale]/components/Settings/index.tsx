@@ -35,15 +35,15 @@ import Modal from '../Modal'
 import styles from './Settings.module.scss'
 import { SettingsModal } from './SettingsModal'
 
-interface Props {
+type SettingsProps = {
   defaultAvatarParts: IAvatarParts
   avatarColors: IAvatarColors
 }
 
-export const Settings: React.FC<Props> = ({
+export const Settings = ({
   defaultAvatarParts,
   avatarColors,
-}) => {
+}: SettingsProps) => {
   const t = useTranslations('Settings')
   const {
     isMobile,

@@ -11,7 +11,7 @@ const avatarParts: Record<
   ...avatarPartComponents,
 }
 
-const AvatarPartComponent = forwardRef<
+export const AvatarPart = forwardRef<
   HTMLDivElement,
   { avatarPart: AvatarPartKeys; fill: string | undefined }
 >(({ avatarPart, fill }, ref) => {
@@ -29,6 +29,4 @@ const AvatarPartComponent = forwardRef<
   )
 })
 
-AvatarPartComponent.displayName = 'AvatarPart'
-
-export const AvatarPart = AvatarPartComponent
+AvatarPart.displayName = 'AvatarPart'
