@@ -76,8 +76,8 @@ export const setCardCollection = (cards: ICard[]) => {
   return save('cardCollection', cards)
 }
 
-export const getCardCollection = (): ICard[] | null => {
-  return read('cardCollection')
+export const getCardCollection = (): ICard[] => {
+  return read('cardCollection') || []
 }
 
 export const setCardHand = (cards: ICard[]) => {
@@ -88,12 +88,12 @@ export const setDefeatedAntagonists = (antagonists: string[]) => {
   return save('defeatedAntagonists', antagonists)
 }
 
-export const readDefeatedAntagonists = (): string[] | null => {
-  return read('defeatedAntagonists')
+export const readDefeatedAntagonists = (): string[] => {
+  return read('defeatedAntagonists') || []
 }
 
-export const readTokens = (): number | null => {
-  return read('tokens')
+export const readTokens = (): number => {
+  return read('tokens') ?? 0
 }
 
 export const setTokens = (tokens: number) => {
@@ -101,8 +101,8 @@ export const setTokens = (tokens: number) => {
   return save('tokens', savedTokens + tokens)
 }
 
-export const readWrongAnswers = (): number | null => {
-  return read('wrongAnswers')
+export const readWrongAnswers = (): number => {
+  return read('wrongAnswers') || 0
 }
 
 export const setWrongAnswers = () => {
@@ -139,8 +139,8 @@ export const setPlayFromScenario = (boolean: boolean) => {
   return save('playFromScenario', boolean)
 }
 
-export const getPlayFromScenario = (): boolean | null => {
-  return read('playFromScenario')
+export const getPlayFromScenario = (): boolean => {
+  return read('playFromScenario') || false
 }
 
 export const setAvatar = (avatar: IAvatar) => {
@@ -187,16 +187,16 @@ export const setShownTokenTip = (boolean: boolean) => {
   return save('shownTokenTip', boolean)
 }
 
-export const getShownTokenTip = (): boolean | null => {
-  return read('shownTokenTip')
+export const getShownTokenTip = (): boolean => {
+  return read('shownTokenTip') || false
 }
 
 export const setShownFlipCardTip = (boolean: boolean) => {
   return save('shownFlipCardTip', boolean)
 }
 
-export const getShownFlipCardTip = (): boolean | null => {
-  return read('shownFlipCardTip')
+export const getShownFlipCardTip = (): boolean => {
+  return read('shownFlipCardTip') || false
 }
 
 export const resetShownTips = () => {
