@@ -175,7 +175,7 @@ export const PersuadeClient = () => {
   const init = useCallback(async () => {
     if (!antagonist) return null
 
-    const cards = await getCardHand()
+    const cards = getCardHand()
 
     resetGameState()
     const currentState = setGameState({
@@ -183,17 +183,10 @@ export const PersuadeClient = () => {
     })
     setCurrentState(currentState)
 
-    const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
-      await Promise.all([
-        getPlayFromScenario(),
-        readWrongAnswers(),
-        getShownFlipCardTip(),
-        getShownTokenTip(),
-      ])
-    setIsScenarioMode(playFromScenario)
-    setAnsweredIncorrectly(wrongAnswers)
-    setHasShownFlipCardTip(shownFlipCardTip || false)
-    setHasShownTokenTip(shownTokenTip)
+    setIsScenarioMode(getPlayFromScenario() || false)
+    setAnsweredIncorrectly(readWrongAnswers() || 0)
+    setHasShownFlipCardTip(getShownFlipCardTip() || false)
+    setHasShownTokenTip(getShownTokenTip() || false)
   }, [antagonist])
 
   useEffect(() => {
@@ -202,20 +195,20 @@ export const PersuadeClient = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [init])
 
-  const addDefeatedAntagonist = async (antagonist: IGameAntagonist) => {
-    const isScenarioMode = await getPlayFromScenario()
+  const addDefeatedAntagonist = (antagonist: IGameAntagonist) => {
+    const isScenarioMode = getPlayFromScenario()
     if (isScenarioMode) {
       return
     }
 
-    let defeatedAntagonists = await readDefeatedAntagonists()
+    let defeatedAntagonists = readDefeatedAntagonists()
 
-    const isInDefeatedList = defeatedAntagonists.find(
+    const isInDefeatedList = defeatedAntagonists?.find(
       (ant) => ant === antagonist.name
     )
     if (!isInDefeatedList) {
-      defeatedAntagonists.push(antagonist.name)
-      await setDefeatedAntagonists(defeatedAntagonists)
+      defeatedAntagonists?.push(antagonist.name)
+      setDefeatedAntagonists(defeatedAntagonists || [])
     }
   }
 
@@ -281,9 +274,9 @@ export const PersuadeClient = () => {
       })
     }, 1200)
 
-    const defeatedAntagonists = await readDefeatedAntagonists()
+    const defeatedAntagonists = readDefeatedAntagonists()
 
-    defeatedAntagonists.length === 2 &&
+    defeatedAntagonists?.length === 2 &&
       setTimeout(() => {
         setShowOwl(OWLS.QUIZ)
       }, 2000)
@@ -499,6 +492,8 @@ export const PersuadeClient = () => {
   if (!antagonist || !currentState?.state) {
     return null
   }
+
+  console.log('currentState', currentState)
 
   return (
     <main className={styles.main} style={{ backgroundColor: bgColor }}>

@@ -7,7 +7,7 @@ import { AvatarPart } from '../AvatarPart'
 import styles from './Avatar.module.scss'
 
 interface Props {
-  choices: IAvatar | null
+  choices?: IAvatar | null
   link?: ReactNode
 }
 

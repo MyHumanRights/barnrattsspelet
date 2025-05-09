@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useCallback, useEffect, useState } from 'react'
 
 import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
-import { getNewAvatarParts, getNumberOfNewCards } from '@/api/engine'
+import { getNumberOfNewCards } from '@/api/engine'
 import {
   getAvatarPartCollection,
   getCardCollection,
@@ -16,6 +16,7 @@ import {
   setShownWelcomeTip,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { getNewAvatarParts } from '@/utils/avatar-utils'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { IAntagonistObject, IGameProgress, IOwlContent } from '@/utils/types'
@@ -105,21 +106,21 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
       gameEnvironment: null,
       isBuyingLootbox: false,
     })
-    const init = async () => {
-      const cardCollection = (await getCardCollection()) || []
+    const init = () => {
+      const cardCollection = getCardCollection() || []
       setNumberOfCards(cardCollection.length)
 
       // get number of new cards
       const noOfNewCards = getNumberOfNewCards(cardCollection)
       setNumberOfNewCards(noOfNewCards)
 
-      const storedPartCollection = await getAvatarPartCollection()
+      const storedPartCollection = getAvatarPartCollection()
       const getNewParts = getNewAvatarParts(storedPartCollection).length
-      setHasNewParts(!!getNewParts)
+      setHasNewParts(Boolean(getNewParts))
 
       // get playable scenarios
-      const cards = await getCardHand()
-      const defeated = await readDefeatedAntagonists()
+      const cards = getCardHand() || []
+      const defeated = readDefeatedAntagonists()
       const antagonistsByHand = getAntagonistsByHand(cards, antagonists)
 
       // make progress object
@@ -132,7 +133,7 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
         tempProgress[a.environment] = {
           ...tempProgress[a.environment],
           total: tempProgress[a.environment].total + 1,
-          defeated: defeated.includes(a.name)
+          defeated: defeated?.includes(a.name)
             ? tempProgress[a.environment].defeated + 1
             : tempProgress[a.environment].defeated,
         }

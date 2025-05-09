@@ -9,7 +9,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { ReactNode } from 'react'
 
-import { getDefaultAvatorParts } from '@/api/engine'
+import avatarJson from '@/data/avatar.json'
+import { getDefaultAvatorParts } from '@/utils/avatar-utils'
 import { getAvatarColors, getAvatarParts } from '@/utils/getData'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
 
@@ -47,6 +48,7 @@ const RootLayout = async (props: {
   const { children } = props
   const params = await props.params
   const { locale } = params
+  setRequestLocale(locale)
 
   // Validate that the incoming `locale` parameter is valid
   const isValidLocale = locales.some((cur) => cur === locale)
@@ -60,11 +62,9 @@ const RootLayout = async (props: {
     notFound()
   }
 
-  const avatarParts: IAvatarParts = await getAvatarParts()
-  const defaultAvatarParts = getDefaultAvatorParts(avatarParts)
-  const avatarColors: IAvatarColors = await getAvatarColors()
-
-  setRequestLocale(locale)
+  const defaultAvatarParts = getDefaultAvatorParts(
+    avatarJson.parts as IAvatarParts
+  )
 
   return (
     <html lang={locale}>
@@ -82,7 +82,7 @@ const RootLayout = async (props: {
               >
                 <Settings
                   defaultAvatarParts={defaultAvatarParts}
-                  avatarColors={avatarColors}
+                  avatarColors={avatarJson.colors as IAvatarColors}
                 />
                 {children}
               </NextIntlClientProvider>

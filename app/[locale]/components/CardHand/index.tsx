@@ -231,169 +231,170 @@ export const CardHand = ({
   // }
 
   return (
-    <motion.section
-      className={`${styles.wrapper} ${isDeckBuilder && styles.deckBuilder}`}
-    >
-      <ul>
-        <AnimatePresence>
-          {cards.map((card, index) => (
-            <motion.li
-              key={`${card.id}-${uuid}`}
-              initial={{
-                top: `${gettop(index, cards.length, winSize)}px`,
-                left: `calc(${getleft(
-                  index,
-                  cards.length,
-                  winSize
-                )}vw - ${getoffset(
-                  cards.length,
-                  winSize,
-                  centeredCard === card.id
-                )}px)`,
-                rotate: `${getrotation(index, cards.length)}deg`,
-              }}
-              animate={{
-                top: `${gettop(
-                  index,
-                  cards.length,
-                  winSize,
-                  index === cardIndex,
-                  centeredCard === card.id
-                )}px`,
-                left: `calc(${getleft(
-                  index,
-                  cards.length,
-                  winSize,
-                  centeredCard === card.id
-                )}vw - ${getoffset(
-                  cards.length,
-                  winSize,
-                  centeredCard === card.id
-                )}px)`,
-                rotate: `${getrotation(
-                  index,
-                  cards.length,
-                  centeredCard === card.id
-                )}deg`,
-                scale: centeredCard === card.id ? 1.2 : 1,
-                transition:
-                  centeredCard === card.id ? exitTransition : cardTransition,
-                zIndex: index === cardIndex || centeredCard === card.id ? 2 : 1,
-              }}
-              exit={{
-                opacity: 0,
-                top: `-${CARD_HEIGHT}px`,
-                left: '0wv',
-                rotate: '-15deg',
-                transition: exitTransition,
-              }}
-              onMouseEnter={() => handleClickOnCard(index, false)}
-              onMouseLeave={() => handleClickOnCard(index, true)}
-            >
-              <div
-                className={`${styles.buttonWrapper} ${
-                  boostable &&
-                  !boostedCards.includes(card.id) &&
-                  !card.isDisabled &&
-                  styles.spaceBetween
-                }`}
-                aria-controls={`card-${index}`}
-              >
-                {!card.isDisabled ? (
-                  <AnimatePresence>
-                    {index === cardIndex &&
-                      !boostedCards.includes(card.id) &&
-                      boostable && (
-                        <div
-                          key={`${card.id}-buttonBoost`}
-                          className={styles.tokenBtnWrapper}
-                        >
-                          <motion.button
-                            variants={buttonVariants}
-                            initial='initial'
-                            animate='animate'
-                            transition={
-                              shouldReduceMotion
-                                ? { duration: 0.01 }
-                                : { delay: 0.1 }
-                            }
-                            className={styles.primary}
-                            ref={interactionButtons}
-                            onClick={() => openBoost(card)}
-                            onMouseEnter={triggerStar}
-                            aria-label={t('boost')}
-                          >
-                            <motion.span
-                              animate={animateStar}
-                              style={{ display: 'block' }}
-                            >
-                              <Image
-                                src='/images/token.png'
-                                alt='Token'
-                                width={24}
-                                height={24}
-                              />
-                            </motion.span>
-                          </motion.button>
-                        </div>
-                      )}
-                    {index === cardIndex && card.id !== correctCard && (
-                      <div className={styles.playBtnWrapper}>
-                        <motion.div
-                          key={`${card.id}-buttonPlay`}
-                          animate={animateSelectBtn}
-                          onMouseEnter={triggerSelectBtn}
-                        >
-                          <motion.button
-                            variants={buttonVariants}
-                            initial='initial'
-                            animate='animate'
-                            transition={
-                              shouldReduceMotion
-                                ? { duration: 0.01 }
-                                : { delay: 0.2 }
-                            }
-                            className={`${
-                              boostable ? styles.secondary : styles.primary
-                            }`}
-                            onClick={() => handleCardSelect(card)}
-                          >
-                            {cardSelectText}
-                          </motion.button>
-                        </motion.div>
-                      </div>
-                    )}
-                  </AnimatePresence>
-                ) : index === cardIndex && tokens > 0 ? (
-                  <motion.button
-                    onClick={() => enableCard(card)}
-                    variants={buttonVariants}
-                    initial='initial'
-                    animate='animate'
-                    transition={
-                      shouldReduceMotion ? { duration: 0.01 } : { delay: 0.1 }
-                    }
-                    className={styles.primary}
-                    ref={interactionButtons}
-                  >
-                    {t('enable')}
-                  </motion.button>
-                ) : null}
-              </div>
-              <Card
-                disabledCard={card.isDisabled}
-                id={index.toString()}
-                cardIndex={cardIndex?.toString()}
-                which={card}
-                onClick={() => handleClickOnCard(index, false)}
-                animation={hoverAnimation}
-                size={`${clientWidth < 768 ? 'small' : 'medium'}`}
-                highlight={centeredCard === card.id}
-              />
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </ul>
-    </motion.section>
+    <p>HEJ HEJ</p>
+    // <motion.section
+    //   className={`${styles.wrapper} ${isDeckBuilder && styles.deckBuilder}`}
+    // >
+    //   <ul>
+    //     <AnimatePresence>
+    //       {cards.map((card, index) => (
+    //         <motion.li
+    //           key={`${card.id}-${uuid}`}
+    //           initial={{
+    //             top: `${gettop(index, cards.length, winSize)}px`,
+    //             left: `calc(${getleft(
+    //               index,
+    //               cards.length,
+    //               winSize
+    //             )}vw - ${getoffset(
+    //               cards.length,
+    //               winSize,
+    //               centeredCard === card.id
+    //             )}px)`,
+    //             rotate: `${getrotation(index, cards.length)}deg`,
+    //           }}
+    //           animate={{
+    //             top: `${gettop(
+    //               index,
+    //               cards.length,
+    //               winSize,
+    //               index === cardIndex,
+    //               centeredCard === card.id
+    //             )}px`,
+    //             left: `calc(${getleft(
+    //               index,
+    //               cards.length,
+    //               winSize,
+    //               centeredCard === card.id
+    //             )}vw - ${getoffset(
+    //               cards.length,
+    //               winSize,
+    //               centeredCard === card.id
+    //             )}px)`,
+    //             rotate: `${getrotation(
+    //               index,
+    //               cards.length,
+    //               centeredCard === card.id
+    //             )}deg`,
+    //             scale: centeredCard === card.id ? 1.2 : 1,
+    //             transition:
+    //               centeredCard === card.id ? exitTransition : cardTransition,
+    //             zIndex: index === cardIndex || centeredCard === card.id ? 2 : 1,
+    //           }}
+    //           exit={{
+    //             opacity: 0,
+    //             top: `-${CARD_HEIGHT}px`,
+    //             left: '0wv',
+    //             rotate: '-15deg',
+    //             transition: exitTransition,
+    //           }}
+    //           onMouseEnter={() => handleClickOnCard(index, false)}
+    //           onMouseLeave={() => handleClickOnCard(index, true)}
+    //         >
+    //           <div
+    //             className={`${styles.buttonWrapper} ${
+    //               boostable &&
+    //               !boostedCards.includes(card.id) &&
+    //               !card.isDisabled &&
+    //               styles.spaceBetween
+    //             }`}
+    //             aria-controls={`card-${index}`}
+    //           >
+    //             {!card.isDisabled ? (
+    //               <AnimatePresence>
+    //                 {index === cardIndex &&
+    //                   !boostedCards.includes(card.id) &&
+    //                   boostable && (
+    //                     <div
+    //                       key={`${card.id}-buttonBoost`}
+    //                       className={styles.tokenBtnWrapper}
+    //                     >
+    //                       <motion.button
+    //                         variants={buttonVariants}
+    //                         initial='initial'
+    //                         animate='animate'
+    //                         transition={
+    //                           shouldReduceMotion
+    //                             ? { duration: 0.01 }
+    //                             : { delay: 0.1 }
+    //                         }
+    //                         className={styles.primary}
+    //                         ref={interactionButtons}
+    //                         onClick={() => openBoost(card)}
+    //                         onMouseEnter={triggerStar}
+    //                         aria-label={t('boost')}
+    //                       >
+    //                         <motion.span
+    //                           animate={animateStar}
+    //                           style={{ display: 'block' }}
+    //                         >
+    //                           <Image
+    //                             src='/images/token.png'
+    //                             alt='Token'
+    //                             width={24}
+    //                             height={24}
+    //                           />
+    //                         </motion.span>
+    //                       </motion.button>
+    //                     </div>
+    //                   )}
+    //                 {index === cardIndex && card.id !== correctCard && (
+    //                   <div className={styles.playBtnWrapper}>
+    //                     <motion.div
+    //                       key={`${card.id}-buttonPlay`}
+    //                       animate={animateSelectBtn}
+    //                       onMouseEnter={triggerSelectBtn}
+    //                     >
+    //                       <motion.button
+    //                         variants={buttonVariants}
+    //                         initial='initial'
+    //                         animate='animate'
+    //                         transition={
+    //                           shouldReduceMotion
+    //                             ? { duration: 0.01 }
+    //                             : { delay: 0.2 }
+    //                         }
+    //                         className={`${
+    //                           boostable ? styles.secondary : styles.primary
+    //                         }`}
+    //                         onClick={() => handleCardSelect(card)}
+    //                       >
+    //                         {cardSelectText}
+    //                       </motion.button>
+    //                     </motion.div>
+    //                   </div>
+    //                 )}
+    //               </AnimatePresence>
+    //             ) : index === cardIndex && tokens > 0 ? (
+    //               <motion.button
+    //                 onClick={() => enableCard(card)}
+    //                 variants={buttonVariants}
+    //                 initial='initial'
+    //                 animate='animate'
+    //                 transition={
+    //                   shouldReduceMotion ? { duration: 0.01 } : { delay: 0.1 }
+    //                 }
+    //                 className={styles.primary}
+    //                 ref={interactionButtons}
+    //               >
+    //                 {t('enable')}
+    //               </motion.button>
+    //             ) : null}
+    //           </div>
+    //           <Card
+    //             disabledCard={card.isDisabled}
+    //             id={index.toString()}
+    //             cardIndex={cardIndex?.toString()}
+    //             which={card}
+    //             onClick={() => handleClickOnCard(index, false)}
+    //             animation={hoverAnimation}
+    //             size={`${clientWidth < 768 ? 'small' : 'medium'}`}
+    //             highlight={centeredCard === card.id}
+    //           />
+    //         </motion.li>
+    //       ))}
+    //     </AnimatePresence>
+    //   </ul>
+    // </motion.section>
   )
 }
