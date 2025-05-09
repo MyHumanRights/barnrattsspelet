@@ -84,7 +84,7 @@ export interface IAvatarColors {
   body: string[]
 }
 
-export interface IAvatar {
+export type IAvatar = {
   face: { id: AvatarPartKeys; color: string }
   body: { id: AvatarPartKeys; color: string }
   hair: { id: AvatarPartKeys; color: string }
@@ -124,7 +124,7 @@ type Statement = {
 
 export type IGameAntagonist = {
   health: number
-  name: Antagonist
+  name: string
   components: Component
   scenarioImage: string
   chatBubblePosition: string
@@ -135,7 +135,7 @@ export type IGameAntagonist = {
 }
 
 export type IAntagonistObject = {
-  [key in Antagonist]: IGameAntagonist
+  [key: string]: IGameAntagonist
 }
 export interface IGameState {
   antagonist: IGameAntagonist | null
@@ -157,16 +157,16 @@ export interface IGameProgress {
   }
 }
 
-export interface IScenario {
+export type IScenario = {
   place: string
   playable: string[]
   unbeaten: string[]
 }
 
-export interface ILootItem {
+export type ILootItem = {
   category: string
-  id: AvatarPartKeys
-  color: string
+  id: string
+  color?: string
   isNewPart?: boolean
 }
 
@@ -178,7 +178,7 @@ export type AvatarPart = {
   color?: string | undefined
 }
 
-export interface IGameStateObject {
+export type IGameStateObject = {
   isBuyingLootbox: boolean
   allowedLootbox: boolean
   activeAntagonist: null | Antagonist

@@ -6,12 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
-import {
-  getAvatarPartById,
-  getCardsToLootBox,
-  getPartId,
-  getStartingCards,
-} from '@/api/engine'
+import { getCardsToLootBox, getPartId, getStartingCards } from '@/api/engine'
 import {
   getAvatar,
   getAvatarPartCollection,
@@ -32,12 +27,14 @@ import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import { useRouter } from '@/i18n/routing'
+import { getAvatarPartById } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
 import { removeDuplicates } from '@/utils/removeDuplicates'
 import {
   AvatarPart,
   Environments,
+  IAntagonistObject,
   IAvatarParts,
   ICard,
   ILootItem,
@@ -128,19 +125,24 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
   const hasWonAllCards = useHasWonAllCards()
 
   useEffect(() => {
-    const init = async () => {
-      const cardCollection = (await getCardCollection()) || []
-      const buyingLootbox = await readGameStateValue('isBuyingLootbox')
-      const environment = await readGameStateValue('gameEnvironment')
-      const isSlimPlay = await readGameStateValue('isSlimPlay')
-      const allowedLootbox = await readGameStateValue('allowedLootbox')
-      const avatarPartCollection = await getAvatarPartCollection()
-      const storedAvatar = await getAvatar()
-      const progress = await readGameStateValue('progress')
-      const hasWonAllParts = await readGameStateValue('hasWonAllParts')
+    const init = () => {
+      const cardCollection = getCardCollection() || []
+      const buyingLootbox = readGameStateValue('isBuyingLootbox')
+      const environment = readGameStateValue('gameEnvironment')
+      const isSlimPlay = readGameStateValue('isSlimPlay')
+      const allowedLootbox = readGameStateValue('allowedLootbox')
+      const avatarPartCollection = getAvatarPartCollection()
+      const storedAvatar = getAvatar()
+      const progress = readGameStateValue('progress')
+      const hasWonAllParts = readGameStateValue('hasWonAllParts')
 
       if (!progress) {
         console.error('No progress found')
+        return
+      }
+
+      if (!storedAvatar) {
+        console.error('No stored avatar found')
         return
       }
 
@@ -159,14 +161,18 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
       setCollectedItems(avatarPartCollection)
 
       const handleSlimPlay = async () => {
-        const startingCards = getStartingCards(antagonists, cardData)
+        // Cast antagonists to IAntagonistObject to satisfy type requirements
+        const startingCards = getStartingCards(
+          antagonists as unknown as IAntagonistObject,
+          cardData
+        )
         setMyLootCards(startingCards)
         setLootCards(startingCards)
         setIsFirstLoot(true)
       }
 
-      const handleBuyingLootbox = async () => {
-        const availableTokens = await readTokens()
+      const handleBuyingLootbox = () => {
+        const availableTokens = readTokens() || 0
         if (availableTokens < 5) {
           router.back()
           return
@@ -175,9 +181,9 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
         setLootCards(cardsToLootbox)
       }
 
-      const handleDefaultCase = async () => {
-        const cardHand = await getCardHand()
-        const cardCollection = (await getCardCollection()) || []
+      const handleDefaultCase = () => {
+        const cardHand = getCardHand() || []
+        const cardCollection = getCardCollection() || []
 
         // remove cards from cardHand that are already in cardCollection
         const filteredCardHand = cardHand.filter(

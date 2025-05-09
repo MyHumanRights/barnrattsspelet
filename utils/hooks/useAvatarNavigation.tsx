@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { getRandomAvatar } from '@/api/engine'
 import { CATEGORIES } from '@/utils/constants'
 import { IAvatar, IAvatarColors, IAvatarParts } from '@/utils/types'
+
+import { getRandomAvatar } from '../avatar-utils'
 
 interface UseAvatarNavigationProps {
   avatarCollection: IAvatarParts | null

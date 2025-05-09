@@ -4,10 +4,10 @@ import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 
-import { getNewAvatarParts, resetNewAvatarParts } from '@/api/engine'
 import { setAvatar, setAvatarPartCollection } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { useRouter } from '@/i18n/routing'
+import { getNewAvatarParts, resetNewAvatarParts } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant, CATEGORIES } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { useAvatarData } from '@/utils/hooks/useAvatarData'
@@ -28,8 +28,6 @@ export const AvatarBuilderClient = () => {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
   const { toggleThemeSound, options } = useOptionsContext()
-
-  console.log('AvatarBuilderClient')
 
   const sounds = useAvatarSounds(options)
   useTabKeyHandler(formRef)
@@ -66,7 +64,7 @@ export const AvatarBuilderClient = () => {
 
   const handleSubmit = () => {
     if (choices) {
-      const resetParts = resetNewAvatarParts(avatarCollection)
+      const resetParts = resetNewAvatarParts(avatarCollection) ?? []
       setAvatarPartCollection(resetParts)
       setAvatar(choices)
     }
@@ -74,7 +72,7 @@ export const AvatarBuilderClient = () => {
   }
 
   const handleGoToHome = () => {
-    const resetParts = resetNewAvatarParts(avatarCollection)
+    const resetParts = resetNewAvatarParts(avatarCollection) ?? []
     setAvatarPartCollection(resetParts)
     router.push('/home')
   }

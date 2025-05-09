@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 
-import { getRandomAvatar } from '@/api/engine'
 import {
   getAvatar,
   getCardHand,
@@ -25,6 +24,7 @@ import {
   setTokens,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { getRandomAvatar } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'

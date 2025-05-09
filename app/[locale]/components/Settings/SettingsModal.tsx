@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/i18n/routing'
+import { getDefaultAvatorParts, getRandomAvatar } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import useIsRightToLeft from '@/utils/hooks/useIsRightToLeft'
 import {
@@ -14,7 +15,6 @@ import {
   IAvatarParts,
 } from '@/utils/types'
 
-import { getDefaultAvatorParts, getRandomAvatar } from '../../../../api/engine'
 import {
   resetGameState,
   resetShownTips,
@@ -43,17 +43,17 @@ import { OwlDialogue } from '../OwlDialogue'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
 import styles from './Settings.module.scss'
 
-interface Props {
+type SettingsModalProps = {
   handleModal: () => void
   avatarParts: IAvatarParts
   avatarColors: IAvatarColors
 }
 
-export const SettingsModal: React.FC<Props> = ({
+export const SettingsModal = ({
   handleModal,
   avatarParts,
   avatarColors,
-}) => {
+}: SettingsModalProps) => {
   const t = useTranslations('Settings')
   const {
     options: {
@@ -70,34 +70,34 @@ export const SettingsModal: React.FC<Props> = ({
   const rtl = useIsRightToLeft()
   const [isApp, setApp] = useState(false)
 
-  async function handleThemeMusicOn() {
-    await setThemeMusicOn(!themeMusicOn)
+  function handleThemeMusicOn() {
+    setThemeMusicOn(!themeMusicOn)
     setOptions((prevState) => ({ ...prevState, themeMusicOn: !themeMusicOn }))
   }
 
-  async function handleSoundEffectsOn() {
-    await setSoundEffectsOn(!soundEffectsOn)
+  function handleSoundEffectsOn() {
+    setSoundEffectsOn(!soundEffectsOn)
     setOptions((prevState) => ({
       ...prevState,
       soundEffectsOn: !soundEffectsOn,
     }))
   }
 
-  async function handleAnimation() {
-    await setReducedMotion(!shouldReduceMotion)
+  function handleAnimation() {
+    setReducedMotion(!shouldReduceMotion)
     setOptions((prevState) => ({
       ...prevState,
       shouldReduceMotion: !shouldReduceMotion,
     }))
   }
 
-  async function handleVoiceover() {
-    await setVoiceover(!voiceover)
+  function handleVoiceover() {
+    setVoiceover(!voiceover)
     setOptions((prevState) => ({ ...prevState, voiceover: !voiceover }))
   }
 
-  const handleContrast = async () => {
-    await setHighContrast(!highContrast)
+  const handleContrast = () => {
+    setHighContrast(!highContrast)
     setOptions((prevState) => ({ ...prevState, highContrast: !highContrast }))
   }
 
@@ -105,22 +105,21 @@ export const SettingsModal: React.FC<Props> = ({
     setShowOwlTip(true)
   }
 
-  const handleReset = async () => {
+  const handleReset = () => {
     const defaultAvatarParts = getDefaultAvatorParts(avatarParts)
     const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarColors)
-
-    await setAvatarPartCollection(defaultAvatarParts)
-    await setAvatar(randomAvatar)
-    await resetShownTips()
-    await resetTokens()
-    await setCardHand([])
-    await resetWrongAnswers()
-    await setDefeatedAntagonists([])
-    await setFirstTimePlaying(true)
-    await setFirstTimeLootBox(true)
-    await setCardCollection([])
-    await setPlayFromScenario(false)
-    await resetGameState()
+    setAvatarPartCollection(defaultAvatarParts)
+    setAvatar(randomAvatar)
+    resetShownTips()
+    resetTokens()
+    setCardHand([])
+    resetWrongAnswers()
+    setDefeatedAntagonists([])
+    setFirstTimePlaying(true)
+    setFirstTimeLootBox(true)
+    setCardCollection([])
+    setPlayFromScenario(false)
+    resetGameState()
 
     handleModal()
 
@@ -136,9 +135,9 @@ export const SettingsModal: React.FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // async function handleLanguageChange(e) {
+  // function handleLanguageChange(e) {
   //   const selectedLanguage = e.target.value
-  //   await setLanguage(selectedLanguage)
+  //   setLanguage(selectedLanguage)
   //   setOptions({
   //     ...options,
   //     language: selectedLanguage
