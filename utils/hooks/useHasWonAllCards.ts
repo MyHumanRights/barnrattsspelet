@@ -7,12 +7,8 @@ export const useHasWonAllCards = () => {
   const [hasWonAllCards, setHasWonAllCards] = useState(false)
 
   useEffect(() => {
-    const checkCards = async () => {
-      const cardCollection = (await getCardCollection()) || []
-      setHasWonAllCards(cardCollection.length === allCards.length)
-    }
-
-    checkCards()
+    const cardCollection = getCardCollection() || []
+    setHasWonAllCards(cardCollection.length === allCards.length)
   }, [])
 
   return hasWonAllCards

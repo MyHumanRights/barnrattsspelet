@@ -9,7 +9,7 @@ import { ICard, IGameAntagonist } from '@/utils/types'
 
 import styles from './Scenario.module.scss'
 
-export interface ScenarioProps {
+export type ScenarioProps = {
   which: IGameAntagonist
   onClick: (which: IGameAntagonist, cardHand: ICard[]) => void
   animation?: {
@@ -29,6 +29,7 @@ export const Scenario = ({
   isSlimPlay = false,
   cardHand,
 }: ScenarioProps) => {
+  console.log('Scenario', which)
   const t = useTranslations()
   const pathname = usePathname()
   const [isFocused, setIsFocused] = useState(false)
@@ -45,11 +46,8 @@ export const Scenario = ({
   }
 
   useEffect(() => {
-    const getNumberOfWinableCards = async () => {
-      const { filteredCardsCount } = await getWonCardsFromHand(cardHand)
-      setWinableCards(filteredCardsCount)
-    }
-    getNumberOfWinableCards()
+    const { filteredCardsCount } = getWonCardsFromHand(cardHand)
+    setWinableCards(filteredCardsCount)
   }, [which, cardHand])
 
   return (
