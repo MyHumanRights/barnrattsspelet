@@ -137,9 +137,10 @@ export const PersuadeClient = () => {
   // initialize game state and record first-time play
   useGameInit(antagonistType, setCurrentState)
 
+   
   useEffect(() => {
     toggleThemeSound(false)
-  }, [toggleThemeSound])
+  }, [])
 
   useEffect(() => {
     // make sure the list fo chatbubbles is scrolled to the bottom
