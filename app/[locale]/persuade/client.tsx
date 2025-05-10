@@ -17,8 +17,6 @@ import {
 import {
   getCardHand,
   getPlayFromScenario,
-  getShownFlipCardTip,
-  getShownTokenTip,
   readDefeatedAntagonists,
   readWrongAnswers,
   resetWrongAnswers,
@@ -26,8 +24,6 @@ import {
   setDefeatedAntagonists,
   setFirstTimePlaying,
   setGameStateValue,
-  setShownFlipCardTip,
-  setShownTokenTip,
   setWrongAnswers,
 } from '@/api/storage'
 import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
@@ -50,6 +46,7 @@ import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAntagonist } from '@/utils/hooks/useAntagonist'
 import { useHasWonAllAvatarParts } from '@/utils/hooks/useHasWonAllAvatarParts'
 import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
+import useOwlTips from '@/utils/hooks/useOwlTips'
 import { useTokens } from '@/utils/hooks/useTokens'
 import { GAME_STATES, ICard, IGameAntagonist, IGameState } from '@/utils/types'
 
@@ -102,6 +99,7 @@ export const PersuadeClient = () => {
   const router = useRouter()
 
   const { antagonist, antagonistType } = useAntagonist()
+  const [showOwl, setShowOwl] = useOwlTips()
 
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
 
@@ -120,7 +118,6 @@ export const PersuadeClient = () => {
   })
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
-  const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [bgColor, setBgColor] = useState('')
   const [currentCard, setCurrentCard] = useState<ICard | null>(null)
@@ -141,11 +138,10 @@ export const PersuadeClient = () => {
   const hasWonAllCards = useHasWonAllCards()
 
   const hasWonAllPartsAndCards = hasWonAllParts && hasWonAllCards
-
-  const hasShownFlipCardTip = getShownFlipCardTip()
   const isScenarioMode = getPlayFromScenario()
-  const hasShownTokenTip = getShownTokenTip()
   const answeredIncorrectly = readWrongAnswers()
+
+  // Owl tip logic extracted into custom hook
 
   const addFirstTimePersuation = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_PERSUATION,
@@ -209,26 +205,6 @@ export const PersuadeClient = () => {
       setDefeatedAntagonists(defeatedAntagonists || [])
     }
   }
-
-  useEffect(() => {
-    if (!hasShownTokenTip && ownedTokens > 0 && ownedTokens < 3) {
-      setShowOwl(OWLS.TOKEN)
-      setShownTokenTip(true)
-    }
-  }, [ownedTokens, hasShownTokenTip])
-
-  useEffect(() => {
-    if (answeredIncorrectly === 2 && !hasShownFlipCardTip) {
-      const timer = setTimeout(
-        () => setShowOwl(OWLS.FLIP_CARD),
-        ANSWER_DELAY * 2.5
-      )
-      setShownFlipCardTip(true)
-      return () => {
-        clearTimeout(timer)
-      }
-    }
-  }, [answeredIncorrectly, hasShownFlipCardTip])
 
   const startGame = () => {
     setLines([
@@ -339,7 +315,6 @@ export const PersuadeClient = () => {
         ])
         setCurrentState(state)
         setWrongAnswers()
-        // setAnsweredIncorrectly((prev) => prev + 1)
         setTimeout(() => {
           soundEffectsOn && playChatSound()
           setLines((prev) => [
