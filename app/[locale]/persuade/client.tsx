@@ -3,7 +3,7 @@
 import { AnimatePresence } from 'motion/react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import {
@@ -33,7 +33,12 @@ import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/i18n/routing'
-import { ButtonSize, ButtonVariant, OWLS } from '@/utils/constants'
+import {
+  ANSWER_DELAY,
+  ButtonSize,
+  ButtonVariant,
+  OWLS,
+} from '@/utils/constants'
 import { useAntagonist } from '@/utils/hooks/useAntagonist'
 import useGameInit from '@/utils/hooks/useGameInit'
 import { useHasWonAllAvatarParts } from '@/utils/hooks/useHasWonAllAvatarParts'
@@ -77,8 +82,6 @@ const Quiz = dynamic(() => import('../components/Quiz').then((mod) => mod.Quiz))
 const Token = dynamic(() =>
   import('../components/Token').then((mod) => mod.Token)
 )
-
-const ANSWER_DELAY = 1500
 
 type Line = {
   text: string
@@ -132,15 +135,15 @@ export const PersuadeClient = () => {
   const hasWonAllCards = useHasWonAllCards()
 
   const hasWonAllPartsAndCards = hasWonAllParts && hasWonAllCards
-  const isScenarioMode = getPlayFromScenario()
-  const answeredIncorrectly = readWrongAnswers()
+  const [isScenarioMode] = useState<boolean>(() => getPlayFromScenario())
+  const answeredIncorrectly = useMemo<number>(() => readWrongAnswers(), [])
+
   // initialize game state and record first-time play
   useGameInit(antagonistType, setCurrentState)
 
-   
   useEffect(() => {
     toggleThemeSound(false)
-  }, [])
+  }, [toggleThemeSound])
 
   useEffect(() => {
     // make sure the list fo chatbubbles is scrolled to the bottom
