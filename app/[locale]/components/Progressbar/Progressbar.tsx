@@ -59,25 +59,21 @@ export const Progressbar = () => {
     heartAnimation.start(() => progressbarAnimation)
   }, [progressInPercentage, heartAnimation, shouldReduceMotion])
 
-  const updateProgress = useCallback(async () => {
-    const progress = (await getProgress()) || { level: 1, part: 0 }
+  const updateProgress = useCallback(() => {
+    const progress = getProgress() || { level: 1, part: 0 }
     setStateProgress(progress)
     setLevel(progress.level)
     setCurrentPartIndex(progress.part - 1)
   }, [])
 
   useEffect(() => {
-    const setAvatar = async () => {
-      setStoredAvatar(await getAvatar())
-    }
-
-    setAvatar()
+    setStoredAvatar(getAvatar())
     updateProgress()
   }, [updateProgress])
 
   const saveAndupdateProgress = useCallback(async () => {
     await delay(1000)
-    await setProgress(progress.level + 1, 0)
+    setProgress(progress.level + 1, 0)
     updateProgress()
     await delay(100)
     if (!hasAnimated) {

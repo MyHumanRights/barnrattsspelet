@@ -46,10 +46,7 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
 
   useEffect(() => {
     if (!isSlimPlay) return
-    const getDefeated = async () => {
-      setDefeatedAntagonists(await readDefeatedAntagonists())
-    }
-    getDefeated()
+    setDefeatedAntagonists(readDefeatedAntagonists())
   }, [isSlimPlay])
 
   const hoverAnimation = useMemo(

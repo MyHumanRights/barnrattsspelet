@@ -230,14 +230,11 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
     lootItemOnly && setShowLootItem(true)
   }
 
-  const saveLootToStorage = async () => {
+  const saveLootToStorage = () => {
     let items: IAvatarParts = {}
     let updatedAvatarParts: IAvatarParts = collectedItems ?? {}
 
-    const updateCollection = async (
-      category: string,
-      itemData: AvatarPart[]
-    ) => {
+    const updateCollection = (category: string, itemData: AvatarPart[]) => {
       if (collectedItems) {
         updatedAvatarParts = {
           ...updatedAvatarParts,
@@ -260,7 +257,7 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
     lootItem.forEach(processLootItem)
 
     for (const category in items) {
-      await updateCollection(category, items[category] ?? [])
+      updateCollection(category, items[category] ?? [])
     }
 
     // Make sure we don't add duplicates
@@ -271,7 +268,7 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
       ])
     )
 
-    await setAvatarPartCollection(uniqueData)
+    setAvatarPartCollection(uniqueData)
     // if user doesn't get an item, don't take tokens
     isBuyingLootbox && lootItem.length > 0 && setTokens(-5)
     router.push('/home')

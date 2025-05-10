@@ -20,12 +20,8 @@ export const SlimPlay = () => {
   const [isSlim, setIsSlim] = useState<boolean | null>(false)
 
   useEffect(() => {
-    const getPlayMode = async () => {
-      const isSlimPlay = await readGameStateValue('isSlimPlay')
-      setIsSlim(isSlimPlay)
-    }
-
-    getPlayMode()
+    const isSlimPlay = readGameStateValue('isSlimPlay')
+    setIsSlim(isSlimPlay)
   }, [])
 
   const handleModal = () => {

@@ -259,11 +259,11 @@ export const readVoiceover = (): boolean | null => {
   return read('voiceover')
 }
 
-export const seteffectsVolume = (number: number) => {
+export const setEffectsVolume = (number: number) => {
   return save('effectsVolume', number)
 }
 
-export const readeffectsVolume = (): number | null => {
+export const readEffectsVolume = (): number | null => {
   return read('effectsVolume')
 }
 
@@ -292,7 +292,7 @@ export const readSettings = (reducedMotion: boolean): ISettings => {
   const themeMusicOn = readThemeMusicOn() || false
   const soundEffectsOn = readSoundEffectsOn() || false
   const themeVolume = readThemeVolume() || 0.3
-  const effectsVolume = readeffectsVolume() || 0.3
+  const effectsVolume = readEffectsVolume() || 0.3
   const voiceover = readVoiceover() || true
   const language = readLanguage() || 'sv'
 

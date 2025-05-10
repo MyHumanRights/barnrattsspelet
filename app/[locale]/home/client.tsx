@@ -61,9 +61,9 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   const [progress, setProgress] = useState({})
   const [initialized, setInitialized] = useState(false)
 
-  const getOwlTip = useCallback(async () => {
+  const getOwlTip = useCallback(() => {
     // show welcome tip
-    const shownWelcomeTip = await getShownWelcomeTip()
+    const shownWelcomeTip = getShownWelcomeTip()
     if (!shownWelcomeTip) {
       setShownWelcomeTip(true)
       setMultipleOwlMessages(true)
@@ -170,15 +170,13 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
   }, [themeMusicOn, themeVolume, toggleThemeSound])
 
   useEffect(() => {
-    ;(async () => {
-      if (initialized) {
-        const tip = await getOwlTip()
-        if (tip) {
-          setOwlTip(tip)
-          setShowOwlTip(true)
-        }
+    if (initialized) {
+      const tip = getOwlTip()
+      if (tip) {
+        setOwlTip(tip)
+        setShowOwlTip(true)
       }
-    })()
+    }
   }, [initialized, getOwlTip])
 
   useEffect(() => {
