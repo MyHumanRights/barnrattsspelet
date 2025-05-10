@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Dispatch, PropsWithChildren, SetStateAction, useEffect } from 'react'
+import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react'
 
 import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -10,7 +10,7 @@ import { Button } from '../Button'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './OwlDialogue.module.scss'
 
-interface Props {
+type OwlDialogueProps = {
   body?: string | null
   heading?: string | null
   setShowOwl?: Dispatch<SetStateAction<boolean>>
@@ -18,17 +18,18 @@ interface Props {
   setHasShownOwlTip?: (show: boolean) => void
   cta?: string
   disabled?: boolean
-  secondButton?: React.ReactNode
+  secondButton?: ReactNode
   secondBody?: string
   onClick?: () => void
-  item?: React.ReactNode
+  item?: ReactNode
   hasOwnSound?: boolean
   small?: boolean
   vertical?: boolean
   buttonHasOwnSound?: boolean
+  children?: ReactNode
 }
 
-export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
+export const OwlDialogue = ({
   body,
   heading,
   setShowOwl,
@@ -45,36 +46,44 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
   vertical = false,
   children,
   buttonHasOwnSound = false,
-}) => {
+}: OwlDialogueProps) => {
   const t = useTranslations()
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
 
-  useEffect(() => {
-    const sound = new Audio(owlSound)
-    sound.volume = effectsVolume
-    const timeout = setTimeout(() => {
-      !hasOwnSound && soundEffectsOn && sound.play()
-    }, 100)
-    return () => {
-      clearTimeout(timeout)
-    }
-  }, [effectsVolume, hasOwnSound, soundEffectsOn])
-
-  function handleClick() {
+  const handleClick = () => {
     setHasShownOwlTip(true)
-    setShowOwl && setShowOwl(false)
-    setShowSpecificOwl && setShowSpecificOwl(null)
+    setShowOwl?.(false)
+    setShowSpecificOwl?.(null)
     onClick()
   }
 
+  // Optimize sound effect logic
+  useEffect(() => {
+    const playSound = async () => {
+      if (!hasOwnSound && soundEffectsOn) {
+        try {
+          const sound = new Audio(owlSound)
+          sound.volume = effectsVolume
+          await sound.play()
+        } catch (error) {
+          console.error('Failed to play sound:', error)
+        }
+      }
+    }
+
+    playSound()
+  }, [hasOwnSound, soundEffectsOn, effectsVolume])
+
+  // Memoize class names to prevent unnecessary recalculations
+  const wrapperClasses = `${styles.wrapper} ${small ? styles.small : ''} ${
+    vertical ? styles.vertical : ''
+  }`
+  const dialogueClasses = item ? styles.dialogueWithItem : styles.dialogue
+
   return (
-    <div
-      className={`${styles.wrapper} ${small && styles.small} ${
-        vertical && styles.vertical
-      }`}
-    >
+    <div className={wrapperClasses}>
       <picture className={styles.image}>
         <source
           media='(max-width: 499px)'
@@ -91,13 +100,14 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
         <Image
           src='/svgs/owl-on-twig.svg'
           alt={t('Owl.owlalt')}
-          width='147'
-          height='150'
+          width={147}
+          height={150}
+          priority
         />
       </picture>
-      <div className={`${item ? styles.dialogueWithItem : styles.dialogue}`}>
+      <div className={dialogueClasses}>
         <div className={styles.bodyWrapper}>
-          {!!heading && (
+          {heading && (
             <p>
               <strong className={styles.heading}>
                 <TextWithVoiceover textKey={heading} />
@@ -105,11 +115,7 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
             </p>
           )}
           {body && (
-            <p>
-              {/* We only need the voiceover button if there is no heading, 
-                otherwise, the heading will have the voiceover button */}
-              {heading ? t(body) : <TextWithVoiceover textKey={body} />}
-            </p>
+            <p>{heading ? t(body) : <TextWithVoiceover textKey={body} />}</p>
           )}
           {secondBody && <p>{secondBody}</p>}
           <div className={styles.ctaWrapper}>
@@ -120,13 +126,13 @@ export const OwlDialogue: React.FC<PropsWithChildren<Props>> = ({
               size={ButtonSize.SMALL}
               hasOwnSound={buttonHasOwnSound}
             >
-              {cta ? cta : t('Owl.confirm')}
+              {cta || t('Owl.confirm')}
             </Button>
             {secondButton}
           </div>
           {children}
         </div>
-        {item && item}
+        {item}
       </div>
     </div>
   )

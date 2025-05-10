@@ -88,7 +88,10 @@ export const CardItem: React.FC<Props> = memo(
     const cardClassName = !isApp ? `${active && styles.activeCard}` : ''
 
     function checkIsPlayable(card: ICard) {
-      return getAntagonistFromCard(antagonistsJson as IAntagonistObject, card)
+      return getAntagonistFromCard(
+        antagonistsJson as unknown as IAntagonistObject,
+        card
+      )
     }
 
     return (

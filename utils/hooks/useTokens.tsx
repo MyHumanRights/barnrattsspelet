@@ -20,11 +20,8 @@ export const useTokens = (): [
 
   // when the component mounts, get the current tokens
   useEffect(() => {
-    const getTokens = async () => {
-      const tokens = await readTokens()
-      setOwnedTokens(tokens)
-    }
-    getTokens()
+    const tokens = readTokens()
+    setOwnedTokens(tokens)
   }, [])
 
   const updateTokens = (token: number) => {

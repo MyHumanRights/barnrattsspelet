@@ -21,11 +21,13 @@ import {
   getShownTokenTip,
   readDefeatedAntagonists,
   readWrongAnswers,
+  resetWrongAnswers,
   saveProgress,
   setDefeatedAntagonists,
   setFirstTimePlaying,
   setGameStateValue,
   setShownFlipCardTip,
+  setShownTokenTip,
   setWrongAnswers,
 } from '@/api/storage'
 import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
@@ -118,7 +120,6 @@ export const PersuadeClient = () => {
   })
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
-  const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
   const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [bgColor, setBgColor] = useState('')
@@ -126,11 +127,8 @@ export const PersuadeClient = () => {
   const [showModal, setShowModal] = useState(false)
   const [boostedCards, setBoostedCards] = useState<string[]>([])
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
-  const [isScenarioMode, setIsScenarioMode] = useState(false)
-  const [hasShownFlipCardTip, setHasShownFlipCardTip] = useState(true)
   const [lines, setLines] = useState<Line[]>([])
   const [showWinModal, setShowWinModal] = useState(false)
-  const [answeredIncorrectly, setAnsweredIncorrectly] = useState(0)
   const [correctCard, setCorrectCard] = useState<string | null>(null)
   const [showIntro, setShowIntro] = useState(true)
   const [quizType, setQuizType] = useState<'boost' | 'game'>('game')
@@ -143,6 +141,11 @@ export const PersuadeClient = () => {
   const hasWonAllCards = useHasWonAllCards()
 
   const hasWonAllPartsAndCards = hasWonAllParts && hasWonAllCards
+
+  const hasShownFlipCardTip = getShownFlipCardTip()
+  const isScenarioMode = getPlayFromScenario()
+  const hasShownTokenTip = getShownTokenTip()
+  const answeredIncorrectly = readWrongAnswers()
 
   const addFirstTimePersuation = useAddToStatistics(
     STAT_COLLECTION_NAMES.FIRST_TIME_PERSUATION,
@@ -172,28 +175,17 @@ export const PersuadeClient = () => {
     document.querySelector('html')?.classList.toggle('scroll-lock')
   }
 
-  const init = useCallback(async () => {
+  const init = useCallback(() => {
     if (!antagonist) return null
 
-    const cards = await getCardHand()
+    const cards = getCardHand()
 
     resetGameState()
+    resetWrongAnswers()
     const currentState = setGameState({
       cardHand: cards,
     })
     setCurrentState(currentState)
-
-    const [playFromScenario, wrongAnswers, shownFlipCardTip, shownTokenTip] =
-      await Promise.all([
-        getPlayFromScenario(),
-        readWrongAnswers(),
-        getShownFlipCardTip(),
-        getShownTokenTip(),
-      ])
-    setIsScenarioMode(playFromScenario)
-    setAnsweredIncorrectly(wrongAnswers)
-    setHasShownFlipCardTip(shownFlipCardTip || false)
-    setHasShownTokenTip(shownTokenTip)
   }, [antagonist])
 
   useEffect(() => {
@@ -202,27 +194,26 @@ export const PersuadeClient = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [init])
 
-  const addDefeatedAntagonist = async (antagonist: IGameAntagonist) => {
-    const isScenarioMode = await getPlayFromScenario()
+  const addDefeatedAntagonist = (antagonist: IGameAntagonist) => {
     if (isScenarioMode) {
       return
     }
 
-    let defeatedAntagonists = await readDefeatedAntagonists()
+    let defeatedAntagonists = readDefeatedAntagonists()
 
-    const isInDefeatedList = defeatedAntagonists.find(
+    const isInDefeatedList = defeatedAntagonists?.find(
       (ant) => ant === antagonist.name
     )
     if (!isInDefeatedList) {
-      defeatedAntagonists.push(antagonist.name)
-      await setDefeatedAntagonists(defeatedAntagonists)
+      defeatedAntagonists?.push(antagonist.name)
+      setDefeatedAntagonists(defeatedAntagonists || [])
     }
   }
 
   useEffect(() => {
     if (!hasShownTokenTip && ownedTokens > 0 && ownedTokens < 3) {
       setShowOwl(OWLS.TOKEN)
-      setHasShownTokenTip(true)
+      setShownTokenTip(true)
     }
   }, [ownedTokens, hasShownTokenTip])
 
@@ -239,12 +230,7 @@ export const PersuadeClient = () => {
     }
   }, [answeredIncorrectly, hasShownFlipCardTip])
 
-  const setFirstTimePlayingToFalse = async () => {
-    const playFromScenario = await getPlayFromScenario()
-    !playFromScenario && (await setFirstTimePlaying(false))
-  }
-
-  const startGame = async () => {
+  const startGame = () => {
     setLines([
       {
         text: `antagonists.${antagonistType}.conversationEntries.a`,
@@ -252,7 +238,7 @@ export const PersuadeClient = () => {
       },
     ])
 
-    setFirstTimePlayingToFalse()
+    !isScenarioMode && setFirstTimePlaying(false)
     setCurrentState(setGameState({ state: GAME_STATES.GAME }))
     setTimeout(() => {
       soundEffectsOn && playChatSound()
@@ -281,9 +267,9 @@ export const PersuadeClient = () => {
       })
     }, 1200)
 
-    const defeatedAntagonists = await readDefeatedAntagonists()
+    const defeatedAntagonists = readDefeatedAntagonists()
 
-    defeatedAntagonists.length === 2 &&
+    defeatedAntagonists?.length === 2 &&
       setTimeout(() => {
         setShowOwl(OWLS.QUIZ)
       }, 2000)
@@ -353,7 +339,7 @@ export const PersuadeClient = () => {
         ])
         setCurrentState(state)
         setWrongAnswers()
-        setAnsweredIncorrectly((prev) => prev + 1)
+        // setAnsweredIncorrectly((prev) => prev + 1)
         setTimeout(() => {
           soundEffectsOn && playChatSound()
           setLines((prev) => [
@@ -405,7 +391,7 @@ export const PersuadeClient = () => {
           ])
         }, ANSWER_DELAY * 2)
 
-        setTimeout(async () => {
+        setTimeout(() => {
           setCurrentState(state)
           setLines([
             {
@@ -473,7 +459,7 @@ export const PersuadeClient = () => {
     router.push('/loot-box')
   }
 
-  const handleModal = async () => {
+  const handleModal = () => {
     setShowModal(!showModal)
     document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
@@ -499,6 +485,8 @@ export const PersuadeClient = () => {
   if (!antagonist || !currentState?.state) {
     return null
   }
+
+  console.log('currentState', currentState)
 
   return (
     <main className={styles.main} style={{ backgroundColor: bgColor }}>

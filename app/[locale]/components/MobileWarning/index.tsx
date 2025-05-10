@@ -5,11 +5,11 @@ import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { Button } from '../Button'
 import styles from './MobileWarning.module.scss'
 
-interface Props {
+type MobileWarningProps = {
   handleClick: () => void
 }
 
-export const MobileWarning: React.FC<Props> = ({ handleClick }) => {
+export const MobileWarning = ({ handleClick }: MobileWarningProps) => {
   const t = useTranslations()
   return (
     <div className={styles.wrapper}>

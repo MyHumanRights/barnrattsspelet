@@ -8,15 +8,11 @@ export const useAllAreDefeated = () => {
   const [allDefeated, setAllDefeated] = useState(false)
 
   useEffect(() => {
-    const checkIfAllAntagonistsDefeated = async () => {
-      const defeated = await readDefeatedAntagonists()
-      const antagonistCount = Object.keys(allAntagonists).length
-      const defeatedCount = defeated.length
+    const defeated = readDefeatedAntagonists()
+    const antagonistCount = Object.keys(allAntagonists).length
+    const defeatedCount = defeated.length
 
-      setAllDefeated(defeatedCount === antagonistCount)
-    }
-
-    checkIfAllAntagonistsDefeated()
+    setAllDefeated(defeatedCount === antagonistCount)
   }, [allAntagonists])
 
   return allDefeated

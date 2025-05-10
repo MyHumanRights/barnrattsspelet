@@ -30,7 +30,9 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
   }
 
   const key2 = `antagonists.${antagonist}.intro.body2`
-  const body2 = t(key2)
+
+  // Only render body2 if the translation exists
+  const hasBody2 = t.has(key2)
 
   return (
     <Modal onModalClose={handleIntro}>
@@ -40,13 +42,13 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
             textKey={`antagonists.${antagonist}.intro.body1`}
           />
         </p>
-        {body2 !== key2 ? (
+        {hasBody2 && (
           <p>
             <TextWithVoiceover
               textKey={`antagonists.${antagonist}.intro.body2`}
             />
           </p>
-        ) : null}
+        )}
         <Button ref={buttonRef} onClick={handleIntro}>
           {t('play')}
         </Button>

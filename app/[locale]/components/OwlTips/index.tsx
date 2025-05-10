@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, memo, SetStateAction } from 'react'
 
 import {
   getShownEnableCardTip,
@@ -17,23 +17,13 @@ type Props = {
   setShowOwl: Dispatch<SetStateAction<OWLS | null>>
 }
 
-export const OwlTips = React.memo(({ showOwl, setShowOwl }: Props) => {
-  const [hasShownTokenTip, setHasShownTokenTip] = useState(true)
-  const [hasShownEnableCardTip, setHasShownEnableCardTip] = useState(false)
+export const OwlTips = memo(({ showOwl, setShowOwl }: Props) => {
+  const hasShownTokenTip = getShownTokenTip() || false
+  const hasShownEnableCardTip = getShownEnableCardTip() || false
 
-  function onHideTokenTip() {
-    setHasShownTokenTip(true)
+  const onHideTokenTip = () => {
     setShownTokenTip(true)
   }
-
-  useEffect(() => {
-    ;(async function () {
-      const shownTokenTip = await getShownTokenTip()
-      const shownEnableCardTip = await getShownEnableCardTip()
-      setHasShownEnableCardTip(shownEnableCardTip)
-      setHasShownTokenTip(shownTokenTip)
-    })()
-  }, [])
 
   return (
     <div aria-live='polite'>

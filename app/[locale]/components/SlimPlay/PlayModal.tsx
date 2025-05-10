@@ -5,17 +5,17 @@ import { mapAntagonistsToArray } from '@/api/engine'
 import antagonistsObj from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useAllAreDefeated } from '@/utils/hooks/useAllAreDefeated'
-import { ICard, IGameAntagonist } from '@/utils/types'
+import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
 
 import { CloseButton } from '../CloseButton'
 import { ScenarioList } from '../Scenarios/ScenarioList'
 import styles from './SlimPlay.module.scss'
 
-interface Props {
+type PlayModalProps = {
   handleModal: () => void
 }
 
-export const PlayModal = ({ handleModal }: Props) => {
+export const PlayModal = ({ handleModal }: PlayModalProps) => {
   const allAreDefeated = useAllAreDefeated()
 
   const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])
@@ -23,7 +23,9 @@ export const PlayModal = ({ handleModal }: Props) => {
   const t = useTranslations()
 
   useEffect(() => {
-    const antagonists = mapAntagonistsToArray(antagonistsObj)
+    const antagonists = mapAntagonistsToArray(
+      antagonistsObj as unknown as IAntagonistObject
+    )
     setAllScenarios(antagonists)
   }, [])
 

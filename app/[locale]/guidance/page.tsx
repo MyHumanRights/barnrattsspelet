@@ -21,9 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Guidance = ({ params: { locale } }: LocaleParams) => {
+const Guidance = async ({ params }: LocaleParams) => {
+  const { locale } = await params
   setRequestLocale(locale)
-  const t = useTranslations('Guidance')
+  const t = await getTranslations('Guidance')
 
   return (
     <div className={styles.guidance}>
