@@ -47,7 +47,7 @@ import { NotAllowed } from '../components/NotAllowed'
 import styles from './LootBox.module.scss'
 
 const Confetti = dynamic(() =>
-  import('../components/Confetti').then((mod) => mod.Confetti)
+  import('../components/Confetti/Confetti').then((mod) => mod.Confetti)
 )
 const LootBoxCards = dynamic(() =>
   import('../components/LootBoxCards').then((mod) => mod.LootBoxCards)

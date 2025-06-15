@@ -29,7 +29,6 @@ export const Scenario = ({
   isSlimPlay = false,
   cardHand,
 }: ScenarioProps) => {
-  console.log('Scenario', which)
   const t = useTranslations()
   const pathname = usePathname()
   const [isFocused, setIsFocused] = useState(false)

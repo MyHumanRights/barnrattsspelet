@@ -60,16 +60,19 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
     autoplay: true,
   })
 
-  const toggleThemeSound = (soundOn = options.themeMusicOn) => {
-    const currentVolume: number = sound?._volume
-    // if sound on and not playing / muted
-    if (sound && soundOn && currentVolume !== options.themeVolume) {
-      sound.fade(currentVolume || 0, options.themeVolume, 400)
-      // if sound off and not muted
-    } else if (sound && !soundOn && currentVolume > 0) {
-      sound.fade(currentVolume || 0, 0, 400)
-    }
-  }
+  const toggleThemeSound = useCallback(
+    (soundOn = options.themeMusicOn) => {
+      const currentVolume: number = sound?._volume
+      // if sound on and not playing / muted
+      if (sound && soundOn && currentVolume !== options.themeVolume) {
+        sound.fade(currentVolume || 0, options.themeVolume, 400)
+        // if sound off and not muted
+      } else if (sound && !soundOn && currentVolume > 0) {
+        sound.fade(currentVolume || 0, 0, 400)
+      }
+    },
+    [sound, options.themeMusicOn, options.themeVolume]
+  )
 
   const playSoundEffect = async (playSound: () => void, delay = 0) => {
     setTimeout(() => {

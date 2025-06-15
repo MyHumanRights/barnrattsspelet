@@ -3,7 +3,7 @@
 import { AnimatePresence } from 'motion/react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import {
@@ -15,19 +15,13 @@ import {
   setGameState,
 } from '@/api/engine'
 import {
-  getCardHand,
   getPlayFromScenario,
-  getShownFlipCardTip,
-  getShownTokenTip,
   readDefeatedAntagonists,
   readWrongAnswers,
-  resetWrongAnswers,
   saveProgress,
   setDefeatedAntagonists,
   setFirstTimePlaying,
   setGameStateValue,
-  setShownFlipCardTip,
-  setShownTokenTip,
   setWrongAnswers,
 } from '@/api/storage'
 import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
@@ -40,16 +34,17 @@ import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/i18n/routing'
 import {
+  ANSWER_DELAY,
   ButtonSize,
   ButtonVariant,
   OWLS,
-  STAT_COLLECTION_NAMES,
-  STAT_FLAGS,
 } from '@/utils/constants'
-import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 import { useAntagonist } from '@/utils/hooks/useAntagonist'
+import useGameInit from '@/utils/hooks/useGameInit'
 import { useHasWonAllAvatarParts } from '@/utils/hooks/useHasWonAllAvatarParts'
 import { useHasWonAllCards } from '@/utils/hooks/useHasWonAllCards'
+import useOwlTips from '@/utils/hooks/useOwlTips'
+import useScrollLockModal from '@/utils/hooks/useScrollLockModal'
 import { useTokens } from '@/utils/hooks/useTokens'
 import { GAME_STATES, ICard, IGameAntagonist, IGameState } from '@/utils/types'
 
@@ -88,8 +83,6 @@ const Token = dynamic(() =>
   import('../components/Token').then((mod) => mod.Token)
 )
 
-const ANSWER_DELAY = 1500
-
 type Line = {
   text: string
   player: boolean
@@ -102,6 +95,7 @@ export const PersuadeClient = () => {
   const router = useRouter()
 
   const { antagonist, antagonistType } = useAntagonist()
+  const [showOwl, setShowOwl] = useOwlTips()
 
   const genericAnswers = 'persuasion.genericwrongcardanswers.'
 
@@ -120,18 +114,18 @@ export const PersuadeClient = () => {
   })
   const [playGameOverSound] = useSound(gameOverSound, { volume: effectsVolume })
 
-  const [showOwl, setShowOwl] = useState<OWLS | null>(null)
   const [currentState, setCurrentState] = useState<IGameState | null>(null)
   const [bgColor, setBgColor] = useState('')
   const [currentCard, setCurrentCard] = useState<ICard | null>(null)
-  const [showModal, setShowModal] = useState(false)
   const [boostedCards, setBoostedCards] = useState<string[]>([])
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
   const [lines, setLines] = useState<Line[]>([])
   const [showWinModal, setShowWinModal] = useState(false)
   const [correctCard, setCorrectCard] = useState<string | null>(null)
-  const [showIntro, setShowIntro] = useState(true)
+  // manage scroll-lock for intro and quiz modals
   const [quizType, setQuizType] = useState<'boost' | 'game'>('game')
+  const [isIntroOpen, toggleIntro] = useScrollLockModal(true)
+  const [isQuizOpen, toggleQuiz] = useScrollLockModal(false)
 
   const scrollableRef = useRef<HTMLDivElement>(null)
 
@@ -141,16 +135,11 @@ export const PersuadeClient = () => {
   const hasWonAllCards = useHasWonAllCards()
 
   const hasWonAllPartsAndCards = hasWonAllParts && hasWonAllCards
+  const [isScenarioMode] = useState<boolean>(() => getPlayFromScenario())
+  const answeredIncorrectly = useMemo<number>(() => readWrongAnswers(), [])
 
-  const hasShownFlipCardTip = getShownFlipCardTip()
-  const isScenarioMode = getPlayFromScenario()
-  const hasShownTokenTip = getShownTokenTip()
-  const answeredIncorrectly = readWrongAnswers()
-
-  const addFirstTimePersuation = useAddToStatistics(
-    STAT_COLLECTION_NAMES.FIRST_TIME_PERSUATION,
-    STAT_FLAGS.IS_FIRST_TIME_PERSUATION
-  )
+  // initialize game state and record first-time play
+  useGameInit(antagonistType, setCurrentState)
 
   useEffect(() => {
     toggleThemeSound(false)
@@ -165,34 +154,9 @@ export const PersuadeClient = () => {
   }, [lines])
 
   const handleIntro = () => {
-    setShowIntro(!showIntro)
-    document.querySelector('html')?.classList.toggle('scroll-lock')
+    toggleIntro()
     startGame()
   }
-
-  const handleQuizModal = () => {
-    setShowModal(!showModal)
-    document.querySelector('html')?.classList.toggle('scroll-lock')
-  }
-
-  const init = useCallback(() => {
-    if (!antagonist) return null
-
-    const cards = getCardHand()
-
-    resetGameState()
-    resetWrongAnswers()
-    const currentState = setGameState({
-      cardHand: cards,
-    })
-    setCurrentState(currentState)
-  }, [antagonist])
-
-  useEffect(() => {
-    addFirstTimePersuation()
-    init()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [init])
 
   const addDefeatedAntagonist = (antagonist: IGameAntagonist) => {
     if (isScenarioMode) {
@@ -209,26 +173,6 @@ export const PersuadeClient = () => {
       setDefeatedAntagonists(defeatedAntagonists || [])
     }
   }
-
-  useEffect(() => {
-    if (!hasShownTokenTip && ownedTokens > 0 && ownedTokens < 3) {
-      setShowOwl(OWLS.TOKEN)
-      setShownTokenTip(true)
-    }
-  }, [ownedTokens, hasShownTokenTip])
-
-  useEffect(() => {
-    if (answeredIncorrectly === 2 && !hasShownFlipCardTip) {
-      const timer = setTimeout(
-        () => setShowOwl(OWLS.FLIP_CARD),
-        ANSWER_DELAY * 2.5
-      )
-      setShownFlipCardTip(true)
-      return () => {
-        clearTimeout(timer)
-      }
-    }
-  }, [answeredIncorrectly, hasShownFlipCardTip])
 
   const startGame = () => {
     setLines([
@@ -339,7 +283,6 @@ export const PersuadeClient = () => {
         ])
         setCurrentState(state)
         setWrongAnswers()
-        // setAnsweredIncorrectly((prev) => prev + 1)
         setTimeout(() => {
           soundEffectsOn && playChatSound()
           setLines((prev) => [
@@ -420,7 +363,7 @@ export const PersuadeClient = () => {
   const handleOpenQuiz = (type: 'boost' | 'game', card: ICard) => {
     setCurrentCard(card)
     setQuizType(type)
-    handleModal()
+    toggleQuiz()
   }
 
   const onCardSelected = (card: ICard) => {
@@ -443,7 +386,7 @@ export const PersuadeClient = () => {
   const handleReplay = () => {
     setCorrectCard(null)
     resetGameState()
-    init()
+    // future: re-init via useGameInit
   }
 
   const handleGotoLootBox = () => {
@@ -459,13 +402,8 @@ export const PersuadeClient = () => {
     router.push('/loot-box')
   }
 
-  const handleModal = () => {
-    setShowModal(!showModal)
-    document?.querySelector('html')?.classList.toggle('scroll-lock')
-  }
-
   const handleQuizAnswer = (isCorrect: boolean) => {
-    handleModal()
+    toggleQuiz()
     if (isCorrect) {
       switch (quizType) {
         case 'game':
@@ -521,7 +459,7 @@ export const PersuadeClient = () => {
             {antagonistType && (
               <GameIntro
                 antagonist={antagonistType}
-                showModal={showIntro}
+                showModal={isIntroOpen}
                 handleIntro={handleIntro}
               />
             )}
@@ -633,11 +571,11 @@ export const PersuadeClient = () => {
         />
       )}
 
-      {showModal && currentCard && (
+      {isQuizOpen && currentCard && (
         <Quiz
           onAnswer={handleQuizAnswer}
           card={currentCard}
-          onModalClose={handleQuizModal}
+          onModalClose={toggleQuiz}
         />
       )}
     </main>

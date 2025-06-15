@@ -1,5 +1,7 @@
 export const MAX_CARDS = 7
 
+export const ANSWER_DELAY = 1500
+
 export enum CATEGORIES {
   HAIR = 'hair',
   FACE = 'face',
