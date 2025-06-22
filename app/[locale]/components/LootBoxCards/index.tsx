@@ -1,5 +1,4 @@
 import { motion } from 'motion/react'
-import { useTranslations } from 'next-intl'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import {
@@ -13,13 +12,12 @@ import { ICard } from '@/utils/types'
 import { Card } from '../Card'
 import styles from './LootBoxCards.module.scss'
 
-interface Props {
+type LootBoxCardsProps = {
   lootCards: ICard[]
   openBox: boolean
 }
 
-export const LootBoxCards = ({ lootCards, openBox }: Props) => {
-  const t = useTranslations()
+export const LootBoxCards = ({ lootCards, openBox }: LootBoxCardsProps) => {
   const {
     isMobile,
     options: { shouldReduceMotion },
@@ -42,7 +40,9 @@ export const LootBoxCards = ({ lootCards, openBox }: Props) => {
               top: `${gettop(i, lootCards.length, 20)}px`,
               rotate: `${getrotation(i, lootCards.length, 10)}deg`,
               scale: 1,
-              left: `${getleftpos(i, lootCards.length)}%`,
+              left: `${
+                lootCards.length > 1 ? getleftpos(i, lootCards.length) : 50
+              }%`,
               x: `${lootCards.length > 1 ? getxpos(i, lootCards.length) : 0}%`,
             }
           }

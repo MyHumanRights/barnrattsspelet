@@ -26,9 +26,9 @@ export const Confetti = ({ isActive }: ConfettiProps) => {
   const createParticle = useCallback((startX: number): ConfettiParticle => {
     return {
       id: Math.random(),
-      x: startX + (Math.random() - 0.5) * 100,
+      x: startX + (Math.random() - 0.5) * 200, // Wider horizontal spread
       y: window.innerHeight,
-      vx: (Math.random() - 0.5) * 8,
+      vx: (Math.random() - 0.5) * 12, // Stronger horizontal velocity for more spread
       vy: -(Math.random() * 15 + 10), // Negative for upward movement
       rotation: Math.random() * 360,
       rotationSpeed: (Math.random() - 0.5) * 10,
@@ -49,11 +49,12 @@ export const Confetti = ({ isActive }: ConfettiProps) => {
     const centerX = window.innerWidth / 2
     // Continuously create bursts of particles
     const burstInterval = setInterval(() => {
-      const burstParticles = Array.from({ length: 100 }, () =>
+      // Increase number of confetti per burst for more particles
+      const burstParticles = Array.from({ length: 150 }, () =>
         createParticle(centerX)
       )
       setParticles((prev) => [...prev, ...burstParticles])
-    }, 900)
+    }, 1500)
 
     // Animation loop
     const animationInterval = setInterval(() => {

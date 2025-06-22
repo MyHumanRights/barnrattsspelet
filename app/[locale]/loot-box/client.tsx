@@ -164,9 +164,6 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
         const filteredCardHand = cardHand.filter(
           (card) => !cardCollection.some((c) => c.id === card.id)
         )
-        console.log('Card hand before filtering:', cardHand)
-        console.log('Card collection:', cardCollection)
-        console.log('Filtered card hand:', filteredCardHand)
 
         setLootCards(filteredCardHand)
         setMyLootCards(filteredCardHand)
@@ -200,7 +197,7 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
       ? setTimeout(() => {
           setShowConfetti(true)
           setShowOwlTip(true)
-        }, 2000) // sync with box opening
+        }, 800) // sync with box opening
       : setShowOwlTip(true)
     setOpenBox(true)
     lootItemOnly && setShowLootItem(true)
