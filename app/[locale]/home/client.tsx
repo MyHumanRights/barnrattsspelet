@@ -104,7 +104,6 @@ export const HomeClient: React.FC<Props> = ({ antagonists }) => {
     setGameStateValue({
       allowedLootbox: false,
       gameEnvironment: null,
-      isBuyingLootbox: false,
     })
     const init = () => {
       const cardCollection = getCardCollection() || []
