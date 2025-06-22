@@ -424,8 +424,6 @@ export const PersuadeClient = () => {
     return null
   }
 
-  console.log('currentState', currentState)
-
   return (
     <main className={styles.main} style={{ backgroundColor: bgColor }}>
       <div className={styles.wrapper}>

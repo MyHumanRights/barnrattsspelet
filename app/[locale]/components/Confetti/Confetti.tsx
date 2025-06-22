@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
 type ConfettiProps = {
-  isActive?: boolean
+  isActive: boolean
 }
 
-interface ConfettiParticle {
+type ConfettiParticle = {
   id: number
   x: number
   y: number
@@ -41,10 +41,10 @@ export const Confetti = ({ isActive }: ConfettiProps) => {
   }, [])
 
   useEffect(() => {
-    // if (!isActive) {
-    //   setParticles([])
-    //   return
-    // }
+    if (!isActive) {
+      setParticles([])
+      return
+    }
 
     const centerX = window.innerWidth / 2
     // Continuously create bursts of particles

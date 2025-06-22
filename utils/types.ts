@@ -179,7 +179,6 @@ export type AvatarPart = {
 }
 
 export type IGameStateObject = {
-  isBuyingLootbox: boolean
   allowedLootbox: boolean
   activeAntagonist: null | Antagonist
   gameEnvironment: null | Environments
