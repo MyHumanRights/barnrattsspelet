@@ -33,7 +33,7 @@
 
 .introA {
   bottom: calc($avatarSize) + 24px;
-  left: calc($avatarSize) / 2;
+  left: calc(calc($avatarSize) / 2);
 
   @media (min-width: 768px) {
     bottom: calc($avatarSize) + 40px;
@@ -41,7 +41,7 @@
 }
 
 .introB {
-  bottom: calc($avatarSize / 2);
+  bottom: calc(calc($avatarSize) / 2);
   left: calc($avatarSize + $avatarMargin + 8px);
   transform: translateY(50%);
   margin-right: 0.5em;
@@ -60,13 +60,13 @@
   div:first-child {
     bottom: $avatarSize;
     position: absolute;
-    left: calc($avatarSize / 2 - $avatarMargin);
+    left: calc(calc($avatarSize) / 2 - $avatarMargin);
   }
 
   div:last-child {
     position: absolute;
     left: calc($avatarSize + $avatarMargin);
-    bottom: calc($avatarSize) / 2 - $avatarMargin;
+    bottom: calc(calc($avatarSize) / 2 - $avatarMargin);
   }
 }
 

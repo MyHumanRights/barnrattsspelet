@@ -15,7 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const CookiePolicy = async ({ params }: { params: { locale: string } }) => {
+const CookiePolicy = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) => {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('Cookiepolicy')
