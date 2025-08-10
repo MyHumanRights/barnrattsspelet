@@ -1,4 +1,5 @@
-@import '../../../global.scss';
+@use '../../../global.scss' as *;
+@use 'sass:color';
 
 .button {
   display: flex;
@@ -20,7 +21,7 @@
 
     &:hover,
     &:active {
-      background-color: scale-color($disabledGray, $lightness: -10%);
+      background-color: color.scale($disabledGray, $lightness: -10%);
     }
   }
 
@@ -50,7 +51,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($southernFrance, $lightness: 5%);
+    background-color: color.scale($southernFrance, $lightness: 5%);
   }
 }
 
@@ -60,7 +61,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($primaryColor, $lightness: 15%);
+    background-color: color.scale($primaryColor, $lightness: 15%);
   }
 
   &:disabled {
@@ -74,7 +75,7 @@
 
   &:hover,
   &:active {
-    background-color: scale-color($primaryColor, $lightness: 90%);
+    background-color: color.scale($primaryColor, $lightness: 90%);
   }
 
   &:disabled {

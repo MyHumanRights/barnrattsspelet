@@ -35,13 +35,8 @@ export const DeckBuilderClient = () => {
   }, [themeMusicOn, themeVolume, toggleThemeSound])
 
   useEffect(() => {
-    async function setCardsFromStorage() {
-      const cardCollection = await getCardCollection()
-
-      setAllCards(cardCollection)
-    }
-
-    setCardsFromStorage()
+    const cardCollection = getCardCollection()
+    setAllCards(cardCollection)
   }, [])
 
   return (

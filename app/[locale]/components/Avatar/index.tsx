@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import { getAvatar } from '@/api/storage'
 import { IAvatar } from '@/utils/types'
@@ -7,20 +7,16 @@ import { AvatarPart } from '../AvatarPart'
 import styles from './Avatar.module.scss'
 
 interface Props {
-  choices?: IAvatar
-  link?: JSX.Element
+  choices?: IAvatar | null
+  link?: ReactNode
 }
 
 export const Avatar = ({ choices, link }: Props) => {
   const [avatar, setAvatar] = useState<IAvatar | null>(null)
 
   useEffect(() => {
-    const fetchAvatar = async () => {
-      const avatar = choices ? choices : await getAvatar()
-      setAvatar(avatar)
-    }
-
-    fetchAvatar()
+    const avatar = choices || getAvatar()
+    setAvatar(avatar)
   }, [choices])
 
   return (

@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
@@ -21,9 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Start = ({ params: { locale } }: LocaleParams) => {
+async function StartPage({ params }: LocaleParams) {
+  const { locale } = await params
+
   setRequestLocale(locale)
-  const t = useTranslations('Start')
+
+  const t = await getTranslations('Start')
 
   return (
     <div className={styles.wrapper}>
@@ -68,4 +70,4 @@ const Start = ({ params: { locale } }: LocaleParams) => {
   )
 }
 
-export default Start
+export default StartPage

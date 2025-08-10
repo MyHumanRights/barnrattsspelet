@@ -56,18 +56,12 @@ export const Client = () => {
   }, [toggleThemeSound])
 
   useEffect(() => {
-    ;(async function () {
-      await setPlayFromScenario(false)
-      await setCardHand([])
-    })()
-  }, [])
-
-  useEffect(() => {
-    ;(async function () {
-      const cardCollection = (await getCardCollection()) || []
-      cardCollection?.length > 0 ? setFirstTimer(false) : setFirstTimer(true)
-    })()
-  })
+    addToStatistics()
+    const cardCollection = getCardCollection() || []
+    setFirstTimer(cardCollection.length === 0)
+    setPlayFromScenario(false)
+    setCardHand([])
+  }, [addToStatistics])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,11 +69,6 @@ export const Client = () => {
     }, TIME)
 
     return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    addToStatistics()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleModal = () => {

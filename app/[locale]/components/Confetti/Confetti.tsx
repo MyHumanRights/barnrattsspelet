@@ -1,123 +1,109 @@
-'use client'
+import { useCallback, useEffect, useState } from 'react'
 
-import { type Container } from '@tsparticles/engine'
-import { loadConfettiPreset } from '@tsparticles/preset-confetti'
-import Particles, { initParticlesEngine } from '@tsparticles/react'
-import { useEffect, useState } from 'react'
+type ConfettiProps = {
+  isActive: boolean
+}
 
-export const Confetti = () => {
-  const [init, setInit] = useState(false)
+type ConfettiParticle = {
+  id: number
+  x: number
+  y: number
+  vx: number
+  vy: number
+  rotation: number
+  rotationSpeed: number
+  size: number
+  color: string
+  shape: 'square' | 'circle'
+  opacity: number
+}
 
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadConfettiPreset(engine)
-    }).then(() => {
-      setInit(true)
-    })
+const CONFETTI_COLORS = ['#E60080', '#4F1E6F', '#F39200', '#0090CF']
+
+export const Confetti = ({ isActive }: ConfettiProps) => {
+  const [particles, setParticles] = useState<ConfettiParticle[]>([])
+
+  const createParticle = useCallback((startX: number): ConfettiParticle => {
+    return {
+      id: Math.random(),
+      x: startX + (Math.random() - 0.5) * 200, // Wider horizontal spread
+      y: window.innerHeight,
+      vx: (Math.random() - 0.5) * 12, // Stronger horizontal velocity for more spread
+      vy: -(Math.random() * 15 + 10), // Negative for upward movement
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 10,
+      size: Math.random() * 6 + 4,
+      color:
+        CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+      shape: Math.random() > 0.5 ? 'circle' : 'square',
+      opacity: Math.random() * 0.5 + 0.5,
+    }
   }, [])
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    process.env.NEXT_PUBLIC_APP_ENV === 'development' && console.log(container)
-  }
+  useEffect(() => {
+    if (!isActive) {
+      setParticles([])
+      return
+    }
 
-  if (init) {
-    return (
-      <Particles
-        id='tsparticles'
-        particlesLoaded={particlesLoaded}
-        options={{
-          emitters: {
-            position: {
-              x: 50,
-              y: 80,
-            },
-            rate: {
-              quantity: 100, // how many?
-              delay: 0.75, // how often?
-            },
-            life: {
-              count: 0,
-              duration: 0.1,
-              delay: 0.4,
-            },
-          },
-          fullScreen: { enable: true },
-          interactivity: {
-            detectsOn: 'window',
-          },
-          particles: {
-            color: {
-              value: ['#E60080', '#4F1E6F', '#F39200', '#0090CF'],
-            },
-            move: {
-              decay: 0.05, // Slow down particles
-              direction: 'top',
-              enable: true,
-              gravity: {
-                enable: true,
-                maxSpeed: 150,
-              },
-              outModes: {
-                top: 'none',
-                default: 'destroy',
-              },
-              speed: { min: 50, max: 75 },
-            },
-            rotate: {
-              value: {
-                min: 0,
-                max: 360,
-              },
-              direction: 'random',
-              animation: {
-                enable: true,
-                speed: 30,
-              },
-            },
-            tilt: {
-              direction: 'random',
-              enable: true,
-              value: {
-                min: 0,
-                max: 360,
-              },
-              animation: {
-                enable: true,
-                speed: 30,
-              },
-            },
-            size: {
-              value: 4,
-            },
-            roll: {
-              darken: {
-                enable: true,
-                value: 25,
-              },
-              enable: true,
-              speed: {
-                min: 5,
-                max: 15,
-              },
-            },
-            wobble: {
-              distance: 30,
-              enable: true,
-              speed: {
-                min: -15,
-                max: 15,
-              },
-            },
-            shape: {
-              type: ['circle', 'square'],
-            },
-          },
-          preset: 'confetti',
-        }}
-      />
-    )
-  }
+    const centerX = window.innerWidth / 2
+    // Continuously create bursts of particles
+    const burstInterval = setInterval(() => {
+      // Increase number of confetti per burst for more particles
+      const burstParticles = Array.from({ length: 150 }, () =>
+        createParticle(centerX)
+      )
+      setParticles((prev) => [...prev, ...burstParticles])
+    }, 1500)
 
-  return <></>
+    // Animation loop
+    const animationInterval = setInterval(() => {
+      setParticles((prevParticles) =>
+        prevParticles
+          .map((particle) => ({
+            ...particle,
+            x: particle.x + particle.vx,
+            y: particle.y + particle.vy,
+            vy: particle.vy + 0.3, // Gravity
+            rotation: particle.rotation + particle.rotationSpeed,
+            opacity: particle.opacity - 0.01,
+          }))
+          .filter(
+            (particle) =>
+              particle.opacity > 0 &&
+              particle.y > -50 &&
+              particle.x > -50 &&
+              particle.x < window.innerWidth + 50
+          )
+      )
+    }, 16) // ~60fps
+
+    return () => {
+      clearInterval(burstInterval)
+      clearInterval(animationInterval)
+    }
+  }, [isActive, createParticle])
+
+  if (!isActive && particles.length === 0) return null
+
+  return (
+    <div className='fixed inset-0 pointer-events-none z-40'>
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className='absolute'
+          style={{
+            left: `${particle.x}px`,
+            top: `${particle.y}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            backgroundColor: particle.color,
+            borderRadius: particle.shape === 'circle' ? '50%' : '0',
+            transform: `rotate(${particle.rotation}deg)`,
+            opacity: particle.opacity,
+          }}
+        />
+      ))}
+    </div>
+  )
 }

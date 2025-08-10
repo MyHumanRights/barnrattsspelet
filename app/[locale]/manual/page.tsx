@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { LocaleParams } from '@/utils/types'
@@ -18,9 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Manual = ({ params: { locale } }: LocaleParams) => {
+const Manual = async ({ params }: LocaleParams) => {
+  const { locale } = await params
   setRequestLocale(locale)
-  const t = useTranslations('Manual')
+  const t = await getTranslations('Manual')
 
   return (
     <div className={styles.manual}>

@@ -15,7 +15,6 @@ type Props = {
 }
 
 export const Antagonist = ({ antagonist }: Props) => {
-  const Antagonist = antagonists[antagonist]
   const startAnimation = useAnimation()
 
   const {
@@ -35,11 +34,15 @@ export const Antagonist = ({ antagonist }: Props) => {
     }))
   }, [antagonist, startAnimation, shouldReduceMotion])
 
+  if (!antagonist) {
+    return null
+  }
+
+  const AntagonistComp = antagonists[antagonist]
+
   return (
     <motion.section className={styles.wrapper} animate={startAnimation}>
-      <Antagonist />
+      <AntagonistComp />
     </motion.section>
   )
 }
-
-export default Antagonist

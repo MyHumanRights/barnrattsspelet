@@ -23,37 +23,31 @@ export const useAntagonist = (): UseAntagonistReturn => {
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
-    async function loadAntagonist() {
-      try {
-        setIsLoading(true)
-        const gameStateAntagonist = await readGameStateValue('activeAntagonist')
+    try {
+      setIsLoading(true)
+      const gameStateAntagonist = readGameStateValue('activeAntagonist')
 
-        if (!gameStateAntagonist) {
-          throw new Error('No active antagonist found in game state')
-        }
-
-        setAntagonistType(gameStateAntagonist)
-
-        if (!antagonists[gameStateAntagonist]) {
-          throw new Error(
-            `Antagonist data not found for: ${gameStateAntagonist}`
-          )
-        }
-
-        setAntagonist(antagonists[gameStateAntagonist] as IGameAntagonist)
-      } catch (err) {
-        console.error('Failed to load antagonist:', err)
-        setError(
-          err instanceof Error
-            ? err
-            : new Error('Unknown error loading antagonist')
-        )
-      } finally {
-        setIsLoading(false)
+      if (!gameStateAntagonist) {
+        throw new Error('No active antagonist found in game state')
       }
-    }
 
-    loadAntagonist()
+      setAntagonistType(gameStateAntagonist)
+
+      if (!antagonists[gameStateAntagonist]) {
+        throw new Error(`Antagonist data not found for: ${gameStateAntagonist}`)
+      }
+
+      setAntagonist(antagonists[gameStateAntagonist] as IGameAntagonist)
+    } catch (err) {
+      console.error('Failed to load antagonist:', err)
+      setError(
+        err instanceof Error
+          ? err
+          : new Error('Unknown error loading antagonist')
+      )
+    } finally {
+      setIsLoading(false)
+    }
   }, [])
 
   return { antagonist, antagonistType, isLoading, error }

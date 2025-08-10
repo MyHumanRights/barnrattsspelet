@@ -70,18 +70,16 @@ export const PersuasionWin = ({
   }, [])
 
   useEffect(() => {
-    ;(async () => {
-      const defeatedAntagonists = await readDefeatedAntagonists()
-      if (defeatedAntagonists.length === 1) {
-        addFirstTimeWin()
-      }
-      if (defeatedAntagonists.length === 3) {
-        addFirstTimeWinThree()
-      }
-      if (defeatedAntagonists.length === 10) {
-        addFirstTimeWinTen()
-      }
-    })()
+    const defeatedAntagonists = readDefeatedAntagonists()
+    if (defeatedAntagonists.length === 1) {
+      addFirstTimeWin()
+    }
+    if (defeatedAntagonists.length === 3) {
+      addFirstTimeWinThree()
+    }
+    if (defeatedAntagonists.length === 10) {
+      addFirstTimeWinTen()
+    }
 
     if (allAreDefeated) {
       addFirstTimeGameComplete()
