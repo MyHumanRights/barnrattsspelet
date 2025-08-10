@@ -10,9 +10,9 @@ import { Antagonist } from './antagonistType'
 import { CATEGORIES } from './constants'
 
 export type LocaleParams = {
-  params: {
+  params: Promise<{
     locale: string
-  }
+  }>
 }
 
 export interface IBoostAnswer {

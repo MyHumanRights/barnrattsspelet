@@ -11,7 +11,6 @@ import { ReactNode } from 'react'
 
 import avatarJson from '@/data/avatar.json'
 import { getDefaultAvatorParts } from '@/utils/avatar-utils'
-import { getAvatarColors, getAvatarParts } from '@/utils/getData'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
 
 import RootProviders from './components/RootProviders'
@@ -43,7 +42,7 @@ export function generateStaticParams() {
 
 const RootLayout = async (props: {
   children: ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) => {
   const { children } = props
   const params = await props.params
