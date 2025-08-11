@@ -1,28 +1,31 @@
 'use client'
-
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-
 import { STAT_FLAGS } from '../utils/constants'
 
-interface Props {
-  statFlags: {
-    [key in STAT_FLAGS]: boolean
-  }
-  setStatFlags: React.Dispatch<
-    React.SetStateAction<{
-      [key in STAT_FLAGS]: boolean
-    }>
-  >
+const STORAGE_KEY = 'statsFlags-v1'
+
+type Flags = { [key in STAT_FLAGS]: boolean }
+
+type StatsContextProps = {
+  statFlags: Flags
+  setStatFlags: React.Dispatch<React.SetStateAction<Flags>>
 }
 
-const StatsContext = createContext<Props>({} as Props)
+const StatsContext = createContext<StatsContextProps>({} as StatsContextProps)
 
-export const StatsProvider: React.FC<React.PropsWithChildren> = ({
-  children,
-}) => {
-  const STORAGE_KEY = 'statsFlags-v1'
+const loadInitialFlags = (defaultFlags: Flags, key: string): Flags => {
+  try {
+    const raw = localStorage.getItem(key)
+    if (!raw) return defaultFlags
+    const parsed = JSON.parse(raw) as Partial<Flags>
+    return { ...defaultFlags, ...parsed }
+  } catch {
+    return defaultFlags
+  }
+}
 
-  const defaultFlags = useMemo(
+export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
+  const defaultFlags = useMemo<Flags>(
     () => ({
       [STAT_FLAGS.IS_FIRST_TIME_START]: true,
       [STAT_FLAGS.IS_FIRST_TIME_HOME]: true,
@@ -37,44 +40,32 @@ export const StatsProvider: React.FC<React.PropsWithChildren> = ({
     []
   )
 
-  const [statFlags, setStatFlags] = useState(() => {
-    try {
-      const raw =
-        typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY)
-      if (!raw) return defaultFlags
-      const parsed = JSON.parse(raw) as Record<STAT_FLAGS, boolean>
-      // Ensure all keys exist, defaulting to true if missing
-      return { ...defaultFlags, ...parsed }
-    } catch {
-      return defaultFlags
-    }
-  })
+  const [statFlags, setStatFlags] = useState<Flags>(() =>
+    loadInitialFlags(defaultFlags, STORAGE_KEY)
+  )
 
-  // Persist to localStorage whenever flags change
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(statFlags))
     } catch {
-      // ignore storage errors
+      /* ignore */
     }
-  }, [STORAGE_KEY, statFlags])
+  }, [statFlags])
 
-  // Cross-tab sync: listen to storage events
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY && e.newValue) {
-        try {
-          const next = JSON.parse(e.newValue) as Record<STAT_FLAGS, boolean>
-          // Merge to keep any new keys that might not be present
-          setStatFlags((prev) => ({ ...prev, ...next }))
-        } catch {
-          // ignore
-        }
+      if (e.key !== STORAGE_KEY || !e.newValue) return
+      try {
+        const next = JSON.parse(e.newValue) as Partial<Flags>
+        // Merge to keep any new keys that might not be present
+        setStatFlags((prev) => ({ ...prev, ...next }))
+      } catch {
+        /* ignore */
       }
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
-  }, [STORAGE_KEY])
+  }, [])
 
   return (
     <StatsContext.Provider value={{ statFlags, setStatFlags }}>

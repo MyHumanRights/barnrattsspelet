@@ -1,17 +1,8 @@
-import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  increment,
-} from 'firebase/firestore/lite'
+import { doc, setDoc, increment } from 'firebase/firestore/lite'
 import { useCallback, useRef } from 'react'
-
 import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { db } from '@/utils/firebase'
-
-const YEAR = new Date().getFullYear().toString() + '-next'
 
 export const useAddToStatistics = (
   docName: STAT_COLLECTION_NAMES,
@@ -24,55 +15,41 @@ export const useAddToStatistics = (
   const addToStatistics = useCallback(async () => {
     if (inFlightRef.current) return
     if (!statFlags[flagName]) return
-    inFlightRef.current = true
 
+    inFlightRef.current = true
     try {
       process.env.NEXT_PUBLIC_APP_ENV !== 'production' &&
         console.log('Adding to statistics', flagName)
 
-      // Ensure the yearly collections and monthly documents are created
-      // await createYearlyCollections(YEAR)
+      // Beräkna år/månad vid varje körning (hanterar årsskifte korrekt)
+      const now = new Date()
+      const year = `${now.getFullYear()}-next`
+      const monthKey = `${now.getFullYear()}-${String(
+        now.getMonth() + 1
+      ).padStart(2, '0')}`
 
-      // Proceed with adding statistics
-      const docRef = doc(db, YEAR, docName)
-      const docSnap = await getDoc(docRef)
-      const currentMonth = getCurrentMonth()
+      const docRef = doc(db, year, docName)
 
-      if (docSnap.exists()) {
-        // Atomic increments to avoid race conditions
-        await updateDoc(docRef, {
+      // En enda skrivning – funkar både om dokumentet finns eller inte
+      await setDoc(
+        docRef,
+        {
           total_visits: increment(1),
-          [`monthly_visits.${currentMonth}`]: increment(1),
-        })
-      } else {
-        // Create with initial counts
-        await setDoc(
-          docRef,
-          {
-            total_visits: 1,
-            monthly_visits: {
-              [currentMonth]: 1,
-            },
-          },
-          { merge: true }
-        )
-      }
-      // Update the context flag to prevent multiple increments (persisted via context)
-      setStatFlags({ ...statFlags, [flagName]: false })
+          [`monthly_visits.${monthKey}`]: increment(1),
+        },
+        { merge: true }
+      )
+
+      // Stäng av flaggan (funktionell update för att undvika stale merges)
+      setStatFlags((prev) => ({ ...prev, [flagName]: false }))
     } catch (err) {
       console.error('Error adding to statistics', err)
-      // Optional: if the write failed, roll back the flag so a later attempt can retry
+      // Låt en senare retry få försöka igen
       setStatFlags((prev) => ({ ...prev, [flagName]: true }))
+    } finally {
+      inFlightRef.current = false
     }
-    inFlightRef.current = false
   }, [docName, flagName, statFlags, setStatFlags])
 
   return addToStatistics
-}
-
-const getCurrentMonth = () => {
-  const now = new Date()
-  const year = now.getFullYear()
-  const month = `${now.getMonth() + 1}`.padStart(2, '0')
-  return `${year}-${month}` // e.g. 2024-01
 }
