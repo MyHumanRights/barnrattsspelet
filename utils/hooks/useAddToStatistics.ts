@@ -21,7 +21,7 @@ export const useAddToStatistics = (
       process.env.NEXT_PUBLIC_APP_ENV !== 'production' &&
         console.log('Adding to statistics', flagName)
 
-      // Beräkna år/månad vid varje körning (hanterar årsskifte korrekt)
+      // Calculate year/month on each run (handles year transitions correctly)
       const now = new Date()
       const year = `${now.getFullYear()}-next`
       const monthKey = `${now.getFullYear()}-${String(
