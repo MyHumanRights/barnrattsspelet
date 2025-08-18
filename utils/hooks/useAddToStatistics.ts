@@ -30,7 +30,7 @@ export const useAddToStatistics = (
 
       const docRef = doc(db, year, docName)
 
-      // En enda skrivning – funkar både om dokumentet finns eller inte
+      // Single write operation – works whether document exists or not
       await setDoc(
         docRef,
         {
