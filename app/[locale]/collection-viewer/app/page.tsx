@@ -7,10 +7,11 @@ import styles from '../CollectionViewer.module.scss'
 import { MobileCollectionViewerClient } from './client'
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
+  const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 

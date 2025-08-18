@@ -42,18 +42,15 @@
     position: relative;
     width: 100%;
     z-index: 2;
+    color: $primaryColor;
     @include box-shadow(medium);
 
-    color: $primaryColor;
     @media (min-width: 768px) {
       height: 35px;
     }
     @media (min-width: 890px) {
       clip-path: polygon(98.6% 0%, 98.8% 100%, 0% 100%, 0% 0%);
     }
-    //for IE 11
-    position: relative;
-    overflow: hidden;
   }
 
   //selects progress value, not bar

@@ -7,8 +7,9 @@ import styles from './Stats.module.scss'
 import { StatsClient } from './StatsClient'
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 
