@@ -45,12 +45,6 @@
     color: $primaryColor;
     @include box-shadow(medium);
 
-    //for IE 11 - ensure these properties are set
-    & {
-      position: relative;
-      overflow: hidden;
-    }
-
     @media (min-width: 768px) {
       height: 35px;
     }
