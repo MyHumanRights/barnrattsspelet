@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 
 import { setAvatar, setAvatarPartCollection } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 import { getNewAvatarParts, resetNewAvatarParts } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant, CATEGORIES } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'

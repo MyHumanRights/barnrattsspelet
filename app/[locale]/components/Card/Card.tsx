@@ -75,7 +75,7 @@ export const Card: React.FC<Props> = ({
         duration: 0.01,
       }
     : {
-        type: 'spring',
+        type: 'spring' as const,
         mass: 2,
         stiffness: 40,
       }
