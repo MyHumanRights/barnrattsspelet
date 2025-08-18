@@ -44,8 +44,6 @@ export const useAddToStatistics = (
       setStatFlags((prev) => ({ ...prev, [flagName]: false }))
     } catch (err) {
       console.error('Error adding to statistics', err)
-      // Allow a later retry to attempt again
-      setStatFlags((prev) => ({ ...prev, [flagName]: true }))
     } finally {
       inFlightRef.current = false
     }
