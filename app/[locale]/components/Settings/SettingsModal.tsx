@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { useStatsContext } from '@/contexts/StatsContext'
 import cards from '@/data/cards.json'
 import { useRouter } from '@/i18n/routing'
 import { getDefaultAvatorParts, getRandomAvatar } from '@/utils/avatar-utils'
@@ -69,6 +70,7 @@ export const SettingsModal = ({
   const [showOwlTip, setShowOwlTip] = useState(false)
   const rtl = useIsRightToLeft()
   const [isApp, setApp] = useState(false)
+  const { resetStatFlags } = useStatsContext()
 
   function handleThemeMusicOn() {
     setThemeMusicOn(!themeMusicOn)
@@ -110,6 +112,8 @@ export const SettingsModal = ({
     const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarColors)
     setAvatarPartCollection(defaultAvatarParts)
     setAvatar(randomAvatar)
+    // Reset statistics flags so one-time events can be tracked again
+    resetStatFlags()
     resetShownTips()
     resetTokens()
     setCardHand([])
