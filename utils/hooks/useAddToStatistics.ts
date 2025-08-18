@@ -27,7 +27,6 @@ export const useAddToStatistics = (
       const monthKey = `${now.getFullYear()}-${String(
         now.getMonth() + 1
       ).padStart(2, '0')}`
-
       const docRef = doc(db, year, docName)
 
       // Single write operation – works whether document exists or not
@@ -35,12 +34,11 @@ export const useAddToStatistics = (
         docRef,
         {
           total_visits: increment(1),
-          [`monthly_visits.${monthKey}`]: increment(1),
+          monthly_visits: { [monthKey]: increment(1) },
         },
         { merge: true }
       )
 
-      // Turn off the flag (functional update to avoid stale merges)
       setStatFlags((prev) => ({ ...prev, [flagName]: false }))
     } catch (err) {
       console.error('Error adding to statistics', err)
