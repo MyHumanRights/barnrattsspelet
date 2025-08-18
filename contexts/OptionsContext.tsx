@@ -22,7 +22,7 @@ export type Options = {
   language: string
 }
 
-interface OptionsContextProps {
+type OptionsContextProps = {
   clientHeight: number
   clientWidth: number
   isMobile: boolean

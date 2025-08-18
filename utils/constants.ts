@@ -42,6 +42,8 @@ export enum STAT_FLAGS {
   IS_FIRST_TIME_COLLECTION_VIEW_APP = 'isFirstTimeCollectionViewerApp',
 }
 
+export const STAT_STORAGE_KEY = 'statsFlags-v1'
+
 export enum ButtonVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',

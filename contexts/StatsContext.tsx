@@ -1,14 +1,25 @@
 'use client'
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import { STAT_FLAGS } from '../utils/constants'
-
-const STORAGE_KEY = 'statsFlags-v1'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { STAT_FLAGS, STAT_STORAGE_KEY } from '../utils/constants'
 
 type Flags = { [key in STAT_FLAGS]: boolean }
 
 type StatsContextProps = {
   statFlags: Flags
   setStatFlags: React.Dispatch<React.SetStateAction<Flags>>
+  resetStatFlags: () => void
+}
+
+const DEFAULT_FLAGS: Flags = {
+  [STAT_FLAGS.IS_FIRST_TIME_START]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_HOME]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_WIN]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_WIN_THREE]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_WIN_TEN]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_WIN_GAME_COMPLETE]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEWER]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEW_APP]: true,
+  [STAT_FLAGS.IS_FIRST_TIME_PERSUATION]: true,
 }
 
 const StatsContext = createContext<StatsContextProps>({} as StatsContextProps)
@@ -25,28 +36,13 @@ const loadInitialFlags = (defaultFlags: Flags, key: string): Flags => {
 }
 
 export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
-  const defaultFlags = useMemo<Flags>(
-    () => ({
-      [STAT_FLAGS.IS_FIRST_TIME_START]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_HOME]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_WIN]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_WIN_THREE]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_WIN_TEN]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_WIN_GAME_COMPLETE]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEWER]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEW_APP]: true,
-      [STAT_FLAGS.IS_FIRST_TIME_PERSUATION]: true,
-    }),
-    []
-  )
-
   const [statFlags, setStatFlags] = useState<Flags>(() =>
-    loadInitialFlags(defaultFlags, STORAGE_KEY)
+    loadInitialFlags(DEFAULT_FLAGS, STAT_STORAGE_KEY)
   )
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(statFlags))
+      localStorage.setItem(STAT_STORAGE_KEY, JSON.stringify(statFlags))
     } catch {
       /* ignore */
     }
@@ -54,7 +50,7 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
-      if (e.key !== STORAGE_KEY || !e.newValue) return
+      if (e.key !== STAT_STORAGE_KEY || !e.newValue) return
       try {
         const next = JSON.parse(e.newValue) as Partial<Flags>
         // Merge to keep any new keys that might not be present
@@ -67,8 +63,13 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
+  const resetStatFlags = () => {
+    // Re-enable all flags (treat user as first time again)
+    setStatFlags(DEFAULT_FLAGS)
+  }
+
   return (
-    <StatsContext.Provider value={{ statFlags, setStatFlags }}>
+    <StatsContext.Provider value={{ statFlags, setStatFlags, resetStatFlags }}>
       {children}
     </StatsContext.Provider>
   )
