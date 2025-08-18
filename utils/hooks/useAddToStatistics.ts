@@ -40,7 +40,7 @@ export const useAddToStatistics = (
         { merge: true }
       )
 
-      // Stäng av flaggan (funktionell update för att undvika stale merges)
+      // Turn off the flag (functional update to avoid stale merges)
       setStatFlags((prev) => ({ ...prev, [flagName]: false }))
     } catch (err) {
       console.error('Error adding to statistics', err)
