@@ -1,4 +1,10 @@
-import { doc, setDoc, increment } from 'firebase/firestore/lite'
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  getDoc,
+  increment,
+} from 'firebase/firestore/lite'
 import { useCallback, useRef } from 'react'
 import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -29,16 +35,21 @@ export const useAddToStatistics = (
       ).padStart(2, '0')}`
 
       const docRef = doc(db, year, docName)
+      const existing = await getDoc(docRef)
 
-      // Single write operation – works whether document exists or not
-      await setDoc(
-        docRef,
-        {
+      if (!existing.exists()) {
+        // Create fresh document with proper nested structure
+        await setDoc(docRef, {
+          total_visits: 1,
+          monthly_visits: { [monthKey]: 1 },
+        })
+      } else {
+        // Atomic increments without overwriting other month keys
+        await updateDoc(docRef, {
           total_visits: increment(1),
           [`monthly_visits.${monthKey}`]: increment(1),
-        },
-        { merge: true }
-      )
+        })
+      }
 
       // Turn off the flag (functional update to avoid stale merges)
       setStatFlags((prev) => ({ ...prev, [flagName]: false }))
