@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
@@ -12,7 +12,8 @@ import showCardSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
+import { Antagonist } from '@/utils/antagonistType'
 import { IAntagonistObject, ICard } from '@/utils/types'
 
 import { OwlDialogue } from '../OwlDialogue'
@@ -24,7 +25,7 @@ const WINDOW_1700 = 1700
 
 /** isApp variable:  for viewing the card without any buttons at all in android/iOs, and for design variation */
 
-interface Props {
+type CardListProps = {
   allCards: ICard[]
   filter: string | null
   filterType: 'category' | 'theme'
@@ -34,7 +35,7 @@ interface Props {
   onOpenBoost?: (card: ICard) => void
 }
 
-export const CardList: React.FC<Props> = ({
+export const CardList = ({
   allCards,
   filter,
   filterType,
@@ -42,7 +43,7 @@ export const CardList: React.FC<Props> = ({
   isCollectionViewer = false,
   isApp = false,
   onOpenBoost = () => {},
-}) => {
+}: CardListProps) => {
   const router = useRouter()
   const [activeCardId, setActiveCardId] = useState<string | null>(null)
   const [cards, setCards] = useState<ICard[]>([])
@@ -94,7 +95,7 @@ export const CardList: React.FC<Props> = ({
 
   function playCardScenario(currentCard: ICard) {
     const antagonist = getAntagonistFromCard(
-      antagonistsJson as IAntagonistObject,
+      antagonistsJson as unknown as IAntagonistObject,
       currentCard
     )
     if (!antagonist) {
@@ -104,7 +105,7 @@ export const CardList: React.FC<Props> = ({
     const cardHand = getScenarioCards(antagonist, cardsJson as ICard[])
     setPlayFromScenario(true)
     setCardHand(cardHand)
-    setGameStateValue({ activeAntagonist: antagonist.name })
+    setGameStateValue({ activeAntagonist: antagonist.name as Antagonist })
     router.push('/persuade')
   }
 

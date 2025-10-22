@@ -1,5 +1,7 @@
 export const MAX_CARDS = 7
 
+export const ANSWER_DELAY = 1500
+
 export enum CATEGORIES {
   HAIR = 'hair',
   FACE = 'face',
@@ -39,6 +41,8 @@ export enum STAT_FLAGS {
   IS_FIRST_TIME_COLLECTION_VIEWER = 'isFirstTimeCollectionViewer',
   IS_FIRST_TIME_COLLECTION_VIEW_APP = 'isFirstTimeCollectionViewerApp',
 }
+
+export const STAT_STORAGE_KEY = 'statsFlags-v1'
 
 export enum ButtonVariant {
   PRIMARY = 'primary',

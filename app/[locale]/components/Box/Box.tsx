@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -11,7 +11,7 @@ type Props = {
   openBox: boolean
 }
 
-const Box = ({ onClick, openBox }: Props) => {
+export const Box = ({ onClick, openBox }: Props) => {
   const t = useTranslations()
   const {
     options: { shouldReduceMotion },
@@ -161,5 +161,3 @@ const Box = ({ onClick, openBox }: Props) => {
     </motion.div>
   )
 }
-
-export default Box

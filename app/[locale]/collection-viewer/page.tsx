@@ -2,15 +2,15 @@ import { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { getCards, getNonPlayableCards } from '@/utils/getData'
+import { LocaleParams } from '@/utils/types'
 
 import { Client } from './client'
 import styles from './CollectionViewer.module.scss'
 
 export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+  params,
+}: LocaleParams): Promise<Metadata> {
+  const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('meta')
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -75,7 +75,7 @@ export const Card: React.FC<Props> = ({
         duration: 0.01,
       }
     : {
-        type: 'spring',
+        type: 'spring' as const,
         mass: 2,
         stiffness: 40,
       }

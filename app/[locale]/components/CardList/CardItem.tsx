@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -88,7 +88,10 @@ export const CardItem: React.FC<Props> = memo(
     const cardClassName = !isApp ? `${active && styles.activeCard}` : ''
 
     function checkIsPlayable(card: ICard) {
-      return getAntagonistFromCard(antagonistsJson as IAntagonistObject, card)
+      return getAntagonistFromCard(
+        antagonistsJson as unknown as IAntagonistObject,
+        card
+      )
     }
 
     return (

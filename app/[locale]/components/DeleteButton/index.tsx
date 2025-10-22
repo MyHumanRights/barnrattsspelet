@@ -1,8 +1,8 @@
 'use client'
 
-import { AnimatePresence, LazyMotion, m } from 'framer-motion'
+import { AnimatePresence, LazyMotion, m } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { useTranslations } from 'use-intl'
 
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'

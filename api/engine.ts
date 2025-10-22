@@ -1,6 +1,8 @@
-// @ts-nocheck
 import {
+  AvatarPart,
   GAME_STATES,
+  IAntagonistObject,
+  IAvatar,
   IAvatarColors,
   IAvatarParts,
   ICard,
@@ -10,6 +12,8 @@ import {
   levels,
   Progress,
 } from '@/utils/types'
+
+import { AvatarPartKeys } from '../app/[locale]/components/AvatarPart'
 
 const MAX_PROGRESS = 100
 
@@ -21,7 +25,6 @@ export const ANSWER_TYPES = {
 }
 
 const defaultGameState: IGameState = {
-  antagonist: null,
   statement: 0,
   progress: 0,
   cardHand: [],
@@ -61,8 +64,8 @@ function checkDisabledCards(cardHand: ICard[]) {
   }
 }
 
-function checkIfAntagonistBeaten() {
-  const { antagonist, statement } = currentGameState
+function checkIfAntagonistBeaten(antagonist: IGameAntagonist) {
+  const { statement } = currentGameState
   return ((statement + 1) / antagonist!.statements.length) * 100 >= MAX_PROGRESS
 }
 
@@ -72,11 +75,11 @@ function removeCardFromHand(card: ICard) {
   })
 }
 
-function moveForward(card: ICard) {
+function moveForward(card: ICard, antagonist: IGameAntagonist) {
   removeCardFromHand(card)
 
-  const { statement, cardHand, antagonist } = currentGameState
-  if (checkIfAntagonistBeaten()) {
+  const { statement, cardHand } = currentGameState
+  if (checkIfAntagonistBeaten(antagonist)) {
     setGameState({
       statement: statement + 1,
       progress: ((statement + 1) / antagonist.statements.length) * 100,
@@ -118,17 +121,17 @@ function loss(card: ICard) {
   return { result: ANSWER_TYPES.WRONG }
 }
 
-export function answer(card: ICard) {
-  const { antagonist, statement } = currentGameState
+export function answer(card: ICard, antagonist: IGameAntagonist) {
+  const { statement } = currentGameState
   if (antagonist!.statements[statement].cards.includes(card.id)) {
-    return moveForward(card)
+    return moveForward(card, antagonist)
   } else {
     return loss(card)
   }
 }
 
-export const getAnswerLine = () => {
-  const { antagonist, statement } = currentGameState
+export const getAnswerLine = (antagonist: IGameAntagonist) => {
+  const { statement } = currentGameState
 
   // need to subtract 1 because we are moving forward after the answer
   // if statement is 0, it should be zero
@@ -345,70 +348,19 @@ export function getAntagonistsByPlace(
   })
 }
 
-export const getDefaultAvatorParts = (parts: IAvatarParts) => {
-  return Object.entries(parts).reduce((defaultParts, [key, value]) => {
-    defaultParts[key] = value.filter((svg) => svg.isDefault)
-    return defaultParts
-  }, {} as IAvatarParts)
-}
-
-export const getRandomAvatar = (parts: IAvatar, colors: IAvatarColors) => {
-  return Object.entries(parts).reduce((avatar, [key, value]) => {
-    const randomPartIndex = Math.floor(Math.random() * value.length)
-    avatar[key] = {
-      id: value[randomPartIndex].id,
-    }
-    if (colors[key]) {
-      const randomColorIndex = Math.floor(Math.random() * colors[key].length)
-      avatar[key].color = colors[key][randomColorIndex]
-    }
-    return avatar
-  }, {} as IAvatar)
-}
-
 export const getPartId = (progress: Progress): AvatarPartKeys => {
   const level = levels.find((level) => level.levelNumber === progress.level)
 
-  if (!level) {
+  if (!level || level === undefined) {
     console.error('Level not found')
+    return 'Accessory01' as AvatarPartKeys
   }
 
   // Adjust for zero-based index
   const partIndex = progress.part - 1
   const part = level.parts[partIndex]
 
-  return part
-}
-
-const findCategoryById = (
-  id: AvatarPartKeys,
-  parts: IAvatarParts
-): AvatarPartKeys | null => {
-  for (const category in parts) {
-    if (parts.hasOwnProperty(category)) {
-      const part = parts[category].find((part) => part.id === id)
-      if (part) {
-        return category
-      }
-    }
-  }
-  return null // Category not found for the given ID
-}
-
-export const getAvatarPartById = (
-  id: AvatarPartKeys,
-  parts: IAvatarParts,
-  storedAvatar: IAvatar
-): AvatarPart[] => {
-  const key = findCategoryById(id, parts)
-
-  const avatarPart = {
-    category: key,
-    id: id,
-    color: storedAvatar[key].color,
-  }
-
-  return [avatarPart]
+  return part as AvatarPartKeys
 }
 
 export const getColorForPart = (
@@ -416,30 +368,33 @@ export const getColorForPart = (
   storedAvatar: IAvatar
 ): string => {
   // remove digits and convert to lowercase to match the storedAvatar key
-  const key = id.replace(/\d+/g, '').toLowerCase()
+  const key = id.replace(/\d+/g, '').toLowerCase() as keyof IAvatar
 
-  return storedAvatar[key].color
+  return storedAvatar[key].color || ''
 }
 
 export const getItemToLootBox = (
   collectedParts: IAvatar,
   parts: IAvatarParts,
   storedAvatar: IAvatar
-): AvatarPart[] => {
-  const nonCollectedItems = Object.entries(parts).reduce(
+) => {
+  const nonCollectedItems = Object.entries(parts).reduce<AvatarPart[]>(
     (items, [key, value]) => {
+      if (!value) return items
       const nonCollected = value
         .filter((item) => {
-          const isCollected = collectedParts[key].some(
-            (collectedItem) => collectedItem.id === item.id
+          const collected = (collectedParts as any)[key]?.some(
+            (collectedItem: AvatarPart) => collectedItem.id === item.id
           )
           const isSuperHero = item.isSuperHero === true
-          return !isCollected && !isSuperHero
+          return !collected && !isSuperHero
         })
         .map((item) => ({
-          category: key,
           id: item.id,
-          color: storedAvatar[key].color,
+          color: (storedAvatar as any)[key]?.color,
+          isNewPart: item.isNewPart,
+          isDefault: item.isDefault,
+          isSuperHero: item.isSuperHero,
         }))
       return [...items, ...nonCollected]
     },
@@ -452,72 +407,34 @@ export const getItemToLootBox = (
 }
 
 export function getSuperHeroToLootBox(
-  collectedParts,
-  parts,
-  storedAvatar
+  collectedParts: IAvatarParts,
+  parts: IAvatarParts,
+  storedAvatar: IAvatar
 ): AvatarPart[] {
-  let superHero = []
-
-  Object.entries(collectedParts).forEach((category) => {
-    const hasSuperheroParts = category[1].some(
-      (cat) => cat.isSuperHero === true
-    )
-
-    // Return empty array if we already have the superhero parts
-    if (hasSuperheroParts) return superHero
-  })
-
-  Object.entries(parts).forEach((category) => {
-    category[1].forEach((item) => {
-      const isSuperHero = item.isSuperHero === true
-
-      if (isSuperHero) {
-        superHero.push({
-          category: category[0],
-          id: item.id,
-          color: storedAvatar[category[0]].color,
-        })
-      }
-    })
-  })
-
-  return superHero
-}
-
-export function getNewAvatarParts(collectedParts): IAvatarPart[] {
-  // Get all new parts from our already collected avatar parts
-  let newParts = []
-  Object.entries(collectedParts).forEach((category) => {
-    category[1].forEach((item) => {
-      if (item.isNewPart === true) {
-        newParts.push({
-          category: category[0],
-          id: item.id,
-        })
-      }
-    })
-  })
-  return newParts
-}
-
-export function resetNewAvatarParts(collectedParts) {
-  let avatarPartsObject = {}
-
-  Object.entries(collectedParts).forEach((category) => {
-    const partsArray = category[1].map((c) => {
-      return {
-        ...c,
-        isNewPart: false,
-      }
-    })
-
-    avatarPartsObject = {
-      ...avatarPartsObject,
-      [category[0]]: partsArray,
+  // Check if any superhero part is already collected
+  for (const items of Object.values(collectedParts)) {
+    if (Array.isArray(items) && items.some((cat) => cat.isSuperHero === true)) {
+      return []
     }
-  })
+  }
 
-  return avatarPartsObject
+  // Collect all superhero parts from available parts
+  const superHero: AvatarPart[] = []
+  for (const [category, items] of Object.entries(parts)) {
+    if (!Array.isArray(items)) continue
+    for (const item of items) {
+      if (item.isSuperHero === true) {
+        superHero.push({
+          id: item.id,
+          color: (storedAvatar as any)[category]?.color,
+          isNewPart: item.isNewPart,
+          isDefault: item.isDefault,
+          isSuperHero: item.isSuperHero,
+        })
+      }
+    }
+  }
+  return superHero
 }
 
 export const hasWonLevel = (progress: Progress, level: Level): boolean => {

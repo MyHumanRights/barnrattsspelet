@@ -13,8 +13,9 @@ export const MapBackground: React.FC<Props> = ({ opacity }) => {
       className={styles.imageMap}
       src='/images/start/map-large.svg'
       alt='Karta'
-      fill
       style={{ opacity: opacity || 0.25 }}
+      width={1189}
+      height={690}
     />
   )
 }

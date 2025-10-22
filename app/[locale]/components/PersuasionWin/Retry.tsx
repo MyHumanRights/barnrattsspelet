@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 
 import { setCardHand, setPlayFromScenario } from '@/api/storage'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 

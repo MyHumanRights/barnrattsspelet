@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
@@ -10,7 +10,7 @@ import {
   setTokens,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 import {
   ButtonVariant,
   STAT_COLLECTION_NAMES,
@@ -70,18 +70,16 @@ export const PersuasionWin = ({
   }, [])
 
   useEffect(() => {
-    ;(async () => {
-      const defeatedAntagonists = await readDefeatedAntagonists()
-      if (defeatedAntagonists.length === 1) {
-        addFirstTimeWin()
-      }
-      if (defeatedAntagonists.length === 3) {
-        addFirstTimeWinThree()
-      }
-      if (defeatedAntagonists.length === 10) {
-        addFirstTimeWinTen()
-      }
-    })()
+    const defeatedAntagonists = readDefeatedAntagonists()
+    if (defeatedAntagonists.length === 1) {
+      addFirstTimeWin()
+    }
+    if (defeatedAntagonists.length === 3) {
+      addFirstTimeWinThree()
+    }
+    if (defeatedAntagonists.length === 10) {
+      addFirstTimeWinTen()
+    }
 
     if (allAreDefeated) {
       addFirstTimeGameComplete()

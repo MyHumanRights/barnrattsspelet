@@ -6,13 +6,13 @@ import useSound from 'use-sound'
 import btnSound from '@/assets/sounds/fx/14-button.mp3'
 import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { Link as NavLink } from '@/i18n/navigation'
 import { AppPathnames } from '@/i18n/routing'
-import { Link as NavLink } from '@/i18n/routing'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import styles from './Link.module.scss'
 
-interface Props {
+type LinkProps = {
   to: AppPathnames
   size?: ButtonSize
   variant?: ButtonVariant
@@ -23,7 +23,7 @@ interface Props {
   [key: string]: any
 }
 
-export const Link: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
       children,

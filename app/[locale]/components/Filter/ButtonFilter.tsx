@@ -1,4 +1,4 @@
-import { LazyMotion, m } from 'framer-motion'
+import { LazyMotion, m } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSound from 'use-sound'

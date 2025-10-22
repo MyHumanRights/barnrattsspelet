@@ -1,10 +1,9 @@
 'use client'
 
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-import { getRandomAvatar } from '@/api/engine'
 import {
   getAvatar,
   getCardHand,
@@ -25,6 +24,7 @@ import {
   setTokens,
 } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
+import { getRandomAvatar } from '@/utils/avatar-utils'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
@@ -35,15 +35,15 @@ import Modal from '../Modal'
 import styles from './Settings.module.scss'
 import { SettingsModal } from './SettingsModal'
 
-interface Props {
+type SettingsProps = {
   defaultAvatarParts: IAvatarParts
   avatarColors: IAvatarColors
 }
 
-export const Settings: React.FC<Props> = ({
+export const Settings = ({
   defaultAvatarParts,
   avatarColors,
-}) => {
+}: SettingsProps) => {
   const t = useTranslations('Settings')
   const {
     isMobile,
@@ -51,79 +51,46 @@ export const Settings: React.FC<Props> = ({
     options: { shouldReduceMotion },
   } = useOptionsContext()
   const [showModal, setShowModal] = useState(false)
+
   const [animate, trigger] = useAnimation({
     rotation: shouldReduceMotion ? 0 : 40,
   })
   const reducedMotion = useReducedMotion() || isMobile
-  setActiveUser({ name: 'JaneDoe' })
 
-  const init = async () => {
-    // TODO: Set a user in a login state
-
-    const [
-      avatar,
-      firstTimePlaying,
-      firstTimeLootBox,
-      cards,
-      defeatedAntagonists,
-      tokens,
-      wrongAnswers,
-    ] = await Promise.all([
-      getAvatar(),
-      getFirstTimePlaying(),
-      getFirstTimeLootBox(),
-      getCardHand(),
-      readDefeatedAntagonists(),
-      readTokens(),
-      readWrongAnswers(),
-    ])
-
-    if (!avatar) {
-      const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarColors)
-      await Promise.all([
-        setAvatarPartCollection(defaultAvatarParts),
-        setAvatar(randomAvatar),
-      ])
-    }
-
-    if (firstTimePlaying == null) {
-      await setFirstTimePlaying(true)
-    }
-
-    if (firstTimeLootBox == null) {
-      await setFirstTimeLootBox(false)
-    }
-
-    if (!cards) {
-      await setCardHand([])
-    }
-
-    if (!defeatedAntagonists) {
-      await setDefeatedAntagonists([])
-    }
-
-    if (!tokens) {
-      await setTokens(0)
-    }
-
-    if (!wrongAnswers) {
-      await resetWrongAnswers()
-    }
-
-    // setDataInitialized(true)
-  }
+  // Ensure the active user is always set
+  useMemo(() => {
+    setActiveUser({ name: 'JaneDoe' })
+  }, [])
 
   useEffect(() => {
-    ;(async function () {
-      await init()
-      const settings = await readSettings(reducedMotion)
-      setOptions(settings)
-    })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reducedMotion])
+    const avatar = getAvatar()
+    const firstTimePlaying = getFirstTimePlaying()
+    const firstTimeLootBox = getFirstTimeLootBox()
+    const cards = getCardHand()
+    const defeatedAntagonists = readDefeatedAntagonists()
+    const tokens = readTokens()
+    const wrongAnswers = readWrongAnswers()
+
+    // Initialize missing data
+    if (!avatar) {
+      const randomAvatar = getRandomAvatar(defaultAvatarParts, avatarColors)
+      setAvatarPartCollection(defaultAvatarParts)
+      setAvatar(randomAvatar)
+    }
+
+    if (firstTimePlaying == null) setFirstTimePlaying(true)
+    if (firstTimeLootBox == null) setFirstTimeLootBox(false)
+    if (!cards) setCardHand([])
+    if (!defeatedAntagonists) setDefeatedAntagonists([])
+    if (!tokens) setTokens(0)
+    if (!wrongAnswers) resetWrongAnswers()
+
+    // Apply settings
+    setOptions(readSettings(reducedMotion))
+  }, [reducedMotion, setOptions, defaultAvatarParts, avatarColors])
 
   const handleModal = () => {
-    setShowModal(!showModal)
+    setShowModal((prev) => !prev)
     document?.querySelector('html')?.classList.toggle('scroll-lock')
   }
 

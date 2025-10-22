@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -9,24 +9,16 @@ import styles from './LootBoxOwl.module.scss'
 interface Props {
   lootItemOnly?: boolean
   showLootItem?: boolean
-  isBuyingLootbox?: boolean | null
-  fullLootAmount: number
-  fullLoot?: boolean
   saveLootToStorage?: () => void
   saveCardsToStorage?: () => void
-  hasLootItem?: boolean
   noCardsToWinFromHand: boolean
 }
 
 export const LootBoxOwl = ({
   lootItemOnly,
   showLootItem,
-  isBuyingLootbox,
-  fullLootAmount,
-  fullLoot,
   saveLootToStorage,
   saveCardsToStorage,
-  hasLootItem,
   noCardsToWinFromHand,
 }: Props) => {
   const t = useTranslations()
@@ -35,11 +27,6 @@ export const LootBoxOwl = ({
   } = useOptionsContext()
 
   const getOwlHeading = () => {
-    if (isBuyingLootbox) {
-      return !hasLootItem && fullLootAmount === 0
-        ? `Owl.lootbox.boughtEmptyBox.heading`
-        : `Owl.lootbox.bought${fullLootAmount}.heading`
-    }
     if (lootItemOnly) {
       return 'Owl.lootbox.itemonly.heading'
     }
@@ -50,11 +37,6 @@ export const LootBoxOwl = ({
   }
 
   const getOwlBody = () => {
-    if (isBuyingLootbox) {
-      return !hasLootItem && fullLootAmount === 0
-        ? `Owl.lootbox.boughtEmptyBox.body`
-        : `Owl.lootbox.bought${fullLootAmount}.body`
-    }
     if (lootItemOnly) {
       return noCardsToWinFromHand
         ? 'Owl.lootbox.noCardsToWin.body'

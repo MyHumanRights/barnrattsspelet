@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'motion/react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
@@ -20,12 +20,8 @@ export const SlimPlay = () => {
   const [isSlim, setIsSlim] = useState<boolean | null>(false)
 
   useEffect(() => {
-    const getPlayMode = async () => {
-      const isSlimPlay = await readGameStateValue('isSlimPlay')
-      setIsSlim(isSlimPlay)
-    }
-
-    getPlayMode()
+    const isSlimPlay = readGameStateValue('isSlimPlay')
+    setIsSlim(isSlimPlay)
   }, [])
 
   const handleModal = () => {
