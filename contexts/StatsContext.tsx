@@ -20,6 +20,7 @@ const DEFAULT_FLAGS: Flags = {
   [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEWER]: true,
   [STAT_FLAGS.IS_FIRST_TIME_COLLECTION_VIEW_APP]: true,
   [STAT_FLAGS.IS_FIRST_TIME_PERSUATION]: true,
+  [STAT_FLAGS.SHOULD_TRACK_DEVICE]: true,
 }
 
 const StatsContext = createContext<StatsContextProps>({} as StatsContextProps)

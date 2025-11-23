@@ -1,3 +1,5 @@
+'use client'
+
 import { Dispatch, SetStateAction } from 'react'
 
 import { Button } from '../components/Button'
@@ -15,16 +17,14 @@ export const LogInForm: React.FC<Props> = ({
   setInputValue,
 }) => {
   return (
-    <main className={styles.wrapper}>
-      <form onSubmit={handleLogin} className={styles.formWrapper}>
-        <input
-          type='password'
-          placeholder='Skriv in lösenordet'
-          onChange={(e) => setInputValue(e.target.value)}
-          value={inputValue}
-        />
-        <Button type='submit'>Logga in</Button>
-      </form>
-    </main>
+    <form onSubmit={handleLogin} className={styles.formWrapper}>
+      <input
+        type='password'
+        placeholder='Skriv in lösenordet'
+        onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
+      />
+      <Button type='submit'>Logga in</Button>
+    </form>
   )
 }

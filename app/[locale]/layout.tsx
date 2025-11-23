@@ -4,7 +4,9 @@ import '../index.scss'
 
 import type { Metadata } from 'next'
 import { Bangers, Quicksand } from 'next/font/google'
+import { headers } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { userAgent } from 'next/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { ReactNode } from 'react'
@@ -13,6 +15,7 @@ import avatarJson from '@/data/avatar.json'
 import { getDefaultAvatorParts } from '@/utils/avatar-utils'
 import { IAvatarColors, IAvatarParts } from '@/utils/types'
 
+import { DeviceTracker } from './components/DeviceTracker'
 import RootProviders from './components/RootProviders'
 import { Settings } from './components/Settings'
 import styles from './layout.module.scss'
@@ -65,6 +68,16 @@ const RootLayout = async (props: {
     avatarJson.parts as IAvatarParts
   )
 
+  // Get device type from user agent (GDPR compliant - no PII)
+  const headersList = await headers()
+  const ua = userAgent({ headers: headersList })
+  const deviceType =
+    ua.device.type === 'mobile'
+      ? 'mobile'
+      : ua.device.type === 'tablet'
+      ? 'tablet'
+      : 'desktop'
+
   return (
     <html lang={locale}>
       <body className={`${quicksand.variable} ${bangers.variable}`}>
@@ -79,6 +92,7 @@ const RootLayout = async (props: {
                 timeZone={timeZone}
                 messages={messages}
               >
+                <DeviceTracker deviceType={deviceType} />
                 <Settings
                   defaultAvatarParts={defaultAvatarParts}
                   avatarColors={avatarJson.colors as IAvatarColors}

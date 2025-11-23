@@ -1,11 +1,11 @@
 'use client'
 
-import { doc, getDoc } from 'firebase/firestore/lite'
+import { collection, getDocs } from 'firebase/firestore/lite'
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 
 import { ButtonVariant, STAT_COLLECTION_NAMES } from '@/utils/constants'
 import { db } from '@/utils/firebase'
-import { StatsData } from '@/utils/types'
+import { DeviceStats, StatsData } from '@/utils/types'
 
 import { Button } from '../components/Button'
 import { Loader } from '../components/Loader'
@@ -20,6 +20,11 @@ const years = Array.from({ length: currentYear - 2023 + 1 }, (_, i) => 2023 + i)
 
 export const StatsClient = () => {
   const [data, setData] = useState<StatsData>({})
+  const [deviceStats, setDeviceStats] = useState<DeviceStats>({
+    mobile: 0,
+    tablet: 0,
+    desktop: 0,
+  })
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [hasError, setHasError] = useState('')
   const [inputValue, setInputValue] = useState('')
@@ -32,31 +37,60 @@ export const StatsClient = () => {
       setIsLoading(true)
       const newData: StatsData = {}
       const dbName = seeOldStats ? year : year + '-next'
+      const newDeviceStats: DeviceStats = { mobile: 0, tablet: 0, desktop: 0 }
 
       try {
-        const fetchPromises = Object.values(STAT_COLLECTION_NAMES).map(
-          async (docName) => {
-            const docRef = doc(db, dbName, docName)
-            const docSnap = await getDoc(docRef)
+        // Use getDocs to read entire collection in one operation (1 read instead of 9+)
+        const collectionRef = collection(db, dbName)
+        const querySnapshot = await getDocs(collectionRef)
 
-            if (docSnap.exists()) {
-              const docData = docSnap.data()
-              newData[docName] = {
-                totalVisits: docData.total_visits,
-                monthlyVisits: docData.monthly_visits,
-              }
-            } else {
-              console.warn(`Document ${docName} does not exist in ${dbName}`)
-              newData[docName] = {
-                totalVisits: 0,
-                monthlyVisits: {},
-              }
+        querySnapshot.forEach((docSnap) => {
+          const docName = docSnap.id
+          const docData = docSnap.data()
+
+          // Handle device statistics separately
+          if (docName === STAT_COLLECTION_NAMES.DEVICE_MOBILE) {
+            newDeviceStats.mobile = docData.count || 0
+          } else if (docName === STAT_COLLECTION_NAMES.DEVICE_TABLET) {
+            newDeviceStats.tablet = docData.count || 0
+          } else if (docName === STAT_COLLECTION_NAMES.DEVICE_DESKTOP) {
+            newDeviceStats.desktop = docData.count || 0
+          } else {
+            // Regular statistics with monthly breakdown
+            newData[docName] = {
+              totalVisits: docData.total_visits || 0,
+              monthlyVisits: docData.monthly_visits || {},
             }
           }
-        )
+        })
 
-        await Promise.all(fetchPromises)
+        // Initialize missing collections with zero values
+        Object.values(STAT_COLLECTION_NAMES).forEach((docName) => {
+          if (
+            docName === STAT_COLLECTION_NAMES.DEVICE_MOBILE &&
+            newDeviceStats.mobile === 0
+          ) {
+            // Already initialized
+          } else if (
+            docName === STAT_COLLECTION_NAMES.DEVICE_TABLET &&
+            newDeviceStats.tablet === 0
+          ) {
+            // Already initialized
+          } else if (
+            docName === STAT_COLLECTION_NAMES.DEVICE_DESKTOP &&
+            newDeviceStats.desktop === 0
+          ) {
+            // Already initialized
+          } else if (!newData[docName]) {
+            newData[docName] = {
+              totalVisits: 0,
+              monthlyVisits: {},
+            }
+          }
+        })
+
         setData(newData)
+        setDeviceStats(newDeviceStats)
       } catch (e) {
         if (e instanceof Error) {
           setHasError(e.message)
@@ -127,12 +161,31 @@ export const StatsClient = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <StatsTable
-          data={data}
-          selectedYear={selectedYear}
-          currentYear={currentYear}
-          currentMonth={currentMonth}
-        />
+        <>
+          <section
+            style={{
+              marginBottom: '2rem',
+              padding: '1rem',
+              border: '1px solid #ccc',
+              borderRadius: '8px',
+            }}
+          >
+            <h2>Enhetsstatistik</h2>
+            <p>Mobil: {deviceStats.mobile}</p>
+            <p>Surfplatta: {deviceStats.tablet}</p>
+            <p>Dator: {deviceStats.desktop}</p>
+            <p>
+              Totalt:{' '}
+              {deviceStats.mobile + deviceStats.tablet + deviceStats.desktop}
+            </p>
+          </section>
+          <StatsTable
+            data={data}
+            selectedYear={selectedYear}
+            currentYear={currentYear}
+            currentMonth={currentMonth}
+          />
+        </>
       )}
     </>
   )
