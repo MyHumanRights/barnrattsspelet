@@ -4,6 +4,8 @@ import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
+import { Quiz } from '@/app/[locale]/components/Quiz'
+import { Token } from '@/app/[locale]/components/Token'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -17,8 +19,6 @@ import { TabFilter } from '../components/Filter/TabFilter'
 import { Folder } from '../components/Folder/'
 import { Link } from '../components/Link/Link'
 import styles from './CollectionViewer.module.scss'
-import { Token } from '@/app/[locale]/components/Token'
-import { Quiz } from '@/app/[locale]/components/Quiz'
 
 interface Props {
   playableCards: ICard[]

@@ -14,6 +14,8 @@ import {
   setGameStateValue,
   setShownWelcomeTip,
 } from '@/api/storage'
+import { MapBackground } from '@/app/[locale]/components/MapBackground'
+import { OwlDialogue } from '@/app/[locale]/components/OwlDialogue'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { getNewAvatarParts } from '@/utils/avatar-utils'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -27,8 +29,6 @@ import { Map } from '../components/Map'
 import { Progressbar } from '../components/Progressbar'
 import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
-import { MapBackground } from '@/app/[locale]/components/MapBackground'
-import { OwlDialogue } from '@/app/[locale]/components/OwlDialogue'
 
 interface Props {
   antagonists: IAntagonistObject

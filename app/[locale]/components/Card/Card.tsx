@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
+import { Highlight } from '@/app/[locale]/components/Card/Highlight'
 import flipSound from '@/assets/sounds/fx/09-flip-card.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
@@ -16,7 +17,6 @@ import Repeat from '../Icons/Repeat'
 import { Link } from '../Link/Link'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './Card.module.scss'
-import { Highlight } from '@/app/[locale]/components/Card/Highlight'
 
 interface Props {
   which: ICard

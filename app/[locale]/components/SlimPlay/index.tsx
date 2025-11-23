@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { readGameStateValue, setGameStateValue } from '@/api/storage'
+import { PlayModal } from '@/app/[locale]/components/SlimPlay/PlayModal'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 
 import { Button } from '../Button'
 import styles from './SlimPlay.module.scss'
-import { PlayModal } from '@/app/[locale]/components/SlimPlay/PlayModal'
 
 export const SlimPlay = () => {
   const t = useTranslations()

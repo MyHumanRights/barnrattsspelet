@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { memo } from 'react'
 
 import { getAntagonistFromCard } from '@/api/engine'
+import { Card } from '@/app/[locale]/components/Card/Card'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import { ButtonVariant } from '@/utils/constants'
@@ -13,7 +14,6 @@ import { IAntagonistObject, ICard } from '@/utils/types'
 import { Button } from '../Button'
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './CardItem.module.scss'
-import { Card } from '@/app/[locale]/components/Card/Card'
 
 interface Props {
   card: ICard

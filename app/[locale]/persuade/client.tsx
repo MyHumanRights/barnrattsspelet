@@ -23,6 +23,9 @@ import {
   setGameStateValue,
   setWrongAnswers,
 } from '@/api/storage'
+import { OwlTips } from '@/app/[locale]/components/OwlTips'
+import { PersuasionWin } from '@/app/[locale]/components/PersuasionWin'
+import Retry from '@/app/[locale]/components/PersuasionWin/Retry'
 import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
 import wrongAnswerSound from '@/assets/sounds/fx/02-incorrect-card-played.mp3'
 import gameOverSound from '@/assets/sounds/fx/05-lose.mp3'
@@ -59,9 +62,6 @@ import { Healthbar } from '../components/Healthbar'
 import { Quiz } from '../components/Quiz'
 import { Token } from '../components/Token'
 import styles from './Persuade.module.scss'
-import { OwlTips } from '@/app/[locale]/components/OwlTips'
-import Retry from '@/app/[locale]/components/PersuasionWin/Retry'
-import { PersuasionWin } from '@/app/[locale]/components/PersuasionWin'
 
 type Line = {
   text: string
