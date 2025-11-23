@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'motion/react'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
@@ -17,10 +16,7 @@ import Repeat from '../Icons/Repeat'
 import { Link } from '../Link/Link'
 import { TextWithVoiceover } from '../TextWithVoiceover'
 import styles from './Card.module.scss'
-
-const Highlight = dynamic(() =>
-  import('./Highlight').then((mod) => mod.Highlight)
-)
+import { Highlight } from '@/app/[locale]/components/Card/Highlight'
 
 interface Props {
   which: ICard

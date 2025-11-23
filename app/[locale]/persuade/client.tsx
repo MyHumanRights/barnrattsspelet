@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence } from 'motion/react'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useSound from 'use-sound'
@@ -48,40 +47,21 @@ import useScrollLockModal from '@/utils/hooks/useScrollLockModal'
 import { useTokens } from '@/utils/hooks/useTokens'
 import { GAME_STATES, ICard, IGameAntagonist, IGameState } from '@/utils/types'
 
+import { Antagonist } from '../components/Antagonist'
 import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
+import { CardHand } from '../components/CardHand'
+import { MobileCardHand } from '../components/CardHand/MobileCardHand'
+import { ChatBubble } from '../components/ChatBubble'
 import { Environment } from '../components/Environment'
 import { GameIntro } from '../components/GameIntro'
 import { Healthbar } from '../components/Healthbar'
+import { Quiz } from '../components/Quiz'
+import { Token } from '../components/Token'
 import styles from './Persuade.module.scss'
-
-const Retry = dynamic(() =>
-  import('../components/PersuasionWin/Retry').then((mod) => mod.Retry)
-)
-const PersuasionWin = dynamic(() =>
-  import('../components/PersuasionWin').then((mod) => mod.PersuasionWin)
-)
-const OwlTips = dynamic(() =>
-  import('../components/OwlTips').then((mod) => mod.OwlTips)
-)
-const CardHand = dynamic(() =>
-  import('../components/CardHand').then((mod) => mod.CardHand)
-)
-const MobileCardHand = dynamic(() =>
-  import('../components/CardHand/MobileCardHand').then(
-    (mod) => mod.MobileCardHand
-  )
-)
-const ChatBubble = dynamic(() =>
-  import('../components/ChatBubble').then((mod) => mod.ChatBubble)
-)
-const Antagonist = dynamic(() =>
-  import('../components/Antagonist').then((mod) => mod.Antagonist)
-)
-const Quiz = dynamic(() => import('../components/Quiz').then((mod) => mod.Quiz))
-const Token = dynamic(() =>
-  import('../components/Token').then((mod) => mod.Token)
-)
+import { OwlTips } from '@/app/[locale]/components/OwlTips'
+import Retry from '@/app/[locale]/components/PersuasionWin/Retry'
+import { PersuasionWin } from '@/app/[locale]/components/PersuasionWin'
 
 type Line = {
   text: string
@@ -183,7 +163,8 @@ export const PersuadeClient = () => {
     ])
 
     !isScenarioMode && setFirstTimePlaying(false)
-    setCurrentState(setGameState({ state: GAME_STATES.GAME }))
+    setGameState({ state: GAME_STATES.GAME })
+    setCurrentState(getGameState())
     setTimeout(() => {
       soundEffectsOn && playChatSound()
     }, 1200)
@@ -226,10 +207,6 @@ export const PersuadeClient = () => {
     }
     const { result } = answer(currentCard, antagonist)
 
-    const state = getGameState()
-
-    const { statement } = state
-
     if (result === ANSWER_TYPES.WIN) {
       saveProgress()
     }
@@ -245,7 +222,9 @@ export const PersuadeClient = () => {
         // first delay animating exit of correct card
         setTimeout(() => {
           setActiveCardId(null)
-          setCurrentState(state)
+          // Get the updated state after answer() has modified it
+          const updatedState = getGameState()
+          setCurrentState(updatedState)
         }, ANSWER_DELAY)
 
         // then show player's answer
@@ -262,10 +241,11 @@ export const PersuadeClient = () => {
 
         // then show next chat bubble
         setTimeout(() => {
+          const currentGameState = getGameState()
           setLines((prev) => [
             ...prev,
             {
-              text: `antagonists.${antagonist?.name}.statements.${statement}`,
+              text: `antagonists.${antagonist?.name}.statements.${currentGameState.statement}`,
               player: false,
             },
           ])
@@ -281,7 +261,7 @@ export const PersuadeClient = () => {
             player: true,
           },
         ])
-        setCurrentState(state)
+        setCurrentState(getGameState())
         setWrongAnswers()
         setTimeout(() => {
           soundEffectsOn && playChatSound()
@@ -297,10 +277,11 @@ export const PersuadeClient = () => {
         }, ANSWER_DELAY)
 
         setTimeout(() => {
+          const currentGameState = getGameState()
           setLines((prev) => [
             ...prev,
             {
-              text: `antagonists.${antagonist.name}.statements.${statement}`,
+              text: `antagonists.${antagonist.name}.statements.${currentGameState.statement}`,
               player: false,
             },
           ])
@@ -314,11 +295,12 @@ export const PersuadeClient = () => {
         soundEffectsOn && playRightAnswerSound()
 
         setTimeout(() => {
+          const updatedState = getGameState()
           setCurrentState((prevState) => {
             return {
               ...(prevState as IGameState),
-              cardHand: state.cardHand,
-              progress: state.progress,
+              cardHand: updatedState.cardHand,
+              progress: updatedState.progress,
             }
           })
         }, ANSWER_DELAY)
@@ -335,7 +317,7 @@ export const PersuadeClient = () => {
         }, ANSWER_DELAY * 2)
 
         setTimeout(() => {
-          setCurrentState(state)
+          setCurrentState(getGameState())
           setLines([
             {
               text: `antagonists.${antagonist.name}.winquote`,
@@ -386,7 +368,12 @@ export const PersuadeClient = () => {
   const handleReplay = () => {
     setCorrectCard(null)
     resetGameState()
-    // future: re-init via useGameInit
+    const state = getGameState()
+    setCurrentState(state)
+    setLines([])
+    setBoostedCards([])
+    setActiveCardId(null)
+    setShowWinModal(false)
   }
 
   const handleGotoLootBox = () => {
@@ -419,8 +406,8 @@ export const PersuadeClient = () => {
     }
   }
 
-  // TODO: Can probably remove this when antagonist gets set at other point
-  if (!antagonist || !currentState?.state) {
+  // Show loading state while data is initializing
+  if (!antagonist || !currentState) {
     return null
   }
 
