@@ -27,6 +27,9 @@ export enum STAT_COLLECTION_NAMES {
   FIRST_TIME_WIN_GAME_COMPLETE = 'firstTimeGameComplete',
   FIRST_TIME_COLLECTION_VIEWER = 'firstTimeCollectionViewer',
   FIRST_TIME_COLLECTION_VIEW_APP = 'firstTimeCollectionViewerApp',
+  DEVICE_MOBILE = 'deviceMobile',
+  DEVICE_TABLET = 'deviceTablet',
+  DEVICE_DESKTOP = 'deviceDesktop',
 }
 
 export enum STAT_FLAGS {
@@ -40,6 +43,7 @@ export enum STAT_FLAGS {
   IS_FIRST_TIME_WIN_GAME_COMPLETE = 'isFirstTimeGameComplete',
   IS_FIRST_TIME_COLLECTION_VIEWER = 'isFirstTimeCollectionViewer',
   IS_FIRST_TIME_COLLECTION_VIEW_APP = 'isFirstTimeCollectionViewerApp',
+  HAS_TRACKED_DEVICE = 'hasTrackedDevice',
 }
 
 export const STAT_STORAGE_KEY = 'statsFlags-v1'
