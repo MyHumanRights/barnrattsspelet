@@ -43,7 +43,7 @@ export enum STAT_FLAGS {
   IS_FIRST_TIME_WIN_GAME_COMPLETE = 'isFirstTimeGameComplete',
   IS_FIRST_TIME_COLLECTION_VIEWER = 'isFirstTimeCollectionViewer',
   IS_FIRST_TIME_COLLECTION_VIEW_APP = 'isFirstTimeCollectionViewerApp',
-  HAS_TRACKED_DEVICE = 'hasTrackedDevice',
+  SHOULD_TRACK_DEVICE = 'shouldTrackDevice',
 }
 
 export const STAT_STORAGE_KEY = 'statsFlags-v1'

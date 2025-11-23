@@ -22,7 +22,7 @@ export const DeviceTracker: React.FC<DeviceTrackerProps> = ({ deviceType }) => {
 
   const trackDevice = useAddToStatistics(
     collectionName,
-    STAT_FLAGS.HAS_TRACKED_DEVICE
+    STAT_FLAGS.SHOULD_TRACK_DEVICE
   )
 
   useEffect(() => {
