@@ -231,11 +231,18 @@ export const levels: Level[] = [
 
 export type StatsData = {
   [key: string]: {
-    totalVisits: number
-    monthlyVisits: {
+    totalVisits?: number
+    monthlyVisits?: {
       [month: string]: number
     }
+    count?: number
   }
+}
+
+export type DeviceStats = {
+  mobile: number
+  tablet: number
+  desktop: number
 }
 
 export const cheatListAvatar: IAvatarParts = {
