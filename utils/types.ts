@@ -119,7 +119,6 @@ type Component = {
 
 type Statement = {
   cards: string[]
-  category: string
 }
 
 export type IGameAntagonist = {
