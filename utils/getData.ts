@@ -1,36 +1,26 @@
-import { promises as fs } from 'fs'
+import antagonistsJson from '@/data/antagonists.json'
+import avatarJson from '@/data/avatar.json'
+import cardsJson from '@/data/cards.json'
+import nonPlayableCardsJson from '@/data/nonPlayableCards.json'
 
 import { IAntagonistObject, IAvatarColors, IAvatarParts, ICard } from './types'
 
 export async function getCards(): Promise<ICard[]> {
-  const file = await fs.readFile(process.cwd() + '/data/cards.json', 'utf8')
-  return JSON.parse(file)
+  return cardsJson as ICard[]
 }
 
 export async function getNonPlayableCards(): Promise<ICard[]> {
-  const file = await fs.readFile(
-    process.cwd() + '/data/nonPlayableCards.json',
-    'utf8'
-  )
-  return JSON.parse(file)
+  return nonPlayableCardsJson as ICard[]
 }
 
 export async function getAvatarParts(): Promise<IAvatarParts> {
-  const file = await fs.readFile(process.cwd() + '/data/avatar.json', 'utf8')
-  const { parts } = JSON.parse(file)
-  return parts
+  return avatarJson.parts as IAvatarParts
 }
 
 export async function getAvatarColors(): Promise<IAvatarColors> {
-  const file = await fs.readFile(process.cwd() + '/data/avatar.json', 'utf8')
-  const { colors } = JSON.parse(file)
-  return colors
+  return avatarJson.colors as IAvatarColors
 }
 
 export async function getAntagonists(): Promise<IAntagonistObject> {
-  const file = await fs.readFile(
-    process.cwd() + '/data/antagonists.json',
-    'utf8'
-  )
-  return JSON.parse(file)
+  return antagonistsJson as IAntagonistObject
 }

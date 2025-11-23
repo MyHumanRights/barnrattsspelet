@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useSound from 'use-sound'
@@ -17,6 +16,12 @@ import {
   setCardCollection,
   setCardHand,
 } from '@/api/storage'
+import { LootItemCard } from '@/app/[locale]/components/Card/LootItemCard'
+import { Confetti } from '@/app/[locale]/components/Confetti/Confetti'
+import { LootBoxCards } from '@/app/[locale]/components/LootBoxCards'
+import { LootBoxOwl } from '@/app/[locale]/components/LootBoxOwl'
+import { MapBackground } from '@/app/[locale]/components/MapBackground'
+import { OwlDialogue } from '@/app/[locale]/components/OwlDialogue'
 import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
 import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
 import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
@@ -41,25 +46,6 @@ import { Button } from '../components/Button'
 import { Environment } from '../components/Environment'
 import { NotAllowed } from '../components/NotAllowed'
 import styles from './LootBox.module.scss'
-
-const Confetti = dynamic(() =>
-  import('../components/Confetti/Confetti').then((mod) => mod.Confetti)
-)
-const LootBoxCards = dynamic(() =>
-  import('../components/LootBoxCards').then((mod) => mod.LootBoxCards)
-)
-const LootItemCard = dynamic(() =>
-  import('../components/Card/LootItemCard').then((mod) => mod.LootItemCard)
-)
-const LootBoxOwl = dynamic(() =>
-  import('../components/LootBoxOwl').then((mod) => mod.LootBoxOwl)
-)
-const OwlDialogue = dynamic(() =>
-  import('../components/OwlDialogue').then((mod) => mod.OwlDialogue)
-)
-const MapBackground = dynamic(() =>
-  import('../components/MapBackground').then((mod) => mod.MapBackground)
-)
 
 type Props = {
   cardData: ICard[]

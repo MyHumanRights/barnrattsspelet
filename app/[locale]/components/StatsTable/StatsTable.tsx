@@ -32,7 +32,10 @@ export const StatsTable = ({
   return (
     <>
       {COLLECTION_ORDER.map((collection) => {
-        const sortedMonths = Object.keys(data[collection].monthlyVisits)
+        const collectionData = data[collection]
+        if (!collectionData || !collectionData.monthlyVisits) return null
+
+        const sortedMonths = Object.keys(collectionData.monthlyVisits)
           .sort()
           .filter((month) => {
             const monthNumber = parseInt(month.split('-')[1], 10)
@@ -42,7 +45,7 @@ export const StatsTable = ({
         return (
           <section key={collection} className={styles.container}>
             <h2>{t(`statistics.${collection}`)}</h2>
-            <p>Totalt antal under året: {data[collection].totalVisits}</p>
+            <p>Totalt antal under året: {collectionData.totalVisits || 0}</p>
             <h3>Månadsvis</h3>
             <table>
               <tbody>
@@ -58,7 +61,7 @@ export const StatsTable = ({
                   <th>Antal</th>
                   {sortedMonths.map((month) => (
                     <td key={`${collection}-${month}-count`}>
-                      {data[collection].monthlyVisits[month] || 0}
+                      {collectionData.monthlyVisits![month] || 0}
                     </td>
                   ))}
                 </tr>
