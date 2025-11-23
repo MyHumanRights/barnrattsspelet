@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'motion/react'
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
 
 import { getAntagonistFromCard } from '@/api/engine'
+import { Card } from '@/app/[locale]/components/Card/Card'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import { ButtonVariant } from '@/utils/constants'
@@ -14,8 +14,6 @@ import { IAntagonistObject, ICard } from '@/utils/types'
 import { Button } from '../Button'
 import { ChevronRight } from '../Icons/ChevronRight'
 import styles from './CardItem.module.scss'
-
-const LazyCard = dynamic(() => import('../Card').then((mod) => mod.Card))
 
 interface Props {
   card: ICard
@@ -104,7 +102,7 @@ export const CardItem: React.FC<Props> = memo(
           initial='initial'
           animate={active ? 'active' : 'initial'}
         >
-          <LazyCard
+          <Card
             which={card}
             onClick={cardSelectable ? () => handleClickOnCard(card) : undefined}
             animation={active && !isMobile ? undefined : hoverAnimation}

@@ -1,4 +1,4 @@
-import { useCallback,useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { resetGameState, setGameState } from '@/api/engine'
 import { getCardHand, resetWrongAnswers } from '@/api/storage'
@@ -18,6 +18,8 @@ export default function useGameInit(
     STAT_FLAGS.IS_FIRST_TIME_PERSUATION
   )
 
+  const hasInitialized = useRef(false)
+
   const init = useCallback(() => {
     if (!antagonistType) return
 
@@ -29,7 +31,10 @@ export default function useGameInit(
   }, [antagonistType, setCurrentState])
 
   useEffect(() => {
+    if (!antagonistType || hasInitialized.current) return
+
     addFirstTimePersuation()
     init()
-  }, [addFirstTimePersuation, init])
+    hasInitialized.current = true
+  }, [antagonistType, addFirstTimePersuation, init])
 }

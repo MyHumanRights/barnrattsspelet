@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import dynamic from 'next/dynamic'
 import { useCallback, useEffect, useState } from 'react'
 
 import { getAntagonistsByHand, getAntagonistsByPlace } from '@/api/engine'
@@ -15,6 +14,8 @@ import {
   setGameStateValue,
   setShownWelcomeTip,
 } from '@/api/storage'
+import { MapBackground } from '@/app/[locale]/components/MapBackground'
+import { OwlDialogue } from '@/app/[locale]/components/OwlDialogue'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { getNewAvatarParts } from '@/utils/avatar-utils'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -28,13 +29,6 @@ import { Map } from '../components/Map'
 import { Progressbar } from '../components/Progressbar'
 import { SlimPlay } from '../components/SlimPlay'
 import styles from './Home.module.scss'
-
-const OwlDialogue = dynamic(() =>
-  import('../components/OwlDialogue').then((mod) => mod.OwlDialogue)
-)
-const MapBackground = dynamic(() =>
-  import('../components/MapBackground').then((mod) => mod.MapBackground)
-)
 
 interface Props {
   antagonists: IAntagonistObject
