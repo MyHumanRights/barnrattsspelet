@@ -1,3 +1,85 @@
+# [1.19.0](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.18.0...v1.19.0) (2025-10-22)
+
+
+### Bug Fixes
+
+* change user name ([2411bd2](https://github.com/MyHumanRights/barnrattsspelet/commit/2411bd2b81dcc8d3703cd713bce87dfca818424f))
+* correct import path for useTranslations in DeleteButton component ([b857f50](https://github.com/MyHumanRights/barnrattsspelet/commit/b857f500805d1dceac2168a0054828b97d515773))
+* correct monthly visits increment structure in useAddToStatistics hook ([aba2178](https://github.com/MyHumanRights/barnrattsspelet/commit/aba217820e81ad0d0c42af219118ebfff32a0eca))
+* meta title and desc ([1d410b0](https://github.com/MyHumanRights/barnrattsspelet/commit/1d410b0bdd9fe565a17eb4c86be4265d846c6d15))
+* show selected answer ([adcbcc1](https://github.com/MyHumanRights/barnrattsspelet/commit/adcbcc1acce71e665554e170a86dace62b1c9cdb))
+* streamline progress bar styles by consolidating color property ([92348da](https://github.com/MyHumanRights/barnrattsspelet/commit/92348da64b72620790695155b281e28fdcfb71ac))
+* update manual ([d789e04](https://github.com/MyHumanRights/barnrattsspelet/commit/d789e04849d2b4b0381f3a6e253254f68dc1f04a))
+* update node type definitions and remove deprecated versions ([53463b5](https://github.com/MyHumanRights/barnrattsspelet/commit/53463b5096c424f2ba0b875fd698868f8c4e5a97))
+* update package name to "barnrattsspelet" ([7d79bb4](https://github.com/MyHumanRights/barnrattsspelet/commit/7d79bb4b07a90855a71f25eebc3dc37921698b99))
+* update pdf ([1a83d5c](https://github.com/MyHumanRights/barnrattsspelet/commit/1a83d5c31d1d7e5513821519a26c06504c594679))
+* update years array in stats client ([8e19cd6](https://github.com/MyHumanRights/barnrattsspelet/commit/8e19cd6680bf69b81faf3610907fc9add99498f3))
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/MyHumanRights/barnrattsspelet/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+* add locale support in generateMetadata and RootLayout components ([21b5b68](https://github.com/MyHumanRights/barnrattsspelet/commit/21b5b683643ef4a76f19248244a4bd0e48e3de18))
+* Add StatsTable and YearSelector components ([3030745](https://github.com/MyHumanRights/barnrattsspelet/commit/30307456b821cc478615e754f5e8fc84b0623ebd))
+* add useAntagonist hook and enhance Environment component for background color change ([2431b87](https://github.com/MyHumanRights/barnrattsspelet/commit/2431b87b33ceb93c86983d1c355dbf42d11fa370))
+* animation on close button ([56c3151](https://github.com/MyHumanRights/barnrattsspelet/commit/56c3151b0524744ddea27474bc6312e0d1935d04))
+* enhance Confetti particle spread and burst frequency ([ce1be2b](https://github.com/MyHumanRights/barnrattsspelet/commit/ce1be2bf37ce725498a6f4d5767285a7f2d2c49c))
+* enhance StatsContext and useAddToStatistics for improved state management and localStorage synchronization ([0a09961](https://github.com/MyHumanRights/barnrattsspelet/commit/0a09961370900c36513a181ee19ee9c49e001357))
+* fix animation on progress bar ([0685af5](https://github.com/MyHumanRights/barnrattsspelet/commit/0685af5f2129812b041281c4b0dfc4fa8544a393))
+* fix sass and await params ([a99441b](https://github.com/MyHumanRights/barnrattsspelet/commit/a99441b5ce50871c56c263c046cfd43fbf3e05ce))
+* fix typescript errors ([416ba95](https://github.com/MyHumanRights/barnrattsspelet/commit/416ba9511545d09a22a76d8fbddf8f6ec8220cc9))
+* implement custom hook for owl tips and clean up related code ([3380b8b](https://github.com/MyHumanRights/barnrattsspelet/commit/3380b8b4bf0dfd108a993dd43bcd56dd577c219a))
+* implement useGameInit and useScrollLockModal hooks for game state management and modal control ([4edf624](https://github.com/MyHumanRights/barnrattsspelet/commit/4edf624b508c96cc38d2ec77b8d3c26d4f5f222f))
+* improve performance ([505e982](https://github.com/MyHumanRights/barnrattsspelet/commit/505e98268af86377e667eed5e85f9a3cb2302735))
+* integrate stats context and reset functionality in SettingsModal ([8f0ee24](https://github.com/MyHumanRights/barnrattsspelet/commit/8f0ee24f8dee0a4a2e256c8d2c8b1384747f0d47))
+* logging statements for non-production environments ([5e3b28e](https://github.com/MyHumanRights/barnrattsspelet/commit/5e3b28e797ce941d1c933684b62771d96687c9b0))
+* migrate from framer-motion to motion/react for animation handling ([f11ccee](https://github.com/MyHumanRights/barnrattsspelet/commit/f11cceeec9c20290efb6f71f939946af3c351cd4))
+* refactor state management and optimize imports in PersuadeClient component ([965026f](https://github.com/MyHumanRights/barnrattsspelet/commit/965026f7399308330e51b7c5184bda629ce1539d))
+* refactor toggleThemeSound to useCallback for improved performance and stability ([aca19de](https://github.com/MyHumanRights/barnrattsspelet/commit/aca19de5c8e817e2d58ca93d3ebb1eb957e3cbec))
+* remove deprecated i18n configuration and update routing imports ([5f4eebc](https://github.com/MyHumanRights/barnrattsspelet/commit/5f4eebcf7adc75435016d603b7268ac5bd0d3e0a))
+* remove unused 'is buying loot box' logic ([a1b057c](https://github.com/MyHumanRights/barnrattsspelet/commit/a1b057cfb6555bce1b3537a3318abdc2da0de8c5))
+* set width and height to 100% for imageMap in MapBackground ([3df1059](https://github.com/MyHumanRights/barnrattsspelet/commit/3df1059fbbbc7e62f94f614be0c3cd44bf694b27))
+* show name in non production environment ([a6ab61d](https://github.com/MyHumanRights/barnrattsspelet/commit/a6ab61d48ffe4ab4a154cc23dfcbf73b6e5abf6b))
+* show right and wrong in quiz ([b2a4617](https://github.com/MyHumanRights/barnrattsspelet/commit/b2a46170300231a05a607c978a79f9eb868832fa))
+* update antagonist name type to Antagonist ([9b933de](https://github.com/MyHumanRights/barnrattsspelet/commit/9b933dec63b3879cd9c8909a02d119bfe830a680))
+* update Confetti component ([daa88ec](https://github.com/MyHumanRights/barnrattsspelet/commit/daa88ecaf776175afaef2b13c4b81fbbbf5a67e1))
+* update Confetti component to improve particle creation and animation; remove unused index file and dependencies ([2e30a37](https://github.com/MyHumanRights/barnrattsspelet/commit/2e30a3794df2837f9a45c19909b8a20d9702497d))
+* update database name ([79dcdff](https://github.com/MyHumanRights/barnrattsspelet/commit/79dcdff514cbce05f54a18c98eebe0853650cbe1))
+* update ESLint configuration and improve locale handling in request ([1b3138a](https://github.com/MyHumanRights/barnrattsspelet/commit/1b3138a93cf814f21f93f070a1b94206297c2554))
+* update logic for ending ([ac27559](https://github.com/MyHumanRights/barnrattsspelet/commit/ac27559483fb610818c39fee7c2b84d9e1728bcf))
+* Update progress bar logic ([fa6e6a1](https://github.com/MyHumanRights/barnrattsspelet/commit/fa6e6a1df26da2b0f259d0a7d8fc0a038a2c6802))
+* update to next15 ([255d67e](https://github.com/MyHumanRights/barnrattsspelet/commit/255d67ef2fd2d7134da20876aab8b6e4edc428e7))
+
+# [1.19.0](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.18.0...v1.19.0) (2025-01-07)
+
+
+### Bug Fixes
+
+* change user name ([2411bd2](https://github.com/MyHumanRights/barnrattsspelet/commit/2411bd2b81dcc8d3703cd713bce87dfca818424f))
+* meta title and desc ([1d410b0](https://github.com/MyHumanRights/barnrattsspelet/commit/1d410b0bdd9fe565a17eb4c86be4265d846c6d15))
+* show selected answer ([adcbcc1](https://github.com/MyHumanRights/barnrattsspelet/commit/adcbcc1acce71e665554e170a86dace62b1c9cdb))
+* update manual ([d789e04](https://github.com/MyHumanRights/barnrattsspelet/commit/d789e04849d2b4b0381f3a6e253254f68dc1f04a))
+* update package name to "barnrattsspelet" ([7d79bb4](https://github.com/MyHumanRights/barnrattsspelet/commit/7d79bb4b07a90855a71f25eebc3dc37921698b99))
+* update pdf ([1a83d5c](https://github.com/MyHumanRights/barnrattsspelet/commit/1a83d5c31d1d7e5513821519a26c06504c594679))
+* update years array in stats client ([8e19cd6](https://github.com/MyHumanRights/barnrattsspelet/commit/8e19cd6680bf69b81faf3610907fc9add99498f3))
+
+
+### Features
+
+* add intro texts ([f1d95be](https://github.com/MyHumanRights/barnrattsspelet/commit/f1d95be3f30822274dcf4cd48f65cd78106f7120))
+* add locale support in generateMetadata and RootLayout components ([21b5b68](https://github.com/MyHumanRights/barnrattsspelet/commit/21b5b683643ef4a76f19248244a4bd0e48e3de18))
+* Add StatsTable and YearSelector components ([3030745](https://github.com/MyHumanRights/barnrattsspelet/commit/30307456b821cc478615e754f5e8fc84b0623ebd))
+* animation on close button ([56c3151](https://github.com/MyHumanRights/barnrattsspelet/commit/56c3151b0524744ddea27474bc6312e0d1935d04))
+* fix animation on progress bar ([0685af5](https://github.com/MyHumanRights/barnrattsspelet/commit/0685af5f2129812b041281c4b0dfc4fa8544a393))
+* logging statements for non-production environments ([5e3b28e](https://github.com/MyHumanRights/barnrattsspelet/commit/5e3b28e797ce941d1c933684b62771d96687c9b0))
+* remove deprecated i18n configuration and update routing imports ([5f4eebc](https://github.com/MyHumanRights/barnrattsspelet/commit/5f4eebcf7adc75435016d603b7268ac5bd0d3e0a))
+* show right and wrong in quiz ([b2a4617](https://github.com/MyHumanRights/barnrattsspelet/commit/b2a46170300231a05a607c978a79f9eb868832fa))
+* update antagonist name type to Antagonist ([9b933de](https://github.com/MyHumanRights/barnrattsspelet/commit/9b933dec63b3879cd9c8909a02d119bfe830a680))
+* update Confetti component ([daa88ec](https://github.com/MyHumanRights/barnrattsspelet/commit/daa88ecaf776175afaef2b13c4b81fbbbf5a67e1))
+* update database name ([79dcdff](https://github.com/MyHumanRights/barnrattsspelet/commit/79dcdff514cbce05f54a18c98eebe0853650cbe1))
+* update logic for ending ([ac27559](https://github.com/MyHumanRights/barnrattsspelet/commit/ac27559483fb610818c39fee7c2b84d9e1728bcf))
+* Update progress bar logic ([fa6e6a1](https://github.com/MyHumanRights/barnrattsspelet/commit/fa6e6a1df26da2b0f259d0a7d8fc0a038a2c6802))
+
 # [1.19.0](https://github.com/MyHumanRights/barnrattsspelet/compare/v1.18.0...v1.19.0) (2024-09-30)
 
 
