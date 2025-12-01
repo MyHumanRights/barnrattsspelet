@@ -21,7 +21,7 @@
     "use-sound": "5.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
+    "@eslint/eslintrc": "3.3.3",
     "@eslint/js": "9.39.1",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
