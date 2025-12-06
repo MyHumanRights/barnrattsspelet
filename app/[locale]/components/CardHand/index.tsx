@@ -1,14 +1,7 @@
 import { AnimatePresence, motion, Transition } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
@@ -127,7 +120,6 @@ export const CardHand = ({
   const t = useTranslations('cardhand')
   const interactionButtons = useRef<HTMLButtonElement>(null)
   const [cardIndex, setCardIndex] = useState<number | null>(null)
-  const [winSize, setWinSize] = useState(WIN_SIZES.wide)
   const [animateStar, triggerStar] = useAnimation({ scale: 1.4 })
   const [animateSelectBtn, triggerSelectBtn] = useAnimation({ rotation: 1.3 })
 
@@ -149,25 +141,10 @@ export const CardHand = ({
     duration: 0.5,
   }
 
-  const checkWindow = useCallback(() => {
-    let screenWidth = window.innerWidth
-    if (screenWidth && screenWidth < WINDOW_BREAKPOINT) {
-      if (winSize === WIN_SIZES.small) return
-      setWinSize(WIN_SIZES.small)
-    } else {
-      if (winSize === WIN_SIZES.wide) return
-      setWinSize(WIN_SIZES.wide)
-    }
-  }, [winSize])
-
-  useEffect(() => {
-    checkWindow()
-  }, [checkWindow])
-
-  useEffect(() => {
-    window.addEventListener('resize', checkWindow)
-    return () => window.removeEventListener('resize', checkWindow)
-  })
+  const winSize =
+    clientWidth && clientWidth < WINDOW_BREAKPOINT
+      ? WIN_SIZES.small
+      : WIN_SIZES.wide
 
   if (shouldReduceMotion) {
     cardTransition = { type: 'tween', duration: 0.01 }

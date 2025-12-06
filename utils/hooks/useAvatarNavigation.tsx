@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 import { CATEGORIES } from '@/utils/constants'
 import { IAvatar, IAvatarColors, IAvatarParts } from '@/utils/types'
@@ -24,39 +24,37 @@ export const useAvatarNavigation = ({
   sounds,
   options,
 }: UseAvatarNavigationProps) => {
-  const [index, setIndex] = useState<Record<CATEGORIES, number>>({
-    [CATEGORIES.ACCESSORY]: 0,
-    [CATEGORIES.BODY]: 0,
-    [CATEGORIES.FACE]: 0,
-    [CATEGORIES.HAIR]: 0,
-  })
-
-  // Update index when avatar collection changes
-  useEffect(() => {
-    if (avatarCollection && choices) {
-      const newIndex = [
-        CATEGORIES.ACCESSORY,
-        CATEGORIES.BODY,
-        CATEGORIES.FACE,
-        CATEGORIES.HAIR,
-      ].reduce(
-        (acc: Record<CATEGORIES, number>, category) => {
-          const idx =
-            avatarCollection[category]?.findIndex(
-              (svg) => svg.id === choices?.[category]?.id
-            ) ?? 0
-          acc[category] = idx + 1
-          return acc
-        },
-        {
-          [CATEGORIES.ACCESSORY]: 0,
-          [CATEGORIES.BODY]: 0,
-          [CATEGORIES.FACE]: 0,
-          [CATEGORIES.HAIR]: 0,
-        }
-      )
-      setIndex(newIndex)
+  const index = useMemo(() => {
+    if (!avatarCollection || !choices) {
+      return {
+        [CATEGORIES.ACCESSORY]: 0,
+        [CATEGORIES.BODY]: 0,
+        [CATEGORIES.FACE]: 0,
+        [CATEGORIES.HAIR]: 0,
+      }
     }
+
+    return [
+      CATEGORIES.ACCESSORY,
+      CATEGORIES.BODY,
+      CATEGORIES.FACE,
+      CATEGORIES.HAIR,
+    ].reduce(
+      (acc: Record<CATEGORIES, number>, category) => {
+        const idx =
+          avatarCollection[category]?.findIndex(
+            (svg) => svg.id === choices?.[category]?.id
+          ) ?? 0
+        acc[category] = idx + 1
+        return acc
+      },
+      {
+        [CATEGORIES.ACCESSORY]: 0,
+        [CATEGORIES.BODY]: 0,
+        [CATEGORIES.FACE]: 0,
+        [CATEGORIES.HAIR]: 0,
+      }
+    )
   }, [avatarCollection, choices])
 
   const handleClick = useCallback(
@@ -86,9 +84,8 @@ export const useAvatarNavigation = ({
       }
 
       setChoices(newChoices)
-      setIndex({ ...index, [category]: newIndex + 1 })
     },
-    [avatarCollection, choices, index, options, sounds, setChoices]
+    [avatarCollection, choices, options, sounds, setChoices]
   )
 
   const handleColorClick = useCallback(

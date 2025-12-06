@@ -62,16 +62,16 @@ export const CardList = ({
     setCards(allCards)
   }, [allCards])
 
-  useEffect(() => {
-    document.addEventListener('click', handleClick)
-    return () => document.removeEventListener('click', handleClick)
-  })
-
   function handleClick(e: MouseEvent) {
     if ((e.target as Element).getAttribute('data-click') === 'outside') {
       setActiveCardId(null)
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  })
 
   function handleClickOnCard(card: ICard) {
     soundEffectsOn && playOpenCardSound()

@@ -1,5 +1,6 @@
-import { doc, setDoc, updateDoc, increment } from 'firebase/firestore/lite'
+import { doc, increment,setDoc, updateDoc } from 'firebase/firestore/lite'
 import { useCallback, useRef } from 'react'
+
 import { useStatsContext } from '@/contexts/StatsContext'
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
 import { db } from '@/utils/firebase'

@@ -12,12 +12,7 @@ interface Props {
 }
 
 export const Avatar = ({ choices, link }: Props) => {
-  const [avatar, setAvatar] = useState<IAvatar | null>(null)
-
-  useEffect(() => {
-    const avatar = choices || getAvatar()
-    setAvatar(avatar)
-  }, [choices])
+  const avatar = choices || getAvatar()
 
   return (
     <div className={styles.frame}>
