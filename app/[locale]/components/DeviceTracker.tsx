@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { STAT_COLLECTION_NAMES, STAT_FLAGS } from '@/utils/constants'
@@ -7,11 +8,13 @@ import { useAddToStatistics } from '@/utils/hooks/useAddToStatistics'
 
 type DeviceType = 'mobile' | 'tablet' | 'desktop'
 
-interface DeviceTrackerProps {
+type DeviceTrackerProps = {
   deviceType: DeviceType
 }
 
 export const DeviceTracker: React.FC<DeviceTrackerProps> = ({ deviceType }) => {
+  const pathname = usePathname()
+
   // Map device type to collection name
   const collectionName =
     deviceType === 'mobile'
@@ -26,9 +29,10 @@ export const DeviceTracker: React.FC<DeviceTrackerProps> = ({ deviceType }) => {
   )
 
   useEffect(() => {
-    trackDevice()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (!pathname?.endsWith('/stats')) {
+      trackDevice()
+    }
+  }, [pathname, trackDevice])
 
   return null
 }

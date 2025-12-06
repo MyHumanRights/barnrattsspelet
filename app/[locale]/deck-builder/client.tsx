@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { getCardCollection } from '@/api/storage'
 import { useOptionsContext } from '@/contexts/OptionsContext'
@@ -17,7 +17,6 @@ import styles from './DeckBuilder.module.scss'
 export const DeckBuilderClient = () => {
   const t = useTranslations()
 
-  const [allCards, setAllCards] = useState<ICard[]>([])
   const [filter, setFilter] = useState<string | null>(null)
 
   const {
@@ -25,19 +24,11 @@ export const DeckBuilderClient = () => {
     toggleThemeSound,
     options: { themeMusicOn, themeVolume },
   } = useOptionsContext()
-
-  useEffect(() => {
-    setAllCards(allCards)
-  }, [filter, allCards])
+  const allCards: ICard[] = useMemo(() => getCardCollection(), [])
 
   useEffect(() => {
     toggleThemeSound()
   }, [themeMusicOn, themeVolume, toggleThemeSound])
-
-  useEffect(() => {
-    const cardCollection = getCardCollection()
-    setAllCards(cardCollection)
-  }, [])
 
   return (
     <>

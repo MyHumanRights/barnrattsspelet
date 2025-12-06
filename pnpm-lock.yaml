@@ -45,6 +45,9 @@ importers:
       '@eslint/js':
         specifier: 9.39.1
         version: 9.39.1
+      '@next/eslint-plugin-next':
+        specifier: 16.0.7
+        version: 16.0.7
       '@semantic-release/changelog':
         specifier: 6.0.3
         version: 6.0.3(semantic-release@24.2.7(typescript@5.9.3))

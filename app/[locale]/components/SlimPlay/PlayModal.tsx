@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
 
 import { mapAntagonistsToArray } from '@/api/engine'
 import antagonistsObj from '@/data/antagonists.json'
@@ -18,16 +17,11 @@ type PlayModalProps = {
 export const PlayModal = ({ handleModal }: PlayModalProps) => {
   const allAreDefeated = useAllAreDefeated()
 
-  const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])
-
   const t = useTranslations()
 
-  useEffect(() => {
-    const antagonists = mapAntagonistsToArray(
-      antagonistsObj as unknown as IAntagonistObject
-    )
-    setAllScenarios(antagonists)
-  }, [])
+  const allScenarios: IGameAntagonist[] = mapAntagonistsToArray(
+    antagonistsObj as unknown as IAntagonistObject
+  )
 
   return (
     <div className={styles.wrapper}>

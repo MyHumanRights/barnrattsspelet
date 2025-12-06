@@ -7,13 +7,15 @@ export const useRandomText = (i18nPath: string, dependency = null) => {
   const textArray = Object.keys(textObject)
   const [randomText, setRandomText] = useState('')
 
-  const randomFunc = () => {
-    let randomlySelectedElement =
-      textArray[Math.floor(Math.random() * textArray.length)]
-    setRandomText(randomlySelectedElement)
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const randomlySelectedElement =
+        textArray[Math.floor(Math.random() * textArray.length)]
+      setRandomText(randomlySelectedElement)
+    }, 0)
 
-  useEffect(randomFunc, [textArray, dependency])
+    return () => clearTimeout(timer)
+  }, [textArray, dependency])
 
   return randomText
 }

@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Antagonist } from '@/utils/antagonistType'
 
@@ -18,21 +18,23 @@ export const GameIntro = ({ antagonist, showModal, handleIntro }: Props) => {
   const t = useTranslations()
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  if (!showModal) {
-    return null
-  }
-
   const key = `antagonists.${antagonist}.intro.body1`
-  const message = t(key)
-
-  if (message === key) {
-    buttonRef.current?.click()
-  }
+  const hasBody1 = t.has(key)
 
   const key2 = `antagonists.${antagonist}.intro.body2`
 
   // Only render body2 if the translation exists
   const hasBody2 = t.has(key2)
+
+  useEffect(() => {
+    if (showModal && !hasBody1) {
+      buttonRef.current?.click()
+    }
+  }, [showModal, hasBody1])
+
+  if (!showModal) {
+    return null
+  }
 
   return (
     <Modal onModalClose={handleIntro}>

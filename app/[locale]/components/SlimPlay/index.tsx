@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { readGameStateValue, setGameStateValue } from '@/api/storage'
 import { PlayModal } from '@/app/[locale]/components/SlimPlay/PlayModal'
@@ -13,12 +13,9 @@ import styles from './SlimPlay.module.scss'
 
 export const SlimPlay = () => {
   const t = useTranslations()
-  const [isSlim, setIsSlim] = useState<boolean | null>(false)
-
-  useEffect(() => {
-    const isSlimPlay = readGameStateValue('isSlimPlay')
-    setIsSlim(isSlimPlay)
-  }, [])
+  const [isSlim, setIsSlim] = useState<boolean | null>(() =>
+    readGameStateValue('isSlimPlay')
+  )
 
   const handleModal = () => {
     setGameStateValue({ isSlimPlay: true })

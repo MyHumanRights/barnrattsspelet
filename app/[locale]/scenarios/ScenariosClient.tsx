@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { mapAntagonistsToArray } from '@/api/engine'
 import { IAntagonistObject, ICard, IGameAntagonist } from '@/utils/types'
@@ -17,13 +17,12 @@ export const ScenariosClient: React.FC<ScenariosClientProps> = ({
   antagonistsObj,
   cards,
 }) => {
-  const [allScenarios, setAllScenarios] = useState<IGameAntagonist[]>([])
   const [filter, setFilter] = useState<string | null>(null)
 
-  useEffect(() => {
-    const antagonists: IGameAntagonist[] = mapAntagonistsToArray(antagonistsObj)
-    setAllScenarios(antagonists)
-  }, [antagonistsObj])
+  const allScenarios: IGameAntagonist[] = useMemo(
+    () => mapAntagonistsToArray(antagonistsObj),
+    [antagonistsObj]
+  )
 
   return (
     <>
