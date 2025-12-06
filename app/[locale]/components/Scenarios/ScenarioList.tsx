@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { getScenarioCards } from '@/api/engine'
 import {
@@ -42,12 +42,10 @@ export const ScenarioList: React.FC<ScenarioListProps> = ({
 
   const router = useRouter()
 
-  const [defeatedAntagonists, setDefeatedAntagonists] = useState<string[]>([])
-
-  useEffect(() => {
-    if (!isSlimPlay) return
-    setDefeatedAntagonists(readDefeatedAntagonists())
-  }, [isSlimPlay])
+  const defeatedAntagonists = useMemo(
+    () => (isSlimPlay ? readDefeatedAntagonists() : []),
+    [isSlimPlay]
+  )
 
   const hoverAnimation = useMemo(
     () => ({

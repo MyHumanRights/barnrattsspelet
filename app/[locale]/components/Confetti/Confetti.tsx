@@ -42,7 +42,6 @@ export const Confetti = ({ isActive }: ConfettiProps) => {
 
   useEffect(() => {
     if (!isActive) {
-      setParticles([])
       return
     }
 
@@ -81,6 +80,7 @@ export const Confetti = ({ isActive }: ConfettiProps) => {
     return () => {
       clearInterval(burstInterval)
       clearInterval(animationInterval)
+      setParticles([])
     }
   }, [isActive, createParticle])
 

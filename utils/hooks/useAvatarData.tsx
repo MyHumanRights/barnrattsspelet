@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { getAvatar, getAvatarPartCollection } from '@/api/storage'
 import avatarJson from '@/data/avatar.json'
@@ -10,26 +10,21 @@ export const useAvatarData = () => {
   )
   const [choices, setChoices] = useState<IAvatar | null>(null)
   const [colors, setColors] = useState<IAvatarColors | null>(null)
-  const [activeColors, setActiveColors] = useState<{
+  const activeColors: {
     hair: string | null
     face: string | null
     body: string | null
-  }>({
-    hair: null,
-    face: null,
-    body: null,
-  })
-
-  // Update active colors whenever choices change
-  useEffect(() => {
-    if (choices) {
-      setActiveColors({
+  } = choices
+    ? {
         hair: choices.hair.color,
         face: choices.face.color,
         body: choices.body.color,
-      })
-    }
-  }, [choices])
+      }
+    : {
+        hair: null,
+        face: null,
+        body: null,
+      }
 
   const loadAvatarData = useCallback(() => {
     // Set colors from avatar JSON
@@ -42,8 +37,6 @@ export const useAvatarData = () => {
     // Set choices and avatar collection
     setChoices(storedAvatar)
     if (storedPartCollection) setAvatarCollection(storedPartCollection)
-
-    // Initial active colors are set via the useEffect above
   }, [])
 
   // Custom setter for choices that also updates active colors

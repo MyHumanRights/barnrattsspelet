@@ -16,13 +16,7 @@ export const useTokens = (): [
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
   const [playTokenSound] = useSound(tokenSound, { volume: effectsVolume })
-  const [ownedTokens, setOwnedTokens] = useState<number>(0)
-
-  // when the component mounts, get the current tokens
-  useEffect(() => {
-    const tokens = readTokens()
-    setOwnedTokens(tokens)
-  }, [])
+  const [ownedTokens, setOwnedTokens] = useState<number>(() => readTokens())
 
   const updateTokens = (token: number) => {
     soundEffectsOn && playTokenSound()

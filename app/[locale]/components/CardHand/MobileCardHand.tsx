@@ -139,18 +139,6 @@ export const MobileCardHand = ({
     interactionButtons.current?.focus()
   }, [cardIndex])
 
-  useEffect(() => {
-    if (currentCard > cards.length - 1) {
-      setCurrentCard(0)
-    }
-  }, [cards, currentCard])
-
-  useEffect(() => {
-    if (currentCardNumber > totalCards) {
-      setCurrentCardNumber(1)
-    }
-  }, [totalCards, currentCardNumber])
-
   const handleAnimate = () => {
     setAnimate(true)
 
@@ -281,7 +269,7 @@ export const MobileCardHand = ({
             isPersuade ? styles.cardNumberPersuade : styles.cardNumber
           }`}
         >
-          {currentCardNumber}/{totalCards}
+          {Math.min(currentCardNumber, totalCards)}/{totalCards}
         </motion.div>
         <div
           className={animate ? styles.shuffle : styles.cardsInBack}

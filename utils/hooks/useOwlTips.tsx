@@ -26,8 +26,12 @@ export default function useOwlTips(): UseOwlTipsReturn {
 
   useEffect(() => {
     if (!hasShownTokenTip && ownedTokens > 0 && ownedTokens < 3) {
-      setShowOwl(OWLS.TOKEN)
-      setShownTokenTip(true)
+      const timer = setTimeout(() => {
+        setShowOwl(OWLS.TOKEN)
+        setShownTokenTip(true)
+      }, 0)
+
+      return () => clearTimeout(timer)
     }
   }, [ownedTokens, hasShownTokenTip])
 

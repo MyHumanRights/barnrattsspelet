@@ -108,8 +108,6 @@ export const PersuadeClient = () => {
   const [isQuizOpen, toggleQuiz] = useScrollLockModal(false)
 
   const scrollableRef = useRef<HTMLDivElement>(null)
-
-  const randomWrongAnswer = Math.floor(Math.random() * 6) + 1
   const [updateTokens, removeTokens, ownedTokens] = useTokens()
   const hasWonAllParts = useHasWonAllAvatarParts()
   const hasWonAllCards = useHasWonAllCards()
@@ -268,7 +266,8 @@ export const PersuadeClient = () => {
           setLines((prev) => [
             ...prev,
             {
-              text: genericAnswers + randomWrongAnswer + '.text',
+              text:
+                genericAnswers + (Math.floor(Math.random() * 6) + 1) + '.text',
               player: false,
               wrongAnswer: true,
             },

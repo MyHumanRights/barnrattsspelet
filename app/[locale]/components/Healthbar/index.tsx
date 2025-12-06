@@ -2,7 +2,7 @@ import '../../../global.scss'
 
 import { AnimationDefinition, motion, useAnimationControls } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useOptionsContext } from '@/contexts/OptionsContext'
 
@@ -13,12 +13,13 @@ type Props = {
 }
 
 export const Healthbar = ({ health }: Props) => {
-  const [progressAnimation, setProgressAnimation] = useState('')
   const t = useTranslations('healthbar')
   const starAnimation = useAnimationControls()
   const {
     options: { shouldReduceMotion },
   } = useOptionsContext()
+
+  const progressAnimation = shouldReduceMotion ? '' : styles.progressAnimation
 
   useEffect(() => {
     let healthAnimation: AnimationDefinition = {
@@ -27,13 +28,10 @@ export const Healthbar = ({ health }: Props) => {
       transition: { times: [0, 0.1, 0.9, 1] },
     }
 
-    setProgressAnimation(styles.progressAnimation)
-
     if (shouldReduceMotion) {
       healthAnimation = {
         transition: { times: [0, 0.01] },
       }
-      setProgressAnimation('')
     }
     starAnimation.start(healthAnimation)
   }, [health, starAnimation, shouldReduceMotion])

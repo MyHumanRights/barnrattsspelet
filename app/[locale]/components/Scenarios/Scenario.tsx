@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { getWonCardsFromHand } from '@/utils/getWonCardsFromHand'
 import { ICard, IGameAntagonist } from '@/utils/types'
@@ -32,8 +32,9 @@ export const Scenario = ({
   const t = useTranslations()
   const pathname = usePathname()
   const [isFocused, setIsFocused] = useState(false)
-  const [winableCards, setWinableCards] = useState(0)
   const ref = useRef<HTMLLIElement>(null)
+
+  const { filteredCardsCount: winableCards } = getWonCardsFromHand(cardHand)
 
   const renderAnimation = () => {
     if (animation && isFocused) {
@@ -43,11 +44,6 @@ export const Scenario = ({
     }
     return null
   }
-
-  useEffect(() => {
-    const { filteredCardsCount } = getWonCardsFromHand(cardHand)
-    setWinableCards(filteredCardsCount)
-  }, [which, cardHand])
 
   return (
     <motion.li
