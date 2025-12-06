@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useContext, useEffect, useState } from 'react'
+
 import { STAT_FLAGS, STAT_STORAGE_KEY } from '../utils/constants'
 
 type Flags = { [key in STAT_FLAGS]: boolean }
