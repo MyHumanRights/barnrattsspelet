@@ -11,7 +11,6 @@ import React, {
 import useSound from 'use-sound'
 
 import { setGameState } from '@/api/engine'
-import unlockCardSound from '@/assets/sounds/fx/13-card-unlocked.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonVariant } from '@/utils/constants'
 import { useAnimation } from '@/utils/hooks/useAnimation'
@@ -68,6 +67,7 @@ export const MobileCardHand = ({
   const {
     options: { soundEffectsOn, effectsVolume, shouldReduceMotion },
   } = useOptionsContext()
+  const unlockCardSound = '/sounds/fx/13-card-unlocked.mp3'
   const [playUnlockCardSound] = useSound(unlockCardSound, {
     volume: effectsVolume,
   })

@@ -8,7 +8,6 @@ import {
   setGameStateValue,
   setPlayFromScenario,
 } from '@/api/storage'
-import showCardSound from '@/assets/sounds/fx/14-button.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonistsJson from '@/data/antagonists.json'
 import cardsJson from '@/data/cards.json'
@@ -53,6 +52,7 @@ export const CardList = ({
     isMobile,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const showCardSound = '/sounds/fx/14-button.mp3'
 
   const [playOpenCardSound] = useSound(showCardSound, {
     volume: effectsVolume,

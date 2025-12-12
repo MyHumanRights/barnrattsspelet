@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react'
 
-import owlSound from '@/assets/sounds/fx/16-owl-popup.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant, OWLS } from '@/utils/constants'
 
@@ -51,6 +50,7 @@ export const OwlDialogue = ({
   const {
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const owlSound = '/sounds/fx/16-owl-popup.mp3'
 
   const handleClick = () => {
     setHasShownOwlTip(true)
