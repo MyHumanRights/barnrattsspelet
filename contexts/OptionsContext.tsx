@@ -9,8 +9,6 @@ import {
 } from 'react'
 import useSound from 'use-sound'
 
-import titleTrack from '../assets/sounds/fx/00-title.mp3'
-
 export type Options = {
   shouldReduceMotion: boolean
   highContrast: boolean
@@ -53,6 +51,8 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
     language: 'sv',
   })
 
+  const titleTrack = '/sounds/fx/00-title.mp3'
+
   const [, { sound }] = useSound(titleTrack, {
     loop: true,
     volume: 0,
@@ -82,17 +82,13 @@ export const OptionsProvider: React.FC<React.PropsWithChildren> = ({
 
   const playVoiceover = async (path: string) => {
     try {
-      const imported = (
-        await import(
-          '/assets/sounds/voiceover/' + options.language + '/' + path + '.mp3'
-        )
-      ).default
-      const audio = new Audio(imported)
+      const src = '/sounds/voiceover/' + options.language + '/' + path + '.mp3'
+      const audio = new Audio(src)
       audio.volume = options.effectsVolume || 0.5
       // pause currently playing voiceover, replace with new audio
       currentVoiceover?.pause()
       setCurrentVoiceover(audio)
-      audio.play()
+      await audio.play()
       return audio
     } catch (error) {
       console.error(error)

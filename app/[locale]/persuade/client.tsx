@@ -26,11 +26,6 @@ import {
 import { OwlTips } from '@/app/[locale]/components/OwlTips'
 import { PersuasionWin } from '@/app/[locale]/components/PersuasionWin'
 import Retry from '@/app/[locale]/components/PersuasionWin/Retry'
-import rightAnswerSound from '@/assets/sounds/fx/01-correct-card-played.mp3'
-import wrongAnswerSound from '@/assets/sounds/fx/02-incorrect-card-played.mp3'
-import gameOverSound from '@/assets/sounds/fx/05-lose.mp3'
-import chatSound from '@/assets/sounds/fx/08-talk.mp3'
-import victorySound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import cards from '@/data/cards.json'
@@ -84,6 +79,11 @@ export const PersuadeClient = () => {
     toggleThemeSound,
     options: { soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const rightAnswerSound = '/sounds/fx/01-correct-card-played.mp3'
+  const wrongAnswerSound = '/sounds/fx/02-incorrect-card-played.mp3'
+  const gameOverSound = '/sounds/fx/05-lose.mp3'
+  const chatSound = '/sounds/fx/08-talk.mp3'
+  const victorySound = '/sounds/fx/22-map-added-color.mp3'
   const [playChatSound] = useSound(chatSound, { volume: effectsVolume })
   const [playVictorySound] = useSound(victorySound, { volume: effectsVolume })
   const [playRightAnswerSound] = useSound(rightAnswerSound, {

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
 import { readTokens, resetTokens, setTokens } from '@/api/storage'
-import tokenSound from '@/assets/sounds/fx/12-added-token.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 
 const UNLOCK_COST = -1
+const tokenSound = '/sounds/fx/12-added-token.mp3'
 
 export const useTokens = (): [
   updateTokens: (token: number) => void,

@@ -6,7 +6,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import { Highlight } from '@/app/[locale]/components/Card/Highlight'
-import flipSound from '@/assets/sounds/fx/09-flip-card.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { ButtonSize, ButtonVariant } from '@/utils/constants'
 import getIsBrightColor from '@/utils/getIsBrightColor'
@@ -59,6 +58,7 @@ export const Card: React.FC<Props> = ({
       effectsVolume,
     },
   } = useOptionsContext()
+  const flipSound = '/sounds/fx/09-flip-card.mp3'
   const [playActive] = useSound(flipSound, { volume: effectsVolume })
 
   const ref = useRef<HTMLButtonElement>(null)
