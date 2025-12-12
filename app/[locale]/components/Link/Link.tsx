@@ -3,8 +3,6 @@
 import { forwardRef } from 'react'
 import useSound from 'use-sound'
 
-import btnSound from '@/assets/sounds/fx/14-button.mp3'
-import largeBtnSound from '@/assets/sounds/fx/15-button-large.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import { Link as NavLink } from '@/i18n/navigation'
 import { AppPathnames } from '@/i18n/routing'
@@ -42,6 +40,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       playSoundEffect,
       options: { effectsVolume },
     } = useOptionsContext()
+    const btnSound = '/sounds/fx/14-button.mp3'
+    const largeBtnSound = '/sounds/fx/15-button-large.mp3'
     const sound = variant === 'huge' ? largeBtnSound : btnSound
     const [playSound] = useSound(sound, { volume: effectsVolume })
 

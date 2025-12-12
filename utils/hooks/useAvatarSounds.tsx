@@ -1,10 +1,11 @@
 import useSound from 'use-sound'
 
-import accessorySound from '@/assets/sounds/fx/18-avatar-accessory.mp3'
-import faceSound from '@/assets/sounds/fx/19-avatar-face.mp3'
-import hairSound from '@/assets/sounds/fx/20-avatar-hair.mp3'
-import bodySound from '@/assets/sounds/fx/21-avatar-body.mp3'
 import { Options } from '@/contexts/OptionsContext'
+
+const accessorySound = '/sounds/fx/18-avatar-accessory.mp3'
+const faceSound = '/sounds/fx/19-avatar-face.mp3'
+const hairSound = '/sounds/fx/20-avatar-hair.mp3'
+const bodySound = '/sounds/fx/21-avatar-body.mp3'
 
 export const useAvatarSounds = (options: Options) => {
   const [playFaceSound] = useSound(faceSound, { volume: options.effectsVolume })

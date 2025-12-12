@@ -22,9 +22,6 @@ import { LootBoxCards } from '@/app/[locale]/components/LootBoxCards'
 import { LootBoxOwl } from '@/app/[locale]/components/LootBoxOwl'
 import { MapBackground } from '@/app/[locale]/components/MapBackground'
 import { OwlDialogue } from '@/app/[locale]/components/OwlDialogue'
-import powerUpSound from '@/assets/sounds/fx/03-lootbox.mp3'
-import unlockCardSound3 from '@/assets/sounds/fx/13-card-unlocked-03.mp3'
-import mapSound from '@/assets/sounds/fx/22-map-added-color.mp3'
 import { useOptionsContext } from '@/contexts/OptionsContext'
 import antagonists from '@/data/antagonists.json'
 import { useRouter } from '@/i18n/navigation'
@@ -59,6 +56,9 @@ export const LootBoxClient = ({ cardData, avatarParts }: Props) => {
     playSoundEffect,
     options: { shouldReduceMotion, soundEffectsOn, effectsVolume },
   } = useOptionsContext()
+  const powerUpSound = '/sounds/fx/03-lootbox.mp3'
+  const unlockCardSound3 = '/sounds/fx/13-card-unlocked-03.mp3'
+  const mapSound = '/sounds/fx/22-map-added-color.mp3'
 
   const [isFirstLoot, setIsFirstLoot] = useState(false)
   const [lootItem, setLootItem] = useState<ILootItem[]>([])
